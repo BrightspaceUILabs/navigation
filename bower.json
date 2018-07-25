@@ -16,6 +16,7 @@
     "wct.conf.json"
   ],
   "dependencies": {
+    "d2l-colors": "^3.1.2",
     "polymer": "Polymer/polymer#1 - 2"
   },
   "devDependencies": {

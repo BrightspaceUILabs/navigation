@@ -1,29 +1,25 @@
 # navigation
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/d2l-navigation)
 [![Bower version][bower-image]][bower-url]
 [![Build status][ci-image]][ci-url]
 
 Parent repo for all navigation based web components
 
-## d2l-navigation-band
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/d2l-navigation-band)
+## Installation
 
-Solid colour band that runs along the top of the navigational header
-
-### Installation
-
-`d2l-navigation-band` can be installed from [Bower][bower-url]:
+`d2l-navigation` can be installed from [Bower][bower-url]:
 ```shell
-bower install d2l-navigation-band
+bower install d2l-navigation
 ```
 
-### Usage
+## Usage
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-band.html`:
 
 ```html
 <head>
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation-band/d2l-navigation-band.html">
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-band.html">
 </head>
 ```
 
@@ -33,7 +29,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../d2l-typography/d2l-typography.html">
-    <link rel="import" href="d2l-navigation-band.html">
+    <link rel="import" href="d2l-navigation.html">
     <custom-style include="d2l-typography">
       <style is="custom-style" include="d2l-typography"></style>
     </custom-style>
@@ -48,6 +44,16 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </custom-element-demo>
 ```
 -->
+```html
+<d2l-navigation></d2l-navigation>
+```
+
+## Child web components
+
+### d2l-navigation-band
+
+Solid colour band that runs along the top of the navigational header
+
 ```html
 <d2l-navigation-band></d2l-navigation-band>
 ```
