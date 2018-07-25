@@ -1,29 +1,17 @@
-<link rel="import" href="../polymer/polymer.html">
-
-<!--
-`d2l-navigation-band`
-Solid colour band that runs along the top of the navigational header
-@demo demo/index.html
--->
-
 <dom-module id="d2l-navigation-band">
 	<template strip-whitespace>
 		<style>
 			:host {
-				display: inline-block;
+				border-top-color: var(--d2l-branding-primary-color, #003b71);
+				border-top-style: solid;
+				border-top-width: 4px;
+				display: block;
 			}
 		</style>
-		<h2>Hello [[prop1]]!</h2>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-band',
-			properties: {
-				prop1: {
-					type: String,
-					value: 'd2l-navigation-band',
-				}
-			}
+			is: 'd2l-navigation-band'
 		});
 	</script>
 </dom-module>
