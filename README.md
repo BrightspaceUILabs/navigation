@@ -49,7 +49,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 ```
 -->
 ```html
-<d2l-navigation-band>My element</d2l-navigation-band>
+<d2l-navigation-band></d2l-navigation-band>
 ```
 
 ## Developing, Testing and Contributing
