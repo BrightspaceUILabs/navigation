@@ -14,12 +14,12 @@ bower install d2l-navigation
 
 ## Usage
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-band.html`:
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
 
 ```html
 <head>
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-band.html">
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation.html">
 </head>
 ```
 
@@ -52,8 +52,36 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 ### d2l-navigation-band
 
+```html
+<head>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-band.html">
+</head>
+```
+
 Solid colour band that runs along the top of the navigational header
 
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="d2l-navigation-band.html">
+    <custom-style include="d2l-typography">
+      <style is="custom-style" include="d2l-typography"></style>
+    </custom-style>
+    <style>
+      html {
+        font-size: 20px;
+        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
 <d2l-navigation-band></d2l-navigation-band>
 ```
