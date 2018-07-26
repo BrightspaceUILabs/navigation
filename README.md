@@ -23,12 +23,15 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </head>
 ```
 
+Wrapper components that packages up all other navigation components for ease of use
+
 <!---
 ```
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../d2l-typography/d2l-typography.html">
+    <link rel="import" href="./bower_components/d2l-typography/d2l-typography.html">
+	<link rel="import" href="./bower_components/d2l-colors/d2l-colors.html">
     <link rel="import" href="d2l-navigation.html">
     <custom-style include="d2l-typography">
       <style is="custom-style" include="d2l-typography"></style>
@@ -66,7 +69,8 @@ Solid colour band that runs along the top of the navigational header
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="./bower_components/d2l-typography/d2l-typography.html">
+	<link rel="import" href="./bower_components/d2l-colors/d2l-colors.html">
 	<link rel="import" href="d2l-navigation-band.html">
     <custom-style include="d2l-typography">
       <style is="custom-style" include="d2l-typography"></style>
