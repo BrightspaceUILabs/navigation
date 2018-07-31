@@ -23,7 +23,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </head>
 ```
 
-Wrapper components that packages up all other navigation components for ease of use
+Wrapper components that packages up all other navigation components for ease of use.
 
 <!---
 ```
