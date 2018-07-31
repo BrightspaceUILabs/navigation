@@ -1,5 +1,5 @@
 # navigation
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/d2l-navigation)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/navigation)
 [![Bower version][bower-image]][bower-url]
 [![Build status][ci-image]][ci-url]
 
@@ -23,15 +23,15 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </head>
 ```
 
-Wrapper components that packages up all other navigation components for ease of use
+Wrapper components that packages up all other navigation components for ease of use.
 
 <!---
 ```
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="./bower_components/d2l-typography/d2l-typography.html">
-	<link rel="import" href="./bower_components/d2l-colors/d2l-colors.html">
+    <link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-colors/d2l-colors.html">
     <link rel="import" href="d2l-navigation.html">
     <custom-style include="d2l-typography">
       <style is="custom-style" include="d2l-typography"></style>
@@ -62,15 +62,17 @@ Wrapper components that packages up all other navigation components for ease of 
 </head>
 ```
 
-Solid colour band that runs along the top of the navigational header
+Solid colour band that runs along the top of the navigational header.
+
+![screenshot of navigation band](/screenshots/navigation-band.png?raw=true)
 
 <!---
 ```
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="./bower_components/d2l-typography/d2l-typography.html">
-	<link rel="import" href="./bower_components/d2l-colors/d2l-colors.html">
+	<link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-colors/d2l-colors.html">
 	<link rel="import" href="d2l-navigation-band.html">
     <custom-style include="d2l-typography">
       <style is="custom-style" include="d2l-typography"></style>
@@ -124,7 +126,7 @@ To lint AND run local unit tests:
 npm test
 ```
 
-[bower-url]: http://bower.io/search/?q=navigation
-[bower-image]: https://badge.fury.io/bo/navigation.svg
+[bower-url]: http://bower.io/search/?q=d2l-navigation
+[bower-image]: https://badge.fury.io/bo/d2l-navigation.svg
 [ci-url]: https://travis-ci.org/BrightspaceUI/navigation
 [ci-image]: https://travis-ci.org/BrightspaceUI/navigation.svg?branch=master
