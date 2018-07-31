@@ -1,5 +1,5 @@
 # navigation
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/d2l-navigation)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/navigation)
 [![Bower version][bower-image]][bower-url]
 [![Build status][ci-image]][ci-url]
 
@@ -127,6 +127,6 @@ npm test
 ```
 
 [bower-url]: http://bower.io/search/?q=navigation
-[bower-image]: https://badge.fury.io/bo/navigation.svg
+[bower-image]: https://badge.fury.io/bo/d2l-navigation.svg
 [ci-url]: https://travis-ci.org/BrightspaceUI/navigation
 [ci-image]: https://travis-ci.org/BrightspaceUI/navigation.svg?branch=master
