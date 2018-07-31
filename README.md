@@ -70,6 +70,7 @@ Solid colour band that runs along the top of the navigational header
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-button/d2l-button.html">
 	<link rel="import" href="../d2l-colors/d2l-colors.html">
 	<link rel="import" href="d2l-navigation-band.html">
     <custom-style include="d2l-typography">
@@ -87,6 +88,8 @@ Solid colour band that runs along the top of the navigational header
 ```
 -->
 ```html
+<d2l-button primary>Primary</d2l-button>
+<d2l-button>Secondary</d2l-button>
 <d2l-navigation-band></d2l-navigation-band>
 ```
 
