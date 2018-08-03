@@ -1,12 +1,14 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="bower_components/d2l-colors/d2l-colors.html">
 
 <custom-style>
-	<style is="custom-style">
+	<style is="d2l-navigation-shared-styles">
 		html {
 			--d2l-navigation-header-height: 90px;
 			--d2l-navigation-header-height-mobile: 72px;
 
+			--d2l-navigation-margin-regular: 30px;
+
+			--d2l-navigation-bp-title-compact: 615px;
 			--d2l-navigation-bp-mobile-menu: 767px;
 			--d2l-navigation-bp-mobile-menu-compact: 380px;
 
@@ -24,6 +26,15 @@
 				display: flex;
 				height: var(--d2l-navigation-header-height);
 			};
+
+			--d2l-navigation-s-gutter: {
+				display: inline-block;
+				flex: 1 1 auto;
+				min-width: var(--d2l-navigation-margin-regular);
+				@media (max-width: var(--d2l-navigation-bp-title-compact) {
+					min-width: var(--d2l-navigation-margin-regular) / 2;
+				}
+			}
 
 			@media (max-width: var(--d2l-navigation-bp-mobile-menu)) {
 				.d2l-navigation-s-header-container {
