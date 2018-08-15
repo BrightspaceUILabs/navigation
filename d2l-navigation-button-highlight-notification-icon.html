@@ -1,0 +1,82 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="./d2l-navigation-button-highlight.html">
+<link rel="import" href="../d2l-icons/d2l-icons.html">
+
+<!--
+`d2l-navigation-button-highlight-notification-icon`
+Polymer-based web component for highlight buttons used in the navigational header.
+This highlight button contains a user-supplied icon, as well as a notification marker.
+
+@demo demo/d2l-navigation-button-highlight.html d2l-navigation-button-highlight-notification-icon
+-->
+
+<dom-module id="d2l-navigation-button-highlight-notification-icon">
+    <template strip-whitespace>
+        <style>
+            .highlight-button-icon {
+                color: var(--d2l-color-ferrite);
+            }
+            :host(:hover) .highlight-button-icon,
+            :host(:focus) .highlight-button-icon {
+                color: var(--d2l-color-celestine, #005694);
+            }
+            .highlight-button-notification-indicator {
+                color: transparent;
+                right: calc(-50% + 4px);
+                top: calc(-50% + 4px);
+                position: absolute;
+                height: 100%;
+                width: 100%;
+            }
+
+            :host([notification]) .highlight-button-notification-indicator {
+                color: var(--d2l-color-primary-accent-indicator, #e87511);
+            }
+            .highlight-button-icon-container {
+                position: relative;
+                display: inline-block;
+            }
+        </style>
+        <d2l-navigation-button-highlight
+            aria-expanded$="[[ariaExpanded]]"
+			aria-haspopup$="[[ariaHaspopup]]"
+			aria-label$="[[ariaLabel]]"
+			disabled$=[[disabled]]
+			autofocus$=[[autofocus]]
+			form$=[[form]]
+			formaction$=[[formaction]]
+			formenctype$=[[formenctype]]
+			formmethod$=[[formmethod]]
+			formnovalidate$=[[formnovalidate]]
+			formtarget$=[[formtarget]]
+            name$=[[name]]
+            title$=[[_hoverText]]
+            type$=[[type]]>
+            <span class="highlight-button-icon-container">
+                <d2l-icon icon="[[icon]]" class="highlight-button-icon"></d2l-icon>
+                <d2l-icon icon="d2l-tier2:dot" class="highlight-button-notification-indicator"></d2l-icon>
+            </span>
+        </d2l-navigation-button-highlight>
+    </template>
+    <script>
+        class D2lNavigationButtonHighlightNotificationIcon extends customElements.get('d2l-navigation-button-highlight') {
+            static get is() {
+                return 'd2l-navigation-button-highlight-notification-icon';
+            }
+            static get properties() {
+                return {
+                    icon: {
+                        type: String,
+                        reflectToAttribute: true
+                    },
+                    notification: {
+                        type: Boolean,
+                        reflectToAttribute: true
+                    }
+                };
+            }
+        }
+        customElements.define(D2lNavigationButtonHighlightNotificationIcon.is, D2lNavigationButtonHighlightNotificationIcon);
+    </script>
+</dom-module>

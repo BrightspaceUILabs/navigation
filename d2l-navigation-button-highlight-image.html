@@ -1,0 +1,53 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./d2l-navigation-button-highlight.html">
+
+<!--
+`d2l-navigation-button-highlight-image`
+Polymer-based web component for highlight buttons used in the navigational header.
+This highlight button contains a user-supplied image.
+
+@demo demo/d2l-navigation-button-highlight.html d2l-navigation-button-highlight-image
+-->
+
+<dom-module id="d2l-navigation-button-highlight-image">
+    <template strip-whitespace>
+        <style>
+            img {
+                vertical-align: middle;
+            }
+        </style>
+        <d2l-navigation-button-highlight
+            aria-expanded$="[[ariaExpanded]]"
+			aria-haspopup$="[[ariaHaspopup]]"
+			aria-label$="[[ariaLabel]]"
+			disabled$=[[disabled]]
+			autofocus$=[[autofocus]]
+			form$=[[form]]
+			formaction$=[[formaction]]
+			formenctype$=[[formenctype]]
+			formmethod$=[[formmethod]]
+			formnovalidate$=[[formnovalidate]]
+			formtarget$=[[formtarget]]
+            name$=[[name]]
+            title$=[[_hoverText]]
+            type$=[[type]]>
+            <img src="[[src]]">
+        </d2l-navigation-button-highlight>
+    </template>
+    <script>
+        class D2lNavigationButtonHighlightImage extends customElements.get('d2l-navigation-button-highlight') {
+            static get is() {
+                return 'd2l-navigation-button-highlight-image';
+            }
+            static get properties() {
+                return {
+                    src: {
+                        type: String,
+                        reflectToAttribute: true
+                    }
+                };
+            }
+        }
+        customElements.define(D2lNavigationButtonHighlightImage.is, D2lNavigationButtonHighlightImage);
+    </script>
+</dom-module>
