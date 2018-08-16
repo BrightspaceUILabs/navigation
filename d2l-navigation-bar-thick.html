@@ -10,19 +10,39 @@ Polymer-based web component for the thick, upper section of the navigational ele
 
 <dom-module id="d2l-navigation-bar-thick">
 	<template strip-whitespace>
-		<style>
+		<style include="d2l-navigation-shared-styles">
 			.d2l-navigation-s-header {
-				@apply --d2l-navigation-s-header;
+				border-bottom: 1px solid var(--d2l-color-gypsum);
 			}
-			.d2l-navigation-s-centerer {
-				@apply --d2l-navigation-s-centerer;
-			}
+
 			.d2l-navigation-s-header-container {
-				@apply --d2l-navigation-s-header-container;
+				align-items: center;
+				display: flex;
+				height: var(--d2l-navigation-header-height);
 			}
+
+			@media (max-width: var(--d2l-navigation-bp-mobile-menu)) {
+				.d2l-navigation-s-header-container {
+					height: var(--d2l-navigation-header-height-mobile);
+				}
+			}
+
+			.d2l-navigation-s-header-logo-area {
+
+			}
+
 			.d2l-navigation-s-gutter {
-				@apply --d2l-navigation-s-gutter;
+				display: inline-block;
+				flex: 1 1 auto;
+				min-width: var(--d2l-navigation-margin-regular);
 			}
+
+			@media (max-width: var(--d2l-navigation-bp-title-compact) {
+				.d2l-navigation-s-gutter {
+					min-width: var(--d2l-navigation-margin-regular) / 2;
+				}
+			}
+
 			.d2l-navigation-s-header-actions {
 				align-items: center;
 				display: flex;
@@ -31,15 +51,21 @@ Polymer-based web component for the thick, upper section of the navigational ele
 			}
 		</style>
 		<div class="d2l-navigation-s-header">
-		  <div class="d2l-navigation-s-centerer">
-		    <div class="d2l-navigation-s-gutters">
-		      <div class="d2l-navigation-s-header-container">
-		        <slot class="d2l-navigation-s-header-logo-area" name="left"></slot>
-				<slot class="d2l-navigation-s-gutter" name="middle"></slot>
-				<slot class="d2l-navigation-s-header-actions" name="right"></slot>
-		      </div>
-		    </div>
-		  </div>
+			<div class="d2l-navigation-s-centerer">
+				<div class="d2l-navigation-s-gutters">
+					<div class="d2l-navigation-s-header-container">
+						<div class="d2l-navigation-s-header-logo-area">
+				        	<slot name="left"></slot>
+						</div>
+						<div class="d2l-navigation-s-gutter">
+							<slot name="middle"></slot>
+						</div>
+						<div class="d2l-navigation-s-header-actions">
+							<slot name="right"></slot>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</template>
 	<script>
