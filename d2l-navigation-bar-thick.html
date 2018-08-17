@@ -21,6 +21,43 @@ Polymer-based web component for the thick, upper section of the navigational ele
 				height: var(--d2l-navigation-header-height);
 			}
 
+			@media (max-width: var(--d2l-navigation-bp-title-hidden)) {
+				.d2l-navigation-s-header-container {
+					display: none;
+				}
+			}
+
+			@media (max-width: var(--d2l-navigation-bp-separators)) {
+				.d2l-navigation-s-header-container .d2l-navigation-s-logo {
+					margin-left: var(--d2l-navigation-margin-compact);
+				}
+			}
+
+			@media (max-width: var(--d2l-navigation-bp-separators)) {
+				[dir="rtl"] .d2l-navigation-s-header-container .d2l-navigation-s-logo {
+					margin-left: 0;
+					margin-right: var(--d2l-navigation-margin-compact);
+				}
+			}
+
+			.d2l-navigation-s-header-container .d2l-navigation-s-header-no-home-icon .d2l-navigation-s-logo {
+				margin: 0;
+			}
+
+			@media (min-width: (var(--d2l-navigation-bp-mobile-menu) + 1)) {
+				.d2l-navigation-s-header-container .d2l-navigation-s-header-no-home-icon .d2l-navigation-s-logo-divider {
+					display: none;
+				}
+			}
+
+			@media (max-width: var(--d2l-navigation-bp-mobile-menu)) {
+				.d2l-navigation-s-header-container .d2l-navigation-s-home-icon,
+				.d2l-navigation-s-header-container .d2l-navigation-s-logo-divider,
+				.d2l-navigation-s-header-container .d2l-navigation-s-logo {
+					display: none;
+				}
+			}
+
 			@media (max-width: var(--d2l-navigation-bp-mobile-menu)) {
 				.d2l-navigation-s-header-container {
 					height: var(--d2l-navigation-header-height-mobile);
@@ -28,7 +65,23 @@ Polymer-based web component for the thick, upper section of the navigational ele
 			}
 
 			.d2l-navigation-s-header-logo-area {
+				align-items: center;
+				display: flex;
+				flex: 0 1 auto;
+				height: 100%;
+				margin: -7px;
+				overflow: hidden;
+				padding: 0 7px;
+			}
 
+			.d2l-navigation-s-header-logo-area > .d2l-navigation-s-link {
+				display: block;
+				font-size: 1.5rem;
+				flex: 0 1 auto; /* IE10 defaults to 0 0 auto */
+				overflow: hidden;
+				line-height: normal;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 
 			.d2l-navigation-s-gutter {
