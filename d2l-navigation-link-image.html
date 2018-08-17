@@ -23,18 +23,19 @@ Polymer-based web component for the image link used in the navigational header.
         </d2l-navigation-link-highlight>
     </template>
     <script>
-        class D2lNavigationLinkImage extends customElements.get('d2l-navigation-link-highlight') {
-            static get is() { return 'd2l-navigation-link-image'; }
-            static get properties() {
-                return {
-                    src: {
-                        type: String,
-                        reflectToAttribute: true
-                    }
-                };
+        Polymer({
+            is: 'd2l-navigation-link-image',
+            properties: {
+                src: {
+                    type: String,
+                    reflectToAttribute: true
+                },
+                href: {
+                    type: String,
+                    reflectToAttribute: true
+                }
             }
-        }
-        customElements.define(D2lNavigationLinkImage.is, D2lNavigationLinkImage);
+        });
     </script>
 
 </dom-module>

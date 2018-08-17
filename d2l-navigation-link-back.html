@@ -37,18 +37,19 @@ Polymer-based web component for the back button used in the navigational header.
         </d2l-navigation-link-highlight>
     </template>
     <script>
-        class D2lNavigationLinkBack extends customElements.get('d2l-navigation-link-highlight') {
-            static get is() { return 'd2l-navigation-link-back'; }
-            static get properties() {
-                return {
-                    text: {
-                        type: String,
-                        reflectToAttribute: true
-                    }
-                };
+        Polymer({
+            is: 'd2l-navigation-link-back',
+            properties: {
+                text: {
+                    type: String,
+                    reflectToAttribute: true
+                },
+                href: {
+                    type: String,
+                    reflectToAttribute: true
+                }
             }
-        }
-        customElements.define(D2lNavigationLinkBack.is, D2lNavigationLinkBack);
+        });
     </script>
 
 </dom-module>

@@ -1,6 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <!--
 `d2l-navigation-link-highlight`
@@ -61,7 +60,7 @@ Polymer-based web component for highlight buttons used in the navigational heade
                     reflectToAttribute: true
                 }
             },
-            ready: function() {
+            attached: function() {
                 var anchor = Polymer.dom(this.root).querySelector('a');
                 if (anchor) {
                     anchor.style.lineHeight = (this.offsetHeight - 4) + 'px';

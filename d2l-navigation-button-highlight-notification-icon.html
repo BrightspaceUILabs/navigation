@@ -2,6 +2,8 @@
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="./d2l-navigation-button-highlight.html">
 <link rel="import" href="../d2l-icons/d2l-icons.html">
+<link rel="import" href="./d2l-button-behavior.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
 `d2l-navigation-button-highlight-notification-icon`
@@ -60,23 +62,21 @@ This highlight button contains a user-supplied icon, as well as a notification m
         </d2l-navigation-button-highlight>
     </template>
     <script>
-        class D2lNavigationButtonHighlightNotificationIcon extends customElements.get('d2l-navigation-button-highlight') {
-            static get is() {
-                return 'd2l-navigation-button-highlight-notification-icon';
+        Polymer({
+            is: 'd2l-navigation-button-highlight-notification-icon',
+            properties: {
+                icon: {
+                    type: String, reflectToAttribute: true
+                },
+                notification: {
+                    type: Boolean,
+                    reflectToAttribute: true
+                },
+                altText: {
+                    type: String,
+                    reflectToAttribute: true
+                }
             }
-            static get properties() {
-                return {
-                    icon: {
-                        type: String,
-                        reflectToAttribute: true
-                    },
-                    notification: {
-                        type: Boolean,
-                        reflectToAttribute: true
-                    }
-                };
-            }
-        }
-        customElements.define(D2lNavigationButtonHighlightNotificationIcon.is, D2lNavigationButtonHighlightNotificationIcon);
+        });
     </script>
 </dom-module>

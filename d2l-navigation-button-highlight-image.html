@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="./d2l-navigation-button-highlight.html">
+<link rel="import" href="./d2l-button-behavior.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
 `d2l-navigation-button-highlight-image`
@@ -35,19 +37,22 @@ This highlight button contains a user-supplied image.
         </d2l-navigation-button-highlight>
     </template>
     <script>
-        class D2lNavigationButtonHighlightImage extends customElements.get('d2l-navigation-button-highlight') {
-            static get is() {
-                return 'd2l-navigation-button-highlight-image';
-            }
-            static get properties() {
-                return {
-                    src: {
-                        type: String,
-                        reflectToAttribute: true
-                    }
-                };
-            }
-        }
-        customElements.define(D2lNavigationButtonHighlightImage.is, D2lNavigationButtonHighlightImage);
+        Polymer({
+            is: 'd2l-navigation-button-highlight-image',
+            properties: {
+                src: {
+                    type: String,
+                    reflectToAttribute: true
+                },
+                altText: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            },
+			behaviors: [
+				D2L.PolymerBehaviors.Button.Behavior,
+				D2L.PolymerBehaviors.FocusableBehavior
+			]
+        });
     </script>
 </dom-module>
