@@ -90,13 +90,13 @@ Polymer-based web component for the thick, upper section of the navigational ele
 				min-width: var(--d2l-navigation-margin-regular);
 			}
 
-			@media (max-width: var(--d2l-navigation-bp-title-compact) {
+			@media (max-width: var(--d2l-navigation-bp-title-compact)) {
 				.d2l-navigation-s-gutter {
 					min-width: var(--d2l-navigation-margin-regular) / 2;
 				}
 			}
 
-			.d2l-navigation-s-header-actions {
+			div ::slotted(.d2l-navigation-s-header-actions) {
 				align-items: center;
 				display: flex;
 				flex: 0 0 auto;
@@ -113,9 +113,7 @@ Polymer-based web component for the thick, upper section of the navigational ele
 						<div class="d2l-navigation-s-gutter">
 							<slot name="middle"></slot>
 						</div>
-						<div class="d2l-navigation-s-header-actions">
-							<slot name="right"></slot>
-						</div>
+						<slot name="right"></slot>
 					</div>
 				</div>
 			</div>
