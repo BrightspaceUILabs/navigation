@@ -6,7 +6,7 @@
 Polymer-based web component for highlight buttons used in the navigational header.
 This highlight button contains a user-supplied image.
 
-@demo demo/d2l-navigation-button-highlight.html d2l-navigation-button-highlight-image
+@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight-image
 -->
 
 <dom-module id="d2l-navigation-button-highlight-image">
@@ -29,7 +29,7 @@ This highlight button contains a user-supplied image.
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
             name$=[[name]]
-            title$=[[_hoverText]]
+            title$=[[altText]]
             type$=[[type]]>
             <img src="[[src]]">
         </d2l-navigation-button-highlight>

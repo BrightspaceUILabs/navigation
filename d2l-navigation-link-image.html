@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./d2l-navigation-link-highlight.html">
+
+<!--
+`d2l-navigation-link-image`
+Polymer-based web component for the image link used in the navigational header.
+
+@demo demo/d2l-navigation-highlight.html d2l-navigation-link-image
+-->
+
+<dom-module id="d2l-navigation-link-image">
+    <template strip-whitespace>
+        <style>
+            img {
+                vertical-align: middle;
+            }
+            .image-container {
+                height: 100%;
+            }
+        </style>
+        <d2l-navigation-link-highlight href="[[href]]">
+            <span class="image-container"><img src="[[src]]"></span>
+        </d2l-navigation-link-highlight>
+    </template>
+    <script>
+        class D2lNavigationLinkImage extends customElements.get('d2l-navigation-link-highlight') {
+            static get is() { return 'd2l-navigation-link-image'; }
+            static get properties() {
+                return {
+                    src: {
+                        type: String,
+                        reflectToAttribute: true
+                    }
+                };
+            }
+        }
+        customElements.define(D2lNavigationLinkImage.is, D2lNavigationLinkImage);
+    </script>
+
+</dom-module>

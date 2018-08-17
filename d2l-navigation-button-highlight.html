@@ -7,7 +7,7 @@
 `d2l-navigation-button-highlight`
 Polymer-based web component for highlight buttons used in the navigational header.
 
-@demo demo/d2l-navigation-button-highlight.html d2l-navigation-button-highlight
+@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight
 -->
 
 <dom-module id="d2l-navigation-button-highlight">
@@ -60,7 +60,7 @@ Polymer-based web component for highlight buttons used in the navigational heade
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
             name$=[[name]]
-            title$=[[_hoverText]]
+            title$=[[altText]]
             type$=[[type]]>
             <span class="highlight-button-top-border"></span>
             <slot></slot>
@@ -73,14 +73,7 @@ Polymer-based web component for highlight buttons used in the navigational heade
                 altText: {
                     type: String,
                     reflectToAttribute: true
-                },
-                _hoverText: {
-                    type: String,
-                    computed: '_getHoverText(altText, text)'
-                },
-            },
-            _getHoverText: function(altText, text) {
-                return altText || text;
+                }
             },
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,

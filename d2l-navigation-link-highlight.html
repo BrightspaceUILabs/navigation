@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+
+<!--
+`d2l-navigation-link-highlight`
+Polymer-based web component for highlight buttons used in the navigational header.
+
+@demo demo/d2l-navigation-highlight.html d2l-navigation-link-highlight
+-->
+
+<dom-module id="d2l-navigation-link-highlight">
+    <template strip-whitespace>
+        <style>
+            .highlight-link-top-border {
+                background: transparent;
+                display: block;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                height: 4px;
+                left: -7px;
+                position: absolute;
+                top: 0;
+                width: calc(100% + 14px);
+            }
+            a,
+            a:focus {
+                align-items: center;
+                cursor: pointer;
+                font-family: inherit;
+                height: 100%;
+                min-height: 40px;
+                margin: 0;
+                overflow: visible;
+                padding: 0;
+                position: relative;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            a:hover .highlight-link-top-border,
+            a:focus .highlight-link-top-border {
+                background: var(--d2l-color-celestine, #005694);
+            }
+            :host {
+                display: flex;
+                height: 100%;
+            }
+        </style>
+        <a href="[[href]]">
+            <span class="highlight-link-top-border"></span>
+            <slot></slot>
+        </a>
+    </template>
+    <script>
+        Polymer({
+            is: "d2l-navigation-link-highlight",
+            properties: {
+                href: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            },
+            ready: function() {
+                var anchor = Polymer.dom(this.root).querySelector('a');
+                if (anchor) {
+                    anchor.style.lineHeight = (this.offsetHeight - 4) + 'px';
+                }
+            }
+        });
+    </script>
+</dom-module>
