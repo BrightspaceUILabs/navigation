@@ -1,50 +1,52 @@
 <link rel="import" href="../polymer/polymer.html">
 
-<custom-style>
-	<style is="custom-style">
-		html {
-			--d2l-navigation-header-height: 90px;
-			--d2l-navigation-header-height-mobile: 72px;
+<dom-module id="d2l-navigation-shared-styles">
+	<template>
+		<style>
+			:host {
+				--d2l-navigation-header-height: 90px;
+				--d2l-navigation-header-height-mobile: 72px;
 
-			--d2l-navigation-margin-regular: 30px;
-			--d2l-navigation-margin-compact: 20px;
+				--d2l-navigation-margin-regular: 30px;
+				--d2l-navigation-margin-compact: 20px;
 
-			--d2l-navigation-bp-separators: 931px;
-			--d2l-navigation-bp-mobile-menu: 767px;
-			--d2l-navigation-bp-mobile-menu-compact: 380px;
-			--d2l-navigation-bp-title-compact: 615px;
-			--d2l-navigation-bp-title-hidden: 488px;
+				--d2l-navigation-bp-separators: 931px;
+				--d2l-navigation-bp-mobile-menu: 767px;
+				--d2l-navigation-bp-mobile-menu-compact: 380px;
+				--d2l-navigation-bp-title-compact: 615px;
+				--d2l-navigation-bp-title-hidden: 488px;
 
-			--d2l-page-padding-flex: 2.439%;
-			--d2l-page-padding-min: 15px;
-			--d2l-page-padding-min-breakpoint: 615px;
-			--d2l-page-padding-max: 30px;
-			--d2l-page-padding-max-breakpoint: 1230px;
-		}
-
-		.d2l-navigation-s-centerer {
-			margin: 0 auto;
-			max-width: 1230px;
-		}
-
-		.d2l-navigation-s-gutters {
-			padding-left: var(--d2l-page-padding-flex);
-			padding-right: var(--d2l-page-padding-flex);
-			position: relative;
-		}
-
-		@media (max-width: var(--d2l-page-padding-min-breakpoint)) {
-			.d2l-navigation-s-gutters {
-				padding-left: var(--d2l-page-padding-min);
-				padding-right: var(--d2l-page-padding-min);
+				--d2l-page-padding-flex: 2.439%;
+				--d2l-page-padding-min: 15px;
+				--d2l-page-padding-min-breakpoint: 615px;
+				--d2l-page-padding-max: 30px;
+				--d2l-page-padding-max-breakpoint: 1230px;
 			}
-		}
 
-		@media (min-width: var(--d2l-page-padding-max-breakpoint)) {
-			.d2l-navigation-s-gutters {
-				padding-left: var(--d2l-page-padding-max);
-				padding-right: var(--d2l-page-padding-max);
+			.d2l-navigation-s-centerer {
+				margin: 0 auto;
+				max-width: 1230px;
 			}
-		}
-	</style>
-</custom-style>
+
+			.d2l-navigation-s-gutters {
+				padding-left: var(--d2l-page-padding-flex);
+				padding-right: var(--d2l-page-padding-flex);
+				position: relative;
+			}
+
+			@media (max-width: var(--d2l-page-padding-min-breakpoint)) {
+				.d2l-navigation-s-gutters {
+					padding-left: var(--d2l-page-padding-min);
+					padding-right: var(--d2l-page-padding-min);
+				}
+			}
+
+			@media (min-width: var(--d2l-page-padding-max-breakpoint)) {
+				.d2l-navigation-s-gutters {
+					padding-left: var(--d2l-page-padding-max);
+					padding-right: var(--d2l-page-padding-max);
+				}
+			}
+		</style>
+	</template>
+</dom-module>
