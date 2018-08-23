@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-		<title>d2l-navigation-separator demo</title>
+		<title>d2l-navigation-header demo</title>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-		<link rel="import" href="../d2l-navigation-bar-thick.html">
+		<link rel="import" href="../d2l-navigation-header.html">
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
 		</custom-style>
@@ -23,14 +23,14 @@
 	</head>
 	<body unresolved class="d2l-typography">
 		<div class="vertical-section-container centered">
-			<h3>d2l-navigation-bar-thick</h3>
+			<h3>d2l-navigation-header</h3>
 			<demo-snippet>
 				<template>
-					<d2l-navigation-bar-thick>
-						<span slot="left">This should be on the left</span>
+					<d2l-navigation-header>
+						<div slot="left">This should be on the left</div>
 
-						<span slot="right">Right side</span>
-					</d2l-navigation-bar-thick>
+						<div slot="right">Right side</div>
+					</d2l-navigation-header>
 				</template>
 			</demo-snippet>
 		</div>

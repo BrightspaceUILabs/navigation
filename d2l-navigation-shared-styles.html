@@ -4,38 +4,31 @@
 	<template>
 		<style>
 			:host {
-				--d2l-navigation-header-height: 90px;
-				--d2l-navigation-header-height-mobile: 72px;
-
 				--d2l-navigation-margin-regular: 30px;
-
-				--d2l-page-padding-flex: 2.439%;
-				--d2l-page-padding-min: 15px;
-				--d2l-page-padding-max: 30px;
 			}
 
-			.d2l-navigation-s-centerer {
+			.d2l-navigation-centerer {
 				margin: 0 auto;
 				max-width: 1230px;
 			}
 
-			.d2l-navigation-s-gutters {
-				padding-left: var(--d2l-page-padding-flex);
-				padding-right: var(--d2l-page-padding-flex);
+			.d2l-navigation-gutters {
+				padding-left: 2.439%;
+				padding-right: 2.439%;
 				position: relative;
 			}
 
 			@media (max-width: 615px) {
-				.d2l-navigation-s-gutters {
-					padding-left: var(--d2l-page-padding-min);
-					padding-right: var(--d2l-page-padding-min);
+				.d2l-navigation-gutters {
+					padding-left: 15px;
+					padding-right: 15px;
 				}
 			}
 
 			@media (min-width: 1230px) {
-				.d2l-navigation-s-gutters {
-					padding-left: var(--d2l-page-padding-max);
-					padding-right: var(--d2l-page-padding-max);
+				.d2l-navigation-gutters {
+					padding-left: 30px;
+					padding-right: 30px;
 				}
 			}
 		</style>
