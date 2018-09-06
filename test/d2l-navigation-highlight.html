@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-separator test</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+        <link rel="import" href="../d2l-navigation-button-highlight.html">
+        <link rel="import" href="../d2l-navigation-button-highlight-image.html">
+        <link rel="import" href="../d2l-navigation-button-highlight-notification-icon.html">
+        <link rel="import" href="../d2l-navigation-button-highlight-close.html">
+        <link rel="import" href="../d2l-navigation-link-highlight.html">
+        <link rel="import" href="../d2l-navigation-link-back.html">
+        <link rel="import" href="../d2l-navigation-link-image.html">
+	</head>
+	<body>
+		<test-fixture id="baseButton">
+			<template>
+				<d2l-navigation-button-highlight id="base" alt-text="base button alt text"></d2l-navigation-button-highlight>
+			</template>
+        </test-fixture>
+        <test-fixture id="imageButton">
+            <template>
+                <d2l-navigation-button-highlight-image src="testSource" alt-text="image alt text" id="image"></d2l-navigation-button-highlight-image>
+            </template>
+        </test-fixture>
+        <test-fixture id="iconButton">
+            <template>
+                <d2l-navigation-button-highlight-notification-icon icon="testIcon" alt-text="icon alt text" id="icon"></d2l-navigation-button-highlight-notification-icon>
+            </template>
+        </test-fixture>
+        <test-fixture id="closeButton">
+            <template>
+                <d2l-navigation-button-highlight-close alt-text="close alt text"></d2l-navigation-button-highlight-close>
+            </template>
+        </test-fixture>
+        <test-fixture id="baseLink">
+            <template>
+                <d2l-navigation-link-highlight href="https://www.example.org"></d2l-navigation-link-highlight>
+            </template>
+        </test-fixture>
+        <test-fixture id="backLink">
+            <template>
+                <d2l-navigation-link-back href="https://www.example.org" text="Back Button"></d2l-navigation-link-back>
+            </template>
+        </test-fixture>
+        <test-fixture id="imageLink">
+            <template>
+                <d2l-navigation-link-image href="https://www.example.org" src="testSrc"></d2l-navigation-link-image>
+            </template>
+        </test-fixture>
+
+		<script>
+            var button;
+            function testInstantiation(name) {
+                test('instantiating the element works', function() {
+                    assert.equal(button.is, name);
+                });
+            }
+
+			suite('d2l-navigation-button-highlight', function() {
+                setup(function() {
+                    button = fixture('baseButton');
+                });
+				testInstantiation('d2l-navigation-button-highlight');
+                test('should have title equal to alt-text', function() {
+                    var title = button.$$('button').getAttribute('title');
+                    assert.equal(button.altText, 'base button alt text');
+                    assert.equal(button.altText, title);
+                });
+                test('alt-text attribute should reflect changes to altText property', function() {
+                    button.altText = 'newText';
+                    assert.equal(button.getAttribute('alt-text'), 'newText');
+                });
+                test('altText property should reflect changes to alt-text attribute', function() {
+                    button.setAttribute('alt-text', 'newText');
+                    assert.equal(button.altText, 'newText');
+                });
+			});
+
+            suite('d2l-navigation-button-highlight-image', function() {
+                setup(function() {
+                    button = fixture('imageButton');
+                });
+                testInstantiation('d2l-navigation-button-highlight-image');
+                test('should have src and altText ', function() {
+                    assert.equal(button.src, 'testSource');
+                    assert.equal(button.altText, 'image alt text');
+                });
+                test('src attribute should reflect changes to src property', function() {
+                    button.src = 'newSrc';
+                    assert.equal(button.getAttribute('src'), 'newSrc');
+                });
+                test('src property should reflect changes to src attribute', function() {
+                    button.setAttribute('src', 'newSrc');
+                    assert.equal(button.src, 'newSrc');
+                });
+                test('should pass alt-text down to the base button', function() {
+                    var title = button.$$('d2l-navigation-button-highlight').altText;
+                    assert.equal(button.altText, title);
+                });
+            });
+
+            suite('d2l-navigation-button-highlight-notification-icon', function() {
+                setup(function() {
+                    button = fixture('iconButton');
+                });
+                testInstantiation('d2l-navigation-button-highlight-notification-icon');
+                test('should have icon and altText ', function() {
+                    assert.equal(button.icon, 'testIcon');
+                    assert.equal(button.altText, 'icon alt text');
+                });
+                test('icon attribute should reflect changes to icon property', function() {
+                    button.icon = 'newIcon';
+                    assert.equal(button.getAttribute('icon'), 'newIcon');
+                });
+                test('icon property should reflect changes to icon attribute', function() {
+                    button.setAttribute('icon', 'newIcon');
+                    assert.equal(button.icon, 'newIcon');
+                });
+                test('should pass alt-text down to the base button', function() {
+                    var title = button.$$('d2l-navigation-button-highlight').altText;
+                    assert.equal(button.altText, title);
+                });
+            });
+
+            suite('d2l-navigation-button-highlight-close', function() {
+                setup(function() {
+                    button = fixture('closeButton');
+                });
+                testInstantiation('d2l-navigation-button-highlight-close');
+                test('should have altText', function() {
+                    assert.equal(button.altText, 'close alt text');
+                });
+                test('should pass alt-text down to the base button', function() {
+                    var title = button.$$('d2l-navigation-button-highlight-notification-icon').altText;
+                    assert.equal(button.altText, title);
+                });
+            });
+
+            suite('d2l-navigation-link-highlight', function() {
+                setup(function() {
+                    button = fixture('baseLink');
+                });
+                testInstantiation('d2l-navigation-link-highlight');
+                test('should have an href', function() {
+                    var anchorHref = button.$$('a').getAttribute('href');
+                    assert.equal(button.href, 'https://www.example.org');
+                    assert.equal(button.href, anchorHref);
+                });
+                test('href attribute should reflect changes to href property', function() {
+                    button.href = 'newHref';
+                    assert.equal(button.getAttribute('href'), 'newHref');
+                });
+                test('href property should reflect changes to href attribute', function() {
+                    button.setAttribute('href', 'newHref');
+                    assert.equal(button.href, 'newHref');
+                });
+            });
+
+            suite('d2l-navigation-link-back', function() {
+                setup(function() {
+                    button = fixture('backLink');
+                });
+                testInstantiation('d2l-navigation-link-back');
+                test('should have text', function() {
+                    assert.equal(button.text, 'Back Button');
+                });
+                test('text attribute should reflect changes to icon property', function() {
+                    button.text = 'New text';
+                    assert.equal(button.getAttribute('text'), 'New text');
+                });
+                test('text property should reflect changes to text attribute', function() {
+                    button.setAttribute('text', 'New Text');
+                    assert.equal(button.text, 'New Text');
+                });
+                test('should pass href down to the base link', function() {
+                    var href = button.$$('d2l-navigation-link-highlight').href;
+                    assert.equal(button.href, href);
+                });
+
+                [
+                    { dir: undefined, icon: 'd2l-tier1:chevron-left' },
+                    { dir: null, icon: 'd2l-tier1:chevron-left' },
+                    { dir: 'ltr', icon: 'd2l-tier1:chevron-left' },
+                    { dir: 'auto', icon: 'd2l-tier1:chevron-left' },
+                    { dir: 'notADir', icon: 'd2l-tier1:chevron-left' },
+                    { dir: 'rtl', icon: 'd2l-tier1:chevron-right' },
+                    { dir: 'RTL', icon: 'd2l-tier1:chevron-right' }
+                ].forEach(function(t) {
+                    test('_icon should be ' + t.icon + ' when dir is ' + t.dir, function() {
+                        var icon = button._getIcon(t.dir);
+                        assert.equal(icon, t.icon);
+                    });
+                });
+            });
+
+            suite('d2l-navigation-link-image', function() {
+                setup(function() {
+                    button = fixture('imageLink');
+                });
+                testInstantiation('d2l-navigation-link-image');
+                test('should have src', function() {
+                    assert.equal(button.src, 'testSrc');
+                });
+                test('src attribute should reflect changes to src property', function() {
+                    button.src = 'newSrc';
+                    assert.equal(button.getAttribute('src'), 'newSrc');
+                });
+                test('src property should reflect changes to src attribute', function() {
+                    button.setAttribute('src', 'newSrc');
+                    assert.equal(button.src, 'newSrc');
+                });
+                test('should pass href down to the base link', function() {
+                    var href = button.$$('d2l-navigation-link-highlight').href;
+                    assert.equal(button.href, href);
+                })
+            });
+		</script>
+	</body>
+</html>

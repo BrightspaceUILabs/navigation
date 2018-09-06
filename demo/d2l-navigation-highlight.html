@@ -10,6 +10,7 @@
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
         <link rel="import" href="../d2l-navigation-button-highlight-image.html">
 		<link rel="import" href="../d2l-navigation-button-highlight-notification-icon.html">
+		<link rel="import" href="../d2l-navigation-button-highlight-close.html">
 		<link rel="import" href="../d2l-navigation-link-back.html">
 		<link rel="import" href="../d2l-navigation-link-image.html">
         <link rel="import" href="../d2l-navigation-band.html">
@@ -55,7 +56,8 @@
 				<template>
 					<style>
 						d2l-navigation-button-highlight-notification-icon,
-						d2l-navigation-button-highlight-image {
+						d2l-navigation-button-highlight-image,
+						d2l-navigation-button-highlight-close {
 							margin: 0px 5px;
 							display: inline-block;
 							height: 90px;
@@ -66,7 +68,8 @@
 					<div class="highlight-button-holder">
 					    <d2l-navigation-button-highlight-image src="./logo-image.png"></d2l-navigation-button-highlight-image>
 					    <d2l-navigation-button-highlight-notification-icon icon="d2l-tier3:classes" alt-text="Notification off"></d2l-navigation-button-highlight-notification-icon>
-					    <d2l-navigation-button-highlight-notification-icon notification icon="d2l-tier3:notification-bell" alt-text="Notification on" id="notified"></d2l-navigation-button-highlight-notification-icon>
+						<d2l-navigation-button-highlight-notification-icon notification icon="d2l-tier3:notification-bell" alt-text="Notification on" id="notified"></d2l-navigation-button-highlight-notification-icon>
+						<d2l-navigation-button-highlight-close></d2l-navigation-button-highlight-close>
 					</div>
 					<br/>
 					<button onclick="ToggleNotification(event)">Toggle notification</button>
@@ -87,7 +90,8 @@
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>
 					<div class="highlight-button-holder">
-						<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-back text="BACK." href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-back text="BACK." dir="rtl" href="https://www.example.org"></d2l-navigation-link-back>
 						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org"></d2l-navigation-link-image>
 					</div>
 					<br/>
