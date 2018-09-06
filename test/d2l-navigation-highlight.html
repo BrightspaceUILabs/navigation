@@ -164,8 +164,9 @@
                     button = fixture('backLink');
                 });
                 testInstantiation('d2l-navigation-link-back');
-                test('should have text', function() {
+                test('should have text and href', function() {
                     assert.equal(button.text, 'Back Button');
+                    assert.equal(button.href, 'https://www.example.org');
                 });
                 test('text attribute should reflect changes to icon property', function() {
                     button.text = 'New text';
@@ -201,8 +202,9 @@
                     button = fixture('imageLink');
                 });
                 testInstantiation('d2l-navigation-link-image');
-                test('should have src', function() {
+                test('should have src and href', function() {
                     assert.equal(button.src, 'testSrc');
+                    assert.equal(button.href, 'https://www.example.org');
                 });
                 test('src attribute should reflect changes to src property', function() {
                     button.src = 'newSrc';
