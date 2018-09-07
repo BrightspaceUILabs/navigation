@@ -76,7 +76,11 @@ This highlight button contains a user-supplied icon, as well as a notification m
                     type: String,
                     reflectToAttribute: true
                 }
-            }
+            },
+			behaviors: [
+				D2L.PolymerBehaviors.Button.Behavior,
+				D2L.PolymerBehaviors.FocusableBehavior
+			]
         });
     </script>
 </dom-module>

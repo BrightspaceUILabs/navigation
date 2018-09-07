@@ -41,7 +41,11 @@ This button contains an X icon.
                     type: String,
                     reflectToAttribute: true
                 }
-            }
+            },
+			behaviors: [
+				D2L.PolymerBehaviors.Button.Behavior,
+				D2L.PolymerBehaviors.FocusableBehavior
+			]
         });
     </script>
 </dom-module>
