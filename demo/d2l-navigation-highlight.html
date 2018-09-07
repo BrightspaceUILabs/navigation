@@ -47,6 +47,16 @@
 					}
 				}
 			}
+			function AssignClickEvent(className, handler) {
+				var elems = document.getElementsByClassName(className);
+				for (var i = 0; i < elems.length; i++) {
+					elems[i].addEventListener('click', handler, false);
+				}
+			}
+			window.onload = function() {
+				AssignClickEvent('notification-toggle', ToggleNotification);
+				AssignClickEvent('border-toggle', ToggleBorders);
+			};
 		</script>
 	</head>
 	<body unresolved class="d2l-typography">
@@ -72,8 +82,8 @@
 						<d2l-navigation-button-highlight-close></d2l-navigation-button-highlight-close>
 					</div>
 					<br/>
-					<button onclick="ToggleNotification(event)">Toggle notification</button>
-					<button onclick="ToggleBorders(event)">Toggle borders</button>
+					<button class="notification-toggle">Toggle notification</button>
+					<button class="border-toggle">Toggle borders</button>
 				</template>
 			</demo-snippet>
 			<h3>d2l-navigation-link-highlight</h3>
@@ -95,7 +105,7 @@
 						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org"></d2l-navigation-link-image>
 					</div>
 					<br/>
-					<button onclick="ToggleBorders(event)">Toggle borders</button>
+					<button class="border-toggle">Toggle borders</button>
 				</template>
 			</demo-snippet>
 		</div>
