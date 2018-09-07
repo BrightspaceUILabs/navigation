@@ -14,34 +14,34 @@ This highlight button contains a user-supplied icon, as well as a notification m
 -->
 
 <dom-module id="d2l-navigation-button-highlight-notification-icon">
-    <template strip-whitespace>
-        <style>
-            .highlight-button-icon {
-                color: var(--d2l-color-ferrite);
-            }
-            :host(:hover) .highlight-button-icon,
-            :host(:focus) .highlight-button-icon {
-                color: var(--d2l-color-celestine, #005694);
-            }
-            .highlight-button-notification-indicator {
-                color: transparent;
-                right: calc(-50% + 4px);
-                top: calc(-50% + 4px);
-                position: absolute;
-                height: 100%;
-                width: 100%;
-            }
+	<template strip-whitespace>
+		<style>
+			.highlight-button-icon {
+				color: var(--d2l-color-ferrite);
+			}
+			:host(:hover) .highlight-button-icon,
+			:host(:focus) .highlight-button-icon {
+				color: var(--d2l-color-celestine, #005694);
+			}
+			.highlight-button-notification-indicator {
+				color: transparent;
+				right: calc(-50% + 4px);
+				top: calc(-50% + 4px);
+				position: absolute;
+				height: 100%;
+				width: 100%;
+			}
 
-            :host([notification]) .highlight-button-notification-indicator {
-                color: var(--d2l-color-primary-accent-indicator, #e87511);
-            }
-            .highlight-button-icon-container {
-                position: relative;
-                display: inline-block;
-            }
-        </style>
-        <d2l-navigation-button-highlight
-            aria-expanded$="[[ariaExpanded]]"
+			:host([notification]) .highlight-button-notification-indicator {
+				color: var(--d2l-color-primary-accent-indicator, #e87511);
+			}
+			.highlight-button-icon-container {
+				position: relative;
+				display: inline-block;
+			}
+		</style>
+		<d2l-navigation-button-highlight
+			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
 			disabled$=[[disabled]]
@@ -52,35 +52,35 @@ This highlight button contains a user-supplied icon, as well as a notification m
 			formmethod$=[[formmethod]]
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
-            name$=[[name]]
-            alt-text=[[altText]]
-            type$=[[type]]>
-            <span class="highlight-button-icon-container">
-                <d2l-icon icon="[[icon]]" class="highlight-button-icon"></d2l-icon>
-                <d2l-icon icon="d2l-tier2:dot" class="highlight-button-notification-indicator"></d2l-icon>
-            </span>
-        </d2l-navigation-button-highlight>
-    </template>
-    <script>
-        Polymer({
-            is: 'd2l-navigation-button-highlight-notification-icon',
-            properties: {
-                icon: {
-                    type: String, reflectToAttribute: true
-                },
-                notification: {
-                    type: Boolean,
-                    reflectToAttribute: true
-                },
-                altText: {
-                    type: String,
-                    reflectToAttribute: true
-                }
-            },
+			name$=[[name]]
+			alt-text=[[altText]]
+			type$=[[type]]>
+			<span class="highlight-button-icon-container">
+				<d2l-icon icon="[[icon]]" class="highlight-button-icon"></d2l-icon>
+				<d2l-icon icon="d2l-tier2:dot" class="highlight-button-notification-indicator"></d2l-icon>
+			</span>
+		</d2l-navigation-button-highlight>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-button-highlight-notification-icon',
+			properties: {
+				icon: {
+					type: String, reflectToAttribute: true
+				},
+				notification: {
+					type: Boolean,
+					reflectToAttribute: true
+				},
+				altText: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
 				D2L.PolymerBehaviors.FocusableBehavior
 			]
-        });
-    </script>
+		});
+	</script>
 </dom-module>

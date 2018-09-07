@@ -12,14 +12,14 @@ This highlight button contains a user-supplied image.
 -->
 
 <dom-module id="d2l-navigation-button-highlight-image">
-    <template strip-whitespace>
-        <style>
-            img {
-                vertical-align: middle;
-            }
-        </style>
-        <d2l-navigation-button-highlight
-            aria-expanded$="[[ariaExpanded]]"
+	<template strip-whitespace>
+		<style>
+			img {
+				vertical-align: middle;
+			}
+		</style>
+		<d2l-navigation-button-highlight
+			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
 			disabled$=[[disabled]]
@@ -30,29 +30,29 @@ This highlight button contains a user-supplied image.
 			formmethod$=[[formmethod]]
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
-            name$=[[name]]
-            alt-text=[[altText]]
-            type$=[[type]]>
-            <img src="[[src]]">
-        </d2l-navigation-button-highlight>
-    </template>
-    <script>
-        Polymer({
-            is: 'd2l-navigation-button-highlight-image',
-            properties: {
-                src: {
-                    type: String,
-                    reflectToAttribute: true
-                },
-                altText: {
-                    type: String,
-                    reflectToAttribute: true
-                }
-            },
+			name$=[[name]]
+			alt-text=[[altText]]
+			type$=[[type]]>
+			<img src="[[src]]">
+		</d2l-navigation-button-highlight>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-button-highlight-image',
+			properties: {
+				src: {
+					type: String,
+					reflectToAttribute: true
+				},
+				altText: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
 				D2L.PolymerBehaviors.FocusableBehavior
 			]
-        });
-    </script>
+		});
+	</script>
 </dom-module>

@@ -12,56 +12,56 @@ Polymer-based web component for the back button used in the navigational header.
 -->
 
 <dom-module id="d2l-navigation-link-back">
-    <template strip-whitespace>
-        <style>
-            d2l-icon,
-            span {
-                color: var(--d2l-color-ferrite);
-                height: 100%;
-            }
+	<template strip-whitespace>
+		<style>
+			d2l-icon,
+			span {
+				color: var(--d2l-color-ferrite);
+				height: 100%;
+			}
 
-            span {
-                padding: 0 5px;
-            }
+			span {
+				padding: 0 5px;
+			}
 
-            :host(:hover) d2l-icon,
-            :host(:hover) span,
-            :host(:focus) d2l-icon,
-            :host(:focus) span {
-                color: var(--d2l-color-celestine);
-            }
-        </style>
-        <d2l-navigation-link-highlight href="[[href]]">
-            <d2l-icon icon="[[_icon]]"></d2l-icon>
-            <span>[[text]]</span>
-        </d2l-navigation-link-highlight>
-    </template>
-    <script>
-        Polymer({
-            is: 'd2l-navigation-link-back',
-            properties: {
-                text: {
-                    type: String,
-                    reflectToAttribute: true
-                },
-                href: {
-                    type: String,
-                    reflectToAttribute: true
-                },
-                _icon: {
-                    type: String
-                }
-            },
-            attached: function() {
-                this._icon = this._getIcon(this.dir);
-            },
-            _getIcon: function(dir) {
-                if (dir && dir.toLowerCase() === 'rtl') {
-                    return 'd2l-tier1:chevron-right';
-                }
-                return 'd2l-tier1:chevron-left';
-            }
-        });
-    </script>
+			:host(:hover) d2l-icon,
+			:host(:hover) span,
+			:host(:focus) d2l-icon,
+			:host(:focus) span {
+				color: var(--d2l-color-celestine);
+			}
+		</style>
+		<d2l-navigation-link-highlight href="[[href]]">
+			<d2l-icon icon="[[_icon]]"></d2l-icon>
+			<span>[[text]]</span>
+		</d2l-navigation-link-highlight>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-link-back',
+			properties: {
+				text: {
+					type: String,
+					reflectToAttribute: true
+				},
+				href: {
+					type: String,
+					reflectToAttribute: true
+				},
+				_icon: {
+					type: String
+				}
+			},
+			attached: function() {
+				this._icon = this._getIcon(this.dir);
+			},
+			_getIcon: function(dir) {
+				if (dir && dir.toLowerCase() === 'rtl') {
+					return 'd2l-tier1:chevron-right';
+				}
+				return 'd2l-tier1:chevron-left';
+			}
+		});
+	</script>
 
 </dom-module>

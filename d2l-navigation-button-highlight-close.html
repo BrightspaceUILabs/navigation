@@ -14,9 +14,9 @@ This button contains an X icon.
 -->
 
 <dom-module id="d2l-navigation-button-highlight-close">
-    <template strip-whitespace>
-        <d2l-navigation-button-highlight-notification-icon
-            aria-expanded$="[[ariaExpanded]]"
+	<template strip-whitespace>
+		<d2l-navigation-button-highlight-notification-icon
+			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
 			disabled$=[[disabled]]
@@ -27,25 +27,25 @@ This button contains an X icon.
 			formmethod$=[[formmethod]]
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
-            name$=[[name]]
-            alt-text=[[altText]]
-            type$=[[type]]
-            icon="d2l-tier1:close-large-thick">
-        </d2l-navigation-button-highlight-icon>
-    </template>
-    <script>
-        Polymer({
-            is: 'd2l-navigation-button-highlight-close',
-            properties: {
-                altText: {
-                    type: String,
-                    reflectToAttribute: true
-                }
-            },
+			name$=[[name]]
+			alt-text=[[altText]]
+			type$=[[type]]
+			icon="d2l-tier1:close-large-thick">
+		</d2l-navigation-button-highlight-icon>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-button-highlight-close',
+			properties: {
+				altText: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
 				D2L.PolymerBehaviors.FocusableBehavior
 			]
-        });
-    </script>
+		});
+	</script>
 </dom-module>
