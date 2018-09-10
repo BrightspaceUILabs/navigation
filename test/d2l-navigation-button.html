@@ -180,21 +180,6 @@
 					var href = button.$$('d2l-navigation-link').href;
 					assert.equal(button.href, href);
 				});
-
-				[
-					{ dir: undefined, icon: 'd2l-tier1:chevron-left' },
-					{ dir: null, icon: 'd2l-tier1:chevron-left' },
-					{ dir: 'ltr', icon: 'd2l-tier1:chevron-left' },
-					{ dir: 'auto', icon: 'd2l-tier1:chevron-left' },
-					{ dir: 'notADir', icon: 'd2l-tier1:chevron-left' },
-					{ dir: 'rtl', icon: 'd2l-tier1:chevron-right' },
-					{ dir: 'RTL', icon: 'd2l-tier1:chevron-right' }
-				].forEach(function(t) {
-					test('_icon should be ' + t.icon + ' when dir is ' + t.dir, function() {
-						var icon = button._getIcon(t.dir);
-						assert.equal(icon, t.icon);
-					});
-				});
 			});
 
 			suite('d2l-navigation-link-image', function() {
