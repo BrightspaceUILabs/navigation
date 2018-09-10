@@ -11,6 +11,11 @@ Polymer-based web component for buttons used in the navigational header.
 <dom-module id="d2l-navigation-link">
 	<template strip-whitespace>
 		<style>
+			:host {
+				display: flex;
+				height: 100%;
+				color: var(--d2l-color-ferrite);
+			}
 			.link-top-border {
 				background: transparent;
 				display: block;
@@ -22,8 +27,7 @@ Polymer-based web component for buttons used in the navigational header.
 				top: 0;
 				width: calc(100% + 14px);
 			}
-			a,
-			a:focus {
+			a {
 				align-items: center;
 				cursor: pointer;
 				font-family: inherit;
@@ -34,16 +38,11 @@ Polymer-based web component for buttons used in the navigational header.
 				padding: 0;
 				position: relative;
 				text-decoration: none;
-				font-size: 14px;
+				font-size: 0.875rem;
 			}
-
 			a:hover .link-top-border,
 			a:focus .link-top-border {
 				background: var(--d2l-color-celestine, #005694);
-			}
-			:host {
-				display: flex;
-				height: 100%;
 			}
 		</style>
 		<a href="[[href]]">
