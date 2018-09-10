@@ -17,22 +17,22 @@
 	<body>
 		<test-fixture id="baseButton">
 			<template>
-				<d2l-navigation-button id="base" alt-text="base button alt text"></d2l-navigation-button>
+				<d2l-navigation-button id="base" text="base button alt text"></d2l-navigation-button>
 			</template>
 		</test-fixture>
 		<test-fixture id="imageButton">
 			<template>
-				<d2l-navigation-button-image src="testSource" alt-text="image alt text" id="image"></d2l-navigation-button-image>
+				<d2l-navigation-button-image src="testSource" text="image alt text" id="image"></d2l-navigation-button-image>
 			</template>
 		</test-fixture>
 		<test-fixture id="iconButton">
 			<template>
-				<d2l-navigation-button-notification-icon icon="testIcon" alt-text="icon alt text" id="icon"></d2l-navigation-button-notification-icon>
+				<d2l-navigation-button-notification-icon icon="testIcon" text="icon alt text" id="icon"></d2l-navigation-button-notification-icon>
 			</template>
 		</test-fixture>
 		<test-fixture id="closeButton">
 			<template>
-				<d2l-navigation-button-close alt-text="close alt text"></d2l-navigation-button-close>
+				<d2l-navigation-button-close text="close alt text"></d2l-navigation-button-close>
 			</template>
 		</test-fixture>
 		<test-fixture id="baseLink">
@@ -64,18 +64,18 @@
 					button = fixture('baseButton');
 				});
 				testInstantiation('d2l-navigation-button');
-				test('should have title equal to alt-text', function() {
+				test('should have title equal to text', function() {
 					var title = button.$$('button').getAttribute('title');
-					assert.equal(button.altText, 'base button alt text');
-					assert.equal(button.altText, title);
+					assert.equal(button.text, 'base button alt text');
+					assert.equal(button.text, title);
 				});
-				test('alt-text attribute should reflect changes to altText property', function() {
-					button.altText = 'newText';
-					assert.equal(button.getAttribute('alt-text'), 'newText');
+				test('text attribute should reflect changes to text property', function() {
+					button.text = 'newText';
+					assert.equal(button.getAttribute('text'), 'newText');
 				});
-				test('altText property should reflect changes to alt-text attribute', function() {
-					button.setAttribute('alt-text', 'newText');
-					assert.equal(button.altText, 'newText');
+				test('text property should reflect changes to text attribute', function() {
+					button.setAttribute('text', 'newText');
+					assert.equal(button.text, 'newText');
 				});
 			});
 
@@ -84,9 +84,9 @@
 					button = fixture('imageButton');
 				});
 				testInstantiation('d2l-navigation-button-image');
-				test('should have src and altText ', function() {
+				test('should have src and text ', function() {
 					assert.equal(button.src, 'testSource');
-					assert.equal(button.altText, 'image alt text');
+					assert.equal(button.text, 'image alt text');
 				});
 				test('src attribute should reflect changes to src property', function() {
 					button.src = 'newSrc';
@@ -96,9 +96,9 @@
 					button.setAttribute('src', 'newSrc');
 					assert.equal(button.src, 'newSrc');
 				});
-				test('should pass alt-text down to the base button', function() {
-					var title = button.$$('d2l-navigation-button').altText;
-					assert.equal(button.altText, title);
+				test('should pass text down to the base button', function() {
+					var title = button.$$('d2l-navigation-button').text;
+					assert.equal(button.text, title);
 				});
 			});
 
@@ -107,9 +107,9 @@
 					button = fixture('iconButton');
 				});
 				testInstantiation('d2l-navigation-button-notification-icon');
-				test('should have icon and altText ', function() {
+				test('should have icon and text ', function() {
 					assert.equal(button.icon, 'testIcon');
-					assert.equal(button.altText, 'icon alt text');
+					assert.equal(button.text, 'icon alt text');
 				});
 				test('icon attribute should reflect changes to icon property', function() {
 					button.icon = 'newIcon';
@@ -119,9 +119,9 @@
 					button.setAttribute('icon', 'newIcon');
 					assert.equal(button.icon, 'newIcon');
 				});
-				test('should pass alt-text down to the base button', function() {
-					var title = button.$$('d2l-navigation-button').altText;
-					assert.equal(button.altText, title);
+				test('should pass text down to the base button', function() {
+					var title = button.$$('d2l-navigation-button').text;
+					assert.equal(button.text, title);
 				});
 			});
 
@@ -130,12 +130,12 @@
 					button = fixture('closeButton');
 				});
 				testInstantiation('d2l-navigation-button-close');
-				test('should have altText', function() {
-					assert.equal(button.altText, 'close alt text');
+				test('should have text', function() {
+					assert.equal(button.text, 'close alt text');
 				});
-				test('should pass alt-text down to the base button', function() {
-					var title = button.$$('d2l-navigation-button-notification-icon').altText;
-					assert.equal(button.altText, title);
+				test('should pass text down to the base button', function() {
+					var title = button.$$('d2l-navigation-button-notification-icon').text;
+					assert.equal(button.text, title);
 				});
 			});
 

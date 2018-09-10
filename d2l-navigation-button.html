@@ -60,7 +60,7 @@ Polymer-based web component for buttons used in the navigational header.
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
 			name$=[[name]]
-			title$=[[altText]]
+			title$=[[text]]
 			type$=[[type]]>
 			<span class="button-top-border"></span>
 			<slot></slot>
@@ -70,7 +70,7 @@ Polymer-based web component for buttons used in the navigational header.
 		Polymer({
 			is: 'd2l-navigation-button',
 			properties: {
-				altText: {
+				text: {
 					type: String,
 					reflectToAttribute: true
 				}
