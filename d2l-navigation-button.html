@@ -4,16 +4,16 @@
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
-`d2l-navigation-button-highlight`
-Polymer-based web component for highlight buttons used in the navigational header.
+`d2l-navigation-button`
+Polymer-based web component for buttons used in the navigational header.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight
+@demo demo/d2l-navigation-button.html d2l-navigation-button
 -->
 
-<dom-module id="d2l-navigation-button-highlight">
+<dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
 		<style>
-			.highlight-button-top-border {
+			.button-top-border {
 				background: transparent;
 				display: block;
 				border-bottom-left-radius: 4px;
@@ -41,8 +41,8 @@ Polymer-based web component for highlight buttons used in the navigational heade
 				position: relative;
 			}
 
-			button:hover .highlight-button-top-border,
-			button:focus .highlight-button-top-border {
+			button:hover .button-top-border,
+			button:focus .button-top-border {
 				background: var(--d2l-color-celestine, #005694);
 			}
 		</style>
@@ -62,13 +62,13 @@ Polymer-based web component for highlight buttons used in the navigational heade
 			name$=[[name]]
 			title$=[[altText]]
 			type$=[[type]]>
-			<span class="highlight-button-top-border"></span>
+			<span class="button-top-border"></span>
 			<slot></slot>
 		</button>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-button-highlight',
+			is: 'd2l-navigation-button',
 			properties: {
 				altText: {
 					type: String,

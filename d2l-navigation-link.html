@@ -2,16 +2,16 @@
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
-`d2l-navigation-link-highlight`
-Polymer-based web component for highlight buttons used in the navigational header.
+`d2l-navigation-link`
+Polymer-based web component for buttons used in the navigational header.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-link-highlight
+@demo demo/d2l-navigation-button.html d2l-navigation-link
 -->
 
-<dom-module id="d2l-navigation-link-highlight">
+<dom-module id="d2l-navigation-link">
 	<template strip-whitespace>
 		<style>
-			.highlight-link-top-border {
+			.link-top-border {
 				background: transparent;
 				display: block;
 				border-bottom-left-radius: 4px;
@@ -37,8 +37,8 @@ Polymer-based web component for highlight buttons used in the navigational heade
 				font-size: 14px;
 			}
 
-			a:hover .highlight-link-top-border,
-			a:focus .highlight-link-top-border {
+			a:hover .link-top-border,
+			a:focus .link-top-border {
 				background: var(--d2l-color-celestine, #005694);
 			}
 			:host {
@@ -47,13 +47,13 @@ Polymer-based web component for highlight buttons used in the navigational heade
 			}
 		</style>
 		<a href="[[href]]">
-			<span class="highlight-link-top-border"></span>
+			<span class="link-top-border"></span>
 			<slot></slot>
 		</a>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-link-highlight',
+			is: 'd2l-navigation-link',
 			properties: {
 				href: {
 					type: String,

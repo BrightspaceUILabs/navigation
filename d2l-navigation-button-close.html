@@ -1,21 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="./d2l-navigation-button-highlight-notification-icon.html">
+<link rel="import" href="./d2l-navigation-button-notification-icon.html">
 <link rel="import" href="../d2l-icons/d2l-icon.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
 <link rel="import" href="../d2l-button/d2l-button-behavior.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
-`d2l-navigation-button-highlight-close`
-Polymer-based web component for highlight buttons used in the navigational header.
+`d2l-navigation-button-close`
+Polymer-based web component for buttons used in the navigational header.
 This button contains an X icon.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight-close
+@demo demo/d2l-navigation-button.html d2l-navigation-button-close
 -->
 
-<dom-module id="d2l-navigation-button-highlight-close">
+<dom-module id="d2l-navigation-button-close">
 	<template strip-whitespace>
-		<d2l-navigation-button-highlight-notification-icon
+		<d2l-navigation-button-notification-icon
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
@@ -31,11 +31,11 @@ This button contains an X icon.
 			alt-text=[[altText]]
 			type$=[[type]]
 			icon="d2l-tier1:close-large-thick">
-		</d2l-navigation-button-highlight-icon>
+		</d2l-navigation-button-icon>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-button-highlight-close',
+			is: 'd2l-navigation-button-close',
 			properties: {
 				altText: {
 					type: String,

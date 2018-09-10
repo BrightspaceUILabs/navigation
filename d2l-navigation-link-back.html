@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="./d2l-navigation-link-highlight.html">
+<link rel="import" href="./d2l-navigation-link.html">
 <link rel="import" href="../d2l-icons/d2l-icon.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
 
@@ -8,7 +8,7 @@
 `d2l-navigation-link-back`
 Polymer-based web component for the back button used in the navigational header.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-link-back
+@demo demo/d2l-navigation-button.html d2l-navigation-link-back
 -->
 
 <dom-module id="d2l-navigation-link-back">
@@ -31,10 +31,10 @@ Polymer-based web component for the back button used in the navigational header.
 				color: var(--d2l-color-celestine);
 			}
 		</style>
-		<d2l-navigation-link-highlight href="[[href]]">
+		<d2l-navigation-link href="[[href]]">
 			<d2l-icon icon="[[_icon]]"></d2l-icon>
 			<span>[[text]]</span>
-		</d2l-navigation-link-highlight>
+		</d2l-navigation-link>
 	</template>
 	<script>
 		Polymer({

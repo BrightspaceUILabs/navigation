@@ -1,24 +1,24 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="./d2l-navigation-button-highlight.html">
+<link rel="import" href="./d2l-navigation-button.html">
 <link rel="import" href="../d2l-button/d2l-button-behavior.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
-`d2l-navigation-button-highlight-image`
-Polymer-based web component for highlight buttons used in the navigational header.
-This highlight button contains a user-supplied image.
+`d2l-navigation-button-image`
+Polymer-based web component for buttons used in the navigational header.
+This button contains a user-supplied image.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight-image
+@demo demo/d2l-navigation-button.html d2l-navigation-button-image
 -->
 
-<dom-module id="d2l-navigation-button-highlight-image">
+<dom-module id="d2l-navigation-button-image">
 	<template strip-whitespace>
 		<style>
 			img {
 				vertical-align: middle;
 			}
 		</style>
-		<d2l-navigation-button-highlight
+		<d2l-navigation-button
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
@@ -34,11 +34,11 @@ This highlight button contains a user-supplied image.
 			alt-text=[[altText]]
 			type$=[[type]]>
 			<img src="[[src]]">
-		</d2l-navigation-button-highlight>
+		</d2l-navigation-button>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-button-highlight-image',
+			is: 'd2l-navigation-button-image',
 			properties: {
 				src: {
 					type: String,

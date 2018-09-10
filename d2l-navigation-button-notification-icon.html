@@ -1,29 +1,29 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="./d2l-navigation-button-highlight.html">
+<link rel="import" href="./d2l-navigation-button.html">
 <link rel="import" href="../d2l-icons/d2l-icons.html">
 <link rel="import" href="../d2l-button/d2l-button-behavior.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
 
 <!--
-`d2l-navigation-button-highlight-notification-icon`
-Polymer-based web component for highlight buttons used in the navigational header.
-This highlight button contains a user-supplied icon, as well as a notification marker.
+`d2l-navigation-button-notification-icon`
+Polymer-based web component for buttons used in the navigational header.
+This button contains a user-supplied icon, as well as a notification marker.
 
-@demo demo/d2l-navigation-highlight.html d2l-navigation-button-highlight-notification-icon
+@demo demo/d2l-navigation-button.html d2l-navigation-button-notification-icon
 -->
 
-<dom-module id="d2l-navigation-button-highlight-notification-icon">
+<dom-module id="d2l-navigation-button-notification-icon">
 	<template strip-whitespace>
 		<style>
-			.highlight-button-icon {
+			.button-icon {
 				color: var(--d2l-color-ferrite);
 			}
-			:host(:hover) .highlight-button-icon,
-			:host(:focus) .highlight-button-icon {
+			:host(:hover) .button-icon,
+			:host(:focus) .button-icon {
 				color: var(--d2l-color-celestine, #005694);
 			}
-			.highlight-button-notification-indicator {
+			.button-notification-indicator {
 				color: transparent;
 				right: calc(-50% + 4px);
 				top: calc(-50% + 4px);
@@ -32,15 +32,15 @@ This highlight button contains a user-supplied icon, as well as a notification m
 				width: 100%;
 			}
 
-			:host([notification]) .highlight-button-notification-indicator {
+			:host([notification]) .button-notification-indicator {
 				color: var(--d2l-color-primary-accent-indicator, #e87511);
 			}
-			.highlight-button-icon-container {
+			.button-icon-container {
 				position: relative;
 				display: inline-block;
 			}
 		</style>
-		<d2l-navigation-button-highlight
+		<d2l-navigation-button
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
@@ -55,15 +55,15 @@ This highlight button contains a user-supplied icon, as well as a notification m
 			name$=[[name]]
 			alt-text=[[altText]]
 			type$=[[type]]>
-			<span class="highlight-button-icon-container">
-				<d2l-icon icon="[[icon]]" class="highlight-button-icon"></d2l-icon>
-				<d2l-icon icon="d2l-tier2:dot" class="highlight-button-notification-indicator"></d2l-icon>
+			<span class="button-icon-container">
+				<d2l-icon icon="[[icon]]" class="button-icon"></d2l-icon>
+				<d2l-icon icon="d2l-tier2:dot" class="button-notification-indicator"></d2l-icon>
 			</span>
-		</d2l-navigation-button-highlight>
+		</d2l-navigation-button>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-button-highlight-notification-icon',
+			is: 'd2l-navigation-button-notification-icon',
 			properties: {
 				icon: {
 					type: String, reflectToAttribute: true

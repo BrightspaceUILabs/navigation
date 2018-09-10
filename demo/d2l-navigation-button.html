@@ -8,9 +8,9 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-		<link rel="import" href="../d2l-navigation-button-highlight-image.html">
-		<link rel="import" href="../d2l-navigation-button-highlight-notification-icon.html">
-		<link rel="import" href="../d2l-navigation-button-highlight-close.html">
+		<link rel="import" href="../d2l-navigation-button-image.html">
+		<link rel="import" href="../d2l-navigation-button-notification-icon.html">
+		<link rel="import" href="../d2l-navigation-button-close.html">
 		<link rel="import" href="../d2l-navigation-link-back.html">
 		<link rel="import" href="../d2l-navigation-link-image.html">
 		<link rel="import" href="../d2l-navigation-band.html">
@@ -21,7 +21,7 @@
 			<style is="custom-style" include="d2l-typography"></style>
 		</custom-style>
 		<style>
-			.highlight-button-holder {
+			.button-holder {
 				margin: 0px 5px;
 			}
 		</style>
@@ -35,7 +35,7 @@
 				}
 			}
 			function ToggleBorders(e) {
-				var holder = e.srcElement.parentNode.querySelector('.highlight-button-holder');
+				var holder = e.srcElement.parentNode.querySelector('.button-holder');
 				for (var i = 0; i < holder.children.length; i++) {
 					var child = holder.children[i];
 					if (child.tagName.match(/d2l-navigation/i)) {
@@ -61,13 +61,13 @@
 	</head>
 	<body unresolved class="d2l-typography">
 		<div class="vertical-section-container centered">
-			<h3>d2l-navigation-button-highlight</h3>
+			<h3>d2l-navigation-button</h3>
 			<demo-snippet>
 				<template>
 					<style>
-						d2l-navigation-button-highlight-notification-icon,
-						d2l-navigation-button-highlight-image,
-						d2l-navigation-button-highlight-close {
+						d2l-navigation-button-notification-icon,
+						d2l-navigation-button-image,
+						d2l-navigation-button-close {
 							margin: 0px 5px;
 							display: inline-block;
 							height: 90px;
@@ -75,18 +75,18 @@
 						}
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>
-					<div class="highlight-button-holder">
-						<d2l-navigation-button-highlight-image src="./logo-image.png"></d2l-navigation-button-highlight-image>
-						<d2l-navigation-button-highlight-notification-icon icon="d2l-tier3:classes" alt-text="Notification off"></d2l-navigation-button-highlight-notification-icon>
-						<d2l-navigation-button-highlight-notification-icon notification icon="d2l-tier3:notification-bell" alt-text="Notification on" id="notified"></d2l-navigation-button-highlight-notification-icon>
-						<d2l-navigation-button-highlight-close></d2l-navigation-button-highlight-close>
+					<div class="button-holder">
+						<d2l-navigation-button-image src="./logo-image.png"></d2l-navigation-button-image>
+						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" alt-text="Notification off"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon notification icon="d2l-tier3:notification-bell" alt-text="Notification on" id="notified"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-close></d2l-navigation-button-close>
 					</div>
 					<br/>
 					<button class="notification-toggle">Toggle notification</button>
 					<button class="border-toggle">Toggle borders</button>
 				</template>
 			</demo-snippet>
-			<h3>d2l-navigation-link-highlight</h3>
+			<h3>d2l-navigation-link</h3>
 			<demo-snippet>
 				<template>
 					<style>
@@ -99,7 +99,7 @@
 						}
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>
-					<div class="highlight-button-holder">
+					<div class="button-holder">
 						<d2l-navigation-link-back text="BACK." href="https://www.example.org"></d2l-navigation-link-back>
 						<d2l-navigation-link-back text="BACK." dir="rtl" href="https://www.example.org"></d2l-navigation-link-back>
 						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org"></d2l-navigation-link-image>
