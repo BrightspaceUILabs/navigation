@@ -20,11 +20,6 @@
 				<d2l-navigation-button id="base" text="base button alt text"></d2l-navigation-button>
 			</template>
 		</test-fixture>
-		<test-fixture id="imageButton">
-			<template>
-				<d2l-navigation-button-image src="testSource" text="image alt text" id="image"></d2l-navigation-button-image>
-			</template>
-		</test-fixture>
 		<test-fixture id="iconButton">
 			<template>
 				<d2l-navigation-button-notification-icon icon="testIcon" text="icon alt text" id="icon"></d2l-navigation-button-notification-icon>
@@ -76,29 +71,6 @@
 				test('text property should reflect changes to text attribute', function() {
 					button.setAttribute('text', 'newText');
 					assert.equal(button.text, 'newText');
-				});
-			});
-
-			suite('d2l-navigation-button-image', function() {
-				setup(function() {
-					button = fixture('imageButton');
-				});
-				testInstantiation('d2l-navigation-button-image');
-				test('should have src and text ', function() {
-					assert.equal(button.src, 'testSource');
-					assert.equal(button.text, 'image alt text');
-				});
-				test('src attribute should reflect changes to src property', function() {
-					button.src = 'newSrc';
-					assert.equal(button.getAttribute('src'), 'newSrc');
-				});
-				test('src property should reflect changes to src attribute', function() {
-					button.setAttribute('src', 'newSrc');
-					assert.equal(button.src, 'newSrc');
-				});
-				test('should pass text down to the base button', function() {
-					var title = button.$$('d2l-navigation-button').text;
-					assert.equal(button.text, title);
 				});
 			});
 
