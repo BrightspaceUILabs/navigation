@@ -14,12 +14,15 @@ Polymer-based web component for the image link used in the navigational header.
 			img {
 				vertical-align: middle;
 			}
-			.image-container {
+			.d2l-navigation-link-image-container {
 				height: 100%;
+				vertical-align: middle;
+				align-items: center;
+				display: inline-flex;
 			}
 		</style>
 		<d2l-navigation-link href="[[href]]">
-			<span class="image-container"><img src="[[src]]"></span>
+			<span class="d2l-navigation-link-image-container"><img src="[[src]]"></span>
 		</d2l-navigation-link>
 	</template>
 	<script>

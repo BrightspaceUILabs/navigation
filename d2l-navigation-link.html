@@ -28,7 +28,6 @@ Polymer-based web component for buttons used in the navigational header.
 				width: calc(100% + 14px);
 			}
 			a {
-				align-items: center;
 				cursor: pointer;
 				font-family: inherit;
 				height: 100%;
@@ -57,12 +56,6 @@ Polymer-based web component for buttons used in the navigational header.
 				href: {
 					type: String,
 					reflectToAttribute: true
-				}
-			},
-			attached: function() {
-				var anchor = Polymer.dom(this.root).querySelector('a');
-				if (anchor) {
-					anchor.style.lineHeight = (this.offsetHeight - 4) + 'px';
 				}
 			}
 		});
