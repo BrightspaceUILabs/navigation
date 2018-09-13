@@ -13,7 +13,7 @@ Polymer-based web component for buttons used in the navigational header.
 <dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
 		<style>
-			.button-top-border {
+			.d2l-navigation-button-top-border {
 				background: transparent;
 				display: block;
 				border-bottom-left-radius: 4px;
@@ -38,10 +38,14 @@ Polymer-based web component for buttons used in the navigational header.
 				overflow: visible;
 				padding: 0;
 				position: relative;
+				color: var(--d2l-color-ferrite);
 			}
-
-			button:hover .button-top-border,
-			button:focus .button-top-border {
+			button:hover,
+			button:focus {
+				color: var(--d2l-color-celestine);
+			}
+			button:hover .d2l-navigation-button-top-border,
+			button:focus .d2l-navigation-button-top-border {
 				background: var(--d2l-color-celestine, #005694);
 			}
 		</style>
@@ -61,7 +65,7 @@ Polymer-based web component for buttons used in the navigational header.
 			name$=[[name]]
 			title$=[[text]]
 			type$=[[type]]>
-			<span class="button-top-border"></span>
+			<span class="d2l-navigation-button-top-border"></span>
 			<slot></slot>
 		</button>
 	</template>

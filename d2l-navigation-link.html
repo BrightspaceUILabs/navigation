@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
+<link rel="import" href="../d2l-link/d2l-link-behavior.html">
 
 <!--
 `d2l-navigation-link`
@@ -14,9 +16,8 @@ Polymer-based web component for buttons used in the navigational header.
 			:host {
 				display: flex;
 				height: 100%;
-				color: var(--d2l-color-ferrite);
 			}
-			.link-top-border {
+			.d2l-navigation-link-top-border {
 				background: transparent;
 				display: block;
 				border-bottom-left-radius: 4px;
@@ -38,14 +39,19 @@ Polymer-based web component for buttons used in the navigational header.
 				position: relative;
 				text-decoration: none;
 				font-size: 0.875rem;
+				color: var(--d2l-color-ferrite);
 			}
-			a:hover .link-top-border,
-			a:focus .link-top-border {
+			a:hover,
+			a:focus {
+				color: var(--d2l-color-celestine);
+			}
+			a:hover .d2l-navigation-link-top-border,
+			a:focus .d2l-navigation-link-top-border {
 				background: var(--d2l-color-celestine, #005694);
 			}
 		</style>
-		<a href="[[href]]">
-			<span class="link-top-border"></span>
+		<a class="d2l-focusable" href="[[href]]">
+			<span class="d2l-navigation-link-top-border"></span>
 			<slot></slot>
 		</a>
 	</template>
@@ -57,7 +63,11 @@ Polymer-based web component for buttons used in the navigational header.
 					type: String,
 					reflectToAttribute: true
 				}
-			}
+			},
+			behaviors: [
+				D2L.PolymerBehaviors.Link.Behavior,
+				D2L.PolymerBehaviors.FocusableBehavior
+			]
 		});
 	</script>
 </dom-module>

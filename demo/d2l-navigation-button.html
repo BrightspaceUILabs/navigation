@@ -50,7 +50,7 @@
 			function AssignClickEvent(className, handler) {
 				var elems = document.getElementsByClassName(className);
 				for (var i = 0; i < elems.length; i++) {
-					elems[i].addEventListener('click', handler, false);
+					elems[i].addEventListener('click', handler);
 				}
 			}
 			window.onload = function() {
@@ -71,7 +71,6 @@
 							margin: 0px 5px;
 							display: inline-block;
 							height: 90px;
-							/* border: black solid 1px; */
 						}
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>
@@ -94,7 +93,6 @@
 							margin: 0px 5px;
 							display: inline-block;
 							height: 90px;
-							/* border: black solid 1px; */
 						}
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>

@@ -17,14 +17,10 @@ This button contains a user-supplied icon, as well as a notification marker.
 <dom-module id="d2l-navigation-button-notification-icon">
 	<template strip-whitespace>
 		<style>
-			.button-icon {
-				color: var(--d2l-color-ferrite);
+			.d2l-navigation-button-icon {
+				color: inherit;
 			}
-			:host(:hover) .button-icon,
-			:host(:focus) .button-icon {
-				color: var(--d2l-color-celestine, #005694);
-			}
-			.button-notification-indicator {
+			.d2l-navigation-button-notification-indicator {
 				color: transparent;
 				right: calc(-50% + 4px);
 				top: calc(-50% + 4px);
@@ -33,10 +29,10 @@ This button contains a user-supplied icon, as well as a notification marker.
 				width: 100%;
 			}
 
-			:host([notification]) .button-notification-indicator {
+			:host([notification]) .d2l-navigation-button-notification-indicator {
 				color: var(--d2l-color-primary-accent-indicator, #e87511);
 			}
-			.button-icon-container {
+			.d2l-navigation-button-icon-container {
 				position: relative;
 				display: inline-block;
 			}
@@ -56,9 +52,9 @@ This button contains a user-supplied icon, as well as a notification marker.
 			name$=[[name]]
 			text=[[text]]
 			type$=[[type]]>
-			<span class="button-icon-container">
-				<d2l-icon icon="[[icon]]" class="button-icon"></d2l-icon>
-				<d2l-icon icon="d2l-tier2:dot" class="button-notification-indicator"></d2l-icon>
+			<span class="d2l-navigation-button-icon-container">
+				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
+				<d2l-icon icon="d2l-tier2:dot" class="d2l-navigation-button-notification-indicator"></d2l-icon>
 			</span>
 		</d2l-navigation-button>
 	</template>
