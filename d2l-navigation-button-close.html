@@ -4,6 +4,7 @@
 <link rel="import" href="../d2l-icons/tier1-icons.html">
 <link rel="import" href="../d2l-button/d2l-button-behavior.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
+<link rel="import" href="../d2l-localize-behavior/d2l-localize-behavior.html">
 
 <!--
 `d2l-navigation-button-close`
@@ -28,7 +29,7 @@ This button contains an X icon.
 			formnovalidate$=[[formnovalidate]]
 			formtarget$=[[formtarget]]
 			name$=[[name]]
-			text=[[text]]
+			text=[[localize('Close')]]
 			type$=[[type]]
 			icon="d2l-tier1:close-large-thick">
 		</d2l-navigation-button-icon>
@@ -37,14 +38,44 @@ This button contains an X icon.
 		Polymer({
 			is: 'd2l-navigation-button-close',
 			properties: {
-				text: {
-					type: String,
-					reflectToAttribute: true
+				resources: {
+					value: function() {
+						return {
+							'ar': { 'Close': 'إغلاق' },
+							'de': { 'Close': 'Schließen' },
+							'en': { 'Close': 'Close' },
+							'es': { 'Close': 'Cerrar' },
+							'fi': { 'Close': 'Sulje' },
+							'fr': { 'Close': 'Fermer' },
+							'ja': { 'Close': '閉じる' },
+							'ko': { 'Close': '닫기' },
+							'nb': { 'Close': 'Lukk' },
+							'nl': { 'Close': 'Sluiten' },
+							'pt': { 'Close': 'Fechar' },
+							'sv': { 'Close': 'Stäng' },
+							'tr': { 'Close': 'Kapat' },
+							'zh': { 'Close': '关闭' },
+							'ar-SA': { 'Close': 'إغلاق' },
+							'de-DE': { 'Close': 'Schließen' },
+							'es-MX': { 'Close': 'Cerrar' },
+							'fr-CA': { 'Close': 'Fermer' },
+							'ja-JP': { 'Close': '閉じる' },
+							'ko-KR': { 'Close': '닫기' },
+							'nb-NO': { 'Close': 'Lukk' },
+							'nl-NL': { 'Close': 'Sluiten' },
+							'pt-BR': { 'Close': 'Fechar' },
+							'sv-SE': { 'Close': 'Stäng' },
+							'tr-TR': { 'Close': 'Kapat' },
+							'zh-CN': { 'Close': '关闭' },
+							'zh-TW': { 'Close': '關閉' }
+						};
+					}
 				}
 			},
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
-				D2L.PolymerBehaviors.FocusableBehavior
+				D2L.PolymerBehaviors.FocusableBehavior,
+				D2L.PolymerBehaviors.LocalizeBehavior
 			]
 		});
 	</script>

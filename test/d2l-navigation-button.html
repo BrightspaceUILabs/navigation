@@ -26,7 +26,7 @@
 		</test-fixture>
 		<test-fixture id="closeButton">
 			<template>
-				<d2l-navigation-button-close text="close alt text"></d2l-navigation-button-close>
+				<d2l-navigation-button-close></d2l-navigation-button-close>
 			</template>
 		</test-fixture>
 		<test-fixture id="baseLink">
@@ -101,12 +101,45 @@
 					button = fixture('closeButton');
 				});
 				testInstantiation('d2l-navigation-button-close');
-				test('should have text', function() {
-					assert.equal(button.text, 'close alt text');
-				});
 				test('should pass text down to the base button', function() {
 					var title = button.$$('d2l-navigation-button-notification-icon').text;
-					assert.equal(button.text, title);
+					assert.equal('Close', title);
+				});
+
+				[
+					{ lang: 'ar', translation: 'إغلاق' },
+					{ lang: 'de', translation: 'Schließen' },
+					{ lang: 'en', translation: 'Close' },
+					{ lang: 'es', translation: 'Cerrar' },
+					{ lang: 'fi', translation: 'Sulje' },
+					{ lang: 'fr', translation: 'Fermer' },
+					{ lang: 'ja', translation: '閉じる' },
+					{ lang: 'ko', translation: '닫기' },
+					{ lang: 'nb', translation: 'Lukk' },
+					{ lang: 'nl', translation: 'Sluiten' },
+					{ lang: 'pt', translation: 'Fechar' },
+					{ lang: 'sv', translation: 'Stäng' },
+					{ lang: 'tr', translation: 'Kapat' },
+					{ lang: 'zh', translation: '关闭' },
+					{ lang: 'ar-SA', translation: 'إغلاق' },
+					{ lang: 'de-DE', translation: 'Schließen' },
+					{ lang: 'es-MX', translation: 'Cerrar' },
+					{ lang: 'fr-CA', translation: 'Fermer' },
+					{ lang: 'ja-JP', translation: '閉じる' },
+					{ lang: 'ko-KR', translation: '닫기' },
+					{ lang: 'nb-NO', translation: 'Lukk' },
+					{ lang: 'nl-NL', translation: 'Sluiten' },
+					{ lang: 'pt-BR', translation: 'Fechar' },
+					{ lang: 'sv-SE', translation: 'Stäng' },
+					{ lang: 'tr-TR', translation: 'Kapat' },
+					{ lang: 'zh-CN', translation: '关闭' },
+					{ lang: 'zh-TW', translation: '關閉' }
+				].forEach(function(t) {
+					test('should translate \'Close\' to ' + t.translation + ' when lang is ' + t.lang, function() {
+						button.language = t.lang;
+						var title = button.$$('d2l-navigation-button-notification-icon').text;
+						assert.equal(title, t.translation);
+					});
 				});
 			});
 
