@@ -47,6 +47,34 @@
 					}
 				}
 			}
+
+			var langCycle = [
+				'ar',
+				'de',
+				'en',
+				'es',
+				'fi',
+				'fr',
+				'ja',
+				'ko',
+				'nb',
+				'nl',
+				'pt',
+				'sv',
+				'tr',
+				'zh',
+				'zh-TW'
+			];
+			var currLang = 2;
+
+			function CycleLanguage() {
+				if (currLang >= langCycle.length - 1) {
+					currLang = 0;
+				} else {
+					currLang++;
+				}
+				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
+			}
 			function AssignClickEvent(className, handler) {
 				var elems = document.getElementsByClassName(className);
 				for (var i = 0; i < elems.length; i++) {
@@ -56,6 +84,7 @@
 			window.onload = function() {
 				AssignClickEvent('notification-toggle', ToggleNotification);
 				AssignClickEvent('border-toggle', ToggleBorders);
+				AssignClickEvent('lang-cycle', CycleLanguage);
 			};
 		</script>
 	</head>
@@ -82,6 +111,7 @@
 					<br/>
 					<button class="notification-toggle">Toggle notification</button>
 					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
 				</template>
 			</demo-snippet>
 			<h3>d2l-navigation-link</h3>
@@ -98,10 +128,12 @@
 					<d2l-navigation-band></d2l-navigation-band>
 					<div class="button-holder">
 						<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-back href="https://www.example.org"></d2l-navigation-link-back>
 						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org"></d2l-navigation-link-image>
 					</div>
 					<br/>
 					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
 				</template>
 			</demo-snippet>
 		</div>

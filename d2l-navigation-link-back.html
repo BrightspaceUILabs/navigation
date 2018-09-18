@@ -4,6 +4,7 @@
 <link rel="import" href="../d2l-icons/d2l-icon.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
+<link rel="import" href="../d2l-localize-behavior/d2l-localize-behavior.html">
 
 <!--
 `d2l-navigation-link-back`
@@ -28,7 +29,7 @@ Polymer-based web component for the back button used in the navigational header.
 		</style>
 		<d2l-navigation-link href="[[href]]" class="d2l-focusable">
 			<d2l-icon icon="d2l-tier1:chevron-left"></d2l-icon>
-			<span>[[text]]</span>
+			<span>[[_getDisplayText(text, localize)]]</span>
 		</d2l-navigation-link>
 	</template>
 	<script>
@@ -37,16 +38,43 @@ Polymer-based web component for the back button used in the navigational header.
 			properties: {
 				text: {
 					type: String,
+					value: null,
 					reflectToAttribute: true
 				},
 				href: {
 					type: String,
 					reflectToAttribute: true
+				},
+				resources: {
+					value: function() {
+						return {
+							'ar': { 'Back': 'العودة' },
+							'de': { 'Back': 'Zurück' },
+							'en': { 'Back': 'Back' },
+							'es': { 'Back': 'Volver' },
+							'fr': { 'Back': 'Précédent' },
+							'ja': { 'Back': '戻る' },
+							'ko': { 'Back': '뒤로' },
+							'nl': { 'Back': 'Terug' },
+							'pt': { 'Back': 'Voltar' },
+							'sv': { 'Back': 'Tillbaka' },
+							'tr': { 'Back': 'Geri' },
+							'zh': { 'Back': '返回' },
+							'zh-TW': { 'Back': '返回' }
+						};
+					}
 				}
+			},
+			_getDisplayText: function(text, localize) {
+				if (text === undefined || text === null) {
+					return localize('Back');
+				}
+				return text;
 			},
 			behaviors: [
 				D2L.PolymerBehaviors.Link.Behavior,
-				D2L.PolymerBehaviors.FocusableBehavior
+				D2L.PolymerBehaviors.FocusableBehavior,
+				D2L.PolymerBehaviors.LocalizeBehavior
 			]
 		});
 	</script>
