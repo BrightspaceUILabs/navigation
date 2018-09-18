@@ -17,8 +17,15 @@ This button contains a user-supplied icon, as well as a notification marker.
 <dom-module id="d2l-navigation-button-notification-icon">
 	<template strip-whitespace>
 		<style>
+			:host([notification]) .d2l-navigation-button-notification-indicator {
+				color: var(--d2l-color-primary-accent-indicator, #e87511);
+			}
 			.d2l-navigation-button-icon {
 				color: inherit;
+			}
+			.d2l-navigation-button-icon-container {
+				position: relative;
+				display: inline-block;
 			}
 			.d2l-navigation-button-notification-indicator {
 				color: transparent;
@@ -27,14 +34,6 @@ This button contains a user-supplied icon, as well as a notification marker.
 				position: absolute;
 				height: 100%;
 				width: 100%;
-			}
-
-			:host([notification]) .d2l-navigation-button-notification-indicator {
-				color: var(--d2l-color-primary-accent-indicator, #e87511);
-			}
-			.d2l-navigation-button-icon-container {
-				position: relative;
-				display: inline-block;
 			}
 		</style>
 		<d2l-navigation-button
