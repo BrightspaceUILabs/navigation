@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../d2l-button/d2l-button-behavior.html">
 <link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
+<link rel="import" href="d2l-navigation-highlight-styles.html">
 
 <!--
 `d2l-navigation-button`
@@ -12,41 +12,20 @@ Polymer-based web component for buttons used in the navigational header.
 
 <dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
-		<style>
+		<style is="custom-style" include="d2l-navigation-highlight-styles">
 			button {
-				background: transparent;
-				border: transparent;
-				outline: transparent;
-				align-items: center;
-				cursor: pointer;
-				font-family: inherit;
-				font-size: .7rem;
-				height: 100%;
-				min-height: 40px;
-				margin: 0;
-				overflow: visible;
-				padding: 0;
-				position: relative;
-				color: var(--d2l-color-ferrite);
+				@apply --d2l-navigation-highlight-base;
 			}
 			button:hover,
 			button:focus {
-				color: var(--d2l-color-celestine);
+				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
 			button:hover .d2l-navigation-button-top-border,
 			button:focus .d2l-navigation-button-top-border {
-				background: var(--d2l-color-celestine, #005694);
+				@apply --d2l-navigation-highlight-border-hover-focus;
 			}
 			.d2l-navigation-button-top-border {
-				background: transparent;
-				display: block;
-				border-bottom-left-radius: 4px;
-				border-bottom-right-radius: 4px;
-				height: 4px;
-				left: -7px;
-				position: absolute;
-				top: 0;
-				width: calc(100% + 14px);
+				@apply --d2l-navigation-highlight-border;
 			}
 		</style>
 		<button
