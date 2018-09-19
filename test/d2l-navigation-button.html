@@ -134,10 +134,6 @@
 					assert.equal(button.icon, 'testIcon');
 					assert.equal(button.text, 'icon alt text');
 				});
-				test('icon attribute should reflect changes to icon property', function() {
-					button.icon = 'newIcon';
-					assert.equal(button.getAttribute('icon'), 'newIcon');
-				});
 				test('icon property should reflect changes to icon attribute', function() {
 					button.setAttribute('icon', 'newIcon');
 					assert.equal(button.icon, 'newIcon');
@@ -195,10 +191,6 @@
 				test('should have text and href', function() {
 					assert.equal(button.text, 'Back Button');
 					assert.equal(button.href, 'https://www.example.org');
-				});
-				test('text attribute should reflect changes to icon property', function() {
-					button.text = 'New text';
-					assert.equal(button.getAttribute('text'), 'New text');
 				});
 				test('text property should reflect changes to text attribute', function() {
 					button.setAttribute('text', 'New Text');
@@ -261,10 +253,6 @@
 				test('should have src and href', function() {
 					assert.equal(button.src, 'testSrc');
 					assert.equal(button.href, 'https://www.example.org');
-				});
-				test('src attribute should reflect changes to src property', function() {
-					button.src = 'newSrc';
-					assert.equal(button.getAttribute('src'), 'newSrc');
 				});
 				test('src property should reflect changes to src attribute', function() {
 					button.setAttribute('src', 'newSrc');

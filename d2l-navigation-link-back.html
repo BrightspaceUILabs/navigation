@@ -38,36 +38,34 @@ Polymer-based web component for the back button used in the navigational header.
 			properties: {
 				text: {
 					type: String,
-					value: null,
-					reflectToAttribute: true
+					value: null
 				},
 				href: {
-					type: String,
-					reflectToAttribute: true
+					type: String
 				},
 				resources: {
 					value: function() {
 						return {
-							'ar': { 'Back': 'العودة' },
-							'de': { 'Back': 'Zurück' },
-							'en': { 'Back': 'Back' },
-							'es': { 'Back': 'Volver' },
-							'fr': { 'Back': 'Précédent' },
-							'ja': { 'Back': '戻る' },
-							'ko': { 'Back': '뒤로' },
-							'nl': { 'Back': 'Terug' },
-							'pt': { 'Back': 'Voltar' },
-							'sv': { 'Back': 'Tillbaka' },
-							'tr': { 'Back': 'Geri' },
-							'zh': { 'Back': '返回' },
-							'zh-TW': { 'Back': '返回' }
+							'ar': { 'back': 'العودة' },
+							'de': { 'back': 'Zurück' },
+							'en': { 'back': 'Back' },
+							'es': { 'back': 'Volver' },
+							'fr': { 'back': 'Précédent' },
+							'ja': { 'back': '戻る' },
+							'ko': { 'back': '뒤로' },
+							'nl': { 'back': 'Terug' },
+							'pt': { 'back': 'Voltar' },
+							'sv': { 'back': 'Tillbaka' },
+							'tr': { 'back': 'Geri' },
+							'zh': { 'back': '返回' },
+							'zh-TW': { 'back': '返回' }
 						};
 					}
 				}
 			},
 			_getDisplayText: function(text, localize) {
 				if (text === undefined || text === null) {
-					return localize('Back');
+					return localize('back');
 				}
 				return text;
 			},
