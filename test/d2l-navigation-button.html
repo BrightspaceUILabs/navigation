@@ -51,53 +51,6 @@
 		</test-fixture>
 
 		<script>
-			var translations = {
-				back: [
-					{ lang: 'ar', translation: 'العودة' },
-					{ lang: 'de', translation: 'Zurück' },
-					{ lang: 'en', translation: 'Back' },
-					{ lang: 'es', translation: 'Volver' },
-					{ lang: 'fr', translation: 'Précédent' },
-					{ lang: 'ja', translation: '戻る' },
-					{ lang: 'ko', translation: '뒤로' },
-					{ lang: 'nl', translation: 'Terug' },
-					{ lang: 'pt', translation: 'Voltar' },
-					{ lang: 'sv', translation: 'Tillbaka' },
-					{ lang: 'tr', translation: 'Geri' },
-					{ lang: 'zh', translation: '返回' },
-					{ lang: 'zh-TW', translation: '返回' }
-				],
-				close: [
-					{ lang: 'ar', translation: 'إغلاق' },
-					{ lang: 'de', translation: 'Schließen' },
-					{ lang: 'en', translation: 'Close' },
-					{ lang: 'es', translation: 'Cerrar' },
-					{ lang: 'fi', translation: 'Sulje' },
-					{ lang: 'fr', translation: 'Fermer' },
-					{ lang: 'ja', translation: '閉じる' },
-					{ lang: 'ko', translation: '닫기' },
-					{ lang: 'nb', translation: 'Lukk' },
-					{ lang: 'nl', translation: 'Sluiten' },
-					{ lang: 'pt', translation: 'Fechar' },
-					{ lang: 'sv', translation: 'Stäng' },
-					{ lang: 'tr', translation: 'Kapat' },
-					{ lang: 'zh', translation: '关闭' },
-					{ lang: 'ar-SA', translation: 'إغلاق' },
-					{ lang: 'de-DE', translation: 'Schließen' },
-					{ lang: 'es-MX', translation: 'Cerrar' },
-					{ lang: 'fr-CA', translation: 'Fermer' },
-					{ lang: 'ja-JP', translation: '閉じる' },
-					{ lang: 'ko-KR', translation: '닫기' },
-					{ lang: 'nb-NO', translation: 'Lukk' },
-					{ lang: 'nl-NL', translation: 'Sluiten' },
-					{ lang: 'pt-BR', translation: 'Fechar' },
-					{ lang: 'sv-SE', translation: 'Stäng' },
-					{ lang: 'tr-TR', translation: 'Kapat' },
-					{ lang: 'zh-CN', translation: '关闭' },
-					{ lang: 'zh-TW', translation: '關閉' }
-				]
-			};
-
 			var button;
 			function testInstantiation(name) {
 				test('instantiating the element works', function() {
@@ -153,14 +106,6 @@
 					var title = button.$$('d2l-navigation-button-notification-icon').text;
 					assert.equal('Close', title);
 				});
-
-				translations.close.forEach(function(t) {
-					test('should translate \'Close\' to ' + t.translation + ' when lang is ' + t.lang, function() {
-						button.language = t.lang;
-						var title = button.$$('d2l-navigation-button-notification-icon').text;
-						assert.equal(title, t.translation);
-					});
-				});
 			});
 
 			suite('d2l-navigation-link', function() {
@@ -215,15 +160,6 @@
 					var href = button.$$('d2l-navigation-link').href;
 					assert.equal(button.href, href);
 				});
-
-				translations.back.forEach(function(t) {
-					test('should translate \'Back\' to ' + t.translation + ' when lang is ' + t.lang, function() {
-						button.text = null;
-						button.language = t.lang;
-						var text = button.$$('span').innerHTML;
-						assert.equal(text, t.translation);
-					});
-				});
 			});
 
 			suite('d2l-navigation-link-back undefined text', function() {
@@ -234,14 +170,6 @@
 				test('should use default text when text property is undefined', function() {
 					var text = button.$$('span').innerHTML;
 					assert.equal(text, 'Back');
-				});
-
-				translations.back.forEach(function(t) {
-					test('should translate \'Back\' to ' + t.translation + ' when lang is ' + t.lang, function() {
-						button.language = t.lang;
-						var text = button.$$('span').innerHTML;
-						assert.equal(text, t.translation);
-					});
 				});
 			});
 
