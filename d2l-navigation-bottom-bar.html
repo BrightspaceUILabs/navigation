@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-navigation-shared-styles.html">
+
+<!--
+`d2l-navigation-bottom-bar`
+Polymer-based web component for the smaller, lower section of the navigational element
+
+@demo demo/navigation-bottom-bar.html
+-->
+
+<dom-module id="d2l-navigation-bottom-bar">
+	<template strip-whitespace>
+		<style include="d2l-navigation-shared-styles">
+			:host {
+			}
+
+			.d2l-navigation-main-tb .d2l-navigation-s-edit-menu {
+				top: 12.5px;
+			}
+
+			.d2l-navigation-main-tb[main-tb-hover] .d2l-navigation-s-edit-menu,
+			.d2l-navigation-main-tb[main-tb-focus] .d2l-navigation-s-edit-menu {
+				opacity: 1;
+			}
+
+			.d2l-navigation-s-main-wrapper {
+				align-items: center;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				height: calc(1rem + 40px);
+				flex-wrap: nowrap;
+				transition: opacity ease-in 0.2s;
+				&[data-more] {
+					justify-content: space-between;
+				}
+				&[data-loading] {
+					opacity: 0;
+				}
+				&[data-unmeasured] {
+					flex-wrap: wrap;
+				}
+			}
+
+			.d2l-navigation-s-main-wrapper[has-edit-menu] {
+				margin-right: 45px;
+			}
+
+			[dir="rtl"] .d2l-navigation-s-main-wrapper[has-edit-menu] {
+				margin-left: 45px;
+				margin-right: 0;
+			}
+
+			.d2l-navigation-s-main-wrapper[data-more] .d2l-navigation-s-more {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		</style>
+		<div class="d2l-navigation-s-main d2l-navigation-main-tb d2l-branding-navigation-background-color d2l-visible-on-ancestor-target">
+			<div class="d2l-navigation-centerer">
+				<div class="d2l-navigation-gutters">
+					<div class="d2l-navigation-s-main-wrapper">
+		        		<slot name="main"></slot>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-bottom-bar'
+		});
+	</script>
+</dom-module>
