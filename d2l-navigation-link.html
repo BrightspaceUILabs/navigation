@@ -33,7 +33,7 @@ Polymer-based web component for buttons used in the navigational header.
 				@apply --d2l-navigation-highlight-border;
 			}
 		</style>
-		<a class="d2l-focusable" href$="[[href]]">
+		<a class="d2l-focusable" href$="[[href]]" title$="[[text]]">
 			<span class="d2l-navigation-link-top-border"></span>
 			<slot></slot>
 		</a>
@@ -43,6 +43,9 @@ Polymer-based web component for buttons used in the navigational header.
 			is: 'd2l-navigation-link',
 			properties: {
 				href: {
+					type: String
+				},
+				text: {
 					type: String
 				}
 			},

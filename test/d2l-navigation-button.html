@@ -31,7 +31,7 @@
 		</test-fixture>
 		<test-fixture id="baseLink">
 			<template>
-				<d2l-navigation-link href="https://www.example.org"></d2l-navigation-link>
+				<d2l-navigation-link href="https://www.example.org" text="link alt text"></d2l-navigation-link>
 			</template>
 		</test-fixture>
 		<test-fixture id="backLink">
@@ -46,7 +46,7 @@
 		</test-fixture>
 		<test-fixture id="imageLink">
 			<template>
-				<d2l-navigation-link-image href="https://www.example.org" src="testSrc"></d2l-navigation-link-image>
+				<d2l-navigation-link-image href="https://www.example.org" src="testSrc" text="image alt text"></d2l-navigation-link-image>
 			</template>
 		</test-fixture>
 
@@ -126,6 +126,15 @@
 					button.setAttribute('href', 'newHref');
 					assert.equal(button.href, 'newHref');
 				});
+				test('should have a text property', function() {
+					var anchorTitle = button.$$('a').getAttribute('title');
+					assert.equal(button.text, 'link alt text');
+					assert.equal(button.text, anchorTitle);
+				});
+				test('text property should reflect changes to text attribute', function() {
+					button.setAttribute('text', 'newText');
+					assert.equal(button.text, 'newText');
+				});
 			});
 
 			suite('d2l-navigation-link-back', function() {
@@ -160,6 +169,10 @@
 					var href = button.$$('d2l-navigation-link').href;
 					assert.equal(button.href, href);
 				});
+				test('should pass text down to the base link', function() {
+					var text = button.$$('d2l-navigation-link').text;
+					assert.equal(text, 'Back Button');
+				});
 			});
 
 			suite('d2l-navigation-link-back undefined text', function() {
@@ -171,6 +184,10 @@
 					var text = button.$$('span').innerHTML;
 					assert.equal(text, 'Back');
 				});
+				test('should pass default text down to the base link', function() {
+					var text = button.$$('d2l-navigation-link').text;
+					assert.equal(text, 'Back');
+				});
 			});
 
 			suite('d2l-navigation-link-image', function() {
@@ -178,9 +195,10 @@
 					button = fixture('imageLink');
 				});
 				testInstantiation('d2l-navigation-link-image');
-				test('should have src and href', function() {
+				test('should have src, href and text', function() {
 					assert.equal(button.src, 'testSrc');
 					assert.equal(button.href, 'https://www.example.org');
+					assert.equal(button.text, 'image alt text');
 				});
 				test('src property should reflect changes to src attribute', function() {
 					button.setAttribute('src', 'newSrc');
@@ -189,6 +207,14 @@
 				test('should pass href down to the base link', function() {
 					var href = button.$$('d2l-navigation-link').href;
 					assert.equal(button.href, href);
+				});
+				test('should pass text down to image alt text', function() {
+					var alt = button.$$('img').getAttribute('alt');
+					assert.equal(button.text, alt);
+				});
+				test('should pass text down to the base link', function() {
+					var text = button.$$('d2l-navigation-link').text;
+					assert.equal(button.text, text);
 				});
 			});
 		</script>

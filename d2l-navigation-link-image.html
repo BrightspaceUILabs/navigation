@@ -21,8 +21,8 @@ Polymer-based web component for the image link used in the navigational header.
 				display: inline-flex;
 			}
 		</style>
-		<d2l-navigation-link href="[[href]]">
-			<span class="d2l-navigation-link-image-container"><img src="[[src]]"></span>
+		<d2l-navigation-link href="[[href]]" text="[[text]]">
+			<span class="d2l-navigation-link-image-container"><img src="[[src]]" alt="[[text]]"></span>
 		</d2l-navigation-link>
 	</template>
 	<script>
@@ -33,6 +33,9 @@ Polymer-based web component for the image link used in the navigational header.
 					type: String
 				},
 				href: {
+					type: String
+				},
+				text: {
 					type: String
 				}
 			}
