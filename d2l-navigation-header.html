@@ -11,6 +11,10 @@ Polymer-based web component for the larger, upper section of the navigational el
 <dom-module id="d2l-navigation-header">
 	<template strip-whitespace>
 		<style include="d2l-navigation-shared-styles">
+			:host {
+				display: block;
+			}
+
 			.d2l-navigation-header-container {
 				align-items: center;
 				display: flex;
@@ -43,14 +47,12 @@ Polymer-based web component for the larger, upper section of the navigational el
 				}
 			}
 		</style>
-		<div>
-			<div class="d2l-navigation-centerer">
-				<div class="d2l-navigation-gutters">
-					<div class="d2l-navigation-header-container">
-			        	<slot name="left"></slot>
-						<div class="d2l-navigation-gutter"></div>
-						<slot name="right"></slot>
-					</div>
+		<div class="d2l-navigation-centerer">
+			<div class="d2l-navigation-gutters">
+				<div class="d2l-navigation-header-container">
+					<slot name="left"></slot>
+					<div class="d2l-navigation-gutter"></div>
+					<slot name="right"></slot>
 				</div>
 			</div>
 		</div>
