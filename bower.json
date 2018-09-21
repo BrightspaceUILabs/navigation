@@ -1,5 +1,5 @@
 {
-  "name": "navigation",
+  "name": "d2l-navigation",
   "description": "Parent repo for all navigation based web components",
   "main": "index.html",
   "license": "Apache-2.0",
