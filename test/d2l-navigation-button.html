@@ -21,7 +21,7 @@
 		</test-fixture>
 		<test-fixture id="iconButton">
 			<template>
-				<d2l-navigation-button-notification-icon icon="testIcon" text="icon alt text" id="icon"></d2l-navigation-button-notification-icon>
+				<d2l-navigation-button-notification-icon icon="testIcon" text="icon alt text" notification notification-text="notification text"></d2l-navigation-button-notification-icon>
 			</template>
 		</test-fixture>
 		<test-fixture id="closeButton">
@@ -83,17 +83,35 @@
 					button = fixture('iconButton');
 				});
 				testInstantiation('d2l-navigation-button-notification-icon');
-				test('should have icon and text ', function() {
+				test('should have icon, text, notification, and notification-text', function() {
 					assert.equal(button.icon, 'testIcon');
 					assert.equal(button.text, 'icon alt text');
+					assert.equal(button.notification, true);
+					assert.equal(button.notificationText, 'notification text');
 				});
 				test('icon property should reflect changes to icon attribute', function() {
 					button.setAttribute('icon', 'newIcon');
 					assert.equal(button.icon, 'newIcon');
 				});
+				test('notification property should reflect changes to notification attribute', function() {
+					button.removeAttribute('notification');
+					assert.equal(button.notification, false);
+				});
+				test('notification attribute should reflect changes to notification property', function() {
+					button.notification = false;
+					assert.equal(button.getAttribute('notification'), null);
+				});
+				test('notificationText property should reflect changes to notification-text attribute', function() {
+					button.setAttribute('notification-text', 'newText');
+					assert.equal(button.notificationText, 'newText');
+				});
 				test('should pass text down to the base button', function() {
 					var title = button.$$('d2l-navigation-button').text;
 					assert.equal(button.text, title);
+				});
+				test('should pass notificationText property to notification span', function() {
+					var nText = button.$$('.d2l-navigation-button-notification-indicator-text').innerHTML;
+					assert.equal(button.notificationText, nText);
 				});
 			});
 

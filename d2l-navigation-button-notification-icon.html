@@ -18,22 +18,35 @@ This button contains a user-supplied icon, as well as a notification marker.
 	<template strip-whitespace>
 		<style>
 			:host([notification]) .d2l-navigation-button-notification-indicator {
-				color: var(--d2l-color-primary-accent-indicator, #e87511);
+				display: inline-block;
 			}
 			.d2l-navigation-button-icon {
 				color: inherit;
 			}
 			.d2l-navigation-button-icon-container {
-				position: relative;
 				display: inline-block;
+				position: relative;
 			}
 			.d2l-navigation-button-notification-indicator {
-				color: transparent;
+				display: none;
+				height: 100%;
+				position: absolute;
 				right: calc(-50% + 4px);
 				top: calc(-50% + 4px);
-				position: absolute;
+				width: 100%;
+			}
+			.d2l-navigation-button-notification-indicator-icon {
+				color: var(--d2l-color-primary-accent-indicator);
 				height: 100%;
 				width: 100%;
+			}
+			.d2l-navigation-button-notification-indicator-text {
+				height: 1px;
+				left: -10000px;
+				overflow: hidden;
+				position: absolute;
+				width: 1px;
+				word-wrap: normal;
 			}
 		</style>
 		<d2l-navigation-button
@@ -53,7 +66,10 @@ This button contains a user-supplied icon, as well as a notification marker.
 			type$=[[type]]>
 			<span class="d2l-navigation-button-icon-container">
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
-				<d2l-icon icon="d2l-tier2:dot" class="d2l-navigation-button-notification-indicator"></d2l-icon>
+				<span class="d2l-navigation-button-notification-indicator">
+					<d2l-icon class="d2l-navigation-button-notification-indicator-icon" icon="d2l-tier2:dot"></d2l-icon>
+					<span class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
+				</span>
 			</span>
 		</d2l-navigation-button>
 	</template>
@@ -69,6 +85,9 @@ This button contains a user-supplied icon, as well as a notification marker.
 					reflectToAttribute: true
 				},
 				text: {
+					type: String
+				},
+				notificationText: {
 					type: String
 				}
 			},
