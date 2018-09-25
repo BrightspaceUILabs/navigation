@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-band demo</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography.html">
+		<link rel="import" href="../../d2l-icons/tier3-icons.html">
+		<link rel="import" href="../d2l-navigation-button-notification-icon.html">
+		<link rel="import" href="../d2l-navigation-button-close.html">
+		<link rel="import" href="../d2l-navigation-link-back.html">
+		<link rel="import" href="../d2l-navigation-link-image.html">
+		<link rel="import" href="../d2l-navigation-band.html">
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles"></style>
+		</custom-style>
+		<custom-style include="d2l-typography">
+			<style is="custom-style" include="d2l-typography"></style>
+		</custom-style>
+		<style>
+			.button-holder {
+				margin: 0px 5px;
+			}
+		</style>
+		<script>
+			function ToggleNotification(e) {
+				var nButton = e.srcElement.parentNode.querySelector('#notified');
+				if (nButton.hasAttribute('notification')) {
+					nButton.removeAttribute('notification');
+				} else {
+					nButton.setAttribute('notification', '');
+				}
+			}
+			function ToggleBorders(e) {
+				var holder = e.srcElement.parentNode.querySelector('.button-holder');
+				for (var i = 0; i < holder.children.length; i++) {
+					var child = holder.children[i];
+					if (child.tagName.match(/d2l-navigation/i)) {
+						if (child.style.border) {
+							child.style.border = '';
+						} else {
+							child.style.border = 'black 1px solid';
+						}
+					}
+				}
+			}
+
+			var langCycle = [
+				'ar',
+				'de',
+				'en',
+				'es',
+				'fi',
+				'fr',
+				'ja',
+				'ko',
+				'nb',
+				'nl',
+				'pt',
+				'sv',
+				'tr',
+				'zh',
+				'zh-TW'
+			];
+			var currLang = 2;
+
+			function CycleLanguage() {
+				if (currLang >= langCycle.length - 1) {
+					currLang = 0;
+				} else {
+					currLang++;
+				}
+				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
+			}
+			function AssignClickEvent(className, handler) {
+				var elems = document.getElementsByClassName(className);
+				for (var i = 0; i < elems.length; i++) {
+					elems[i].addEventListener('click', handler);
+				}
+			}
+			window.onload = function() {
+				AssignClickEvent('notification-toggle', ToggleNotification);
+				AssignClickEvent('border-toggle', ToggleBorders);
+				AssignClickEvent('lang-cycle', CycleLanguage);
+			};
+		</script>
+	</head>
+	<body unresolved class="d2l-typography">
+		<div class="vertical-section-container centered">
+			<h3>d2l-navigation-button</h3>
+			<demo-snippet>
+				<template>
+					<style>
+						d2l-navigation-button-notification-icon,
+						d2l-navigation-button-image,
+						d2l-navigation-button-close {
+							margin: 0px 5px;
+							display: inline-block;
+							height: 90px;
+						}
+					</style>
+					<d2l-navigation-band></d2l-navigation-band>
+					<div class="button-holder">
+						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="notification text"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon notification icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="notification text"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-close></d2l-navigation-button-close>
+					</div>
+					<br/>
+					<button class="notification-toggle">Toggle notification</button>
+					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-link</h3>
+			<demo-snippet>
+				<template>
+					<style>
+						d2l-navigation-link-back,
+						d2l-navigation-link-image {
+							margin: 0px 5px;
+							display: inline-block;
+							height: 90px;
+						}
+					</style>
+					<d2l-navigation-band></d2l-navigation-band>
+					<div class="button-holder">
+						<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-back href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org" text="alt text"></d2l-navigation-link-image>
+					</div>
+					<br/>
+					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
+</html>

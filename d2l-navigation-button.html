@@ -1,0 +1,66 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-button/d2l-button-behavior.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-focusable-behavior.html">
+<link rel="import" href="d2l-navigation-highlight-styles.html">
+
+<!--
+`d2l-navigation-button`
+Polymer-based web component for buttons used in the navigational header.
+
+@demo demo/d2l-navigation-button.html d2l-navigation-button
+-->
+
+<dom-module id="d2l-navigation-button">
+	<template strip-whitespace>
+		<style is="custom-style" include="d2l-navigation-highlight-styles">
+			button {
+				@apply --d2l-navigation-highlight-base;
+			}
+			button:hover,
+			button:focus {
+				@apply --d2l-navigation-highlight-base-hover-focus;
+			}
+			button:hover .d2l-navigation-button-top-border,
+			button:focus .d2l-navigation-button-top-border {
+				@apply --d2l-navigation-highlight-border-hover-focus;
+			}
+			.d2l-navigation-button-top-border {
+				@apply --d2l-navigation-highlight-border;
+			}
+		</style>
+		<button
+			aria-expanded$="[[ariaExpanded]]"
+			aria-haspopup$="[[ariaHaspopup]]"
+			aria-label$="[[text]]"
+			class="d2l-focusable"
+			disabled$=[[disabled]]
+			autofocus$=[[autofocus]]
+			form$=[[form]]
+			formaction$=[[formaction]]
+			formenctype$=[[formenctype]]
+			formmethod$=[[formmethod]]
+			formnovalidate$=[[formnovalidate]]
+			formtarget$=[[formtarget]]
+			name$=[[name]]
+			title$=[[text]]
+			type$=[[type]]>
+			<span class="d2l-navigation-button-top-border"></span>
+			<slot></slot>
+		</button>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-button',
+			properties: {
+				text: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
+			behaviors: [
+				D2L.PolymerBehaviors.Button.Behavior,
+				D2L.PolymerBehaviors.FocusableBehavior
+			]
+		});
+	</script>
+</dom-module>
