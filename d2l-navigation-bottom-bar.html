@@ -45,11 +45,11 @@ Polymer-based web component for the smaller, lower section of the navigational e
 				flex-wrap: wrap;
 			}
 
-			.d2l-navigation-s-main-wrapper[has-edit-menu] {
+			.d2l-navigation-s-main-wrapper[haseditmenu] {
 				margin-right: 45px;
 			}
 
-			[dir="rtl"] .d2l-navigation-s-main-wrapper[has-edit-menu] {
+			[dir="rtl"] .d2l-navigation-s-main-wrapper[haseditmenu] {
 				margin-left: 45px;
 				margin-right: 0;
 			}
@@ -62,7 +62,7 @@ Polymer-based web component for the smaller, lower section of the navigational e
 		<div class="d2l-navigation-s-main d2l-navigation-main-tb d2l-branding-navigation-background-color d2l-visible-on-ancestor-target">
 			<div class="d2l-navigation-centerer">
 				<div class="d2l-navigation-gutters">
-					<div class="d2l-navigation-s-main-wrapper" has-edit-menu$="{{has-edit-menu}}">
+					<div class="d2l-navigation-s-main-wrapper" data-loading$="{{data-loading}}" data-unmeasured$="{{data-unmeasured}}" haseditmenu$="{{haseditmenu}}" role$="{{role}}">
 		        		<slot name="main"></slot>
 					</div>
 				</div>
@@ -73,8 +73,20 @@ Polymer-based web component for the smaller, lower section of the navigational e
 		Polymer({
 			is: 'd2l-navigation-bottom-bar',
 			properties: {
-				'has-edit-menu': {
+				'data-loading': {
+					type: String,
+					reflectToAttribute: true
+				},
+				'data-unmeasured': {
+					type: String,
+					reflectToAttribute: true
+				},
+				'haseditmenu': {
 					type: Boolean,
+					reflectToAttribute: true
+				},
+				'role': {
+					type: String,
 					reflectToAttribute: true
 				}
 			}
