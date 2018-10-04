@@ -12,12 +12,7 @@ Polymer-based web component for the smaller, lower section of the navigational e
 <dom-module id="d2l-navigation-bottom-bar">
 	<template strip-whitespace>
 		<style include="d2l-navigation-shared-styles">
-			.d2l-navigation-s-main {
-				border-top: 1px solid var(--d2l-color-light-galena);
-				border-bottom: 1px solid var(--d2l-color-light-galena);
-			}
-
-			.d2l-navigation-s-main[hasbranding] {
+			:host {
 				border-top: 1px solid var(--d2l-color-gypsum);
 				border-bottom: 1px solid var(--d2l-color-gypsum);
 			}
@@ -30,44 +25,8 @@ Polymer-based web component for the smaller, lower section of the navigational e
 			.d2l-navigation-main-tb[main-tb-focus] .d2l-navigation-s-edit-menu {
 				opacity: 1;
 			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper) {
-				align-items: center;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;
-				height: calc(1rem + 40px);
-				flex-wrap: nowrap;
-				transition: opacity ease-in 0.2s;
-			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper[data-more]) {
-				justify-content: space-between;
-			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper[data-loading]) {
-				opacity: 0;
-			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper[data-unmeasured]) {
-				flex-wrap: wrap;
-			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper[has-edit-menu]) {
-				margin-right: 45px;
-			}
-
-			div ::slotted([dir="rtl"] .d2l-navigation-s-main-wrapper[has-edit-menu]) {
-				margin-left: 45px;
-				margin-right: 0;
-			}
-
-			div ::slotted(.d2l-navigation-s-main-wrapper[data-more]) .d2l-navigation-s-more {
-				margin-left: 0;
-				margin-right: 0;
-			}
 		</style>
-		<div class="d2l-navigation-s-main d2l-navigation-main-tb d2l-branding-navigation-background-color d2l-visible-on-ancestor-target" hasbranding$="{{hasbranding}}">
+		<div class="d2l-navigation-bottom-bar d2l-navigation-main-tb d2l-branding-navigation-background-color d2l-visible-on-ancestor-target">
 			<div class="d2l-navigation-centerer">
 				<div class="d2l-navigation-gutters">
 					<slot name="main"></slot>
@@ -77,13 +36,7 @@ Polymer-based web component for the smaller, lower section of the navigational e
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-navigation-bottom-bar',
-			properties: {
-				hasbranding: {
-					type: Boolean,
-					reflectToAttribute: true
-				}
-			}
+			is: 'd2l-navigation-bottom-bar'
 		});
 	</script>
 </dom-module>
