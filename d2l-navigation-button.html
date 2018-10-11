@@ -13,16 +13,19 @@ Polymer-based web component for buttons used in the navigational header.
 <dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
 		<style is="custom-style" include="d2l-navigation-highlight-styles">
-			button {
-				@apply --d2l-navigation-highlight-base;
+			:host([disabled]) button {
+				@apply --d2l-navigation-highlight-disabled;
 			}
-			button:hover,
-			button:focus {
+			:host(:not([disabled])) button:hover,
+			:host(:not([disabled])) button:focus {
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
-			button:hover .d2l-navigation-button-top-border,
-			button:focus .d2l-navigation-button-top-border {
+			:host(:not([disabled])) button:hover .d2l-navigation-button-top-border,
+			:host(:not([disabled])) button:focus .d2l-navigation-button-top-border {
 				@apply --d2l-navigation-highlight-border-hover-focus;
+			}
+			button {
+				@apply --d2l-navigation-highlight-base;
 			}
 			.d2l-navigation-button-top-border {
 				@apply --d2l-navigation-highlight-border;
