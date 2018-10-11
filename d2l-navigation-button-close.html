@@ -16,6 +16,14 @@ This button contains an X icon.
 
 <dom-module id="d2l-navigation-button-close">
 	<template strip-whitespace>
+		<style>
+			:host {
+				display: inline-block;
+			}
+			d2l-navigation-button-notification-icon {
+				height: 100%;
+			}
+		</style>
 		<d2l-navigation-button-notification-icon
 			text=[[localize('close')]]
 			disabled$=[[disabled]]
