@@ -19,17 +19,26 @@
 			html {
 				font-size: 20px;
 			}
+			d2l-navigation-header {
+				background-color: mediumpurple;
+			}
+			.d2l-navigation-header-left {
+				background-color: pink;
+			}
+			.d2l-navigation-header-right {
+				background-color: lightblue;
+			}
 		</style>
 	</head>
 	<body unresolved class="d2l-typography">
-		<div class="vertical-section-container centered">
+		<div class="vertical-section-container centered" style="max-width: 900px;">
 			<h3>d2l-navigation-header</h3>
 			<demo-snippet>
 				<template>
 					<d2l-navigation-header>
-						<div slot="left">This should be on the left</div>
+						<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 
-						<div slot="right">Right side</div>
+						<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
 					</d2l-navigation-header>
 				</template>
 			</demo-snippet>
