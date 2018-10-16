@@ -13,6 +13,8 @@ Polymer-based web component for the larger, upper section of the navigational el
 		<style include="d2l-navigation-shared-styles">
 			:host {
 				display: block;
+				margin: 0 auto;
+				max-width: 1230px;
 			}
 
 			.d2l-navigation-header-container {
@@ -27,10 +29,23 @@ Polymer-based web component for the larger, upper section of the navigational el
 				}
 			}
 
-			div ::slotted(.d2l-navigation-header-left),
-			div ::slotted(.d2l-navigation-header-right) {
+			div ::slotted(.d2l-navigation-header-left) {
+				-ms-flex-align: center;
 				align-items: center;
+				display: -ms-flexbox;
 				display: flex;
+				-ms-flex: 0 1 auto;
+				flex: 0 1 auto;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			div ::slotted(.d2l-navigation-header-right) {
+				-ms-flex-align: center;
+				align-items: center;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex: 0 0 auto;
 				flex: 0 0 auto;
 				height: 100%;
 			}
@@ -47,7 +62,6 @@ Polymer-based web component for the larger, upper section of the navigational el
 				}
 			}
 		</style>
-		<div class="d2l-navigation-centerer">
 			<div class="d2l-navigation-gutters">
 				<div class="d2l-navigation-header-container">
 					<slot name="left"></slot>
@@ -55,7 +69,6 @@ Polymer-based web component for the larger, upper section of the navigational el
 					<slot name="right"></slot>
 				</div>
 			</div>
-		</div>
 	</template>
 	<script>
 		Polymer({
