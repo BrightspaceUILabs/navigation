@@ -31,8 +31,15 @@ Polymer-based web component for the larger, upper section of the navigational el
 			div ::slotted(.d2l-navigation-header-right) {
 				align-items: center;
 				display: flex;
-				flex: 0 0 auto;
 				height: 100%;
+			}
+
+			div ::slotted(.d2l-navigation-header-left) {
+				flex: 0 1 auto;
+			}
+
+			div ::slotted(.d2l-navigation-header-right) {
+				flex: 0 0 auto;
 			}
 
 			.d2l-navigation-gutter {
