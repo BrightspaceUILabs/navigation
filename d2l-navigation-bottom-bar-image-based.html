@@ -1,0 +1,177 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="d2l-navigation-shared-styles.html">
+
+<!--
+`d2l-navigation-bottom-bar-image-based`
+Polymer-based web component for the smaller, lower section of the navigational element, for image based navigation
+
+@demo demo/navigation-bottom-bar-image-based.html
+-->
+
+<dom-module id="d2l-navigation-bottom-bar-image-based">
+	<template strip-whitespace>
+		<style include="d2l-navigation-shared-styles">
+			:host {
+				border-top: 1px solid var(--d2l-color-gypsum);
+				border-bottom: 1px solid var(--d2l-color-gypsum);
+				display: block;
+				border-bottom-style: none;
+			}
+
+			.d2l-navigation-main-ib-top-cap {
+				box-shadow: 0 3px 3px rgba(0,0,0,.05);
+				display: none;
+				height: 3px;
+				position: absolute;
+				margin: -3px;
+				width: 100%;
+			}
+
+			.d2l-navigation-main-ib-tray[opened][overflow-top] > .d2l-navigation-main-ib-top-cap {
+				display: block;
+			}
+
+			.d2l-navigation-main-ib-bottom-cap {
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
+				box-sizing: border-box;
+				height: 0.7rem;
+				text-align: center;
+				width: 100%;
+			}
+
+			.d2l-navigation-main-ib-pully[shown] {
+				cursor: pointer;
+			}
+
+			.d2l-navigation-main-ib-pully[shown]:focus,
+			.d2l-navigation-main-ib-pully[shown]:hover {
+				outline: none;
+			}
+
+			.d2l-navigation-main-ib-pully-tab {
+				background-color: #fff;
+				border-bottom-left-radius: 0.5rem;
+				border-bottom-right-radius: 0.5rem;
+				display: none;
+				height: 0.8rem;
+				margin-top: 0.59rem;
+				position: relative;
+				width: 4.1rem;
+				z-index: 5;
+			}
+
+			.d2l-navigation-main-ib-pully-icon {
+				border: 1px solid var(--d2l-color-gypsum);
+				border-top-style: none;
+				border-bottom-left-radius: 0.45rem;
+				border-bottom-right-radius: 0.45rem;
+				display: inline-block;
+				height: 100%;
+				width: 4rem;
+			}
+
+			.d2l-navigation-s-has-branding .d2l-navigation-main-ib-pully-icon {
+				border-bottom-left-radius: 0.4rem;
+				border-bottom-right-radius: 0.4rem;
+			}
+
+			.d2l-navigation-main-ib-pully[shown] > .d2l-navigation-main-ib-pully-tab {
+				display: inline-block;
+			}
+
+			.d2l-navigation-main-ib-tray[opened][overflow-bottom] > .d2l-navigation-main-ib-pully-container > .d2l-navigation-main-ib-bottom-cap {
+				box-shadow: 0 -3px 3px rgba(0,0,0,.05);
+			}
+
+			.d2l-navigation-main-ib-pully-tab-button {
+				border-bottom-left-radius: 4px;
+				border-bottom-right-radius: 4px;
+				height: 18px;
+				left: 6px;
+				opacity: 0;
+				position: absolute;
+				top: -7px;
+				width: 70px;
+			}
+
+			.d2l-navigation-main-ib-pully-container {
+				position: relative;
+			}
+
+			.d2l-navigation-main-ib-pully-icon > d2l-icon {
+				height: 22px;
+				position: relative;
+				top: -10px;
+				width: 22px;
+			}
+
+			.d2l-navigation-main-ib-tray[closing] .d2l-navigation-main-ib-pully[shown] .d2l-navigation-main-ib-pully-icon > d2l-icon {
+				animation-duration: 200ms;
+				animation-timing-function: ease-in-out;
+				animation-name: d2l-navigation-main-ib-swing-reset;
+				transform: rotateZ(0deg);
+			}
+
+			.d2l-navigation-main-ib-tray[opened] .d2l-navigation-main-ib-pully[shown] .d2l-navigation-main-ib-pully-icon > d2l-icon {
+				animation-duration: 800ms;
+				animation-timing-function: ease-in-out;
+				animation-name: d2l-navigation-main-ib-swing;
+				transform: rotateZ(180deg);
+			}
+
+			.d2l-navigation-main-ib-tray .d2l-navigation-s-edit-menu {
+				top: 10px;
+			}
+
+			@keyframes d2l-navigation-main-ib-swing {
+				0% {transform: rotateZ(0deg);}
+				40% {transform: rotateZ(240deg);}
+				55% {transform: rotateZ(150deg);}
+				70% {transform: rotateZ(195deg);}
+				85% {transform: rotateZ(173deg);}
+				100% {transform: rotateZ(180deg);}
+			}
+
+			@keyframes d2l-navigation-main-ib-swing-reset {
+				0% {transform: rotateZ(180deg);}
+				100% {transform: rotateZ(0deg);}
+			}
+		</style>
+		<div class="d2l-navigation-main-ib-tray d2l-visible-on-ancestor-target">
+			<div class="d2l-navigation-main-ib-top-cap"></div>
+			<div class="d2l-navigation-s-centerer">
+				<div class="d2l-navigation-gutters">
+					<slot name="list"></slot>
+					<slot name="edit"></slot>
+				</div>
+			</div>
+			<div class="d2l-navigation-main-ib-pully-container">
+				<div class="d2l-navigation-main-ib-bottom-cap d2l-navigation-main-ib-pully" data-show-text$="{{showMoreText}}" data-hide-text="{{hideMoreText}}">
+					<div class="d2l-navigation-main-ib-pully-tab">
+						<div class="d2l-navigation-main-ib-pully-tab-button"></div>
+						<span class="d2l-navigation-main-ib-pully-icon">
+							<d2l-icon icon="d2l-tier1:chevron-down-medium"></d2l-icon>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-bottom-bar-image-based',
+			properties: {
+				showMoreText: {
+					type: String,
+					reflectToAttribute: true
+				},
+				hideMoreText: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
+		});
+	</script>
+</dom-module>
