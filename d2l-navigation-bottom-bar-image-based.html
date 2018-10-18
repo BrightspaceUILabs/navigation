@@ -1,0 +1,470 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-fastdom-import/fastdom.html">
+<link rel="import" href="../d2l-icons/tier1-icons.html">
+<link rel="import" href="d2l-navigation-shared-styles.html">
+
+<!--
+`d2l-navigation-bottom-bar-image-based`
+Polymer-based web component for the smaller, lower section of the navigational element, for image based navigation
+
+@demo demo/navigation-bottom-bar-image-based.html
+-->
+
+<dom-module id="d2l-navigation-bottom-bar-image-based">
+	<template strip-whitespace>
+		<style include="d2l-navigation-shared-styles">
+			:host {
+				border-top: 1px solid var(--d2l-color-gypsum);
+				border-bottom: 1px solid var(--d2l-color-gypsum);
+				display: block;
+				border-bottom-style: none;
+			}
+
+			.d2l-navigation-main-ib-top-cap {
+				box-shadow: 0 3px 3px rgba(0,0,0,.05);
+				display: none;
+				height: 3px;
+				position: absolute;
+				margin: -3px;
+				width: 100%;
+			}
+
+			.d2l-navigation-main-ib-tray[opened][overflow-top] > .d2l-navigation-main-ib-top-cap {
+				display: block;
+			}
+
+			.d2l-navigation-main-ib-bottom-cap {
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
+				box-sizing: border-box;
+				height: 0.7rem;
+				text-align: center;
+				width: 100%;
+			}
+
+			.d2l-navigation-main-ib-pully[shown] {
+				cursor: pointer;
+			}
+
+			.d2l-navigation-main-ib-pully[shown]:focus,
+			.d2l-navigation-main-ib-pully[shown]:hover {
+				outline: none;
+			}
+
+			.d2l-navigation-main-ib-pully-tab {
+				background-color: #fff;
+				border-bottom-left-radius: 0.5rem;
+				border-bottom-right-radius: 0.5rem;
+				display: none;
+				height: 0.8rem;
+				margin-top: 0.59rem;
+				position: relative;
+				width: 4.1rem;
+				z-index: 5;
+			}
+
+			.d2l-navigation-main-ib-pully-icon {
+				border: 1px solid var(--d2l-color-gypsum);
+				border-top-style: none;
+				border-bottom-left-radius: 0.45rem;
+				border-bottom-right-radius: 0.45rem;
+				display: inline-block;
+				height: 100%;
+				width: 4rem;
+			}
+
+			.d2l-navigation-s-has-branding .d2l-navigation-main-ib-pully-icon {
+				border-bottom-left-radius: 0.4rem;
+				border-bottom-right-radius: 0.4rem;
+			}
+
+			.d2l-navigation-main-ib-pully[shown] > .d2l-navigation-main-ib-pully-tab {
+				display: inline-block;
+			}
+
+			.d2l-navigation-main-ib-tray[opened][overflow-bottom] > .d2l-navigation-main-ib-pully-container > .d2l-navigation-main-ib-bottom-cap {
+				box-shadow: 0 -3px 3px rgba(0,0,0,.05);
+			}
+
+			.d2l-navigation-main-ib-pully-tab-button {
+				border-bottom-left-radius: 4px;
+				border-bottom-right-radius: 4px;
+				height: 18px;
+				left: 6px;
+				opacity: 0;
+				position: absolute;
+				top: -7px;
+				width: 70px;
+			}
+
+			.d2l-navigation-main-ib-pully-container {
+				position: relative;
+			}
+
+			.d2l-navigation-main-ib-pully-icon > d2l-icon {
+				height: 22px;
+				position: relative;
+				top: -10px;
+				width: 22px;
+			}
+
+			.d2l-navigation-main-ib-tray[closing] .d2l-navigation-main-ib-pully[shown] .d2l-navigation-main-ib-pully-icon > d2l-icon {
+				animation-duration: 200ms;
+				animation-timing-function: ease-in-out;
+				animation-name: d2l-navigation-main-ib-swing-reset;
+				transform: rotateZ(0deg);
+			}
+
+			.d2l-navigation-main-ib-tray[opened] .d2l-navigation-main-ib-pully[shown] .d2l-navigation-main-ib-pully-icon > d2l-icon {
+				animation-duration: 800ms;
+				animation-timing-function: ease-in-out;
+				animation-name: d2l-navigation-main-ib-swing;
+				transform: rotateZ(180deg);
+			}
+
+			.d2l-navigation-main-ib-tray .d2l-navigation-s-edit-menu {
+				top: 10px;
+			}
+
+			@keyframes d2l-navigation-main-ib-swing {
+				0% {transform: rotateZ(0deg);}
+				40% {transform: rotateZ(240deg);}
+				55% {transform: rotateZ(150deg);}
+				70% {transform: rotateZ(195deg);}
+				85% {transform: rotateZ(173deg);}
+				100% {transform: rotateZ(180deg);}
+			}
+
+			@keyframes d2l-navigation-main-ib-swing-reset {
+				0% {transform: rotateZ(180deg);}
+				100% {transform: rotateZ(0deg);}
+			}
+		</style>
+		<div class="d2l-navigation-main-ib-tray d2l-visible-on-ancestor-target">
+			<div class="d2l-navigation-main-ib-top-cap"></div>
+			<div class="d2l-navigation-s-centerer">
+				<div class="d2l-navigation-gutters">
+					<slot name="list"></slot>
+					<slot name="edit"></slot>
+				</div>
+			</div>
+			<div class="d2l-navigation-main-ib-pully-container">
+				<div class="d2l-navigation-main-ib-bottom-cap d2l-navigation-main-ib-pully" data-show-text$="{{showMoreText}}" data-hide-text="{{hideMoreText}}">
+					<div class="d2l-navigation-main-ib-pully-tab">
+						<div class="d2l-navigation-main-ib-pully-tab-button"></div>
+						<span class="d2l-navigation-main-ib-pully-icon">
+							<d2l-icon icon="d2l-tier1:chevron-down-medium"></d2l-icon>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-bottom-bar-image-based',
+			properties: {
+				showMoreText: {
+					type: String,
+					reflectToAttribute: true
+				},
+				hideMoreText: {
+					type: String,
+					reflectToAttribute: true
+				}
+			},
+
+			CloseTray: function (handle) {
+				fastdom.mutate(function () {
+
+					var handleAnimationEnd = function () {
+						handle.listNode.removeEventListener('transitionend', handleAnimationEnd);
+						fastdom.mutate(function () {
+							handle.trayNode.removeAttribute('closing');
+							this.HandleListOverflow(handle);
+						}.bind(this));
+					}.bind(this);
+					handle.listNode.addEventListener('transitionend', handleAnimationEnd);
+
+					handle.trayNode.removeAttribute('scrollable');
+					handle.trayNode.setAttribute('closing', 'closing');
+					handle.trayNode.removeAttribute('opened');
+					handle.listNode.style.maxHeight = '';
+
+				}.bind(this));
+
+			},
+
+			GetItems: function(handle) {
+				return handle.listNode.parentNode
+					.querySelectorAll('.d2l-navigation-main-ib-list > .d2l-navigation-ib-item');
+			},
+
+			HandleListOverflow: function (handle) {
+
+				var items = this.GetItems(handle);
+				if (!items || items.length === 0) {
+					return;
+				}
+
+				fastdom.measure(function () {
+
+					var isOpen = (handle.trayNode.hasAttribute('opened'));
+					if (isOpen) {
+						return;
+					}
+
+					if (handle.itemRect === null) {
+						var itemRect = items[0].getBoundingClientRect();
+						if (itemRect.height === 0 || itemRect.width === 0) {
+							return;
+						}
+						handle.itemRect = { height: itemRect.height, width: itemRect.width };
+					}
+
+					var listRect = handle.listNode.getBoundingClientRect();
+					if (handle.minListHeight === null) {
+						handle.minListHeight = listRect.height;
+					}
+
+					var containerWidth = listRect.width - 8;
+					if (handle.itemRect.width <= 0) {
+						return;
+					}
+
+					var itemsPerRow = Math.floor(containerWidth / handle.itemRect.width);
+					if (itemsPerRow === 0) {
+						return;
+					}
+
+					var isPullyShown = handle.pullyNode.hasAttribute('shown');
+					var isOverflowing = (items.length > itemsPerRow);
+
+					fastdom.mutate(function () {
+
+						if (isOverflowing !== isPullyShown) {
+							if (isOverflowing) {
+								handle.pullyNode.setAttribute('shown', 'shown');
+							} else {
+								handle.pullyNode.removeAttribute('shown');
+							}
+						}
+
+						for (var j = 0; j < items.length; j++) {
+							var item = items[j];
+
+							if (j < itemsPerRow) {
+								item.removeAttribute('overflow-item');
+								item.style.display = '';
+							} else {
+								item.setAttribute('overflow-item', 'overflow-item');
+								item.style.display = 'none';
+							}
+						}
+
+						if (isOverflowing) {
+							handle.pullyNode.setAttribute('title', handle.pullyNode.getAttribute('data-show-text'));
+							handle.pullyNode.setAttribute('role', 'button');
+							handle.pullyNode.tabIndex = 0;
+						} else {
+							handle.pullyNode.removeAttribute('title');
+							handle.pullyNode.removeAttribute('role');
+							handle.pullyNode.tabIndex = -1;
+
+						}
+
+					});
+
+				}.bind(this));
+
+			},
+
+			HandleResize: function (handle) {
+
+				this.HandleListOverflow(handle);
+
+				var isOpen = (handle.trayNode.hasAttribute('opened'));
+				if (!isOpen) {
+					return;
+				}
+
+				fastdom.measure(function () {
+					var heightAvailable = this.GetAvailableHeight(handle);
+					fastdom.mutate(function () {
+						handle.listNode.style.maxHeight = heightAvailable + 'px';
+					});
+				}.bind(this));
+
+			},
+
+			Init: function (node) {
+
+				var pullyNode = node.querySelector('.d2l-navigation-main-ib-pully');
+
+				pullyNode.addEventListener('focus', function () {
+					node.setAttribute('ib-pully-focus', '');
+				}, true);
+
+				pullyNode.addEventListener('blur', function () {
+					node.removeAttribute('ib-pully-focus');
+				}, true);
+
+				pullyNode.addEventListener('mouseenter', function () {
+					node.setAttribute('ib-pully-hover', '');
+				});
+
+				pullyNode.addEventListener('mouseleave', function () {
+					node.removeAttribute('ib-pully-hover');
+				});
+
+				window.D2L.Gestures.Swipe.register(node);
+
+				var handle = {
+					itemRect: null,
+					listNode: null,
+					minListHeight: null,
+					node: node,
+					trayNode: null,
+					pullyNode: pullyNode
+				};
+
+				this.InitTray(handle);
+
+			},
+
+			InitTray: function (handle) {
+
+				handle.trayNode = handle.node.querySelector('.d2l-navigation-main-ib-tray');
+				handle.listNode = handle.node.querySelector('.d2l-navigation-main-ib-list');
+
+				handle.pullyNode.addEventListener('click', function () {
+					if (handle.pullyNode.hasAttribute('shown')) {
+						this.ToggleOverflow(handle, false);
+					}
+				}.bind(this));
+
+				handle.pullyNode.addEventListener('keypress', function (e) {
+					if (e.keyCode === 13 && handle.pullyNode.hasAttribute('shown')) {
+						this.ToggleOverflow(handle, true);
+					}
+				}.bind(this));
+
+				handle.node.addEventListener('d2l-swipe', function (e) {
+					var isOpen = (handle.trayNode.hasAttribute('opened'));
+					if (isOpen && e.detail.direction.vertical === 'up') {
+						this.CloseTray(handle);
+					} else if (!isOpen && e.detail.direction.vertical === 'down') {
+						this.OpenTray(handle, false);
+					}
+				}.bind(this));
+
+				window.addEventListener('resize', function () {
+					this.HandleResize(handle);
+				}.bind(this));
+
+				handle.listNode.addEventListener( 'scroll', function () {
+					this.ToggleListCaps( handle );
+				}.bind( this ) );
+
+				this.HandleListOverflow(handle);
+
+			},
+
+			GetAvailableHeight: function (handle) {
+				// 80px required buffer
+				var listRect = handle.listNode.getBoundingClientRect();
+				var heightAbove = listRect.top + document.body.scrollTop;
+				var availableHeight = (window.innerHeight - heightAbove - 80);
+				return (availableHeight < handle.minListHeight ) ? handle.minListHeight : availableHeight;
+			},
+
+			OpenTray: function (handle, applyFocus) {
+
+				var items = this.GetItems(handle);
+				var firstOverflowItem = handle.listNode.querySelector('[overflow-item]');
+
+				fastdom.mutate(function () {
+					for (var i = 0; i < items.length; i++) {
+						items[i].style.display = '';
+					}
+				});
+
+				fastdom.clear();
+
+				fastdom.measure(function () {
+
+					var heightAvailable = this.GetAvailableHeight(handle);
+
+					fastdom.mutate(function () {
+
+						var handleAnimationEnd = function () {
+							firstOverflowItem.removeEventListener('animationend', handleAnimationEnd);
+
+							this.ToggleListCaps(handle);
+
+							fastdom.mutate(function () {
+								handle.trayNode.setAttribute('scrollable', 'scrollable');
+								if (applyFocus) {
+									var firstOverflowLink = firstOverflowItem.querySelector('.d2l-navigation-ib-item-link');
+									if (firstOverflowLink) {
+										firstOverflowLink.focus();
+									}
+								}
+							});
+
+						}.bind(this);
+						firstOverflowItem.addEventListener('animationend', handleAnimationEnd);
+
+						handle.listNode.style.maxHeight = heightAvailable + 'px';
+						handle.trayNode.setAttribute('opened', 'opened');
+
+						handle.pullyNode.setAttribute('title', handle.pullyNode.getAttribute('data-hide-text'));
+
+					}.bind(this));
+				}.bind(this));
+
+			},
+
+			ToggleListCaps: function (handle) {
+
+				fastdom.measure(function () {
+
+					var scrollTop = handle.listNode.scrollTop;
+
+					var isScrolledTop = (scrollTop === 0);
+					var isScrolledBottom = ((handle.listNode.scrollHeight - (scrollTop + handle.listNode.clientHeight)) < 5);
+
+					fastdom.mutate(function () {
+
+						if (isScrolledTop) {
+							handle.trayNode.removeAttribute('overflow-top');
+						} else {
+							handle.trayNode.setAttribute('overflow-top', 'overflow-top');
+						}
+
+						if (isScrolledBottom) {
+							handle.trayNode.removeAttribute('overflow-bottom');
+						} else {
+							handle.trayNode.setAttribute('overflow-bottom', 'overflow-bottom');
+						}
+
+					}.bind(this));
+
+				}.bind(this));
+
+			},
+
+			ToggleOverflow: function (handle, applyFocus) {
+
+				var isOpen = (handle.trayNode.hasAttribute('opened'));
+				if (isOpen) {
+					this.CloseTray(handle);
+				} else {
+					this.OpenTray(handle, applyFocus);
+				}
+
+			}
+		});
+	</script>
+</dom-module>
