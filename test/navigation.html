@@ -14,21 +14,11 @@
 				<d2l-navigation></d2l-navigation>
 			</template>
 		</test-fixture>
-		<test-fixture id="customStyle">
-			<template>
-				<d2l-navigation style="border-top-color: red;"></d2l-navigation>
-			</template>
-		</test-fixture>
 		<script>
 			suite('d2l-navigation', function() {
 				test('instantiating the element works', function() {
 					var nav = fixture('basic');
 					assert.equal(nav.is, 'd2l-navigation');
-				});
-
-				test('setting style works', function() {
-					var nav = fixture('customStyle');
-					assert.equal(nav.getAttribute('style'), 'border-top-color: red;');
 				});
 			});
 		</script>
