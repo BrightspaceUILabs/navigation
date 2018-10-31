@@ -19,6 +19,14 @@
 				test('instantiating the element works', function() {
 					var nav = fixture('basic');
 					assert.equal(nav.is, 'd2l-navigation');
+
+					var dropBorder = Polymer.dom(nav.root).querySelector('.d2l-navigation-shadow-drop-border');
+					expect(dropBorder).to.not.be.null;
+					assert.equal(dropBorder.tagName, 'DIV');
+
+					var gradient = Polymer.dom(nav.root).querySelector('.d2l-navigation-shadow-gradient');
+					expect(gradient).to.not.be.null;
+					assert.equal(gradient.tagName, 'DIV');
 				});
 			});
 		</script>
