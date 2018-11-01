@@ -1,0 +1,30 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="d2l-navigation-shared-styles.html">
+
+<!--
+`d2l-navigation-main-footer`
+Polymer-based web component for the smaller, lower section of the navigational element
+
+@demo demo/navigation-main-footer.html
+-->
+
+<dom-module id="d2l-navigation-main-footer">
+	<template strip-whitespace>
+		<style include="d2l-navigation-shared-styles">
+			:host {
+				display: block;
+			}
+		</style>
+		<div class="d2l-navigation-centerer d2l-visible-on-ancestor-target">
+			<div class="d2l-navigation-gutters">
+				<slot name="main"></slot>
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-main-footer'
+		});
+	</script>
+</dom-module>
