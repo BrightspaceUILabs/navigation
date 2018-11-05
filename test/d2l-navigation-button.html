@@ -58,6 +58,10 @@
 				});
 			}
 
+			function getStyle(el, property) {
+				return window.getComputedStyle(el).getPropertyValue(property).trim();
+			}
+
 			suite('d2l-navigation-button', function() {
 				setup(function() {
 					button = fixture('baseButton');
@@ -112,6 +116,17 @@
 				test('should pass notificationText property to notification span', function() {
 					var nText = button.$$('.d2l-navigation-button-notification-indicator-text').innerHTML;
 					assert.equal(button.notificationText, nText);
+				});
+				test('notification icon should not change colour on focus', function() {
+					var btn = button.$$('d2l-navigation-button').$$('button');
+					var icon = button.$$('.d2l-navigation-button-notification-indicator-icon');
+					assert.equal(getStyle(icon, 'fill'), 'rgb(232, 117, 17)');
+					//assert.equal(getStyle(icon, 'color'), 'rgb(232, 117, 17)');
+					//assert.equal(getStyle(icon, '--d2l-icon-fill-color'), '#e87511');
+					btn.focus();
+					assert.equal(getStyle(icon, 'fill'), 'rgb(232, 117, 17)');
+					//assert.equal(getStyle(icon, 'color'), 'rgb(232, 117, 17)');
+					//assert.equal(getStyle(icon, '--d2l-icon-fill-color'), '#e87511');
 				});
 			});
 
