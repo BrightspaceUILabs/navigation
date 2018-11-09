@@ -121,12 +121,8 @@
 					var btn = button.$$('d2l-navigation-button').$$('button');
 					var icon = button.$$('.d2l-navigation-button-notification-indicator-icon');
 					assert.equal(getStyle(icon, 'fill'), 'rgb(232, 117, 17)');
-					//assert.equal(getStyle(icon, 'color'), 'rgb(232, 117, 17)');
-					//assert.equal(getStyle(icon, '--d2l-icon-fill-color'), '#e87511');
 					btn.focus();
 					assert.equal(getStyle(icon, 'fill'), 'rgb(232, 117, 17)');
-					//assert.equal(getStyle(icon, 'color'), 'rgb(232, 117, 17)');
-					//assert.equal(getStyle(icon, '--d2l-icon-fill-color'), '#e87511');
 				});
 			});
 
