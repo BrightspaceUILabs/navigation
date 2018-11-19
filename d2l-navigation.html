@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-navigation-band.html">
+
+<!--
+`d2l-navigation`
+Polymer-based web component for the all encompasing navigation wrapper component
+
+@demo demo/navigation.html
+-->
+
+<dom-module id="d2l-navigation">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+			}
+			.d2l-navigation-shadow-drop-border {
+				background-color: rgba(0,0,0,0.02);
+				bottom: -4px;
+				height: 4px;
+				pointer-events: none;
+				position: absolute;
+				width: 100%;
+			}
+			.d2l-navigation-shadow-gradient {
+				background: linear-gradient(to bottom,  rgba(249,250,251,1) 0%,rgba(249,250,251,0) 100%);
+				bottom: -150px;
+				height: 150px;
+				width: 100%;
+				pointer-events: none;
+				position: absolute;
+				z-index: -100;
+			}
+
+		</style>
+		<d2l-navigation-band></d2l-navigation-band>
+		<slot></slot>
+		<div class="d2l-navigation-shadow-drop-border"></div>
+		<div class="d2l-navigation-shadow-gradient"></div>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation'
+		});
+	</script>
+</dom-module>
