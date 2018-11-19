@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-		<title>d2l-navigation-header demo</title>
+		<title>d2l-navigation-main-header demo</title>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-		<link rel="import" href="../d2l-navigation-header.html">
+		<link rel="import" href="../d2l-navigation-main-header.html">
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
 		</custom-style>
@@ -19,7 +19,7 @@
 			html {
 				font-size: 20px;
 			}
-			d2l-navigation-header {
+			d2l-navigation-main-header {
 				background-color: mediumpurple;
 			}
 			.d2l-navigation-header-left {
@@ -32,14 +32,14 @@
 	</head>
 	<body unresolved class="d2l-typography">
 		<div class="vertical-section-container centered" style="max-width: 900px;">
-			<h3>d2l-navigation-header</h3>
+			<h3>d2l-navigation-main-header</h3>
 			<demo-snippet>
 				<template>
-					<d2l-navigation-header>
+					<d2l-navigation-main-header>
 						<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 
 						<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
-					</d2l-navigation-header>
+					</d2l-navigation-main-header>
 				</template>
 			</demo-snippet>
 		</div>
