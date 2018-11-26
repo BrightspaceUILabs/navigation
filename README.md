@@ -5,6 +5,8 @@
 
 A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components for top level navigation use on D2L pages.
 
+![screenshot of sample usage](/screenshots/navigation.png?raw=true)
+
 For further information on this and other Brightspace UI components, see the docs at [ui.developers.brightspace.com](http://ui.developers.brightspace.com/).
 
 ## Installation
@@ -15,9 +17,6 @@ bower install d2l-navigation
 ```
 
 ## Usage
-
-
-![screenshot of sample usage](/screenshots/navigation-band.png?raw=true)
 
 ### Primary Components
 
@@ -83,8 +82,6 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 ```
 
 Solid colour band that runs along the top of the navigational header.
-
-
 
 <!---
 ```
@@ -156,8 +153,8 @@ Then add the `d2l-navigation-main-header`, and provide elements for the `left` a
 
 ***Slots:***
 
-* `left` (required):
-* `right` (required):
+* `left` (required): Secondary content (that will shrink with page size) oriented on the left side of the centre gutter (whitespace)
+* `right` (required): Primary content (that will not shrink with page size) oriented on the right side of the centre gutter (whitespace)
 
 #### d2l-navigation-main-footer
 
@@ -202,7 +199,7 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 ***Slots:***
 
-* `main` (required):
+* `main` (required): Primary content of the footer. The footer will change in size to accommodate its contents
 
 ## Developing, Testing and Contributing
 
