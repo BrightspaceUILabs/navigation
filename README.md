@@ -124,6 +124,8 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 Then add the `d2l-navigation-main-header`, and provide elements for the `left` and `right` slots.
 
+![screenshot of navigation main header](/screenshots/navigation-maain-header.png?raw=true)
+
 <!---
 ```
 <custom-element-demo>
@@ -170,6 +172,8 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 ```
 
 Then add the `d2l-navigation-main-footer`, and provide elements for the `main` slot.
+
+![screenshot of navigation main footer](/screenshots/navigation-main-footer.png?raw=true)
 
 <!---
 ```
