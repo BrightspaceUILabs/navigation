@@ -81,7 +81,9 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </head>
 ```
 
-Solid colour band that runs along the top of the navigational header.
+Then add the `d2l-navigation-band`.
+
+![screenshot of navigation band](/screenshots/navigation-band.png?raw=true)
 
 <!---
 ```
