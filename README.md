@@ -16,11 +16,14 @@ bower install d2l-navigation
 
 ## Usage
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
+
+![screenshot of sample usage](/screenshots/navigation-band.png?raw=true)
 
 ### Primary Components
 
 #### d2l-navigation
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
 
 ```html
 <head>
@@ -29,9 +32,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 </head>
 ```
 
-Wrapper components that packages up all other navigation components for ease of use.
-
-![screenshot of navigation](/screenshots/navigation.png?raw=true)
+Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-header` & `d2l-navigation-main-footer` (along with their respective slot contents).
 
 <!---
 ```
@@ -57,13 +58,22 @@ Wrapper components that packages up all other navigation components for ease of 
 -->
 ```html
 <d2l-navigation>
-	<slot></slot>
+	<d2l-navigation-main-header>
+		<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
+
+		<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
+	</d2l-navigation-main-header>
+	<d2l-navigation-main-footer>
+		<div slot="main" class="d2l-navigation-s-main-wrapper">Stuff goes in here (small border above and below)</div>
+	</d2l-navigation-main-footer>
 </d2l-navigation>
 ```
 
 ### Secondary components
 
 #### d2l-navigation-band
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-band.html`:
 
 ```html
 <head>
@@ -74,7 +84,7 @@ Wrapper components that packages up all other navigation components for ease of 
 
 Solid colour band that runs along the top of the navigational header.
 
-![screenshot of navigation band](/screenshots/navigation-band.png?raw=true)
+
 
 <!---
 ```
@@ -104,6 +114,8 @@ Solid colour band that runs along the top of the navigational header.
 
 #### d2l-navigation-main-header
 
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-header.html`:
+
 ```html
 <head>
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
@@ -111,9 +123,7 @@ Solid colour band that runs along the top of the navigational header.
 </head>
 ```
 
-Upper container of the standard navigation bar used in the LMS.
-
-![screenshot of navigation main header](/screenshots/navigation-main-header.png?raw=true)
+Then add the `d2l-navigation-main-header`, and provide elements for the `left` and `right` slots.
 
 <!---
 ```
@@ -139,10 +149,60 @@ Upper container of the standard navigation bar used in the LMS.
 -->
 ```html
 <d2l-navigation-main-header>
-	<slot name="left"></slot>
-	<slot name="right"></slot>
+	<div slot="left"></div>
+	<div slot="right"></div>
 </d2l-navigation-main-header>
 ```
+
+***Slots:***
+
+* `left` (required):
+* `right` (required):
+
+#### d2l-navigation-main-footer
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-footer.html`:
+
+```html
+<head>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-footer.html">
+</head>
+```
+
+Then add the `d2l-navigation-main-footer`, and provide elements for the `main` slot.
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-colors/d2l-colors.html">
+	<link rel="import" href="d2l-navigation-main-footer.html">
+    <custom-style include="d2l-typography">
+      <style is="custom-style" include="d2l-typography"></style>
+    </custom-style>
+    <style>
+      html {
+        font-size: 20px;
+        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<d2l-navigation-main-footer>
+	<div slot="main"></div>
+</d2l-navigation-main-footer>
+```
+
+***Slots:***
+
+* `main` (required):
 
 ## Developing, Testing and Contributing
 
