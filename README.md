@@ -124,7 +124,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 Then add the `d2l-navigation-main-header`, and provide elements for the `left` and `right` slots.
 
-![screenshot of navigation main header](/screenshots/navigation-maain-header.png?raw=true)
+![screenshot of navigation main header](/screenshots/navigation-main-header.png?raw=true)
 
 <!---
 ```
