@@ -111,6 +111,10 @@ Then add the `d2l-navigation-band`.
 <d2l-navigation-band></d2l-navigation-band>
 ```
 
+***Relevant CSS class names:***
+* `--d2l-branding-primary-color`: Used to customize the colour of the top navigation band.
+* `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
+
 #### d2l-navigation-main-header
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-header.html`:
