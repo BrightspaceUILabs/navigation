@@ -32,14 +32,16 @@ This button contains a user-supplied icon, as well as a notification marker.
 				display: none;
 				height: 100%;
 				position: absolute;
-				right: calc(-50% + 4px);
-				top: calc(-50% + 4px);
+				right: calc(-50% - 4px);
+				top: calc(-50% + 11px);
 				width: 100%;
 			}
 			.d2l-navigation-button-notification-indicator-icon {
-				fill: var(--d2l-color-primary-accent-indicator);
-				height: 100%;
-				width: 100%;
+				background: var(--d2l-color-primary-accent-indicator);
+				border: 2px solid white;
+				height: 10px;
+				width: 10px;
+				border-radius: 50%;
 			}
 			.d2l-navigation-button-notification-indicator-text {
 				height: 1px;
@@ -68,7 +70,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 			<span class="d2l-navigation-button-icon-container">
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
 				<span class="d2l-navigation-button-notification-indicator">
-					<d2l-icon class="d2l-navigation-button-notification-indicator-icon" icon="d2l-tier2:dot"></d2l-icon>
+					<div class="d2l-navigation-button-notification-indicator-icon"></div>
 					<span class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
 				</span>
 			</span>
