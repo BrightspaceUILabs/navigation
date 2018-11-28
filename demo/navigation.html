@@ -9,8 +9,8 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
 		<link rel="import" href="../d2l-navigation.html">
-		<link rel="import" href="../d2l-navigation-header.html">
-		<link rel="import" href="../d2l-navigation-bottom-bar.html">
+		<link rel="import" href="../d2l-navigation-main-header.html">
+		<link rel="import" href="../d2l-navigation-main-footer.html">
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
 		</custom-style>
@@ -21,10 +21,10 @@
 			html {
 				font-size: 20px;
 			}
-			d2l-navigation-header {
+			d2l-navigation-main-header {
 				background-color: mediumpurple;
 			}
-			d2l-navigation-bottom-bar {
+			d2l-navigation-main-footer {
 				background-color: green;
 			}
 			.d2l-navigation-header-left {
@@ -41,14 +41,14 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation>
-						<d2l-navigation-header>
+						<d2l-navigation-main-header>
 							<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 
 							<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
-						</d2l-navigation-header>
-						<d2l-navigation-bottom-bar>
+						</d2l-navigation-main-header>
+						<d2l-navigation-main-footer>
 							<div slot="main" class="d2l-navigation-s-main-wrapper">Stuff goes in here (small border above and below)</div>
-						</d2l-navigation-bottom-bar>
+						</d2l-navigation-main-footer>
 					</d2l-navigation>
 				</template>
 			</demo-snippet>
@@ -56,11 +56,11 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation>
-						<d2l-navigation-header>
+						<d2l-navigation-main-header>
 							<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 
 							<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
-						</d2l-navigation-header>
+						</d2l-navigation-main-header>
 					</d2l-navigation>
 				</template>
 			</demo-snippet>
