@@ -17,8 +17,20 @@
 		<script>
 			suite('d2l-navigation-main-footer', function() {
 				test('instantiating the element works', function() {
-					var element = fixture('basic');
-					assert.equal(element.is, 'd2l-navigation-main-footer');
+					var footer = fixture('basic');
+					assert.equal(footer.is, 'd2l-navigation-main-footer');
+
+					var centerer = Polymer.dom(footer.root).querySelector('.d2l-navigation-centerer');
+					expect(centerer).to.not.be.null;
+					assert.equal(centerer.tagName, 'DIV');
+
+					var ancestor = Polymer.dom(footer.root).querySelector('.d2l-visible-on-ancestor-target');
+					expect(ancestor).to.not.be.null;
+					assert.equal(ancestor.tagName, 'DIV');
+
+					var gutters = Polymer.dom(footer.root).querySelector('.d2l-navigation-gutters');
+					expect(gutters).to.not.be.null;
+					assert.equal(gutters.tagName, 'DIV');
 				});
 			});
 		</script>
