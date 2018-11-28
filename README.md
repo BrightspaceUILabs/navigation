@@ -7,8 +7,6 @@ A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components
 
 ![screenshot of sample usage](/screenshots/navigation.png?raw=true)
 
-For further information on this and other Brightspace UI components, see the docs at [ui.developers.brightspace.com](http://ui.developers.brightspace.com/).
-
 ## Installation
 
 `d2l-navigation` can be installed from [Bower][bower-url]:
@@ -22,12 +20,18 @@ bower install d2l-navigation
 
 ### d2l-navigation
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
+
+* `d2l-navigation.html`
+* `d2l-navigation-main-header.html`
+* `d2l-navigation-main-footer.html`
 
 ```html
 <head>
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation.html">
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-header.html">
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-footer.html">
 </head>
 ```
 
@@ -114,9 +118,8 @@ Then add the `d2l-navigation-band`.
 <d2l-navigation-band></d2l-navigation-band>
 ```
 
-***Relevant CSS class names:***
+***Relevant CSS class name:***
 * `--d2l-branding-primary-color`: Used to customize the colour of the top navigation band.
-* `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
 
 ---
 
@@ -217,6 +220,13 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 ***Slots:***
 
 * `main` (required): Primary content of the footer. The footer will change in size to accommodate its contents
+
+### d2l-navigation-button & d2l-navigation-link
+
+(Placeholder for now)
+
+***Relevant CSS class name:***
+* `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
 
 ## Developing, Testing and Contributing
 
