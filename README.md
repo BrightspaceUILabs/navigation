@@ -221,6 +221,8 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 * `main` (required): Primary content of the footer. The footer will change in size to accommodate its contents
 
+---
+
 ### d2l-navigation-button & d2l-navigation-link
 
 (Placeholder for now)
