@@ -16,13 +16,11 @@ For further information on this and other Brightspace UI components, see the doc
 bower install d2l-navigation
 ```
 
-## Usage
-
-### Primary Components
+## Usage: Primary Components
 
 > These are the components that should be used in the **VAST MAJORITY** of use cases
 
-#### d2l-navigation
+### d2l-navigation
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
 
@@ -70,12 +68,12 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
-### Secondary Components
+## Secondary Components
 
 > These are the components that make up the Primary Components. There might be an edge case or two where it makes sense to use one of these in isolation,
 > but **PLEASE STRONGLY CONSIDER** using a Primary Component instead.
 
-#### d2l-navigation-band
+### d2l-navigation-band
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-band.html`:
 
@@ -120,7 +118,9 @@ Then add the `d2l-navigation-band`.
 * `--d2l-branding-primary-color`: Used to customize the colour of the top navigation band.
 * `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
 
-#### d2l-navigation-main-header
+---
+
+### d2l-navigation-main-header
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-header.html`:
 
@@ -169,7 +169,9 @@ Then add the `d2l-navigation-main-header`, and provide elements for the `left` a
 * `left` (required): Secondary content (that will shrink with page size) oriented on the left side of the centre gutter (whitespace)
 * `right` (required): Primary content (that will not shrink with page size) oriented on the right side of the centre gutter (whitespace)
 
-#### d2l-navigation-main-footer
+---
+
+### d2l-navigation-main-footer
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-footer.html`:
 
