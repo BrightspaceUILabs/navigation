@@ -20,6 +20,8 @@ bower install d2l-navigation
 
 ### Primary Components
 
+> These are the components that should be used in the **VAST MAJORITY** of use cases
+
 #### d2l-navigation
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation.html`:
@@ -68,7 +70,10 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
-### Secondary components
+### Secondary Components
+
+> These are the components that make up the Primary Components. There might be an edge case or two where it makes sense to use one of these in isolation,
+> but **PLEASE STRONGLY CONSIDER** using a Primary Component instead.
 
 #### d2l-navigation-band
 
