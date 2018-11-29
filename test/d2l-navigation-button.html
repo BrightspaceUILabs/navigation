@@ -120,9 +120,9 @@
 				test('notification icon should not change colour on focus', function() {
 					var btn = button.$$('d2l-navigation-button').$$('button');
 					var icon = button.$$('.d2l-navigation-button-notification-indicator-icon');
-					assert.oneOf(getStyle(icon, 'fill'), ['rgb(232, 117, 17)', '#e87511']);
+					assert.oneOf(getStyle(icon, 'background-color'), ['rgb(232, 117, 17)', '#e87511']);
 					btn.focus();
-					assert.oneOf(getStyle(icon, 'fill'), ['rgb(232, 117, 17)', '#e87511']);
+					assert.oneOf(getStyle(icon, 'background-color'), ['rgb(232, 117, 17)', '#e87511']);
 				});
 			});
 
