@@ -22,32 +22,28 @@ This button contains a user-supplied icon, as well as a notification marker.
 				display: inline-block;
 				height: 100%;
 			}
-			:host([notification]) .d2l-navigation-button-notification-indicator {
+			:host([notification]) .d2l-navigation-button-notification-indicator-icon {
 				display: inline-block;
 			}
 			.d2l-navigation-button-icon-container {
 				display: inline-block;
 				position: relative;
 			}
-			.d2l-navigation-button-notification-indicator {
-				display: none;
-				height: 100%;
-				position: absolute;
-				right: calc(-50% - 4px);
-				top: calc(-50% + 11px);
-				width: 100%;
-			}
-			:host-context([dir="rtl"]) .d2l-navigation-button-notification-indicator,
-			:host(:dir(rtl)) .d2l-navigation-button-notification-indicator {
-				left: calc(-50% - 4px);
+			:host-context([dir="rtl"]) .d2l-navigation-button-notification-indicator-icon,
+			:host(:dir(rtl)) .d2l-navigation-button-notification-indicator-icon {
+				left: calc(-50% + 11px);
 				right: auto;
 			}
 			.d2l-navigation-button-notification-indicator-icon {
 				background: var(--d2l-color-primary-accent-indicator);
 				border: 2px solid white;
-				height: 10px;
-				width: 10px;
 				border-radius: 50%;
+				display: none;
+				height: 10px;
+				position: absolute;
+				right: calc(-50% + 11px);
+				top: calc(-50% + 11px);
+				width: 10px;
 			}			
 			.d2l-navigation-button-notification-indicator-text {
 				@apply --d2l-offscreen;
@@ -74,10 +70,8 @@ This button contains a user-supplied icon, as well as a notification marker.
 			type$=[[type]]>
 			<span class="d2l-navigation-button-icon-container">
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
-				<span class="d2l-navigation-button-notification-indicator">
-					<div class="d2l-navigation-button-notification-indicator-icon"></div>
-					<span class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
-				</span>
+				<div class="d2l-navigation-button-notification-indicator-icon"></div>
+				<span class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
 			</span>
 		</d2l-navigation-button>
 	</template>
