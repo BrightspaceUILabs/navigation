@@ -21,6 +21,9 @@ Polymer-based web component for buttons used in the navigational header.
 				@apply --d2l-navigation-highlight-base;
 				font-family: inherit;
 			}
+			:host(:not([href])) a {
+				cursor: default;
+			}
 			a:hover,
 			a:focus {
 				@apply --d2l-navigation-highlight-base-hover-focus;
