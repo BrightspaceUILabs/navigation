@@ -24,14 +24,14 @@ Polymer-based web component for buttons used in the navigational header.
 			{
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
-			/* 	
-				::slotted styles for Polymer 1.0; styling all slotted children needs 
+			/*
+				::slotted styles for Polymer 1.0; styling all slotted children needs
 				to be applied explicitely.
-				This cannot be combined with the style block above, as this is not 
-				valid in 2.0 and as such the entire block gets ignored. 
+				This cannot be combined with the style block above, as this is not
+				valid in 2.0 and as such the entire block gets ignored.
 			*/
 			:host(:not([disabled])) button:hover ::slotted(*) *,
-			:host(:not([disabled])) button:focus ::slotted(*) * 
+			:host(:not([disabled])) button:focus ::slotted(*) *
 			{
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
@@ -48,6 +48,7 @@ Polymer-based web component for buttons used in the navigational header.
 			}
 		</style>
 		<button
+			aria-describedby$="[[ariaDescribedby]]"
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[text]]"
@@ -72,6 +73,10 @@ Polymer-based web component for buttons used in the navigational header.
 			is: 'd2l-navigation-button',
 			properties: {
 				text: {
+					type: String,
+					reflectToAttribute: true
+				},
+				ariaDescribedby: {
 					type: String,
 					reflectToAttribute: true
 				}

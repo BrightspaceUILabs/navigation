@@ -48,7 +48,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 				height: 10px;
 				width: 10px;
 				border-radius: 50%;
-			}			
+			}
 			.d2l-navigation-button-notification-indicator-text {
 				@apply --d2l-offscreen;
 			}
@@ -58,6 +58,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 			}
 		</style>
 		<d2l-navigation-button
+			aria-describedby="[[_getNotificationTextId(notification)]]"
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
@@ -76,7 +77,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
 				<span class="d2l-navigation-button-notification-indicator">
 					<div class="d2l-navigation-button-notification-indicator-icon"></div>
-					<span class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
+					<span id="notification-text" class="d2l-navigation-button-notification-indicator-text">[[notificationText]]</span>
 				</span>
 			</span>
 		</d2l-navigation-button>
@@ -102,7 +103,11 @@ This button contains a user-supplied icon, as well as a notification marker.
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
 				D2L.PolymerBehaviors.FocusableBehavior
-			]
+			],
+			_getNotificationTextId: function(notification) {
+				console.log('here');
+				return notification ? 'notification-text' : '';
+			}
 		});
 	</script>
 </dom-module>
