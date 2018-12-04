@@ -53,7 +53,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 			aria-expanded$="[[ariaExpanded]]"
 			aria-haspopup$="[[ariaHaspopup]]"
 			aria-label$="[[ariaLabel]]"
-			aria-describedby-text="[[notificationText]]"
+			aria-describedby-text="[[_getNotificationText(notification, notificationText)]]"
 			disabled$=[[disabled]]
 			autofocus$=[[autofocus]]
 			form$=[[form]]
@@ -94,7 +94,10 @@ This button contains a user-supplied icon, as well as a notification marker.
 			behaviors: [
 				D2L.PolymerBehaviors.Button.Behavior,
 				D2L.PolymerBehaviors.FocusableBehavior
-			]
+			],
+			_getNotificationText: function(notification, notificationText) {
+				return notification ? notificationText : '';
+			}
 		});
 	</script>
 </dom-module>
