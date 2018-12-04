@@ -4,9 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 		<title>d2l-navigation test</title>
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<link rel="import" href="../d2l-navigation.html">
+		<script src="../../@babel/polyfill/browser.js"></script>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script type="module" src="../d2l-navigation.js"></script>
 	</head>
 	<body>
 		<test-fixture id="basic">
@@ -14,21 +15,23 @@
 				<d2l-navigation></d2l-navigation>
 			</template>
 		</test-fixture>
-		<script>
-			suite('d2l-navigation', function() {
-				test('instantiating the element works', function() {
-					var nav = fixture('basic');
-					assert.equal(nav.is, 'd2l-navigation');
+		<script type="module">
+import '../d2l-navigation.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+suite('d2l-navigation', function() {
+	test('instantiating the element works', function() {
+		var nav = fixture('basic');
+		assert.equal(nav.is, 'd2l-navigation');
 
-					var dropBorder = Polymer.dom(nav.root).querySelector('.d2l-navigation-shadow-drop-border');
-					expect(dropBorder).to.not.be.null;
-					assert.equal(dropBorder.tagName, 'DIV');
+		var dropBorder = dom(nav.root).querySelector('.d2l-navigation-shadow-drop-border');
+		expect(dropBorder).to.not.be.null;
+		assert.equal(dropBorder.tagName, 'DIV');
 
-					var gradient = Polymer.dom(nav.root).querySelector('.d2l-navigation-shadow-gradient');
-					expect(gradient).to.not.be.null;
-					assert.equal(gradient.tagName, 'DIV');
-				});
-			});
-		</script>
+		var gradient = dom(nav.root).querySelector('.d2l-navigation-shadow-gradient');
+		expect(gradient).to.not.be.null;
+		assert.equal(gradient.tagName, 'DIV');
+	});
+});
+</script>
 	</body>
 </html>

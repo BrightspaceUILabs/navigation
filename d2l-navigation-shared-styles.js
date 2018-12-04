@@ -1,7 +1,8 @@
-<link rel="import" href="../polymer/polymer.html">
+import '@polymer/polymer/polymer-legacy.js';
+const $_documentContainer = document.createElement('template');
 
-<dom-module id="d2l-navigation-shared-styles">
-	<template strip-whitespace>
+$_documentContainer.innerHTML = `<dom-module id="d2l-navigation-shared-styles">
+	<template strip-whitespace="">
 		<style>
 			:host {
 				--d2l-navigation-margin-regular: 30px;
@@ -33,4 +34,6 @@
 			}
 		</style>
 	</template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
