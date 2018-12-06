@@ -19,6 +19,7 @@ Polymer-based web component for the immersive navigation component
 
 			.d2l-navigation-immersive {
 				display: flex;
+				justify-content: space-between;
 				height: 66px;
 				margin: 0px 30px 0 30px;
 				max-width: 1230px;
@@ -28,7 +29,6 @@ Polymer-based web component for the immersive navigation component
 			.d2l-navigation-immersive-middle,
 			.d2l-navigation-immersive-right {
 				align-items: center;
-				display: flex;
 			}
 
 			.d2l-navigation-immersive-left {
@@ -42,10 +42,12 @@ Polymer-based web component for the immersive navigation component
 
 			.d2l-navigation-immersive-left,
 			.d2l-navigation-immersive-right {
+				display: flex;
 				flex: 0 0 auto;
 			}
 
 			.d2l-navigation-immersive-middle {
+				display: none;
 				flex: 0 1 auto;
 				margin-left: 24px;
 				margin-right: 24px;
@@ -60,7 +62,7 @@ Polymer-based web component for the immersive navigation component
 				border-left-color: var(--d2l-color-sylvite);
 				border-left-style: solid;
 				border-left-width: 1px;
-				display: block;
+				display: none;
 			}
 
 			@media (max-width: 767px) {
@@ -68,7 +70,6 @@ Polymer-based web component for the immersive navigation component
 					margin: 0px 24px 0 24px;
 				}
 			}
-
 
 			@media (max-width: 615px) {
 				.d2l-navigation-immersive {
@@ -103,6 +104,14 @@ Polymer-based web component for the immersive navigation component
 				<div class="d2l-navigation-immersive-middle">
 		    		<slot name="middle">
 						<template is="dom-if" if="[[title]]">
+							<style>
+								.d2l-navigation-immersive-middle {
+									display: flex;
+								}
+								.d2l-navigation-immersive-separator {
+									display: block;
+								}
+							</style>
 							<a href="/blarg">[[title]]</a>
 						</template>
 					</slot>
