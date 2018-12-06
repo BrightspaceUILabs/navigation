@@ -20,15 +20,8 @@ Polymer-based web component for the immersive navigation component
 			.d2l-navigation-immersive {
 				display: flex;
 				height: 66px;
-				margin-left: 30px;
-				margin-right: 30px;
+				margin: 0px 30px 0 30px;
 				max-width: 1230px;
-			}
-
-			@media (max-width: 615px) {
-				.d2l-navigation-immersive {
-					height: 60px;
-				}
 			}
 
 			.d2l-navigation-immersive-left,
@@ -68,6 +61,35 @@ Polymer-based web component for the immersive navigation component
 				border-left-style: solid;
 				border-left-width: 1px;
 				display: block;
+			}
+
+			@media (max-width: 767px) {
+				.d2l-navigation-immersive {
+					margin: 0px 24px 0 24px;
+				}
+			}
+
+
+			@media (max-width: 615px) {
+				.d2l-navigation-immersive {
+					height: 60px;
+					margin: 0px 18px 0 18px;
+				}
+				.d2l-navigation-immersive-left {
+					margin-right: 18px;
+				}
+				.d2l-navigation-immersive-middle {
+					margin: 0px 18px 0 18px;
+				}
+				.d2l-navigation-immersive-right {
+					margin-left: 18px;
+				}
+			}
+
+			@media (max-width: 478px) {
+				.d2l-navigation-immersive-middle {
+					display: none;
+				}
 			}
 		</style>
 		<d2l-navigation>
