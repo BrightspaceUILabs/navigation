@@ -1,0 +1,114 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="d2l-navigation.html">
+<link rel="import" href="d2l-navigation-link-back.html">
+
+<!--
+`d2l-navigation0-immersive`
+Polymer-based web component for the immersive navigation component
+
+@demo demo/navigation-immersive.html
+-->
+
+<dom-module id="d2l-navigation-immersive">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: block;
+			}
+
+			.d2l-navigation-immersive {
+				display: flex;
+				height: 66px;
+				margin-left: 30px;
+				margin-right: 30px;
+				max-width: 1230px;
+			}
+
+			@media (max-width: 615px) {
+				.d2l-navigation-immersive {
+					height: 60px;
+				}
+			}
+
+			.d2l-navigation-immersive-left,
+			.d2l-navigation-immersive-middle,
+			.d2l-navigation-immersive-right {
+				align-items: center;
+				display: flex;
+			}
+
+			.d2l-navigation-immersive-left {
+				margin-right: 24px;
+			}
+
+			.d2l-navigation-immersive-left,
+			.d2l-navigation-immersive-middle {
+				justify-content: left;
+			}
+
+			.d2l-navigation-immersive-left,
+			.d2l-navigation-immersive-right {
+				flex: 0 0 auto;
+			}
+
+			.d2l-navigation-immersive-middle {
+				flex: 0 1 auto;
+				margin-left: 24px;
+				margin-right: 24px;
+			}
+
+			.d2l-navigation-immersive-right {
+				justify-content: right;
+				margin-left: 24px;
+			}
+
+			.d2l-navigation-immersive-separator {
+				border-left-color: var(--d2l-color-sylvite);
+				border-left-style: solid;
+				border-left-width: 1px;
+				display: block;
+			}
+		</style>
+		<d2l-navigation>
+			<div class="d2l-navigation-immersive">
+				<div class="d2l-navigation-immersive-left">
+					<slot name="left">
+						<d2l-navigation-link-back text="[[backbuttontext]]" href="[[backbuttonhref]]"></d2l-navigation-link-back>
+					</slot>
+				</div>
+				<div class="d2l-navigation-immersive-separator"></div>
+				<div class="d2l-navigation-immersive-middle">
+		    		<slot name="middle">
+						<template is="dom-if" if="[[title]]">
+							<a href="/blarg">[[title]]</a>
+						</template>
+					</slot>
+				</div>
+				<div class="d2l-navigation-immersive-separator"></div>
+				<div class="d2l-navigation-immersive-right">
+	    			<slot name="right"></slot>
+				</div>
+			</div>
+		</d2l-navigation>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-navigation-immersive',
+			properties: {
+				backbuttonhref: {
+					type: String,
+					reflectToAttribute: true
+				},
+				backbuttontext: {
+					type: String,
+					reflectToAttribute: true
+				},
+				title: {
+					type: String,
+					reflectToAttribute: true
+				}
+			}
+		});
+	</script>
+</dom-module>
