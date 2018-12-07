@@ -31,6 +31,11 @@ Polymer-based web component for the immersive navigation component
 			}
 
 			.d2l-navigation-immersive-left {
+				color: var(--d2l-color-tungsten);
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 0.2px;
+				line-height: 20px;
 				margin-right: 24px;
 			}
 
@@ -46,8 +51,12 @@ Polymer-based web component for the immersive navigation component
 			}
 
 			.d2l-navigation-immersive-middle {
-				display: none;
+				display: flex;
 				flex: 0 1 auto;
+				font-size: 19px;
+				font-weight: 400;
+				letter-spacing: 0.2px;
+				line-height: 28px;
 				margin-left: 24px;
 				margin-right: 24px;
 				width: 100%
@@ -62,7 +71,7 @@ Polymer-based web component for the immersive navigation component
 				border-left-color: var(--d2l-color-sylvite);
 				border-left-style: solid;
 				border-left-width: 1px;
-				display: none;
+				display: flex;
 			}
 
 			@media (max-width: 767px) {
@@ -91,6 +100,9 @@ Polymer-based web component for the immersive navigation component
 				.d2l-navigation-immersive-middle {
 					display: none;
 				}
+				.d2l-navigation-immersive-separator {
+					display: none;
+				}
 			}
 		</style>
 		<d2l-navigation>
@@ -100,23 +112,15 @@ Polymer-based web component for the immersive navigation component
 						<d2l-navigation-link-back text="[[backbuttontext]]" href="[[backbuttonhref]]"></d2l-navigation-link-back>
 					</slot>
 				</div>
-				<div class="d2l-navigation-immersive-separator"></div>
-				<div class="d2l-navigation-immersive-middle">
-		    		<slot name="middle">
-						<template is="dom-if" if="[[title]]">
-							<style>
-								.d2l-navigation-immersive-middle {
-									display: flex;
-								}
-								.d2l-navigation-immersive-separator {
-									display: block;
-								}
-							</style>
-							<a href="/blarg">[[title]]</a>
-						</template>
-					</slot>
-				</div>
-				<div class="d2l-navigation-immersive-separator"></div>
+				<template is="dom-if" if="[[title]]">
+					<div class="d2l-navigation-immersive-separator"></div>
+					<div class="d2l-navigation-immersive-middle">
+			    		<slot name="middle">
+							<p>[[title]]</p>
+						</slot>
+					</div>
+					<div class="d2l-navigation-immersive-separator"></div>
+				</template>
 				<div class="d2l-navigation-immersive-right">
 	    			<slot name="right"></slot>
 				</div>
