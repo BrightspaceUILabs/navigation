@@ -33,15 +33,15 @@ Polymer-based web component for the immersive navigation component
 			.d2l-navigation-immersive-left {
 				color: var(--d2l-color-tungsten);
 				font-size: 14px;
-				font-weight: 400;
-				letter-spacing: 0.2px;
 				line-height: 20px;
 				margin-right: 24px;
 			}
 
 			.d2l-navigation-immersive-left,
 			.d2l-navigation-immersive-middle {
+				font-weight: 400;
 				justify-content: left;
+				letter-spacing: 0.2px;
 			}
 
 			.d2l-navigation-immersive-left,
@@ -50,15 +50,17 @@ Polymer-based web component for the immersive navigation component
 				flex: 0 0 auto;
 			}
 
+			.d2l-navigation-immersive-middle,
+			.d2l-navigation-immersive-right {
+				overflow: hidden;
+			}
+
 			.d2l-navigation-immersive-middle {
 				display: flex;
 				flex: 0 1 auto;
 				font-size: 19px;
-				font-weight: 400;
-				letter-spacing: 0.2px;
 				line-height: 28px;
-				margin-left: 24px;
-				margin-right: 24px;
+				margin: 0px 24px 0 24px;
 				width: 100%
 			}
 
