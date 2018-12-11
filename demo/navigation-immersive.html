@@ -8,6 +8,8 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
+		<link rel="import" href="../d2l-navigation-button.html">
+		<link rel="import" href="../d2l-navigation-button-close.html">
 		<link rel="import" href="../d2l-navigation-immersive.html">
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -24,15 +26,28 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google" title="Course has a longer name">
-						<div slot="right">Right side takes as much space as it needs</div>
+						<div slot="right">
+							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
+							<d2l-navigation-button-close></d2l-navigation-button-close>
+							<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
+						</div>
 					</d2l-navigation-immersive>
 				</template>
 			</demo-snippet>
-			<h3>d2l-navigation-immersive no title</h3>
+			<h3>d2l-navigation-immersive (no title)</h3>
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google">
-						<div slot="right">Right side</div>
+						<div slot="right">
+							<d2l-navigation-button text="A third button">Three Button</d2l-navigation-button>
+						</div>
+					</d2l-navigation-immersive>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-immersive (no title, no right slot)</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google">
 					</d2l-navigation-immersive>
 				</template>
 			</demo-snippet>

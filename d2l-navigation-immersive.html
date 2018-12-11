@@ -13,16 +13,19 @@ Polymer-based web component for the immersive navigation component
 <dom-module id="d2l-navigation-immersive">
 	<template strip-whitespace>
 		<style>
-			:host {
-				display: block;
-			}
-
 			.d2l-navigation-immersive {
 				display: flex;
 				height: 66px;
 				justify-content: space-between;
 				margin: 0px 30px 0 30px;
 				max-width: 1230px;
+				overflow: hidden;
+			}
+
+			.d2l-navigation-immersive-left ::slotted(*),
+			.d2l-navigation-immersive-middle ::slotted(*),
+			.d2l-navigation-immersive-right ::slotted(*) {
+				height: 100%;
 			}
 
 			.d2l-navigation-immersive-left {
