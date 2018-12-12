@@ -25,7 +25,11 @@
 			<h3>d2l-navigation-immersive</h3>
 			<demo-snippet>
 				<template strip-whitespace>
-					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google" title="Course has a longer name">
+					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google">
+						<div slot="middle">
+							<p>Course has a longer name</p>
+							<p>Two names</p>
+						</div>
 						<div slot="right">
 							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
 							<d2l-navigation-button-close></d2l-navigation-button-close>

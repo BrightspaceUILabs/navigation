@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-fastdom-import/fastdom.html">
+<link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
 <link rel="import" href="d2l-navigation.html">
 <link rel="import" href="d2l-navigation-link-back.html">
 
@@ -46,18 +48,22 @@ Polymer-based web component for the immersive navigation component
 			}
 
 			.d2l-navigation-immersive-middle {
-				flex: 0 1 auto;
-				font-size: 19px;
-				line-height: 28px;
-				width: 100%
-			}
-
-			.d2l-navigation-immersive-separator {
 				border-left-color: var(--d2l-color-sylvite);
 				border-left-style: solid;
 				border-left-width: 1px;
-				flex: 0 0 auto;
+				border-right-color: var(--d2l-color-sylvite);
+				border-right-style: solid;
+				border-right-width: 1px;
+				flex: 0 1 auto;
+				font-size: 19px;
+				line-height: 28px;
 				margin: 0px 24px 0 24px;
+				padding: 0px 24px 0 24px;
+				width: 100%
+			}
+
+			.d2l-navigation-immersive-middle-hidden {
+				display: none;
 			}
 
 			@media (max-width: 767px) {
@@ -71,8 +77,9 @@ Polymer-based web component for the immersive navigation component
 					height: 60px;
 					margin: 0px 18px 0 18px;
 				}
-				.d2l-navigation-immersive-separator {
+				.d2l-navigation-immersive-middle {
 					margin: 0px 18px 0 18px;
+					padding: 0px 18px 0 18px;
 				}
 			}
 
@@ -81,9 +88,6 @@ Polymer-based web component for the immersive navigation component
 					margin-right: 36px;
 				}
 				.d2l-navigation-immersive-middle {
-					display: none;
-				}
-				.d2l-navigation-immersive-separator {
 					display: none;
 				}
 			}
@@ -95,15 +99,9 @@ Polymer-based web component for the immersive navigation component
 						<d2l-navigation-link-back text="[[backbuttontext]]" href="[[backbuttonhref]]"></d2l-navigation-link-back>
 					</slot>
 				</div>
-				<template is="dom-if" if="[[title]]">
-					<div class="d2l-navigation-immersive-separator"></div>
-					<div class="d2l-navigation-immersive-middle">
-			    		<slot name="middle">
-							<p>[[title]]</p>
-						</slot>
-					</div>
-					<div class="d2l-navigation-immersive-separator"></div>
-				</template>
+				<div class="d2l-navigation-immersive-middle">
+		    		<slot class="middle-slot" name="middle"></slot>
+				</div>
 				<div class="d2l-navigation-immersive-right">
 	    			<slot name="right"></slot>
 				</div>
@@ -113,6 +111,7 @@ Polymer-based web component for the immersive navigation component
 	<script>
 		Polymer({
 			is: 'd2l-navigation-immersive',
+
 			properties: {
 				backbuttonhref: {
 					type: String,
@@ -121,10 +120,49 @@ Polymer-based web component for the immersive navigation component
 				backbuttontext: {
 					type: String,
 					reflectToAttribute: true
-				},
-				title: {
-					type: String,
-					reflectToAttribute: true
+				}
+			},
+
+			ready: function() {
+				this._onMiddleResize = this._onMiddleResize.bind(this);
+			},
+
+			attached: function() {
+				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+				this._middleObserver = new ResizeObserver(this._onMiddleResize);
+				this._middleObserver.observe(middle);
+			},
+
+			detached: function() {
+				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+				if (this._middleObserver) {
+					this._middleObserver.unobserve(middle);
+				}
+			},
+
+			_onMiddleResize: function() {
+				var middleContainer = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+				var middleSlot = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle > slot').assignedNodes({flatten: true});
+
+				if (!middleSlot || middleSlot.length === 0) {
+					fastdom.mutate(function() {
+						// nothing in middle
+						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
+					});
+					return;
+				}
+				var elementInSlot = middleSlot[0];
+
+				if (elementInSlot.clientHeight < 1) {
+					fastdom.mutate(function() {
+						// nothing in middle
+						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
+					});
+				} else if (elementInSlot.clientHeight > 0) {
+					fastdom.mutate(function() {
+						// stuff in middle
+						middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
+					});
 				}
 			}
 		});
