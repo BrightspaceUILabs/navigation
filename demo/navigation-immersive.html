@@ -8,6 +8,7 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../../d2l-typography/d2l-typography.html">
+		<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 		<link rel="import" href="../d2l-navigation-button.html">
 		<link rel="import" href="../d2l-navigation-button-close.html">
 		<link rel="import" href="../d2l-navigation-immersive.html">
@@ -18,6 +19,9 @@
 			<style is="custom-style" include="d2l-typography"></style>
 		</custom-style>
 		<style>
+			html {
+				font-size: 20px;
+			}
 		</style>
 	</head>
 	<body unresolved class="d2l-typography">
@@ -26,7 +30,7 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-immersive backbuttonhref="https://www.google.ca" backbuttontext="Back to Google">
-						<div slot="middle">
+						<div class="d2l-typography d2l-body-standard" slot="middle">
 							<p>Course has a longer name</p>
 							<p>Two names</p>
 						</div>

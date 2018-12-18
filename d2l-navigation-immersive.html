@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <link rel="import" href="../d2l-fastdom-import/fastdom.html">
 <link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
 <link rel="import" href="d2l-navigation.html">
@@ -17,9 +18,9 @@ Polymer-based web component for the immersive navigation component
 		<style>
 			.d2l-navigation-immersive-container {
 				display: flex;
-				height: 66px;
+				height: 3.3rem;
 				justify-content: space-between;
-				margin: 0px 30px 0 30px;
+				margin: 0px 30px;
 				max-width: 1230px;
 				overflow: hidden;
 			}
@@ -32,13 +33,7 @@ Polymer-based web component for the immersive navigation component
 
 			.d2l-navigation-immersive-left {
 				color: var(--d2l-color-tungsten);
-				font-size: 14px;
-				line-height: 20px;
-			}
-
-			.d2l-navigation-immersive-left,
-			.d2l-navigation-immersive-middle {
-				font-weight: 400;
+				@apply --d2l-body-compact-text;
 				letter-spacing: 0.2px;
 			}
 
@@ -48,17 +43,11 @@ Polymer-based web component for the immersive navigation component
 			}
 
 			.d2l-navigation-immersive-middle {
-				border-left-color: var(--d2l-color-sylvite);
-				border-left-style: solid;
-				border-left-width: 1px;
-				border-right-color: var(--d2l-color-sylvite);
-				border-right-style: solid;
-				border-right-width: 1px;
+				border-left: 1px solid var(--d2l-color-sylvite);
+				border-right: 1px solid var(--d2l-color-sylvite);
 				flex: 0 1 auto;
-				font-size: 19px;
-				line-height: 28px;
-				margin: 0px 24px 0 24px;
-				padding: 0px 24px 0 24px;
+				margin: 0px 24px;
+				padding: 0px 24px;
 				width: 100%
 			}
 
@@ -66,20 +55,32 @@ Polymer-based web component for the immersive navigation component
 				display: none;
 			}
 
+			d2l-navigation-link-back {
+				--d2l-navigation-link-back-left-padding: 12px;
+			}
+
+			@media (max-width: 929px) {
+				.d2l-navigation-immersive-container {
+					margin: 0px 24px;
+				}
+			}
+
 			@media (max-width: 767px) {
-				.d2l-navigation-immersive {
-					margin: 0px 24px 0 24px;
+				.d2l-navigation-immersive-container {
+					margin: 0px 18px;
 				}
 			}
 
 			@media (max-width: 615px) {
-				.d2l-navigation-immersive {
-					height: 60px;
-					margin: 0px 18px 0 18px;
+				.d2l-navigation-immersive-container {
+					height: 3rem;
 				}
 				.d2l-navigation-immersive-middle {
-					margin: 0px 18px 0 18px;
-					padding: 0px 18px 0 18px;
+					margin: 0px 18px;
+					padding: 0px 18px;
+				}
+				d2l-navigation-link-back {
+					--d2l-navigation-link-back-left-padding: 6px;
 				}
 			}
 
@@ -100,7 +101,7 @@ Polymer-based web component for the immersive navigation component
 					</slot>
 				</div>
 				<div class="d2l-navigation-immersive-middle">
-		    		<slot class="middle-slot" name="middle"></slot>
+		    		<slot name="middle"></slot>
 				</div>
 				<div class="d2l-navigation-immersive-right">
 	    			<slot name="right"></slot>
