@@ -97,7 +97,7 @@ Polymer-based web component for the immersive navigation component
 			<div class="d2l-navigation-immersive-container">
 				<div class="d2l-navigation-immersive-left">
 					<slot name="left">
-						<d2l-navigation-link-back text="[[backbuttontext]]" href="[[backbuttonhref]]"></d2l-navigation-link-back>
+						<d2l-navigation-link-back text="[[backLinkText]]" href="[[backLinkHref]]"></d2l-navigation-link-back>
 					</slot>
 				</div>
 				<div class="d2l-navigation-immersive-middle">
@@ -114,11 +114,11 @@ Polymer-based web component for the immersive navigation component
 			is: 'd2l-navigation-immersive',
 
 			properties: {
-				backbuttonhref: {
+				backLinkHref: {
 					type: String,
 					reflectToAttribute: true
 				},
-				backbuttontext: {
+				backLinkText: {
 					type: String,
 					reflectToAttribute: true
 				}
