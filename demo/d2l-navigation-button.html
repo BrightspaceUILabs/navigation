@@ -26,68 +26,6 @@
 				margin: 0px 5px;
 			}
 		</style>
-		<script>
-			function ToggleNotification(e) {
-				var nButton = e.srcElement.parentNode.querySelector('#notified');
-				if (nButton.hasAttribute('notification')) {
-					nButton.removeAttribute('notification');
-				} else {
-					nButton.setAttribute('notification', '');
-				}
-			}
-			function ToggleBorders(e) {
-				var holder = e.srcElement.parentNode.querySelector('.button-holder');
-				for (var i = 0; i < holder.children.length; i++) {
-					var child = holder.children[i];
-					if (child.tagName.match(/d2l-navigation/i)) {
-						if (child.style.border) {
-							child.style.border = '';
-						} else {
-							child.style.border = 'black 1px solid';
-						}
-					}
-				}
-			}
-
-			var langCycle = [
-				'ar',
-				'de',
-				'en',
-				'es',
-				'fi',
-				'fr',
-				'ja',
-				'ko',
-				'nb',
-				'nl',
-				'pt',
-				'sv',
-				'tr',
-				'zh',
-				'zh-TW'
-			];
-			var currLang = 2;
-
-			function CycleLanguage() {
-				if (currLang >= langCycle.length - 1) {
-					currLang = 0;
-				} else {
-					currLang++;
-				}
-				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
-			}
-			function AssignClickEvent(className, handler) {
-				var elems = document.getElementsByClassName(className);
-				for (var i = 0; i < elems.length; i++) {
-					elems[i].addEventListener('click', handler);
-				}
-			}
-			window.onload = function() {
-				AssignClickEvent('notification-toggle', ToggleNotification);
-				AssignClickEvent('border-toggle', ToggleBorders);
-				AssignClickEvent('lang-cycle', CycleLanguage);
-			};
-		</script>
 	</head>
 	<body unresolved class="d2l-typography">
 		<div class="vertical-section-container centered">
@@ -144,5 +82,69 @@
 				</template>
 			</demo-snippet>
 		</div>
+		<script>
+			function ToggleNotification(e) {
+				var nButton = e.srcElement.parentNode.querySelector('#notified');
+				if (nButton.hasAttribute('notification')) {
+					nButton.removeAttribute('notification');
+				} else {
+					nButton.setAttribute('notification', '');
+				}
+			}
+			function ToggleBorders(e) {
+				var holder = e.srcElement.parentNode.querySelector('.button-holder');
+				for (var i = 0; i < holder.children.length; i++) {
+					var child = holder.children[i];
+					if (child.tagName.match(/d2l-navigation/i)) {
+						if (child.style.border) {
+							child.style.border = '';
+						} else {
+							child.style.border = 'black 1px solid';
+						}
+					}
+				}
+			}
+
+			var langCycle = [
+				'ar',
+				'de',
+				'en',
+				'es',
+				'fi',
+				'fr',
+				'ja',
+				'ko',
+				'nb',
+				'nl',
+				'pt',
+				'sv',
+				'tr',
+				'zh',
+				'zh-TW'
+			];
+			var currLang = 2;
+
+			function CycleLanguage() {
+				if (currLang >= langCycle.length - 1) {
+					currLang = 0;
+				} else {
+					currLang++;
+				}
+				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
+			}
+			function AssignClickEvent(className, handler) {
+				var elems = document.getElementsByClassName(className);
+				for (var i = 0; i < elems.length; i++) {
+					elems[i].addEventListener('click', handler);
+				}
+			}
+			window.addEventListener('WebComponentsReady', function() {
+				window.requestAnimationFrame(function() {
+					AssignClickEvent('notification-toggle', ToggleNotification);
+					AssignClickEvent('border-toggle', ToggleBorders);
+					AssignClickEvent('lang-cycle', CycleLanguage);
+				});
+			});
+		</script>
 	</body>
 </html>
