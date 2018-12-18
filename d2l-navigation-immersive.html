@@ -15,7 +15,7 @@ Polymer-based web component for the immersive navigation component
 <dom-module id="d2l-navigation-immersive">
 	<template strip-whitespace>
 		<style>
-			.d2l-navigation-immersive {
+			.d2l-navigation-immersive-container {
 				display: flex;
 				height: 66px;
 				justify-content: space-between;
@@ -93,7 +93,7 @@ Polymer-based web component for the immersive navigation component
 			}
 		</style>
 		<d2l-navigation>
-			<div class="d2l-navigation-immersive">
+			<div class="d2l-navigation-immersive-container">
 				<div class="d2l-navigation-immersive-left">
 					<slot name="left">
 						<d2l-navigation-link-back text="[[backbuttontext]]" href="[[backbuttonhref]]"></d2l-navigation-link-back>
