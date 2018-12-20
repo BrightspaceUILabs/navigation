@@ -9,16 +9,27 @@
 		<link rel="import" href="../d2l-navigation-immersive.html">
 	</head>
 	<body>
-		<test-fixture id="basic">
+		<test-fixture id="empty">
 			<template strip-whitespace>
 				<d2l-navigation-immersive></d2l-navigation-immersive>
+			</template>
+		</test-fixture>
+		<test-fixture id="backLinkOnly">
+			<template strip-whitespace>
+				<d2l-navigation-immersive back-link-href="https://www.google.ca" back-link-text="Back to Google"></d2l-navigation-immersive>
 			</template>
 		</test-fixture>
 		<script>
 			suite('d2l-navigation-immersive', function() {
 				test('instantiating the element works', function() {
-					var nav = fixture('basic');
+					var nav = fixture('empty');
 					assert.equal(nav.is, 'd2l-navigation-immersive');
+				});
+
+				test('back link initialized as expected', function() {
+					var nav = fixture('backLinkOnly');
+					assert.equal(nav.backLinkHref, 'https://www.google.ca');
+					assert.equal(nav.backLinkText, 'Back to Google');
 				});
 			});
 		</script>
