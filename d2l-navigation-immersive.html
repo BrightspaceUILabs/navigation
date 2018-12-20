@@ -146,20 +146,19 @@ Polymer-based web component for the immersive navigation component
 				}
 			},
 
-			_onMiddleResize: function(entries) {
-				if (!entries || entries.length === 0) {
-					return;
-				}
-
-				var entry = entries[0];
-				var middleSlot = entry.target.childNodes[0];
-
-				if (!middleSlot) {
-					return;
-				}
-
-				var slotContent = middleSlot.assignedNodes({flatten: true});
+			_onMiddleResize: function() {
 				var middleContainer = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+
+				var middleContainerHeight;
+				fastdom.measure(function() {
+					middleContainerHeight = middleContainer.clientHeight;
+				});
+
+				if (middleContainerHeight < 1) {
+					return;
+				}
+
+				var slotContent = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle > slot').assignedNodes({flatten: true});
 
 				if (!slotContent || slotContent.length === 0) {
 					fastdom.mutate(function() {
@@ -171,12 +170,17 @@ Polymer-based web component for the immersive navigation component
 
 				var elementInSlot = slotContent[0];
 
-				if (!elementInSlot || elementInSlot.clientHeight < 1) {
+				var slotHeight;
+				fastdom.measure(function() {
+					slotHeight = elementInSlot.clientHeight;
+				});
+
+				if (!elementInSlot || slotHeight < 1) {
 					fastdom.mutate(function() {
 						// nothing in middle
 						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
 					});
-				} else if (elementInSlot.clientHeight > 0) {
+				} else if (slotHeight > 0) {
 					fastdom.mutate(function() {
 						// stuff in middle
 						middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
