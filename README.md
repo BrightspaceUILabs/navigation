@@ -77,15 +77,11 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
 
 * `d2l-navigation-immersive.html`
-* `d2l-navigation.html`
-* `d2l-navigation-link-back.html`
 
 ```html
 <head>
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-immersive.html">
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation.html">
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-link-back.html">
 </head>
 ```
 
