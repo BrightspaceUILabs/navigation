@@ -16,7 +16,7 @@
 		</test-fixture>
 		<test-fixture id="back-link">
 			<template strip-whitespace>
-				<d2l-navigation-immersive back-link-href="https://www.google.ca" back-link-text="Back to Google"></d2l-navigation-immersive>
+				<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L"></d2l-navigation-immersive>
 			</template>
 		</test-fixture>
 		<script>
@@ -53,12 +53,12 @@
 					nav = fixture('back-link');
 				});
 				test('back link initializes correctly', function() {
-					assert.equal(nav.backLinkHref, 'https://www.google.ca');
-					assert.equal(nav.backLinkText, 'Back to Google');
+					assert.equal(nav.backLinkHref, 'https://www.d2l.com');
+					assert.equal(nav.backLinkText, 'Back to D2L');
 				});
 				test('back link values updates correctly', function() {
-					var newHref = 'https://www.d2l.com';
-					var newText = 'Back to D2L';
+					var newHref = 'https://www.nfl.com';
+					var newText = 'Back to da NFL';
 					nav.setAttribute('back-link-href', newHref);
 					nav.setAttribute('back-link-text', newText);
 					assert.equal(nav.backLinkHref, newHref);
