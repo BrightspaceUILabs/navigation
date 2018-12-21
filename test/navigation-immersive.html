@@ -14,7 +14,7 @@
 				<d2l-navigation-immersive></d2l-navigation-immersive>
 			</template>
 		</test-fixture>
-		<test-fixture id="backLinkOnly">
+		<test-fixture id="back-link">
 			<template strip-whitespace>
 				<d2l-navigation-immersive back-link-href="https://www.google.ca" back-link-text="Back to Google"></d2l-navigation-immersive>
 			</template>
@@ -24,12 +24,45 @@
 				test('instantiating the element works', function() {
 					var nav = fixture('empty');
 					assert.equal(nav.is, 'd2l-navigation-immersive');
-				});
 
-				test('back link initialized as expected', function() {
-					var nav = fixture('backLinkOnly');
+					var margin = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
+					expect(margin).to.not.be.null;
+					assert.equal(margin.tagName, 'DIV');
+
+					var container = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-container');
+					expect(container).to.not.be.null;
+					assert.equal(container.tagName, 'DIV');
+
+					var left = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-left');
+					expect(left).to.not.be.null;
+					assert.equal(left.tagName, 'DIV');
+
+					var middle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle');
+					expect(middle).to.not.be.null;
+					assert.equal(middle.tagName, 'DIV');
+
+					var right = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-right');
+					expect(right).to.not.be.null;
+					assert.equal(right.tagName, 'DIV');
+				});
+			});
+
+			suite('d2l-navigation-immersive with back link', function() {
+				var nav;
+				setup(function() {
+					nav = fixture('back-link');
+				});
+				test('back link initializes correctly', function() {
 					assert.equal(nav.backLinkHref, 'https://www.google.ca');
 					assert.equal(nav.backLinkText, 'Back to Google');
+				});
+				test('back link values updates correctly', function() {
+					var newHref = 'https://www.d2l.com';
+					var newText = 'Back to D2L';
+					nav.setAttribute('back-link-href', newHref);
+					nav.setAttribute('back-link-text', newText);
+					assert.equal(nav.backLinkHref, newHref);
+					assert.equal(nav.backLinkText, newText);
 				});
 			});
 		</script>
