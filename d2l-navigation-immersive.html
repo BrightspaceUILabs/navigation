@@ -1,8 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <link rel="import" href="../d2l-fastdom-import/fastdom.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-dom.html">
 <link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
+<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <link rel="import" href="d2l-navigation.html">
 <link rel="import" href="d2l-navigation-link-back.html">
 
@@ -157,13 +158,10 @@ Polymer-based web component for the immersive navigation component
 
 				var slotElement = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle > slot');
 				var slotContent = [];
-
-				if (slotElement && slotElement.tagName === 'SLOT') {
-					// Polymer 2
-					slotContent = slotElement.assignedNodes({flatten: true});
+				if (slotElement) {
+					slotContent = D2L.Dom.getComposedChildren(slotElement);
 				} else {
-					// Polymer 1
-					slotContent = middleContainer.childNodes;
+					slotContent = D2L.Dom.getComposedChildren(middleContainer);
 				}
 
 				if (!slotContent || slotContent.length === 0) {

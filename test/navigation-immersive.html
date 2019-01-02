@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-immersive test</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-navigation-immersive.html">
+	</head>
+	<body>
+		<test-fixture id="empty">
+			<template strip-whitespace>
+				<d2l-navigation-immersive></d2l-navigation-immersive>
+			</template>
+		</test-fixture>
+		<test-fixture id="back-link">
+			<template strip-whitespace>
+				<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L"></d2l-navigation-immersive>
+			</template>
+		</test-fixture>
+		<test-fixture id="middle-slot-with-content">
+			<template strip-whitespace>
+				<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
+					<div slot="middle">
+						<p>Economics 101</p>
+					</div>
+				</d2l-navigation-immersive>
+			</template>
+		</test-fixture>
+		<script>
+			suite('d2l-navigation-immersive', function() {
+				var nav;
+				setup(function() {
+					nav = fixture('empty');
+				});
+				test('instantiating the element works', function() {
+					assert.equal(nav.is, 'd2l-navigation-immersive');
+
+					var margin = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
+					expect(margin).to.not.be.null;
+					assert.equal(margin.tagName, 'DIV');
+
+					var container = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-container');
+					expect(container).to.not.be.null;
+					assert.equal(container.tagName, 'DIV');
+
+					var left = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-left');
+					expect(left).to.not.be.null;
+					assert.equal(left.tagName, 'DIV');
+
+					var middle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle');
+					expect(middle).to.not.be.null;
+					assert.equal(middle.tagName, 'DIV');
+
+					var right = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-right');
+					expect(right).to.not.be.null;
+					assert.equal(right.tagName, 'DIV');
+				});
+
+				test('hidden class applied when element is resized', function(done) {
+					nav._onMiddleResize();
+
+					flush(function() {
+						var hiddenMiddle = Polymer.dom(nav.root).querySelector('[class*=\'d2l-navigation-immersive-middle-hidden\']');
+						expect(hiddenMiddle).to.not.be.null;
+
+						done();
+					});
+				});
+			});
+
+			suite('d2l-navigation-immersive with back link', function() {
+				var nav;
+				setup(function() {
+					nav = fixture('back-link');
+				});
+				test('back link initializes correctly', function() {
+					assert.equal(nav.backLinkHref, 'https://www.d2l.com');
+					assert.equal(nav.backLinkText, 'Back to D2L');
+				});
+				test('back link values updates correctly', function() {
+					var newHref = 'https://www.nfl.com';
+					var newText = 'Back to da NFL';
+					nav.setAttribute('back-link-href', newHref);
+					nav.setAttribute('back-link-text', newText);
+					assert.equal(nav.backLinkHref, newHref);
+					assert.equal(nav.backLinkText, newText);
+				});
+			});
+
+			suite('d2l-navigation-immersive with content in middle slot', function() {
+				test('hidden class not present when middle slot has content', function() {
+					var nav = fixture('middle-slot-with-content');
+
+					var hiddenMiddle = Polymer.dom(nav.root).querySelector('[class*=\'d2l-navigation-immersive-middle-hidden\']');
+					expect(hiddenMiddle).to.be.null;
+				});
+			});
+		</script>
+	</body>
+</html>

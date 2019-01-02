@@ -72,6 +72,57 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
+### d2l-navigation-immersive
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
+
+* `d2l-navigation-immersive.html`
+
+```html
+<head>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-immersive.html">
+</head>
+```
+
+Then add the `d2l-navigation-immersive`, providing values for the `backLinkHref` & `backLinkText`. Additionally, you may override any of the 3 slots (`left`, `middle`, `right`).
+Please note that overridding the `left` slot will prevent the Back link from displaying. This should only be done in very specialized cases.
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-colors/d2l-colors.html">
+    <link rel="import" href="d2l-navigation-immersive.html">
+    <custom-style include="d2l-typography">
+      <style is="custom-style" include="d2l-typography"></style>
+    </custom-style>
+    <style>
+      html {
+        font-size: 20px;
+        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
+	<div class="d2l-typography d2l-body-standard" slot="middle">
+		<p>Economics 101</p>
+	</div>
+	<div slot="right">
+		<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
+		<d2l-navigation-button-close></d2l-navigation-button-close>
+		<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
+	</div>
+</d2l-navigation-immersive>
+```
+
 ## Secondary Components
 
 > These are the components that make up the Primary Components. There might be an edge case or two where it makes sense to use one of these in isolation,
