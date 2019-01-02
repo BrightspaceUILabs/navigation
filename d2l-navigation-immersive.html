@@ -6,6 +6,7 @@
 <link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <link rel="import" href="d2l-navigation.html">
 <link rel="import" href="d2l-navigation-link-back.html">
+<link rel="import" href="d2l-navigation-shared-styles.html">
 
 <!--
 `d2l-navigation-immersive`
@@ -16,8 +17,17 @@ Polymer-based web component for the immersive navigation component
 
 <dom-module id="d2l-navigation-immersive">
 	<template strip-whitespace>
-		<style>
+		<style include="d2l-navigation-shared-styles">
+			.d2l-navigiation-immersive-fixed {
+				background-color: white;
+				left: 0px;
+				position: fixed;
+				right: 0px;
+				top: 0px;
+				z-index: 1;
+			}
 			d2l-navigation {
+				--d2l-navigation-shadow-gradient-display: none;
 				border-bottom: 1px solid var(--d2l-color-mica);
 			}
 			.d2l-navigation-immersive-margin {
@@ -72,6 +82,13 @@ Polymer-based web component for the immersive navigation component
 				--d2l-navigation-link-back-left-padding: 12px;
 			}
 
+			.d2l-navigation-shadow-gradient {
+				left: 0px;
+				position: fixed;
+				right: 0px;
+				top: 3.1rem;
+			}
+
 			@media (max-width: 929px) {
 				.d2l-navigation-immersive-margin {
 					margin: 0px 24px;
@@ -88,6 +105,9 @@ Polymer-based web component for the immersive navigation component
 				.d2l-navigation-immersive-container {
 					height: 2.8rem;
 				}
+				.d2l-navigation-shadow-gradient {
+					top: 2.8rem;
+				}
 				.d2l-navigation-immersive-middle {
 					margin: 0px 18px;
 					padding: 0px 18px;
@@ -96,24 +116,28 @@ Polymer-based web component for the immersive navigation component
 					--d2l-navigation-link-back-left-padding: 6px;
 				}
 			}
+
 		</style>
-		<d2l-navigation>
-			<div class="d2l-navigation-immersive-margin">
-				<div class="d2l-navigation-immersive-container">
-					<div class="d2l-navigation-immersive-left">
-						<slot name="left">
-							<d2l-navigation-link-back text="[[backLinkText]]" href="[[backLinkHref]]"></d2l-navigation-link-back>
-						</slot>
-					</div>
-					<div class="d2l-navigation-immersive-middle">
-			    		<slot name="middle"></slot>
-					</div>
-					<div class="d2l-navigation-immersive-right">
-		    			<slot name="right"></slot>
+		<div class="d2l-navigiation-immersive-fixed">
+			<d2l-navigation>
+				<div class="d2l-navigation-immersive-margin">
+					<div class="d2l-navigation-immersive-container">
+						<div class="d2l-navigation-immersive-left">
+							<slot name="left">
+								<d2l-navigation-link-back text="[[backLinkText]]" href="[[backLinkHref]]"></d2l-navigation-link-back>
+							</slot>
+						</div>
+						<div class="d2l-navigation-immersive-middle">
+				    		<slot name="middle"></slot>
+						</div>
+						<div class="d2l-navigation-immersive-right">
+			    			<slot name="right"></slot>
+						</div>
 					</div>
 				</div>
-			</div>
-		</d2l-navigation>
+			</d2l-navigation>
+		</div>
+		<div class="d2l-navigation-shadow-gradient"></div>
 	</template>
 	<script>
 		Polymer({
