@@ -55,6 +55,7 @@
 					<button class="notification-toggle">Toggle notification</button>
 					<button class="border-toggle">Toggle borders</button>
 					<button class="lang-cycle">Cycle language</button>
+					<button class="focus-button">Focus</button>
 				</template>
 			</demo-snippet>
 			<h3>d2l-navigation-link</h3>
@@ -79,6 +80,7 @@
 					<br/>
 					<button class="border-toggle">Toggle borders</button>
 					<button class="lang-cycle">Cycle language</button>
+					<button class="focus-link">Focus</button>
 				</template>
 			</demo-snippet>
 		</div>
@@ -132,6 +134,12 @@
 				}
 				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
 			}
+			function FocusButton() {
+				document.querySelector('d2l-navigation-button').focus();
+			}
+			function FocusLink() {
+				document.querySelector('d2l-navigation-link-back').focus();
+			}
 			function AssignClickEvent(className, handler) {
 				var elems = document.getElementsByClassName(className);
 				for (var i = 0; i < elems.length; i++) {
@@ -142,7 +150,8 @@
 				window.requestAnimationFrame(function() {
 					AssignClickEvent('notification-toggle', ToggleNotification);
 					AssignClickEvent('border-toggle', ToggleBorders);
-					AssignClickEvent('lang-cycle', CycleLanguage);
+					AssignClickEvent('focus-button', FocusButton);
+					AssignClickEvent('focus-link', FocusLink);
 				});
 			});
 		</script>
