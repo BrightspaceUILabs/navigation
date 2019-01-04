@@ -18,6 +18,10 @@ Polymer-based web component for the immersive navigation component
 <dom-module id="d2l-navigation-immersive">
 	<template strip-whitespace>
 		<style include="d2l-navigation-shared-styles">
+			:host {
+				--d2l-navigation-immersive-height-main: 3.1rem;
+				--d2l-navigation-immersive-height-responsive: 2.8rem;
+			}
 			.d2l-navigiation-immersive-fixed {
 				background-color: white;
 				left: 0;
@@ -36,7 +40,7 @@ Polymer-based web component for the immersive navigation component
 
 			.d2l-navigation-immersive-container {
 				display: flex;
-				height: 3.1rem;
+				height: var(--d2l-navigation-immersive-height-main);
 				justify-content: space-between;
 				margin: 0 -7px;
 				max-width: 1230px;
@@ -82,11 +86,19 @@ Polymer-based web component for the immersive navigation component
 				--d2l-navigation-link-back-left-padding: 12px;
 			}
 
+			.d2l-navigation-immersive-spacing {
+				display: block;
+				height: calc(var(--d2l-navigation-immersive-height-main) + 5px);
+				margin: 0;
+				position: unset;
+				width: 100%;
+			}
+
 			.d2l-navigation-shadow-gradient {
 				left: 0;
 				position: fixed;
 				right: 0;
-				top: 3.1rem;
+				top: calc(var(--d2l-navigation-immersive-height-main) + 5px);
 			}
 
 			@media (max-width: 929px) {
@@ -103,10 +115,13 @@ Polymer-based web component for the immersive navigation component
 
 			@media (max-width: 615px) {
 				.d2l-navigation-immersive-container {
-					height: 2.8rem;
+					height: var(--d2l-navigation-immersive-height-responsive);
+				}
+				.d2l-navigation-immersive-spacing {
+					height: calc(var(--d2l-navigation-immersive-height-responsive) + 5px);
 				}
 				.d2l-navigation-shadow-gradient {
-					top: 2.8rem;
+					top: calc(var(--d2l-navigation-immersive-height-responsive) + 5px);
 				}
 				.d2l-navigation-immersive-middle {
 					margin: 0 18px;
@@ -137,6 +152,7 @@ Polymer-based web component for the immersive navigation component
 				</div>
 			</d2l-navigation>
 		</div>
+		<div class="d2l-navigation-immersive-spacing"></div>
 		<div class="d2l-navigation-shadow-gradient"></div>
 	</template>
 	<script>
