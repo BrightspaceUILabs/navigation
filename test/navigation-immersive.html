@@ -14,12 +14,12 @@
 				<d2l-navigation-immersive></d2l-navigation-immersive>
 			</template>
 		</test-fixture>
-		<test-fixture id="back-link">
+		<test-fixture id="backLink">
 			<template strip-whitespace>
 				<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L"></d2l-navigation-immersive>
 			</template>
 		</test-fixture>
-		<test-fixture id="middle-slot-with-content">
+		<test-fixture id="middleSlotWithContent">
 			<template strip-whitespace>
 				<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 					<div slot="middle">
@@ -30,11 +30,8 @@
 		</test-fixture>
 		<script>
 			suite('d2l-navigation-immersive', function() {
-				var nav;
-				setup(function() {
-					nav = fixture('empty');
-				});
 				test('instantiating the element works', function() {
+					var nav = fixture('empty');
 					assert.equal(nav.is, 'd2l-navigation-immersive');
 
 					var margin = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
@@ -59,6 +56,7 @@
 				});
 
 				test('hidden class applied when element is resized', function(done) {
+					var nav = fixture('empty');
 					nav._onMiddleResize();
 
 					flush(function() {
@@ -71,15 +69,13 @@
 			});
 
 			suite('d2l-navigation-immersive with back link', function() {
-				var nav;
-				setup(function() {
-					nav = fixture('back-link');
-				});
 				test('back link initializes correctly', function() {
+					var nav = fixture('backLink');
 					assert.equal(nav.backLinkHref, 'https://www.d2l.com');
 					assert.equal(nav.backLinkText, 'Back to D2L');
 				});
 				test('back link values updates correctly', function() {
+					var nav = fixture('backLink');
 					var newHref = 'https://www.nfl.com';
 					var newText = 'Back to da NFL';
 					nav.setAttribute('back-link-href', newHref);
@@ -91,7 +87,7 @@
 
 			suite('d2l-navigation-immersive with content in middle slot', function() {
 				test('hidden class not present when middle slot has content', function() {
-					var nav = fixture('middle-slot-with-content');
+					var nav = fixture('middleSlotWithContent');
 
 					var hiddenMiddle = Polymer.dom(nav.root).querySelector('[class*=\'d2l-navigation-immersive-middle-hidden\']');
 					expect(hiddenMiddle).to.be.null;
