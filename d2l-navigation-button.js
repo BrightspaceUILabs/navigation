@@ -58,7 +58,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 			.d2l-offscreen-description {
 				@apply --d2l-offscreen;
 			}
-			:host-context([dir="rtl"]) .d2l-offscreen-description,
 			:host(:dir(rtl)) .d2l-offscreen-description {
 				@apply --d2l-offscreen-rtl;
 			}
@@ -69,7 +68,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 		</button>
 		<span id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</span>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);

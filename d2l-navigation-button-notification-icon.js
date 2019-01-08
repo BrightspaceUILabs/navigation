@@ -43,7 +43,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 				top: calc(-50% + 11px);
 				width: 100%;
 			}
-			:host-context([dir="rtl"]) .d2l-navigation-button-notification-indicator,
 			:host(:dir(rtl)) .d2l-navigation-button-notification-indicator {
 				left: calc(-50% - 4px);
 				right: auto;
@@ -65,7 +64,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 			</span>
 		</d2l-navigation-button>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
