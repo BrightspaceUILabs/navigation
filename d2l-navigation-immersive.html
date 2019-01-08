@@ -187,7 +187,6 @@ Polymer-based web component for the immersive navigation component
 				} else {
 					slotContent = D2L.Dom.getComposedChildren(middleContainer);
 				}
-
 				if (!slotContent || slotContent.length === 0) {
 					fastdom.mutate(function() {
 						// nothing in middle
@@ -197,22 +196,17 @@ Polymer-based web component for the immersive navigation component
 				}
 
 				var elementInSlot = slotContent[0];
-
-				fastdom.measure(function() {
-					var slotHeight = elementInSlot.clientHeight;
-
-					if (!elementInSlot || slotHeight < 1) {
-						fastdom.mutate(function() {
-							// nothing in middle
-							middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
-						});
-					} else if (slotHeight > 0) {
-						fastdom.mutate(function() {
-							// stuff in middle
-							middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
-						});
-					}
-				});
+				if (!elementInSlot) {
+					fastdom.mutate(function() {
+						// nothing in middle
+						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
+					});
+				} else {
+					fastdom.mutate(function() {
+						// stuff in middle
+						middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
+					});
+				}
 			}
 		});
 	</script>
