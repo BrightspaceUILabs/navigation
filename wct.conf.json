@@ -26,7 +26,7 @@
         {
           "browserName": "microsoftedge",
           "platform": "Windows 10",
-          "version": "30"
+          "version": "18"
         },
         {
           "browserName": "internet explorer",
