@@ -75,7 +75,7 @@ Polymer-based web component for the immersive navigation component
 				flex: 0 1 auto;
 				margin: 0 24px;
 				padding: 0 24px;
-				width: 100%
+				width: 100%;
 			}
 
 			.d2l-navigation-immersive-middle-hidden {
@@ -212,14 +212,24 @@ Polymer-based web component for the immersive navigation component
 				var elementInSlot = slotContent[0];
 
 				fastdom.measure(function() {
-					var slotHeight = elementInSlot.clientHeight;
+					// Internet Explorer 6-11
+					var isIE = /*@cc_on!@*/false || !!document.documentMode;
+					// Edge 20+
+					var isEdge = !isIE && !!window.StyleMedia;
+
+					var slotHeight;
+					if (isEdge) {
+						slotHeight = elementInSlot.height; // Edge doesn't recognize clientHeight
+					} else {
+						slotHeight = elementInSlot.clientHeight;
+					}
 
 					if (!elementInSlot || slotHeight < 1) {
 						fastdom.mutate(function() {
 							// nothing in middle
 							middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
 						});
-					} else if (slotHeight > 0) {
+					} else if (slotHeight) {
 						fastdom.mutate(function() {
 							// stuff in middle
 							middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
