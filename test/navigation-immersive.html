@@ -44,7 +44,9 @@
 						requestAnimationFrame(function() {
 							requestAnimationFrame(function() {
 								requestAnimationFrame(function() {
-									cb();
+									window.setTimeout(function() {
+										cb();
+									}, 200);
 								});
 							});
 						});
