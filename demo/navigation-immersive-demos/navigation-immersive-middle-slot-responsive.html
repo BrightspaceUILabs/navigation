@@ -40,7 +40,7 @@
 				margin: 0 20px;
 			}
 			@media (max-width: 700px) {
-				.d2l-responsive {
+				#middle.d2l-responsive[slot="middle"] {
 					display: none;
 				}
 			}
@@ -51,7 +51,7 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
-						<div class="d2l-typography d2l-body-standard d2l-responsive" slot="middle">
+						<div id="middle" class="d2l-typography d2l-body-standard d2l-responsive" slot="middle">
 							<p>Economics 101</p>
 						</div>
 						<div slot="right">
