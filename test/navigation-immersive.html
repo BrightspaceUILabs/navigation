@@ -82,8 +82,8 @@
 				});
 
 				test('hidden class applied when element has no middle slot content', function() {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.not.be.null;
+					var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+					expect(hiddenMiddle).to.not.be.null;
 				});
 			});
 
@@ -121,7 +121,7 @@
 					var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 					expect(hiddenMiddle).to.be.null;
 
-					var middleContent = Polymer.dom(nav).querySelector("#middle");
+					var middleContent = Polymer.dom(nav).querySelector('#middle');
 					middleContent.style.display = 'none';
 
 					raf(function() {
@@ -141,11 +141,11 @@
 						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 						expect(hiddenMiddle).to.not.be.null;
 					});
-					test('hidden class remvoed when content in middle slot is re-shown', function(done) {
+					test('hidden class removed when content in middle slot is re-shown', function(done) {
 						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 						expect(hiddenMiddle).to.not.be.null;
 
-						var middleContent = Polymer.dom(nav).querySelector("#middle-hidden");
+						var middleContent = Polymer.dom(nav).querySelector('#middle-hidden');
 						middleContent.style.display = 'block';
 
 						raf(function() {
