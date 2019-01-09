@@ -15,6 +15,12 @@ Polymer-based web component for buttons used in the navigational header.
 <dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
 		<style is="custom-style" include="d2l-navigation-highlight-styles">
+
+			:host {
+				display: inline-block;
+				height: 100%;
+			}
+
 			:host([disabled]) button {
 				@apply --d2l-navigation-highlight-disabled;
 			}
