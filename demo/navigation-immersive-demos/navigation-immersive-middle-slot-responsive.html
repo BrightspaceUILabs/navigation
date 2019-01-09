@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-immersive demo</title>
+		<script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../../../d2l-typography/d2l-typography.html">
+		<link rel="import" href="../../../d2l-typography/d2l-typography-shared-styles.html">
+		<link rel="import" href="../../d2l-navigation-button.html">
+		<link rel="import" href="../../d2l-navigation-button-close.html">
+		<link rel="import" href="../../d2l-navigation-immersive.html">
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+				body {
+					background-color: pink;
+					padding: 0;
+				}
+				demo-snippet {
+					--demo-snippet-demo: {
+						background-color: transparent;
+						padding: 0;
+					}
+				}
+			</style>
+		</custom-style>
+		<custom-style include="d2l-typography">
+			<style is="custom-style" include="d2l-typography"></style>
+		</custom-style>
+		<style>
+			html {
+				font-size: 20px;
+			}
+			body {
+				overflow-x: hidden;
+			}
+			.page-contents {
+				margin: 0 20px;
+			}
+			@media (max-width: 700px) {
+				.d2l-responsive {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body unresolved class="d2l-typography">
+		<div class="vertical-section-container centered" style="max-width: 900px;">
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
+						<div class="d2l-typography d2l-body-standard d2l-responsive" slot="middle">
+							<p>Economics 101</p>
+						</div>
+						<div slot="right">
+							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
+							<d2l-navigation-button-close></d2l-navigation-button-close>
+							<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
+						</div>
+					</d2l-navigation-immersive>
+					<div class="page-contents">
+						<p>First Item in Page Content</p>
+						<p>Page Contents</p>
+						<p>Page Contents</p>
+						<p>Page Contents</p>
+						<p>Page Contents</p>
+					</div>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
+</html>
