@@ -197,16 +197,20 @@ Polymer-based web component for the immersive navigation component
 				var entry = entries[0];
 				var middleContainer = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
 
-				if (entry.contentRect.height > 0) {
-					fastdom.mutate(function() {
-						// stuff in middle
-						middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
-					});
-				} else if (entry.contentRect.height === 0) {
-					fastdom.mutate(function() {
-						// nothing in middle
-						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
-					});
+				if (entry.contentRect.height < 1) {
+					// nothing in middle
+					if (!middleContainer.classList.contains('d2l-navigation-immersive-middle-hidden')) {
+						fastdom.mutate(function() {
+							middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
+						});
+					}
+				} else {
+					// stuff in middle
+					if (middleContainer.classList.contains('d2l-navigation-immersive-middle-hidden')) {
+						fastdom.mutate(function() {
+							middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
+						});
+					}
 				}
 			}
 		});
