@@ -15,46 +15,62 @@ Polymer-based web component for buttons used in the navigational header.
 <dom-module id="d2l-navigation-button">
 	<template strip-whitespace>
 		<style is="custom-style" include="d2l-navigation-highlight-styles">
-			:host([disabled]) button {
-				@apply --d2l-navigation-highlight-disabled;
+
+			:host {
+				display: inline-block;
+				height: 100%;
 			}
-			:host(:not([disabled])) button:hover,
-			:host(:not([disabled])) button:focus,
+
+			:host button ::slotted(*) {
+				pointer-events: none;
+			}
+
+			:host button:hover,
+			:host button:focus,
 			/* ::slotted styles for Polymer 2.0 */
-			:host(:not([disabled])) button:hover ::slotted(*),
-			:host(:not([disabled])) button:focus ::slotted(*)
-			{
+			:host button:hover ::slotted(*),
+			:host button:focus ::slotted(*) {
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
+
 			/*
 				::slotted styles for Polymer 1.0; styling all slotted children needs
 				to be applied explicitely.
 				This cannot be combined with the style block above, as this is not
 				valid in 2.0 and as such the entire block gets ignored.
 			*/
-			:host(:not([disabled])) button:hover ::slotted(*) *,
-			:host(:not([disabled])) button:focus ::slotted(*) *
-			{
+			:host button:hover ::slotted(*) *,
+			:host button:focus ::slotted(*) * {
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
-			:host(:not([disabled])) button:hover .d2l-navigation-button-top-border,
-			:host(:not([disabled])) button:focus .d2l-navigation-button-top-border {
+
+			:host button:hover .d2l-navigation-button-top-border,
+			:host button:focus .d2l-navigation-button-top-border {
 				@apply --d2l-navigation-highlight-border-hover-focus;
 			}
+
 			button {
 				@apply --d2l-navigation-highlight-base;
 				font-family: inherit;
 			}
+
 			.d2l-navigation-button-top-border {
 				@apply --d2l-navigation-highlight-border;
 			}
+
 			.d2l-offscreen-description {
 				@apply --d2l-offscreen;
 			}
+
 			:host-context([dir="rtl"]) .d2l-offscreen-description,
 			:host(:dir(rtl)) .d2l-offscreen-description {
 				@apply --d2l-offscreen-rtl;
 			}
+
+			:host([disabled]) button {
+				@apply --d2l-navigation-highlight-disabled;
+			}
+
 		</style>
 		<button
 			aria-describedby$="[[_ariaDescriptionId]]"
