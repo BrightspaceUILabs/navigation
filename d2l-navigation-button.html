@@ -21,6 +21,11 @@ Polymer-based web component for buttons used in the navigational header.
 				height: 100%;
 			}
 
+			/* Firefox includes a hidden border which messes up button dimensions */
+			:host button::-moz-focus-inner {
+				border: 0;
+			}
+
 			:host button ::slotted(*) {
 				pointer-events: none;
 			}

@@ -92,7 +92,7 @@
 		</div>
 		<script>
 			function ToggleNotification(e) {
-				var nButton = e.srcElement.parentNode.querySelector('#notified');
+				var nButton = e.target.parentNode.querySelector('#notified');
 				if (nButton.hasAttribute('notification')) {
 					nButton.removeAttribute('notification');
 				} else {
@@ -100,7 +100,7 @@
 				}
 			}
 			function ToggleBorders(e) {
-				var holder = e.srcElement.parentNode.querySelector('.button-holder');
+				var holder = e.target.parentNode.querySelector('.button-holder');
 				for (var i = 0; i < holder.children.length; i++) {
 					var child = holder.children[i];
 					if (child.tagName.match(/d2l-navigation/i)) {
