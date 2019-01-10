@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-immersive demo</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography-shared-styles.html">
+		<link rel="import" href="../d2l-navigation-button.html">
+		<link rel="import" href="../d2l-navigation-button-close.html">
+		<link rel="import" href="../d2l-navigation-immersive.html">
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles"></style>
+		</custom-style>
+		<custom-style include="d2l-typography">
+			<style is="custom-style" include="d2l-typography"></style>
+		</custom-style>
+		<style>
+			html {
+				font-size: 20px;
+			}
+			iframe {
+				width: 100%;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body unresolved class="d2l-typography">
+		<div>
+			<h3>d2l-navigation-immersive</h3>
+			<iframe src="./navigation-immersive-demos/navigation-immersive-all-slots.html"></iframe>
+
+			<h3>d2l-navigation-immersive (consumer hides the middle slot at 700px)</h3>
+			<iframe src="./navigation-immersive-demos/navigation-immersive-middle-slot-responsive.html"></iframe>
+
+			<h3>d2l-navigation-immersive (no middle slot)</h3>
+			<iframe src="./navigation-immersive-demos/navigation-immersive-no-middle-slot.html"></iframe>
+
+			<h3>d2l-navigation-immersive (no middle slot, no right slot)</h3>
+			<iframe src="./navigation-immersive-demos/navigation-immersive-no-slots.html"></iframe>
+		</div>
+	</body>
+</html>

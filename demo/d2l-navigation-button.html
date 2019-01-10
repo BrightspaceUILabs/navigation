@@ -26,9 +26,73 @@
 				margin: 0px 5px;
 			}
 		</style>
+	</head>
+	<body unresolved class="d2l-typography">
+		<div class="vertical-section-container centered">
+			<h3>d2l-navigation-button</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<style>
+						.button-holder {
+							height: 90px;
+						}
+
+						.button-holder :first-child {
+							margin-left: 0;
+						}
+
+						d2l-navigation-button,
+						d2l-navigation-button-notification-icon,
+						d2l-navigation-button-image,
+						d2l-navigation-button-close {
+							margin: 0px 5px;
+						}
+					</style>
+					<d2l-navigation-band></d2l-navigation-band>
+					<div class="button-holder">
+						<d2l-navigation-button><span><d2l-icon icon="d2l-tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
+						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="This text will not be added"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon notification icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-close></d2l-navigation-button-close>
+						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-close disabled></d2l-navigation-button-close>
+					</div>
+					<br/>
+					<button class="notification-toggle">Toggle notification</button>
+					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
+					<button class="focus-button">Focus</button>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-link</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<style>
+						.button-holder {
+							height: 90px;
+						}
+						d2l-navigation-link-back,
+						d2l-navigation-link-image {
+							margin: 0px 5px;
+						}
+					</style>
+					<d2l-navigation-band></d2l-navigation-band>
+					<div class="button-holder">
+						<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-back href="https://www.example.org"></d2l-navigation-link-back>
+						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org" text="alt text"></d2l-navigation-link-image>
+						<d2l-navigation-link-image src="./logo-image.png" text="alt text"></d2l-navigation-link-image>
+					</div>
+					<br/>
+					<button class="border-toggle">Toggle borders</button>
+					<button class="lang-cycle">Cycle language</button>
+					<button class="focus-link">Focus</button>
+				</template>
+			</demo-snippet>
+		</div>
 		<script>
 			function ToggleNotification(e) {
-				var nButton = e.srcElement.parentNode.querySelector('#notified');
+				var nButton = e.target.parentNode.querySelector('#notified');
 				if (nButton.hasAttribute('notification')) {
 					nButton.removeAttribute('notification');
 				} else {
@@ -36,7 +100,7 @@
 				}
 			}
 			function ToggleBorders(e) {
-				var holder = e.srcElement.parentNode.querySelector('.button-holder');
+				var holder = e.target.parentNode.querySelector('.button-holder');
 				for (var i = 0; i < holder.children.length; i++) {
 					var child = holder.children[i];
 					if (child.tagName.match(/d2l-navigation/i)) {
@@ -76,72 +140,27 @@
 				}
 				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
 			}
+			function FocusButton() {
+				document.querySelector('d2l-navigation-button').focus();
+			}
+			function FocusLink() {
+				document.querySelector('d2l-navigation-link-back').focus();
+			}
 			function AssignClickEvent(className, handler) {
 				var elems = document.getElementsByClassName(className);
 				for (var i = 0; i < elems.length; i++) {
 					elems[i].addEventListener('click', handler);
 				}
 			}
-			window.onload = function() {
-				AssignClickEvent('notification-toggle', ToggleNotification);
-				AssignClickEvent('border-toggle', ToggleBorders);
-				AssignClickEvent('lang-cycle', CycleLanguage);
-			};
+			window.addEventListener('WebComponentsReady', function() {
+				window.requestAnimationFrame(function() {
+					AssignClickEvent('notification-toggle', ToggleNotification);
+					AssignClickEvent('border-toggle', ToggleBorders);
+					AssignClickEvent('lang-cycle', CycleLanguage);
+					AssignClickEvent('focus-button', FocusButton);
+					AssignClickEvent('focus-link', FocusLink);
+				});
+			});
 		</script>
-	</head>
-	<body unresolved class="d2l-typography">
-		<div class="vertical-section-container centered">
-			<h3>d2l-navigation-button</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<style>
-						.button-holder {
-							height: 90px;
-						}
-						d2l-navigation-button-notification-icon,
-						d2l-navigation-button-image,
-						d2l-navigation-button-close {
-							margin: 0px 5px;
-						}
-					</style>
-					<d2l-navigation-band></d2l-navigation-band>
-					<div class="button-holder">
-						<d2l-navigation-button><span><d2l-icon icon="d2l-tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
-						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="notification text"></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-notification-icon notification icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="notification text"></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-close></d2l-navigation-button-close>
-						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-close disabled></d2l-navigation-button-close>
-					</div>
-					<br/>
-					<button class="notification-toggle">Toggle notification</button>
-					<button class="border-toggle">Toggle borders</button>
-					<button class="lang-cycle">Cycle language</button>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-link</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<style>
-						.button-holder {
-							height: 90px;
-						}
-						d2l-navigation-link-back,
-						d2l-navigation-link-image {
-							margin: 0px 5px;
-						}
-					</style>
-					<d2l-navigation-band></d2l-navigation-band>
-					<div class="button-holder">
-						<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
-						<d2l-navigation-link-back href="https://www.example.org"></d2l-navigation-link-back>
-						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org" text="alt text"></d2l-navigation-link-image>
-					</div>
-					<br/>
-					<button class="border-toggle">Toggle borders</button>
-					<button class="lang-cycle">Cycle language</button>
-				</template>
-			</demo-snippet>
-		</div>
 	</body>
 </html>

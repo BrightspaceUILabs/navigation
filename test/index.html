@@ -9,20 +9,20 @@
 	</head>
 	<body>
 		<script>
-			WCT.loadSuites([
-				'navigation.html?wc-shadydom=true&wc-ce=true',
-				'navigation.html?dom=shadow',
-				'navigation-band.html?wc-shadydom=true&wc-ce=true',
-				'navigation-band.html?dom=shadow',
-				'navigation-main-header.html?wc-shadydom=true&wc-ce=true',
-				'navigation-main-header.html?dom=shadow',
-				'navigation-separator.html?wc-shadydom=true&wc-ce=true',
-				'navigation-separator.html?dom=shadow',
-				'd2l-navigation-button.html?wc-shadydom=true&wc-ce=true',
-				'd2l-navigation-button.html?dom=shadow',
-				'navigation-main-footer.html?wc-shadydom=true&wc-ce=true',
-				'navigation-main-footer.html?dom=shadow',
-			]);
+			var testVariants = [], tests = [
+				'navigation.html',
+				'navigation-immersive.html',
+				'navigation-band.html',
+				'navigation-main-header.html',
+				'navigation-separator.html',
+				'd2l-navigation-button.html',
+				'navigation-main-footer.html'
+			];
+			for (var i = 0; i < tests.length; i++) {
+				testVariants.push(tests[i] + '?wc-shadydom=true');
+				testVariants.push(tests[i] + '?dom=shadow');
+			}
+			WCT.loadSuites(testVariants);
 		</script>
 	</body>
 </html>
