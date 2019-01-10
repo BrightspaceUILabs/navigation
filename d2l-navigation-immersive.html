@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../d2l-fastdom-import/fastdom.html">
-<link rel="import" href="../d2l-polymer-behaviors/d2l-dom.html">
 <link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
 <link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <link rel="import" href="d2l-navigation.html">
@@ -78,8 +77,12 @@ Polymer-based web component for the immersive navigation component
 				width: 100%
 			}
 
+			.d2l-navigation-immersive-middle-observer {
+				height: auto;
+			}
+
 			.d2l-navigation-immersive-middle-hidden {
-				display: none;
+				visibility: hidden;
 			}
 
 			d2l-navigation-link-back {
@@ -140,7 +143,9 @@ Polymer-based web component for the immersive navigation component
 							</slot>
 						</div>
 						<div class="d2l-navigation-immersive-middle">
-				    		<slot name="middle"></slot>
+							<div class="d2l-navigation-immersive-middle-observer">
+				    			<slot name="middle"></slot>
+							</div>
 						</div>
 						<div class="d2l-navigation-immersive-right">
 			    			<slot name="right"></slot>
@@ -172,60 +177,41 @@ Polymer-based web component for the immersive navigation component
 			},
 
 			attached: function() {
-				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
 				this._middleObserver = new ResizeObserver(this._onMiddleResize);
 				this._middleObserver.observe(middle);
 			},
 
 			detached: function() {
-				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
+				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
 				if (this._middleObserver) {
 					this._middleObserver.unobserve(middle);
 				}
 			},
 
-			_onMiddleResize: function() {
-				var middleContainer = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
-
-				fastdom.measure(function() {
-					if (middleContainer.clientHeight < 1) {
-						return;
-					}
-				});
-
-				var slotElement = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle > slot');
-				var slotContent = [];
-				if (slotElement) {
-					slotContent = D2L.Dom.getComposedChildren(slotElement);
-				} else {
-					slotContent = D2L.Dom.getComposedChildren(middleContainer);
-				}
-
-				if (!slotContent || slotContent.length === 0) {
-					fastdom.mutate(function() {
-						// nothing in middle
-						middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
-					});
+			_onMiddleResize: function(entries) {
+				if (!entries || entries.length === 0) {
 					return;
 				}
 
-				var elementInSlot = slotContent[0];
+				var entry = entries[0];
+				var middleContainer = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle');
 
-				fastdom.measure(function() {
-					var slotHeight = elementInSlot.clientHeight;
-
-					if (!elementInSlot || slotHeight < 1) {
+				if (entry.contentRect.height < 1) {
+					// nothing in middle
+					if (!middleContainer.classList.contains('d2l-navigation-immersive-middle-hidden')) {
 						fastdom.mutate(function() {
-							// nothing in middle
 							middleContainer.classList.add('d2l-navigation-immersive-middle-hidden');
 						});
-					} else if (slotHeight > 0) {
+					}
+				} else {
+					// stuff in middle
+					if (middleContainer.classList.contains('d2l-navigation-immersive-middle-hidden')) {
 						fastdom.mutate(function() {
-							// stuff in middle
 							middleContainer.classList.remove('d2l-navigation-immersive-middle-hidden');
 						});
 					}
-				});
+				}
 			}
 		});
 	</script>
