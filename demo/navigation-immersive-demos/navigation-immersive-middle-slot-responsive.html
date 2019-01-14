@@ -39,6 +39,10 @@
 			.page-contents {
 				margin: 0 20px;
 			}
+			div[slot="middle"]#middle {
+				display: table-cell;
+				vertical-align: middle;
+			}
 			@media (max-width: 700px) {
 				#middle.d2l-responsive[slot="middle"] {
 					display: none;
@@ -52,7 +56,7 @@
 				<template strip-whitespace>
 					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 						<div id="middle" class="d2l-typography d2l-body-standard d2l-responsive" slot="middle">
-							<p>Economics 101</p>
+							Economics 101
 						</div>
 						<div slot="right">
 							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>

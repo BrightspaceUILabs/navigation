@@ -39,6 +39,10 @@
 			.page-contents {
 				margin: 0 20px;
 			}
+			div[slot="middle"]#middle {
+				display: table-cell;
+				vertical-align: middle;
+			}
 		</style>
 	</head>
 	<body unresolved class="d2l-typography">
@@ -46,8 +50,8 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
-						<div class="d2l-typography d2l-body-standard" slot="middle">
-							<p>Economics 101</p>
+						<div id="middle" class="d2l-typography d2l-body-standard" slot="middle">
+							Economics 101
 						</div>
 						<div slot="right">
 							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
