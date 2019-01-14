@@ -43,6 +43,11 @@
 				display: table-cell;
 				vertical-align: middle;
 			}
+			@media (max-width: 900px) {
+				#right.d2l-responsive[slot="right"] {
+					display: none;
+				}
+			}
 			@media (max-width: 700px) {
 				#middle.d2l-responsive[slot="middle"] {
 					display: none;
@@ -58,7 +63,7 @@
 						<div id="middle" class="d2l-typography d2l-body-standard d2l-responsive" slot="middle">
 							Economics 101
 						</div>
-						<div slot="right">
+						<div id="right" class="d2l-responsive" slot="right">
 							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
 							<d2l-navigation-button-close></d2l-navigation-button-close>
 							<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
