@@ -57,6 +57,7 @@ Polymer-based web component for buttons used in the navigational header.
 			button {
 				@apply --d2l-navigation-highlight-base;
 				font-family: inherit;
+				outline: none; /* Needed for Edge, outline setting from css mixin is not being applied in Polymer 2 & 3 */
 			}
 
 			.d2l-navigation-button-top-border {
