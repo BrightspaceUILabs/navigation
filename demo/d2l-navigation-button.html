@@ -4,34 +4,63 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 		<title>d2l-navigation-band demo</title>
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-		<link rel="import" href="../../d2l-icons/d2l-icon.html">
-		<link rel="import" href="../../d2l-icons/tier3-icons.html">
-		<link rel="import" href="../d2l-navigation-button-notification-icon.html">
-		<link rel="import" href="../d2l-navigation-button-close.html">
-		<link rel="import" href="../d2l-navigation-link-back.html">
-		<link rel="import" href="../d2l-navigation-link-image.html">
-		<link rel="import" href="../d2l-navigation-band.html">
-		<custom-style>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+		<script type="module" src="../../d2l-icons/d2l-icon.js"></script>
+		<script type="module" src="../../d2l-icons/tier3-icons.js"></script>
+		<script type="module" src="../d2l-navigation-button-notification-icon.js"></script>
+		<script type="module" src="../d2l-navigation-button-close.js"></script>
+		<script type="module" src="../d2l-navigation-link-back.js"></script>
+		<script type="module" src="../d2l-navigation-link-image.js"></script>
+		<script type="module" src="../d2l-navigation-band.js"></script>
+		<!-- FIXME(polymer-modulizer):
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
-		</custom-style>
-		<custom-style include="d2l-typography">
+		</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style include="d2l-typography">
 			<style is="custom-style" include="d2l-typography"></style>
-		</custom-style>
-		<style>
+		</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<style>
 			.button-holder {
 				margin: 0px 5px;
 			}
-		</style>
+		</style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 	</head>
 	<body unresolved class="d2l-typography">
-		<div class="vertical-section-container centered">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 			<h3>d2l-navigation-button</h3>
 			<demo-snippet>
-				<template strip-whitespace>
+				<template strip-whitespace="">
 					<style>
 						.button-holder {
 							height: 90px;
@@ -52,12 +81,12 @@
 					<div class="button-holder">
 						<d2l-navigation-button><span><d2l-icon icon="d2l-tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
 						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="This text will not be added"></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-notification-icon notification icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon notification="" icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
 						<d2l-navigation-button-close></d2l-navigation-button-close>
-						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-close disabled></d2l-navigation-button-close>
+						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled=""></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-close disabled=""></d2l-navigation-button-close>
 					</div>
-					<br/>
+					<br>
 					<button class="notification-toggle">Toggle notification</button>
 					<button class="border-toggle">Toggle borders</button>
 					<button class="lang-cycle">Cycle language</button>
@@ -66,7 +95,7 @@
 			</demo-snippet>
 			<h3>d2l-navigation-link</h3>
 			<demo-snippet>
-				<template strip-whitespace>
+				<template strip-whitespace="">
 					<style>
 						.button-holder {
 							height: 90px;
@@ -83,84 +112,95 @@
 						<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org" text="alt text"></d2l-navigation-link-image>
 						<d2l-navigation-link-image src="./logo-image.png" text="alt text"></d2l-navigation-link-image>
 					</div>
-					<br/>
+					<br>
 					<button class="border-toggle">Toggle borders</button>
 					<button class="lang-cycle">Cycle language</button>
 					<button class="focus-link">Focus</button>
 				</template>
 			</demo-snippet>
-		</div>
-		<script>
-			function ToggleNotification(e) {
-				var nButton = e.target.parentNode.querySelector('#notified');
-				if (nButton.hasAttribute('notification')) {
-					nButton.removeAttribute('notification');
-				} else {
-					nButton.setAttribute('notification', '');
-				}
-			}
-			function ToggleBorders(e) {
-				var holder = e.target.parentNode.querySelector('.button-holder');
-				for (var i = 0; i < holder.children.length; i++) {
-					var child = holder.children[i];
-					if (child.tagName.match(/d2l-navigation/i)) {
-						if (child.style.border) {
-							child.style.border = '';
-						} else {
-							child.style.border = 'black 1px solid';
-						}
-					}
-				}
-			}
+		</div>`;
 
-			var langCycle = [
-				'ar',
-				'de',
-				'en',
-				'es',
-				'fi',
-				'fr',
-				'ja',
-				'ko',
-				'nb',
-				'nl',
-				'pt',
-				'sv',
-				'tr',
-				'zh',
-				'zh-TW'
-			];
-			var currLang = 2;
+document.body.appendChild($_documentContainer.content);
+</script>
+		<script type="module">
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import 'd2l-typography/d2l-typography.js';
+import 'd2l-icons/d2l-icon.js';
+import 'd2l-icons/tier3-icons.js';
+import '../d2l-navigation-button-notification-icon.js';
+import '../d2l-navigation-button-close.js';
+import '../d2l-navigation-link-back.js';
+import '../d2l-navigation-link-image.js';
+import '../d2l-navigation-band.js';
+function ToggleNotification(e) {
+	var nButton = e.target.parentNode.querySelector('#notified');
+	if (nButton.hasAttribute('notification')) {
+		nButton.removeAttribute('notification');
+	} else {
+		nButton.setAttribute('notification', '');
+	}
+}
+function ToggleBorders(e) {
+	var holder = e.target.parentNode.querySelector('.button-holder');
+	for (var i = 0; i < holder.children.length; i++) {
+		var child = holder.children[i];
+		if (child.tagName.match(/d2l-navigation/i)) {
+			if (child.style.border) {
+				child.style.border = '';
+			} else {
+				child.style.border = 'black 1px solid';
+			}
+		}
+	}
+}
 
-			function CycleLanguage() {
-				if (currLang >= langCycle.length - 1) {
-					currLang = 0;
-				} else {
-					currLang++;
-				}
-				document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
-			}
-			function FocusButton() {
-				document.querySelector('d2l-navigation-button').focus();
-			}
-			function FocusLink() {
-				document.querySelector('d2l-navigation-link-back').focus();
-			}
-			function AssignClickEvent(className, handler) {
-				var elems = document.getElementsByClassName(className);
-				for (var i = 0; i < elems.length; i++) {
-					elems[i].addEventListener('click', handler);
-				}
-			}
-			window.addEventListener('WebComponentsReady', function() {
-				window.requestAnimationFrame(function() {
-					AssignClickEvent('notification-toggle', ToggleNotification);
-					AssignClickEvent('border-toggle', ToggleBorders);
-					AssignClickEvent('lang-cycle', CycleLanguage);
-					AssignClickEvent('focus-button', FocusButton);
-					AssignClickEvent('focus-link', FocusLink);
-				});
-			});
-		</script>
+var langCycle = [
+	'ar',
+	'de',
+	'en',
+	'es',
+	'fi',
+	'fr',
+	'ja',
+	'ko',
+	'nb',
+	'nl',
+	'pt',
+	'sv',
+	'tr',
+	'zh',
+	'zh-TW'
+];
+var currLang = 2;
+
+function CycleLanguage() {
+	if (currLang >= langCycle.length - 1) {
+		currLang = 0;
+	} else {
+		currLang++;
+	}
+	document.getElementsByTagName('html')[0].setAttribute('lang', langCycle[currLang]);
+}
+function FocusButton() {
+	document.querySelector('d2l-navigation-button').focus();
+}
+function FocusLink() {
+	document.querySelector('d2l-navigation-link-back').focus();
+}
+function AssignClickEvent(className, handler) {
+	var elems = document.getElementsByClassName(className);
+	for (var i = 0; i < elems.length; i++) {
+		elems[i].addEventListener('click', handler);
+	}
+}
+window.requestAnimationFrame(function() {
+	AssignClickEvent('notification-toggle', ToggleNotification);
+	AssignClickEvent('border-toggle', ToggleBorders);
+	AssignClickEvent('lang-cycle', CycleLanguage);
+	AssignClickEvent('focus-button', FocusButton);
+	AssignClickEvent('focus-link', FocusLink);
+});
+</script>
 	</body>
 </html>
