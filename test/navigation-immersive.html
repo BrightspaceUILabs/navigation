@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 		<title>d2l-navigation-immersive test</title>
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<link rel="import" href="../d2l-navigation-immersive.html">
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script type="module" src="../d2l-navigation-immersive.js"></script>
 	</head>
 	<body>
 		<test-fixture id="empty">
@@ -49,190 +49,192 @@
 				</d2l-navigation-immersive>
 			</template>
 		</test-fixture>
-		<script>
-			var raf = function(cb) {
-				fastdom.measure(function() {
-					fastdom.mutate(function() {
-						requestAnimationFrame(function() {
-							requestAnimationFrame(function() {
-								requestAnimationFrame(function() {
-									window.setTimeout(function() {
-										cb();
-									}, 200);
-								});
-							});
-						});
-					});
-				});
-			};
-			suite('d2l-navigation-immersive', function() {
-				var nav;
-				setup(function(done) {
-					nav = fixture('empty');
-					raf(done);
-				});
-				test('instantiating the element works', function() {
-					assert.equal(nav.is, 'd2l-navigation-immersive');
-
-					var margin = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
-					expect(margin).to.not.be.null;
-					assert.equal(margin.tagName, 'DIV');
-
-					var container = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-container');
-					expect(container).to.not.be.null;
-					assert.equal(container.tagName, 'DIV');
-
-					var left = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-left');
-					expect(left).to.not.be.null;
-					assert.equal(left.tagName, 'DIV');
-
-					var middle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle');
-					expect(middle).to.not.be.null;
-					assert.equal(middle.tagName, 'DIV');
-
-					var right = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-right');
-					expect(right).to.not.be.null;
-					assert.equal(right.tagName, 'DIV');
-				});
-
-				test('hidden class applied when element has no middle slot content', function() {
-					var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-					expect(hiddenMiddle).to.not.be.null;
-				});
-
-				test('no right border when element has no right slot content', function() {
-					var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-					expect(noRightBorderMiddle).to.not.be.null;
-				});
-			});
-
-			suite('d2l-navigation-immersive with back link', function() {
-				var nav;
-				setup(function(done) {
-					nav = fixture('back-link');
-					raf(done);
-				});
-				test('back link initializes correctly', function() {
-					assert.equal(nav.backLinkHref, 'https://www.d2l.com');
-					assert.equal(nav.backLinkText, 'Back to D2L');
-				});
-				test('back link values updates correctly', function() {
-					var newHref = 'https://www.nfl.com';
-					var newText = 'Back to da NFL';
-					nav.setAttribute('back-link-href', newHref);
-					nav.setAttribute('back-link-text', newText);
-					assert.equal(nav.backLinkHref, newHref);
-					assert.equal(nav.backLinkText, newText);
-				});
-			});
-
-			suite('d2l-navigation-immersive with content in middle slot (no right slot)', function() {
-				var nav;
-				setup(function(done) {
-					nav = fixture('middle-slot-with-content');
-					raf(done);
-				});
-				test('hidden class not present when middle slot has content', function() {
-					var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-					expect(hiddenMiddle).to.be.null;
-				});
-				test('no right border class is present when right slot has no content', function() {
-					var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-					expect(noRightBorderMiddle).to.not.be.null;
-				});
-				test('hidden class applied when content in middle slot is hidden', function(done) {
-					var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-					expect(hiddenMiddle).to.be.null;
-
-					var middleContent = Polymer.dom(nav).querySelector('#middle');
-					middleContent.style.display = 'none';
-
-					raf(function() {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.not.be.null;
-						done();
-					});
-				});
-
-				suite('d2l-navigation-immersive with hidden content in middle slot', function() {
-					var nav;
-					setup(function(done) {
-						nav = fixture('middle-slot-with-hidden-content');
-						raf(done);
-					});
-					test('hidden class present when middle slot has hidden content', function() {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.not.be.null;
-					});
-					test('hidden class removed when content in middle slot is re-shown', function(done) {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.not.be.null;
-
-						var middleContent = Polymer.dom(nav).querySelector('#middle-hidden');
-						middleContent.style.display = 'block';
-
-						raf(function() {
-							var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-							expect(hiddenMiddle).to.be.null;
-							done();
-						});
-					});
-				});
-
-				suite('d2l-navigation-immersive with content in middle slot and right slot', function() {
-					var nav;
-					setup(function(done) {
-						nav = fixture('middle-and-right-slot-with-content');
-						raf(done);
-					});
-					test('hidden class not present when middle slot has content', function() {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.be.null;
-					});
-					test('no right border class not present when right slot has content', function() {
-						var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-						expect(noRightBorderMiddle).to.be.null;
-					});
-					test('hidden class applied when content in middle slot is hidden, and no right border class still not present', function(done) {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.be.null;
-
-						var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-						expect(noRightBorderMiddle).to.be.null;
-
-						var middleContent = Polymer.dom(nav).querySelector('#middle');
-						middleContent.style.display = 'none';
-
-						raf(function() {
-							var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-							expect(hiddenMiddle).to.not.be.null;
-
-							var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-							expect(noRightBorderMiddle).to.be.null;
-							done();
-						});
-					});
-					test('no right border class applied when content in right slot is hidden', function(done) {
-						var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-						expect(hiddenMiddle).to.be.null;
-
-						var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-						expect(noRightBorderMiddle).to.be.null;
-
-						var rightContent = Polymer.dom(nav).querySelector('#right');
-						rightContent.style.display = 'none';
-
-						raf(function() {
-							var hiddenMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-							expect(hiddenMiddle).to.be.null;
-
-							var noRightBorderMiddle = Polymer.dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
-							expect(noRightBorderMiddle).to.not.be.null;
-							done();
-						});
+		<script type="module">
+import '../d2l-navigation-immersive.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+var raf = function(cb) {
+	fastdom.measure(function() {
+		fastdom.mutate(function() {
+			requestAnimationFrame(function() {
+				requestAnimationFrame(function() {
+					requestAnimationFrame(function() {
+						window.setTimeout(function() {
+							cb();
+						}, 200);
 					});
 				});
 			});
-		</script>
+		});
+	});
+};
+suite('d2l-navigation-immersive', function() {
+	var nav;
+	setup(function(done) {
+		nav = fixture('empty');
+		raf(done);
+	});
+	test('instantiating the element works', function() {
+		assert.equal(nav.is, 'd2l-navigation-immersive');
+
+		var margin = dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
+		expect(margin).to.not.be.null;
+		assert.equal(margin.tagName, 'DIV');
+
+		var container = dom(nav.root).querySelector('.d2l-navigation-immersive-container');
+		expect(container).to.not.be.null;
+		assert.equal(container.tagName, 'DIV');
+
+		var left = dom(nav.root).querySelector('.d2l-navigation-immersive-left');
+		expect(left).to.not.be.null;
+		assert.equal(left.tagName, 'DIV');
+
+		var middle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle');
+		expect(middle).to.not.be.null;
+		assert.equal(middle.tagName, 'DIV');
+
+		var right = dom(nav.root).querySelector('.d2l-navigation-immersive-right');
+		expect(right).to.not.be.null;
+		assert.equal(right.tagName, 'DIV');
+	});
+
+	test('hidden class applied when element has no middle slot content', function() {
+		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+		expect(hiddenMiddle).to.not.be.null;
+	});
+
+	test('no right border when element has no right slot content', function() {
+		var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+		expect(noRightBorderMiddle).to.not.be.null;
+	});
+});
+
+suite('d2l-navigation-immersive with back link', function() {
+	var nav;
+	setup(function(done) {
+		nav = fixture('back-link');
+		raf(done);
+	});
+	test('back link initializes correctly', function() {
+		assert.equal(nav.backLinkHref, 'https://www.d2l.com');
+		assert.equal(nav.backLinkText, 'Back to D2L');
+	});
+	test('back link values updates correctly', function() {
+		var newHref = 'https://www.nfl.com';
+		var newText = 'Back to da NFL';
+		nav.setAttribute('back-link-href', newHref);
+		nav.setAttribute('back-link-text', newText);
+		assert.equal(nav.backLinkHref, newHref);
+		assert.equal(nav.backLinkText, newText);
+	});
+});
+
+suite('d2l-navigation-immersive with content in middle slot (no right slot)', function() {
+	var nav;
+	setup(function(done) {
+		nav = fixture('middle-slot-with-content');
+		raf(done);
+	});
+	test('hidden class not present when middle slot has content', function() {
+		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+		expect(hiddenMiddle).to.be.null;
+	});
+	test('no right border class is present when right slot has no content', function() {
+		var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+		expect(noRightBorderMiddle).to.not.be.null;
+	});
+	test('hidden class applied when content in middle slot is hidden', function(done) {
+		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+		expect(hiddenMiddle).to.be.null;
+
+		var middleContent = dom(nav).querySelector('#middle');
+		middleContent.style.display = 'none';
+
+		raf(function() {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.not.be.null;
+			done();
+		});
+	});
+
+	suite('d2l-navigation-immersive with hidden content in middle slot', function() {
+		var nav;
+		setup(function(done) {
+			nav = fixture('middle-slot-with-hidden-content');
+			raf(done);
+		});
+		test('hidden class present when middle slot has hidden content', function() {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.not.be.null;
+		});
+		test('hidden class removed when content in middle slot is re-shown', function(done) {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.not.be.null;
+
+			var middleContent = dom(nav).querySelector('#middle-hidden');
+			middleContent.style.display = 'block';
+
+			raf(function() {
+				var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+				expect(hiddenMiddle).to.be.null;
+				done();
+			});
+		});
+	});
+
+	suite('d2l-navigation-immersive with content in middle slot and right slot', function() {
+		var nav;
+		setup(function(done) {
+			nav = fixture('middle-and-right-slot-with-content');
+			raf(done);
+		});
+		test('hidden class not present when middle slot has content', function() {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.be.null;
+		});
+		test('no right border class not present when right slot has content', function() {
+			var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+			expect(noRightBorderMiddle).to.be.null;
+		});
+		test('hidden class applied when content in middle slot is hidden, and no right border class still not present', function(done) {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.be.null;
+
+			var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+			expect(noRightBorderMiddle).to.be.null;
+
+			var middleContent = dom(nav).querySelector('#middle');
+			middleContent.style.display = 'none';
+
+			raf(function() {
+				var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+				expect(hiddenMiddle).to.not.be.null;
+
+				var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+				expect(noRightBorderMiddle).to.be.null;
+				done();
+			});
+		});
+		test('no right border class applied when content in right slot is hidden', function(done) {
+			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+			expect(hiddenMiddle).to.be.null;
+
+			var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+			expect(noRightBorderMiddle).to.be.null;
+
+			var rightContent = dom(nav).querySelector('#right');
+			rightContent.style.display = 'none';
+
+			raf(function() {
+				var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+				expect(hiddenMiddle).to.be.null;
+
+				var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
+				expect(noRightBorderMiddle).to.not.be.null;
+				done();
+			});
+		});
+	});
+});
+</script>
 	</body>
 </html>

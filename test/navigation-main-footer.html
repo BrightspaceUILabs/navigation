@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 		<title>d2l-navigation-main-footer test</title>
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<link rel="import" href="../d2l-navigation-main-footer.html">
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script type="module" src="../d2l-navigation-main-footer.js"></script>
 	</head>
 	<body>
 		<test-fixture id="basic">
@@ -14,25 +14,27 @@
 				<d2l-navigation-main-footer></d2l-navigation-main-footer>
 			</template>
 		</test-fixture>
-		<script>
-			suite('d2l-navigation-main-footer', function() {
-				test('instantiating the element works', function() {
-					var footer = fixture('basic');
-					assert.equal(footer.is, 'd2l-navigation-main-footer');
+		<script type="module">
+import '../d2l-navigation-main-footer.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+suite('d2l-navigation-main-footer', function() {
+	test('instantiating the element works', function() {
+		var footer = fixture('basic');
+		assert.equal(footer.is, 'd2l-navigation-main-footer');
 
-					var centerer = Polymer.dom(footer.root).querySelector('.d2l-navigation-centerer');
-					expect(centerer).to.not.be.null;
-					assert.equal(centerer.tagName, 'DIV');
+		var centerer = dom(footer.root).querySelector('.d2l-navigation-centerer');
+		expect(centerer).to.not.be.null;
+		assert.equal(centerer.tagName, 'DIV');
 
-					var ancestor = Polymer.dom(footer.root).querySelector('.d2l-visible-on-ancestor-target');
-					expect(ancestor).to.not.be.null;
-					assert.equal(ancestor.tagName, 'DIV');
+		var ancestor = dom(footer.root).querySelector('.d2l-visible-on-ancestor-target');
+		expect(ancestor).to.not.be.null;
+		assert.equal(ancestor.tagName, 'DIV');
 
-					var gutters = Polymer.dom(footer.root).querySelector('.d2l-navigation-gutters');
-					expect(gutters).to.not.be.null;
-					assert.equal(gutters.tagName, 'DIV');
-				});
-			});
-		</script>
+		var gutters = dom(footer.root).querySelector('.d2l-navigation-gutters');
+		expect(gutters).to.not.be.null;
+		assert.equal(gutters.tagName, 'DIV');
+	});
+});
+</script>
 	</body>
 </html>

@@ -1,21 +1,29 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../d2l-fastdom-import/fastdom.html">
-<link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
-<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
-<link rel="import" href="d2l-navigation.html">
-<link rel="import" href="d2l-navigation-link-back.html">
-<link rel="import" href="d2l-navigation-shared-styles.html">
-
-<!--
+/**
 `d2l-navigation-immersive`
 Polymer-based web component for the immersive navigation component
 
 @demo demo/navigation-immersive.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="d2l-navigation-immersive">
-	<template strip-whitespace>
+import 'd2l-colors/d2l-colors.js';
+import 'fastdom/fastdom.js';
+import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
+import 'd2l-typography/d2l-typography-shared-styles.js';
+import './d2l-navigation.js';
+import './d2l-navigation-link-back.js';
+import './d2l-navigation-shared-styles.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
+	<template strip-whitespace="">
 		<style include="d2l-navigation-shared-styles">
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;
@@ -52,10 +60,8 @@ Polymer-based web component for the immersive navigation component
 			}
 
 			/*
-				::slotted styles for Polymer 1.0; styling all slotted children needs
-				to be applied explicitely.
-				This cannot be combined with the style block above, as this is not
-				valid in 2.0 and as such the entire block gets ignored.
+				::slotted styles for Edge and IE11; styling all slotted children needs
+				to be applied explicitly.
 			*/
 			.d2l-navigation-immersive-left ::slotted(*) > *,
 			.d2l-navigation-immersive-middle ::slotted(*) > *,
@@ -139,10 +145,8 @@ Polymer-based web component for the immersive navigation component
 					height: var(--d2l-navigation-immersive-height-responsive);
 				}
 				/*
-					::slotted styles for Polymer 1.0; styling all slotted children needs
-					to be applied explicitely.
-					This cannot be combined with the style block above, as this is not
-					valid in 2.0 and as such the entire block gets ignored.
+					::slotted styles for Edge and IE11; styling all slotted children needs
+					to be applied explicitly.
 				*/
 				.d2l-navigation-immersive-left ::slotted(*) > *,
 				.d2l-navigation-immersive-middle ::slotted(*) > *,
@@ -176,7 +180,7 @@ Polymer-based web component for the immersive navigation component
 						</div>
 						<div class="d2l-navigation-immersive-middle d2l-navigation-immersive-middle-no-right-border">
 							<div class="d2l-navigation-immersive-middle-observer">
-				    			<slot name="middle"></slot>
+								<slot name="middle"></slot>
 							</div>
 						</div>
 						<div class="d2l-navigation-immersive-right">
@@ -191,80 +195,81 @@ Polymer-based web component for the immersive navigation component
 		<div class="d2l-navigation-immersive-spacing"></div>
 		<div class="d2l-navigation-shadow-gradient"></div>
 	</template>
-	<script>
-		Polymer({
-			is: 'd2l-navigation-immersive',
+	
+</dom-module>`;
 
-			properties: {
-				backLinkHref: {
-					type: String,
-					reflectToAttribute: true
-				},
-				backLinkText: {
-					type: String,
-					reflectToAttribute: true
-				}
-			},
+document.head.appendChild($_documentContainer.content);
+Polymer({
+	is: 'd2l-navigation-immersive',
 
-			ready: function() {
-				this._onMiddleResize = this._onMiddleResize.bind(this);
-				this._onRightResize = this._onRightResize.bind(this);
-			},
+	properties: {
+		backLinkHref: {
+			type: String,
+			reflectToAttribute: true
+		},
+		backLinkText: {
+			type: String,
+			reflectToAttribute: true
+		}
+	},
 
-			attached: function() {
-				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
-				this._middleObserver = new ResizeObserver(this._onMiddleResize);
-				this._middleObserver.observe(middle);
+	ready: function() {
+		this._onMiddleResize = this._onMiddleResize.bind(this);
+		this._onRightResize = this._onRightResize.bind(this);
+	},
 
-				var right = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
-				this._rightObserver = new ResizeObserver(this._onRightResize);
-				this._rightObserver.observe(right);
-			},
+	attached: function() {
+		var middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
+		this._middleObserver = new ResizeObserver(this._onMiddleResize);
+		this._middleObserver.observe(middle);
 
-			detached: function() {
-				var middle = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
-				if (this._middleObserver) {
-					this._middleObserver.unobserve(middle);
-				}
+		var right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
+		this._rightObserver = new ResizeObserver(this._onRightResize);
+		this._rightObserver.observe(right);
+	},
 
-				var right = Polymer.dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
-				if (this._rightObserver) {
-					this._rightObserver.unobserve(right);
-				}
-			},
+	detached: function() {
+		var middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
+		if (this._middleObserver) {
+			this._middleObserver.unobserve(middle);
+		}
 
-			_onMiddleResize: function(entries) {
-				this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
-			},
+		var right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
+		if (this._rightObserver) {
+			this._rightObserver.unobserve(right);
+		}
+	},
 
-			_onRightResize: function(entries) {
-				this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
-			},
+	_onMiddleResize: function(entries) {
+		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
+	},
 
-			_onResize: function(entries, slotContainerQuerySelector, containerClass) {
-				if (!entries || entries.length === 0) {
-					return;
-				}
+	_onRightResize: function(entries) {
+		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
+	},
 
-				var entry = entries[0];
-				var container = Polymer.dom(this.root).querySelector(slotContainerQuerySelector);
+	_onResize: function(entries, slotContainerQuerySelector, containerClass) {
+		if (!entries || entries.length === 0) {
+			return;
+		}
 
-				if (entry.contentRect.height < 1) {
-					// nothing in slot
-					if (!container.classList.contains(containerClass)) {
-						fastdom.mutate(function() {
-							container.classList.add(containerClass);
-						});
-					}
-				} else {
-					// stuff in slot
-					if (container.classList.contains(containerClass)) {
-						fastdom.mutate(function() {
-							container.classList.remove(containerClass);
-						});
-					}
-				}
+		var entry = entries[0];
+		var container = dom(this.root).querySelector(slotContainerQuerySelector);
+
+		if (entry.contentRect.height < 1) {
+			// nothing in slot
+			if (!container.classList.contains(containerClass)) {
+				fastdom.mutate(function() {
+					container.classList.add(containerClass);
+				});
 			}
-		});
-	</script>
-</dom-module>
+		} else {
+			// stuff in slot
+			if (container.classList.contains(containerClass)) {
+				fastdom.mutate(function() {
+					container.classList.remove(containerClass);
+				});
+			}
+		}
+	}
+});
