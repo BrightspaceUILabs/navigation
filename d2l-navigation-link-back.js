@@ -33,7 +33,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-link-back">
 			.d2l-navigation-link-back-text {
 				padding-left: var(--d2l-navigation-link-back-left-padding, 5px);
 			}
-			:host-context([dir="rtl"]) .d2l-navigation-link-back-text,
 			:host(:dir(rtl)) .d2l-navigation-link-back-text {
 				padding-left: 0;
 				padding-right: var(--d2l-navigation-link-back-left-padding, 5px);
