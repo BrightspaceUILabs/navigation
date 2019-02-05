@@ -24,9 +24,13 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-link-image">
 			}
 			img {
 				vertical-align: middle;
-				border: none;
+				border: none; /* needed for IE10 */
 				max-height: 60px;
 				max-width: 260px;
+			}
+			:host([slim]) img {
+				max-height: 40px;
+				max-width: 173px;
 			}
 			.d2l-navigation-link-image-container {
 				height: 100%;
@@ -52,6 +56,11 @@ Polymer({
 		},
 		href: {
 			type: String
+		},
+		slim: {
+			reflectToAttribute: true,
+			type: Boolean,
+			value: false
 		},
 		text: {
 			type: String
