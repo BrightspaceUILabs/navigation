@@ -20,6 +20,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-main-footer">
 	<template strip-whitespace="">
 		<style include="d2l-navigation-shared-styles">
 			:host {
+				border-top: 1px solid rgba(124,134,149,0.18);
+				border-bottom: 1px solid rgba(124,134,149,0.18);
 				display: block;
 			}
 		</style>
