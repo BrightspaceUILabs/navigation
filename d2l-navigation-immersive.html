@@ -34,6 +34,8 @@ Polymer-based web component for the immersive navigation component
 				border-bottom: 1px solid var(--d2l-color-mica);
 			}
 			.d2l-navigation-immersive-margin {
+				display: flex;
+				justify-content: center;
 				margin: 0 30px;
 			}
 
@@ -42,7 +44,9 @@ Polymer-based web component for the immersive navigation component
 				height: var(--d2l-navigation-immersive-height-main);
 				justify-content: space-between;
 				margin: 0 -7px;
+				max-width: var(--d2l-navigation-immersive-content-max-width, 100%);
 				overflow: hidden;
+				width: 100%;
 			}
 
 			.d2l-navigation-immersive-left ::slotted(*),
@@ -116,7 +120,6 @@ Polymer-based web component for the immersive navigation component
 				right: 0;
 				top: calc(var(--d2l-navigation-immersive-height-main) + 5px);
 			}
-
 			@media (max-width: 929px) {
 				.d2l-navigation-immersive-margin {
 					margin: 0 24px;
@@ -161,6 +164,7 @@ Polymer-based web component for the immersive navigation component
 				}
 				d2l-navigation-link-back {
 					--d2l-navigation-link-back-left-padding: 6px;
+					margin: 0
 				}
 			}
 
