@@ -8,7 +8,9 @@
 		<script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
 		<script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
 		<script type="module" src="../../../d2l-typography/d2l-typography.js"></script>
+		<script type="module" src="../../../d2l-typography/d2l-typography-shared-styles.js"></script>
 		<script type="module" src="../../d2l-navigation-button.js"></script>
+		<script type="module" src="../../d2l-navigation-button-close.js"></script>
 		<script type="module" src="../../d2l-navigation-immersive.js"></script>
 		<!-- FIXME(polymer-modulizer):
 		These imperative modules that innerHTML your HTML are
@@ -23,7 +25,11 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
+				html {
+					--d2l-navigation-immersive-content-max-width: 900px;
+				}
 				body {
+					background-color: pink;
 					padding: 0;
 				}
 				demo-snippet {
@@ -78,6 +84,11 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 						<div id="middle" class="d2l-typography d2l-body-standard" slot="middle">
 							Economics 101
+						</div>
+						<div slot="right">
+							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
+							<d2l-navigation-button-close></d2l-navigation-button-close>
+							<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
 						</div>
 					</d2l-navigation-immersive>
 					<div class="page-contents">
