@@ -39,13 +39,17 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 
 			:host button:hover,
 			:host button:focus,
+			/* ::slotted styles for Polymer 2.0 */
 			:host button:hover ::slotted(*),
 			:host button:focus ::slotted(*) {
 				@apply --d2l-navigation-highlight-base-hover-focus;
 			}
 
 			/*
-				::slotted styles for IE11
+				::slotted styles for Polymer 1.0; styling all slotted children needs
+				to be applied explicitely.
+				This cannot be combined with the style block above, as this is not
+				valid in 2.0 and as such the entire block gets ignored.
 			*/
 			:host button:hover ::slotted(*) *,
 			:host button:focus ::slotted(*) * {
@@ -71,6 +75,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 				@apply --d2l-offscreen;
 			}
 
+			:host-context([dir="rtl"]) .d2l-offscreen-description,
 			:host(:dir(rtl)) .d2l-offscreen-description {
 				@apply --d2l-offscreen-rtl;
 			}

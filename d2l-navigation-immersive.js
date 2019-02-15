@@ -42,6 +42,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				border-bottom: 1px solid var(--d2l-color-mica);
 			}
 			.d2l-navigation-immersive-margin {
+				display: flex;
+				justify-content: center;
 				margin: 0 30px;
 			}
 
@@ -50,7 +52,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				height: var(--d2l-navigation-immersive-height-main);
 				justify-content: space-between;
 				margin: 0 -7px;
+				max-width: var(--d2l-navigation-immersive-content-max-width, 100%);
 				overflow: hidden;
+				width: 100%;
 			}
 
 			.d2l-navigation-immersive-left ::slotted(*),
@@ -60,8 +64,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 			}
 
 			/*
-				::slotted styles for Edge and IE11; styling all slotted children needs
-				to be applied explicitly.
+				::slotted styles for Polymer 1.0; styling all slotted children needs
+				to be applied explicitely.
+				This cannot be combined with the style block above, as this is not
+				valid in 2.0 and as such the entire block gets ignored.
 			*/
 			.d2l-navigation-immersive-left ::slotted(*) > *,
 			.d2l-navigation-immersive-middle ::slotted(*) > *,
@@ -122,7 +128,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				right: 0;
 				top: calc(var(--d2l-navigation-immersive-height-main) + 5px);
 			}
-
 			@media (max-width: 929px) {
 				.d2l-navigation-immersive-margin {
 					margin: 0 24px;
@@ -145,8 +150,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 					height: var(--d2l-navigation-immersive-height-responsive);
 				}
 				/*
-					::slotted styles for Edge and IE11; styling all slotted children needs
-					to be applied explicitly.
+					::slotted styles for Polymer 1.0; styling all slotted children needs
+					to be applied explicitely.
+					This cannot be combined with the style block above, as this is not
+					valid in 2.0 and as such the entire block gets ignored.
 				*/
 				.d2l-navigation-immersive-left ::slotted(*) > *,
 				.d2l-navigation-immersive-middle ::slotted(*) > *,
@@ -165,6 +172,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				}
 				d2l-navigation-link-back {
 					--d2l-navigation-link-back-left-padding: 6px;
+					margin: 0
 				}
 			}
 
