@@ -64,10 +64,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 			}
 
 			/*
-				::slotted styles for Polymer 1.0; styling all slotted children needs
-				to be applied explicitely.
-				This cannot be combined with the style block above, as this is not
-				valid in 2.0 and as such the entire block gets ignored.
+				::slotted styles for Edge and IE11; styling all slotted children needs
+				to be applied explicitly.
 			*/
 			.d2l-navigation-immersive-left ::slotted(*) > *,
 			.d2l-navigation-immersive-middle ::slotted(*) > *,
@@ -150,10 +148,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 					height: var(--d2l-navigation-immersive-height-responsive);
 				}
 				/*
-					::slotted styles for Polymer 1.0; styling all slotted children needs
-					to be applied explicitely.
-					This cannot be combined with the style block above, as this is not
-					valid in 2.0 and as such the entire block gets ignored.
+					::slotted styles for Edge and IE11; styling all slotted children needs
+					to be applied explicitly.
 				*/
 				.d2l-navigation-immersive-left ::slotted(*) > *,
 				.d2l-navigation-immersive-middle ::slotted(*) > *,
