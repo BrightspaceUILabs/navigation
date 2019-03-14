@@ -13,7 +13,7 @@ import '@polymer/polymer/polymer-legacy.js';
 
 import 'd2l-colors/d2l-colors.js';
 import 'fastdom/fastdom.js';
-import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
+import { ResizeObserver } from 'd2l-resize-aware/resize-observer-module.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
