@@ -32,17 +32,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-shared-styles">
 					padding-right: 30px;
 				}
 			}
-
-			.d2l-navigation-shadow-gradient {
-				background: linear-gradient(to bottom,  rgba(249,250,251,1) 0%,rgba(249,250,251,0) 100%);
-				bottom: -150px;
-				display: var(--d2l-navigation-shadow-gradient-display, block);
-				height: 150px;
-				width: 100%;
-				pointer-events: none;
-				position: absolute;
-				z-index: -100;
-			}
 		</style>
 	</template>
 </dom-module>`;

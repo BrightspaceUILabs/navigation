@@ -72,9 +72,6 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
-***Relevant CSS class name:***
-* `--d2l-navigation-shadow-gradient-display`: The default value is `block`, but this property can be used to hide the gradient by setting it to `none`.  Instead of doing this, **PLEASE STRONGLY CONSIDER** fixing the issues with the z-index elements on your page.  This was added to address an issue we've seen with a few pages that use tables with sticky headers.
-
 ### d2l-navigation-immersive
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:

@@ -35,9 +35,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation">
 		<d2l-navigation-band></d2l-navigation-band>
 		<slot></slot>
 		<div class="d2l-navigation-shadow-drop-border"></div>
-		<div class="d2l-navigation-shadow-gradient"></div>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
