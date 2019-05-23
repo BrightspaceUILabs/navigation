@@ -38,7 +38,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				z-index: 1;
 			}
 			d2l-navigation {
-				--d2l-navigation-shadow-gradient-display: none;
 				border-bottom: 1px solid var(--d2l-color-mica);
 			}
 			.d2l-navigation-immersive-margin {
@@ -120,12 +119,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				position: unset;
 			}
 
-			.d2l-navigation-shadow-gradient {
-				left: 0;
-				position: fixed;
-				right: 0;
-				top: calc(var(--d2l-navigation-immersive-height-main) + 5px);
-			}
 			@media (max-width: 929px) {
 				.d2l-navigation-immersive-margin {
 					margin: 0 24px;
@@ -158,9 +151,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 				}
 				.d2l-navigation-immersive-spacing {
 					height: calc(var(--d2l-navigation-immersive-height-responsive) + 5px);
-				}
-				.d2l-navigation-shadow-gradient {
-					top: calc(var(--d2l-navigation-immersive-height-responsive) + 5px);
 				}
 				.d2l-navigation-immersive-middle {
 					margin: 0 18px;
@@ -197,9 +187,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 			</d2l-navigation>
 		</div>
 		<div class="d2l-navigation-immersive-spacing"></div>
-		<div class="d2l-navigation-shadow-gradient"></div>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
