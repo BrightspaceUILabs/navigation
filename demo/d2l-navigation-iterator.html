@@ -37,10 +37,22 @@
 	</head>
 	<body class="d2l-typography">
 		<div class="vertical-section-container fixedSize">
-			<h3>d2l-navigation-iterator demo</h3>
+			<h3>d2l-navigation-iterator empty demo</h3>
 			<demo-snippet>
 				<template strip-whitespace>
-					<d2l-navigation-iterator next-link="https://www.nfl.com"></d2l-navigation-iterator>
+					<d2l-navigation-iterator></d2l-navigation-iterator>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator count demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-iterator count-information="User 1 of 17"></d2l-navigation-iterator>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator custom labels demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-iterator previous-title="Back" next-title="Forward"></d2l-navigation-iterator>
 				</template>
 			</demo-snippet>
 		</div>
