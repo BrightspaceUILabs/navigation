@@ -44,7 +44,7 @@ class D2LNavigationIterator extends PolymerElement {
 						<span class="d2l-navigation-iterator-previous-link-text">[[_previousTitleToDisplay]]</span>
 					</a>
 				</span>
-				<span class="d2l-body-compact">[[countInformation]]</span>
+				[[countInformation]]
 				<span>
 					<a class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
 						<span class="d2l-navigation-iterator-next-link-text">[[_nextTitleToDisplay]]</span>
