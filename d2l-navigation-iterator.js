@@ -38,15 +38,19 @@ class D2LNavigationIterator extends PolymerElement {
 				}
 			</style>
 			<div class="d2l-navigation-iterator">
-				<a class="d2l-navigation-iterator-previous-link" href="[[previousLink]]">
-					<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
-					<span class="d2l-navigation-iterator-previous-link-text">[[_previousTitleToDisplay]]</span>
-				</a>
+				<span>
+					<a class="d2l-navigation-iterator-previous-link" href="[[previousLink]]">
+						<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
+						<span class="d2l-navigation-iterator-previous-link-text">[[_previousTitleToDisplay]]</span>
+					</a>
+				</span>
 				<span class="d2l-body-compact">[[countInformation]]</span>
-				<a class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
-					<span class="d2l-navigation-iterator-next-link-text">[[_nextTitleToDisplay]]</span>
-					<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
-				</a>
+				<span>
+					<a class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
+						<span class="d2l-navigation-iterator-next-link-text">[[_nextTitleToDisplay]]</span>
+						<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
+					</a>
+				</span>
 			</div>
 		`;
 	}
