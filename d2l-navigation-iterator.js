@@ -24,11 +24,17 @@ class D2LNavigationIterator extends PolymerElement {
 				a {
 					text-decoration: none;
 				}
+				.d2l-navigation-iterator-previous {
+					position: relative;
+				}
 				.d2l-navigation-iterator-previous-link {
 					padding: 0 0 0 1.2rem;
 				}
 				.d2l-navigation-iterator-previous-link-text {
 					padding: 0 0 0 0.6rem;
+				}
+				.d2l-navigation-iterator-next {
+					position: relative;
 				}
 				.d2l-navigation-iterator-next-link {
 					padding: 0 1.5rem 0 0;
@@ -38,18 +44,20 @@ class D2LNavigationIterator extends PolymerElement {
 				}
 			</style>
 			<div class="d2l-navigation-iterator">
-				<span>
-					<a class="d2l-navigation-iterator-previous-link" href="[[previousLink]]">
+				<span class="d2l-navigation-iterator-previous">
+					<a id="d2l-navigation-iterator-previous" class="d2l-navigation-iterator-previous-link" href="[[previousLink]]">
 						<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
-						<span class="d2l-navigation-iterator-previous-link-text">[[_previousTitleToDisplay]]</span>
+						<span class="d2l-navigation-iterator-previous-link-text" hidden$="[[!_displayLinkTitles()]]">[[_previousTitleToDisplay]]</span>
 					</a>
+					<d2l-tooltip for="d2l-navigation-iterator-previous" position="bottom">[[_previousTitleToDisplay]]</d2l-tooltip>
 				</span>
 				[[countInformation]]
-				<span>
-					<a class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
-						<span class="d2l-navigation-iterator-next-link-text">[[_nextTitleToDisplay]]</span>
+				<span class="d2l-navigation-iterator-next">
+					<a id="d2l-navigation-iterator-next" class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
+						<span class="d2l-navigation-iterator-next-link-text" hidden$="[[!_displayLinkTitles()]]">[[_nextTitleToDisplay]]</span>
 						<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
 					</a>
+					<d2l-tooltip for="d2l-navigation-iterator-next" position="bottom">[[_nextTitleToDisplay]]</d2l-tooltip>
 				</span>
 			</div>
 		`;
@@ -84,37 +92,36 @@ class D2LNavigationIterator extends PolymerElement {
 			},
 			_previousTitleToDisplay: {
 				type: String,
-				computed: '_getPreviousTitleToDisplay(previousTitle, countInformation)'
+				computed: '_getPreviousTitleToDisplay(previousTitle)'
 			},
 			_nextTitleToDisplay: {
 				type: String,
-				computed: '_getNextTitleToDisplay(nextTitle, countInformation)'
+				computed: '_getNextTitleToDisplay(nextTitle)'
 			}
 		};
 	}
 
 	static get is() { return 'd2l-navigation-iterator'; }
 
-	_getPreviousTitleToDisplay(previousTitle, countInformation) {
-		if (countInformation.length > 0) {
-			return '';
-		}
-
+	_getPreviousTitleToDisplay(previousTitle) {
 		if (previousTitle.length > 0) {
 			return previousTitle;
 		}
 		return 'Previous'; // TODO: localize
 	}
 
-	_getNextTitleToDisplay(nextTitle, countInformation) {
-		if (countInformation.length > 0) {
-			return '';
-		}
-
+	_getNextTitleToDisplay(nextTitle) {
 		if (nextTitle.length > 0) {
 			return nextTitle;
 		}
 		return 'Next'; // TODO: localize
+	}
+
+	_displayLinkTitles() {
+		if (this.countInformation.length > 0) {
+			return false;
+		}
+		return true;
 	}
 }
 
