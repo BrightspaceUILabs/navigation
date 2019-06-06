@@ -1,8 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-icons/d2l-icon.js';
 import 'd2l-icons/tier3-icons.js';
 import 'd2l-tooltip/d2l-tooltip.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
+import './d2l-navigation-link.js';
 
 /**
  * @customElement
@@ -19,22 +21,18 @@ class D2LNavigationIterator extends PolymerElement {
 					align-items: center;
 					display: flex;
 					justify-content: space-between;
+					height: 100%;
 					max-width: 20rem;
 				}
-				a {
-					text-decoration: none;
-				}
-				.d2l-navigation-iterator-previous {
-					position: relative;
+				d2l-navigation-link {
+					display: inline-block;
+					height: auto;
 				}
 				.d2l-navigation-iterator-previous-link {
 					padding: 0 0 0 1.2rem;
 				}
 				.d2l-navigation-iterator-previous-link-text {
 					padding: 0 0 0 0.6rem;
-				}
-				.d2l-navigation-iterator-next {
-					position: relative;
 				}
 				.d2l-navigation-iterator-next-link {
 					padding: 0 1.5rem 0 0;
@@ -44,21 +42,17 @@ class D2LNavigationIterator extends PolymerElement {
 				}
 			</style>
 			<div class="d2l-navigation-iterator">
-				<span class="d2l-navigation-iterator-previous">
-					<a id="d2l-navigation-iterator-previous" class="d2l-navigation-iterator-previous-link" href="[[previousLink]]">
-						<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
-						<span class="d2l-navigation-iterator-previous-link-text" hidden$="[[!_displayLinkTitles()]]">[[_previousTitleToDisplay]]</span>
-					</a>
+				<d2l-navigation-link id="d2l-navigation-iterator-previous" href="[[previousLink]]" class="d2l-navigation-iterator-previous-link d2l-focusable" text="[[_previousTitleToDisplay]]">
+					<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
+					<span class="d2l-navigation-iterator-previous-link-text" hidden$="[[!_displayLinkTitles()]]">[[_previousTitleToDisplay]]</span>
 					<d2l-tooltip for="d2l-navigation-iterator-previous" position="bottom">[[_previousTitleToDisplay]]</d2l-tooltip>
-				</span>
+				</d2l-navigation-link>
 				[[countInformation]]
-				<span class="d2l-navigation-iterator-next">
-					<a id="d2l-navigation-iterator-next" class="d2l-navigation-iterator-next-link" href="[[nextLink]]">
-						<span class="d2l-navigation-iterator-next-link-text" hidden$="[[!_displayLinkTitles()]]">[[_nextTitleToDisplay]]</span>
-						<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
-					</a>
+				<d2l-navigation-link id="d2l-navigation-iterator-next" href="[[nextLink]]" class="d2l-navigation-iterator-next-link d2l-focusable" text="[[_nextTitleToDisplay]]">
+					<span class="d2l-navigation-iterator-next-link-text" hidden$="[[!_displayLinkTitles()]]">[[_nextTitleToDisplay]]</span>
+					<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
 					<d2l-tooltip for="d2l-navigation-iterator-next" position="bottom">[[_nextTitleToDisplay]]</d2l-tooltip>
-				</span>
+				</d2l-navigation-link>
 			</div>
 		`;
 	}
