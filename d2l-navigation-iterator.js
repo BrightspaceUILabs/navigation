@@ -24,10 +24,6 @@ class D2LNavigationIterator extends PolymerElement {
 					height: 100%;
 					max-width: 20rem;
 				}
-				d2l-navigation-link {
-					display: inline-block;
-					height: auto;
-				}
 				.d2l-navigation-iterator-previous-link {
 					padding: 0 0 0 1.2rem;
 				}
@@ -40,17 +36,26 @@ class D2LNavigationIterator extends PolymerElement {
 				.d2l-navigation-iterator-next-link-text {
 					padding: 0 0.6rem 0 0;
 				}
+				.d2l-navigation-iterator-link-items {
+					align-items: center;
+					display: flex;
+					height: 100%;
+				}
 			</style>
 			<div class="d2l-navigation-iterator">
 				<d2l-navigation-link id="d2l-navigation-iterator-previous" href="[[previousLink]]" class="d2l-navigation-iterator-previous-link d2l-focusable" text="[[_previousTitleToDisplay]]">
-					<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
-					<span class="d2l-navigation-iterator-previous-link-text" hidden$="[[!_displayLinkTitles()]]">[[_previousTitleToDisplay]]</span>
-					<d2l-tooltip for="d2l-navigation-iterator-previous" position="bottom">[[_previousTitleToDisplay]]</d2l-tooltip>
+					<div class="d2l-navigation-iterator-link-items">
+						<d2l-icon icon="d2l-tier3:chevron-left-circle"></d2l-icon>
+						<span class="d2l-navigation-iterator-previous-link-text" hidden$="[[!_displayLinkTitles()]]">[[_previousTitleToDisplay]]</span>
+					</div>
+						<d2l-tooltip for="d2l-navigation-iterator-previous" position="bottom">[[_previousTitleToDisplay]]</d2l-tooltip>
 				</d2l-navigation-link>
 				[[countInformation]]
 				<d2l-navigation-link id="d2l-navigation-iterator-next" href="[[nextLink]]" class="d2l-navigation-iterator-next-link d2l-focusable" text="[[_nextTitleToDisplay]]">
-					<span class="d2l-navigation-iterator-next-link-text" hidden$="[[!_displayLinkTitles()]]">[[_nextTitleToDisplay]]</span>
-					<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
+					<div class="d2l-navigation-iterator-link-items">
+						<span class="d2l-navigation-iterator-next-link-text" hidden$="[[!_displayLinkTitles()]]">[[_nextTitleToDisplay]]</span>
+						<d2l-icon icon="d2l-tier3:chevron-right-circle"></d2l-icon>
+					</div>
 					<d2l-tooltip for="d2l-navigation-iterator-next" position="bottom">[[_nextTitleToDisplay]]</d2l-tooltip>
 				</d2l-navigation-link>
 			</div>
