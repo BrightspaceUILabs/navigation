@@ -53,7 +53,7 @@ class D2LNavigationIteratorItem extends PolymerElement {
 						</template>
 					</div>
 				</d2l-navigation-button>
-				<d2l-tooltip for="d2l-navigation-iterator-item" position="bottom">[[_displayText]]</d2l-tooltip>
+				<d2l-tooltip for="d2l-navigation-iterator-item">[[_displayText]]</d2l-tooltip>
 			</div>
 		`;
 	}
