@@ -116,7 +116,7 @@ class D2LNavigationIteratorItem extends PolymerElement {
 
 	_setupTypeProperties(type, text) {
 		let defaultText;
-		if (type == 'previous') {
+		if (type === 'previous') {
 			defaultText = 'Previous'; // TODO: localize
 			this._buttonClass = 'd2l-navigation-iterator-item-button-previous';
 			this._textClass = 'd2l-navigation-iterator-item-text-previous';
