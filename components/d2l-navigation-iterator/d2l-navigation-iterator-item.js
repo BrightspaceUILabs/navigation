@@ -19,10 +19,10 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					height: 100%;
 					position: relative;
 				}
-				[type="previous"] .d2l-navigation-iterator-item-icon {
+				[type="previous"] .d2l-navigation-iterator-item-button {
 					padding-left: 1.2rem;
 				}
-				[type="next"] .d2l-navigation-iterator-item-icon {
+				[type="next"] .d2l-navigation-iterator-item-button {
 					padding-right: 1.5rem;
 				}
 				.d2l-navigation-iterator-item-items {
@@ -40,8 +40,8 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					display: none;
 				}
 			</style>
-			<div id="d2l-navigation-iterator-item" type="[[type]]">
-				<d2l-navigation-button text="[[_displayText]]" type="[[type]]">
+			<div id="d2l-navigation-iterator-item">
+				<d2l-navigation-button class="d2l-navigation-iterator-item-button" text="[[_displayText]]" type="[[type]]">
 					<div class="d2l-navigation-iterator-item-items">
 						<template is="dom-if" if="[[_typeIsPrevious]]">
 							<d2l-icon icon$="[[_icon]]"></d2l-icon>

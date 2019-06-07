@@ -22,16 +22,11 @@ class D2LNavigationIterator extends PolymerElement {
 					align-items: center;
 					display: flex;
 					justify-content: space-between;
-					height: 3.3rem;
+					height: 100%;
 					max-width: 20rem;
 				}
 				[hidden] {
 					display: none;
-				}
-				@media (max-width: 615px) {
-					.d2l-navigation-iterator {
-						height: 3rem;
-					}
 				}
 			</style>
 			<div class="d2l-navigation-iterator">
