@@ -19,10 +19,13 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					height: 100%;
 					position: relative;
 				}
-				[type="previous"] .d2l-navigation-iterator-item-button {
+				:host([hidden]) {
+					display: none;
+				}
+				.d2l-navigation-iterator-item-button.previous {
 					padding-left: 1.2rem;
 				}
-				[type="next"] .d2l-navigation-iterator-item-button {
+				.d2l-navigation-iterator-item-button.next {
 					padding-right: 1.5rem;
 				}
 				.d2l-navigation-iterator-item-items {
@@ -30,31 +33,26 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					display: flex;
 					height: 100%;
 				}
-				[type="previous"] .d2l-navigation-iterator-item-text {
+				.d2l-navigation-iterator-item-items.next {
+					flex-direction: row-reverse;
+				}
+				.d2l-navigation-iterator-item-text.previous {
 					padding-left: 0.6rem;
 				}
-				[type="next"] .d2l-navigation-iterator-item-text {
+				.d2l-navigation-iterator-item-text.next {
 					padding-right: 0.6rem;
 				}
 				[hidden] {
 					display: none;
 				}
 			</style>
-			<div id="d2l-navigation-iterator-item">
-				<d2l-navigation-button class="d2l-navigation-iterator-item-button" text="[[_displayText]]" type="[[type]]">
-					<div class="d2l-navigation-iterator-item-items">
-						<template is="dom-if" if="[[_typeIsPrevious]]">
-							<d2l-icon icon$="[[_icon]]"></d2l-icon>
-							<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
-						</template>
-						<template is="dom-if" if="[[!_typeIsPrevious]]">
-							<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
-							<d2l-icon icon$="[[_icon]]"></d2l-icon>
-						</template>
-					</div>
-				</d2l-navigation-button>
-				<d2l-tooltip for="d2l-navigation-iterator-item">[[_displayText]]</d2l-tooltip>
-			</div>
+			<d2l-navigation-button id="d2l-navigation-iterator-item" class$="[[_getConditionalButtonClass(type)]]" text="[[_displayText]]">
+				<div class$="[[_getConditionalItemsClass(type)]]">
+					<d2l-icon icon$="[[_icon]]"></d2l-icon>
+					<span class$="[[_getConditionalTextClass(type)]]" hidden="[[hideText]]">[[_displayText]]</span>
+				</div>
+			</d2l-navigation-button>
+			<d2l-tooltip for="d2l-navigation-iterator-item">[[_displayText]]</d2l-tooltip>
 		`;
 	}
 
@@ -78,26 +76,16 @@ class D2LNavigationIteratorItem extends PolymerElement {
 			},
 			_displayText: {
 				type: String,
-				value: 'Previous'
+				computed: '_computeText(text, type)'
 			},
 			_icon: {
 				type: String,
-				value: 'd2l-tier3:chevron-left-circle'
-			},
-			_typeIsPrevious: {
-				type: Boolean,
-				value: true
+				computed: '_computeIcon(type)'
 			}
 		};
 	}
 
 	static get is() { return 'd2l-navigation-iterator-item'; }
-
-	static get observers() {
-		return [
-			'_setupTypeProperties(type, text)'
-		];
-	}
 
 	_typeChanged(newValue, oldValue) {
 		const validTypes = ['previous', 'next'];
@@ -106,23 +94,42 @@ class D2LNavigationIteratorItem extends PolymerElement {
 		}
 	}
 
-	_setupTypeProperties(type, text) {
-		let defaultText;
-		if (type === 'previous') {
-			defaultText = 'Previous'; // TODO: localize
-			this._icon = 'd2l-tier3:chevron-left-circle';
-			this._typeIsPrevious = true;
-		} else {
-			defaultText = 'Next'; // TODO: localize
-			this._icon = 'd2l-tier3:chevron-right-circle';
-			this._typeIsPrevious = false;
-		}
-
+	_computeText(text, type) {
 		if (text.length > 0) {
-			this._displayText = text;
-		} else {
-			this._displayText = defaultText;
+			return text;
 		}
+		if (type === 'previous') {
+			return 'Previous'; // TODO: localize
+		}
+		return 'Next'; // TODO: localize
+	}
+
+	_computeIcon(type) {
+		if (type === 'previous') {
+			return 'd2l-tier3:chevron-left-circle';
+		}
+		return 'd2l-tier3:chevron-right-circle';
+	}
+
+	_getConditionalButtonClass(type) {
+		if (type === 'previous') {
+			return 'd2l-navigation-iterator-item-button previous';
+		}
+		return 'd2l-navigation-iterator-item-button next';
+	}
+
+	_getConditionalItemsClass(type) {
+		if (type === 'previous') {
+			return 'd2l-navigation-iterator-item-items';
+		}
+		return 'd2l-navigation-iterator-item-items next';
+	}
+
+	_getConditionalTextClass(type) {
+		if (type === 'previous') {
+			return 'd2l-navigation-iterator-item-text previous';
+		}
+		return 'd2l-navigation-iterator-item-text next';
 	}
 }
 

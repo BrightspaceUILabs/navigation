@@ -17,16 +17,11 @@ class D2LNavigationIterator extends PolymerElement {
 			<style>
 				:host {
 					@apply --d2l-body-compact-text;
-				}
-				.d2l-navigation-iterator {
 					align-items: center;
 					display: flex;
 					justify-content: space-between;
 					height: 3.3rem;
 					max-width: 20rem;
-				}
-				[hidden] {
-					display: none;
 				}
 				@media (max-width: 615px) {
 					.d2l-navigation-iterator {
@@ -34,38 +29,31 @@ class D2LNavigationIterator extends PolymerElement {
 					}
 				}
 			</style>
-			<div class="d2l-navigation-iterator">
-				<d2l-navigation-iterator-item text=[[previousText]] type="previous" hide-text=[[hideText]] hidden=[[noPrevious]]></d2l-navigation-iterator-item>
-				<slot></slot>
-				<d2l-navigation-iterator-item text=[[nextText]] type="next" hide-text=[[hideText]] hidden=[[noNext]]></d2l-navigation-iterator-item>
-			</div>
+			<d2l-navigation-iterator-item text=[[previousText]] type="previous" hide-text=[[hideText]] hidden=[[noPrevious]]></d2l-navigation-iterator-item>
+			<slot></slot>
+			<d2l-navigation-iterator-item text=[[nextText]] type="next" hide-text=[[hideText]] hidden=[[noNext]]></d2l-navigation-iterator-item>
 		`;
 	}
 
 	static get properties() {
 		return {
 			previousText: {
-				type: String,
-				reflectToAttribute: true
+				type: String
 			},
 			nextText: {
-				type: String,
-				reflectToAttribute: true
+				type: String
 			},
 			hideText: {
 				type: Boolean,
-				value: false,
-				reflectToAttribute: true
+				value: false
 			},
 			noPrevious: {
 				type: Boolean,
-				value: false,
-				reflectToAttribute: true
+				value: false
 			},
 			noNext: {
 				type: Boolean,
-				value: false,
-				reflectToAttribute: true
+				value: false
 			}
 		};
 	}
