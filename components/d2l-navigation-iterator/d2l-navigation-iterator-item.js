@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {NavigationLocalize} from '../NavigationLocalize.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-icons/d2l-icon.js';
 import 'd2l-icons/tier3-icons.js';
@@ -10,7 +11,7 @@ import '../../d2l-navigation-button.js';
  * @customElement
  * @polymer
  */
-class D2LNavigationIteratorItem extends PolymerElement {
+class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 	static get template() {
 		return html`
 			<style>
@@ -99,9 +100,9 @@ class D2LNavigationIteratorItem extends PolymerElement {
 			return text;
 		}
 		if (type === 'previous') {
-			return 'Previous'; // TODO: localize
+			return this.localize('previous');
 		}
-		return 'Next'; // TODO: localize
+		return this.localize('next');
 	}
 
 	_computeIcon(type) {
