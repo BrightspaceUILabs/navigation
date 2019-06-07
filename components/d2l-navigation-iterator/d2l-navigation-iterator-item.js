@@ -11,7 +11,7 @@ import '../../d2l-navigation-button.js';
  * @customElement
  * @polymer
  */
-class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
+class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 	static get template() {
 		return html`
 			<style>
@@ -44,13 +44,13 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 					padding-right: 0.6rem;
 				}
 			</style>
-			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_displayText]]">
+			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]">
 				<div class="d2l-navigation-iterator-item-items">
 					<d2l-icon icon$="[[_icon]]"></d2l-icon>
-					<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
+					<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_computeText(text, type)]]</span>
 				</div>
 			</d2l-navigation-button>
-			<d2l-tooltip for="d2l-navigation-iterator-item">[[_displayText]]</d2l-tooltip>
+			<d2l-tooltip for="d2l-navigation-iterator-item">[[_computeText(text, type)]]</d2l-tooltip>
 		`;
 	}
 
@@ -70,10 +70,6 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true
-			},
-			_displayText: {
-				type: String,
-				computed: '_computeText(text, type)'
 			},
 			_icon: {
 				type: String,
@@ -95,8 +91,7 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 		if (text.length > 0) {
 			return text;
 		}
-		//return (type === 'previous') ? this.localize('previous') : this.localize('next');
-		return (type === 'previous') ? 'Previous' : 'Next';
+		return (type === 'previous') ? this.localize('previous') : this.localize('next');
 	}
 
 	_computeIcon(type) {
