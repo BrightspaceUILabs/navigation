@@ -23,7 +23,7 @@ class D2LNavigationIterator extends PolymerElement {
 					height: 3.3rem;
 					max-width: 20rem;
 				}
-				@media (max-width: 615px) {
+				@media (max-width: 30.75rem) {
 					.d2l-navigation-iterator {
 						height: 3rem;
 					}

@@ -23,10 +23,10 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 				:host([hidden]) {
 					display: none;
 				}
-				:host([type="previous"]) .d2l-navigation-iterator-item-button {
+				:host([type="previous"]) d2l-navigation-button {
 					padding-left: 1.2rem;
 				}
-				:host([type="next"]) .d2l-navigation-iterator-item-button {
+				:host([type="next"]) d2l-navigation-button {
 					padding-right: 1.5rem;
 				}
 				.d2l-navigation-iterator-item-items {
@@ -43,9 +43,6 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 				:host([type="next"]) .d2l-navigation-iterator-item-text {
 					padding-right: 0.6rem;
 				}
-				[hidden] {
-					display: none;
-				}
 			</style>
 			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_displayText]]">
 				<div class="d2l-navigation-iterator-item-items">
@@ -61,8 +58,7 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 		return {
 			text: {
 				type: String,
-				value: '',
-				reflectToAttribute: true
+				value: ''
 			},
 			type: {
 				type: String,
@@ -99,17 +95,12 @@ class D2LNavigationIteratorItem extends (NavigationLocalize(PolymerElement)) {
 		if (text.length > 0) {
 			return text;
 		}
-		if (type === 'previous') {
-			return this.localize('previous');
-		}
-		return this.localize('next');
+		//return (type === 'previous') ? this.localize('previous') : this.localize('next');
+		return (type === 'previous') ? 'Previous' : 'Next';
 	}
 
 	_computeIcon(type) {
-		if (type === 'previous') {
-			return 'd2l-tier3:chevron-left-circle';
-		}
-		return 'd2l-tier3:chevron-right-circle';
+		return (type === 'previous') ? 'd2l-tier3:chevron-left-circle' : 'd2l-tier3:chevron-right-circle';
 	}
 }
 
