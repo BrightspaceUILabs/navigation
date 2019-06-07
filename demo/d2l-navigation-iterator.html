@@ -16,7 +16,7 @@
 			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
 			import '@polymer/iron-demo-helpers/demo-snippet';
 			import 'd2l-typography/d2l-typography.js';
-			import '../d2l-navigation-iterator.js';
+			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
 
 			const $_documentContainer = document.createElement('template');
 			$_documentContainer.innerHTML = `
@@ -44,7 +44,7 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<div class="iterator-container">
-						<d2l-navigation-iterator previous-link="https://www.nfl.com" next-link="https://www.d2l.com"></d2l-navigation-iterator>
+						<d2l-navigation-iterator></d2l-navigation-iterator>
 					</div>
 				</template>
 			</demo-snippet>
@@ -52,7 +52,9 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<div class="iterator-container">
-						<d2l-navigation-iterator previous-link="https://www.nfl.com" next-link="https://www.d2l.com" count-information="User 1 of 17"></d2l-navigation-iterator>
+						<d2l-navigation-iterator>
+							<span>User 1 of 17</span>
+						</d2l-navigation-iterator>
 					</div>
 				</template>
 			</demo-snippet>
@@ -60,7 +62,23 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<div class="iterator-container">
-						<d2l-navigation-iterator previous-link="https://www.nfl.com" next-link="https://www.d2l.com" previous-title="Back" next-title="Forward"></d2l-navigation-iterator>
+						<d2l-navigation-iterator previous-text="Back" next-text="Forward"></d2l-navigation-iterator>
+					</div>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator no next demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<div class="iterator-container">
+						<d2l-navigation-iterator no-next></d2l-navigation-iterator>
+					</div>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator no previous demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<div class="iterator-container">
+						<d2l-navigation-iterator no-previous></d2l-navigation-iterator>
 					</div>
 				</template>
 			</demo-snippet>
