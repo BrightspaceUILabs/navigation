@@ -19,10 +19,10 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					height: 100%;
 					position: relative;
 				}
-				.d2l-navigation-iterator-item-button-previous {
+				[type="previous"] .d2l-navigation-iterator-item-button {
 					padding-left: 1.2rem;
 				}
-				.d2l-navigation-iterator-item-button-next {
+				[type="next"] .d2l-navigation-iterator-item-button {
 					padding-right: 1.5rem;
 				}
 				.d2l-navigation-iterator-item-items {
@@ -30,10 +30,10 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					display: flex;
 					height: 100%;
 				}
-				.d2l-navigation-iterator-item-text-previous {
+				[type="previous"] .d2l-navigation-iterator-item-text {
 					padding-left: 0.6rem;
 				}
-				.d2l-navigation-iterator-item-text-next {
+				[type="next"] .d2l-navigation-iterator-item-text {
 					padding-right: 0.6rem;
 				}
 				[hidden] {
@@ -41,14 +41,14 @@ class D2LNavigationIteratorItem extends PolymerElement {
 				}
 			</style>
 			<div id="d2l-navigation-iterator-item">
-				<d2l-navigation-button class$="[[_buttonClass]]" text$="[[_displayText]]">
+				<d2l-navigation-button class="d2l-navigation-iterator-item-button" text="[[_displayText]]" type="[[type]]">
 					<div class="d2l-navigation-iterator-item-items">
 						<template is="dom-if" if="[[_typeIsPrevious]]">
 							<d2l-icon icon$="[[_icon]]"></d2l-icon>
-							<span class$="[[_textClass]]" hidden="[[hideText]]">[[_displayText]]</span>
+							<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
 						</template>
 						<template is="dom-if" if="[[!_typeIsPrevious]]">
-							<span class$="[[_textClass]]" hidden="[[hideText]]">[[_displayText]]</span>
+							<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
 							<d2l-icon icon$="[[_icon]]"></d2l-icon>
 						</template>
 					</div>
@@ -80,14 +80,6 @@ class D2LNavigationIteratorItem extends PolymerElement {
 				type: String,
 				value: 'Previous'
 			},
-			_buttonClass: {
-				type: String,
-				value: 'd2l-navigation-iterator-item-button-previous'
-			},
-			_textClass: {
-				type: String,
-				value: 'd2l-navigation-iterator-item-text-previous'
-			},
 			_icon: {
 				type: String,
 				value: 'd2l-tier3:chevron-left-circle'
@@ -118,14 +110,10 @@ class D2LNavigationIteratorItem extends PolymerElement {
 		let defaultText;
 		if (type === 'previous') {
 			defaultText = 'Previous'; // TODO: localize
-			this._buttonClass = 'd2l-navigation-iterator-item-button-previous';
-			this._textClass = 'd2l-navigation-iterator-item-text-previous';
 			this._icon = 'd2l-tier3:chevron-left-circle';
 			this._typeIsPrevious = true;
 		} else {
 			defaultText = 'Next'; // TODO: localize
-			this._buttonClass = 'd2l-navigation-iterator-item-button-next';
-			this._textClass = 'd2l-navigation-iterator-item-text-next';
 			this._icon = 'd2l-tier3:chevron-right-circle';
 			this._typeIsPrevious = false;
 		}
