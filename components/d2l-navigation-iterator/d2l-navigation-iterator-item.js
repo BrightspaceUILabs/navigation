@@ -22,10 +22,10 @@ class D2LNavigationIteratorItem extends PolymerElement {
 				:host([hidden]) {
 					display: none;
 				}
-				.d2l-navigation-iterator-item-button.previous {
+				:host([type="previous"]) .d2l-navigation-iterator-item-button {
 					padding-left: 1.2rem;
 				}
-				.d2l-navigation-iterator-item-button.next {
+				:host([type="next"]) .d2l-navigation-iterator-item-button {
 					padding-right: 1.5rem;
 				}
 				.d2l-navigation-iterator-item-items {
@@ -33,23 +33,23 @@ class D2LNavigationIteratorItem extends PolymerElement {
 					display: flex;
 					height: 100%;
 				}
-				.d2l-navigation-iterator-item-items.next {
+				:host([type="next"]) .d2l-navigation-iterator-item-items {
 					flex-direction: row-reverse;
 				}
-				.d2l-navigation-iterator-item-text.previous {
+				:host([type="previous"]) .d2l-navigation-iterator-item-text {
 					padding-left: 0.6rem;
 				}
-				.d2l-navigation-iterator-item-text.next {
+				:host([type="next"]) .d2l-navigation-iterator-item-text {
 					padding-right: 0.6rem;
 				}
 				[hidden] {
 					display: none;
 				}
 			</style>
-			<d2l-navigation-button id="d2l-navigation-iterator-item" class$="[[_getConditionalButtonClass(type)]]" text="[[_displayText]]">
-				<div class$="[[_getConditionalItemsClass(type)]]">
+			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_displayText]]">
+				<div class="d2l-navigation-iterator-item-items">
 					<d2l-icon icon$="[[_icon]]"></d2l-icon>
-					<span class$="[[_getConditionalTextClass(type)]]" hidden="[[hideText]]">[[_displayText]]</span>
+					<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_displayText]]</span>
 				</div>
 			</d2l-navigation-button>
 			<d2l-tooltip for="d2l-navigation-iterator-item">[[_displayText]]</d2l-tooltip>
@@ -109,27 +109,6 @@ class D2LNavigationIteratorItem extends PolymerElement {
 			return 'd2l-tier3:chevron-left-circle';
 		}
 		return 'd2l-tier3:chevron-right-circle';
-	}
-
-	_getConditionalButtonClass(type) {
-		if (type === 'previous') {
-			return 'd2l-navigation-iterator-item-button previous';
-		}
-		return 'd2l-navigation-iterator-item-button next';
-	}
-
-	_getConditionalItemsClass(type) {
-		if (type === 'previous') {
-			return 'd2l-navigation-iterator-item-items';
-		}
-		return 'd2l-navigation-iterator-item-items next';
-	}
-
-	_getConditionalTextClass(type) {
-		if (type === 'previous') {
-			return 'd2l-navigation-iterator-item-text previous';
-		}
-		return 'd2l-navigation-iterator-item-text next';
 	}
 }
 
