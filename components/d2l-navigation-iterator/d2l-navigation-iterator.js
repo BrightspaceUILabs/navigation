@@ -41,12 +41,10 @@ class D2LNavigationIterator extends PolymerElement {
 		return {
 			previousText: {
 				type: String,
-				value: '',
 				reflectToAttribute: true
 			},
 			nextText: {
 				type: String,
-				value: '',
 				reflectToAttribute: true
 			},
 			hideText: {
