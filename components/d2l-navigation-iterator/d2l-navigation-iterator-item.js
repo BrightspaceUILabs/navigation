@@ -36,16 +36,19 @@ class D2LNavigationIteratorItem extends PolymerElement {
 				.d2l-navigation-iterator-item-text-next {
 					padding-right: 0.6rem;
 				}
+				[hidden] {
+					display: none;
+				}
 			</style>
 			<div id="d2l-navigation-iterator-item">
 				<d2l-navigation-button class$="[[_buttonClass]]" text$="[[_displayText]]">
 					<div class="d2l-navigation-iterator-item-items">
 						<template is="dom-if" if="[[_typeIsPrevious]]">
 							<d2l-icon icon$="[[_icon]]"></d2l-icon>
-							<span class$="[[_textClass]]">[[_displayText]]</span>
+							<span class$="[[_textClass]]" hidden="[[hideText]]">[[_displayText]]</span>
 						</template>
 						<template is="dom-if" if="[[!_typeIsPrevious]]">
-							<span class$="[[_textClass]]">[[_displayText]]</span>
+							<span class$="[[_textClass]]" hidden="[[hideText]]">[[_displayText]]</span>
 							<d2l-icon icon$="[[_icon]]"></d2l-icon>
 						</template>
 					</div>
@@ -66,6 +69,11 @@ class D2LNavigationIteratorItem extends PolymerElement {
 				type: String,
 				value: 'previous',
 				observer: '_typeChanged',
+				reflectToAttribute: true
+			},
+			hideText: {
+				type: Boolean,
+				value: false,
 				reflectToAttribute: true
 			},
 			_displayText: {

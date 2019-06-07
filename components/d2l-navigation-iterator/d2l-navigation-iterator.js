@@ -30,9 +30,9 @@ class D2LNavigationIterator extends PolymerElement {
 				}
 			</style>
 			<div class="d2l-navigation-iterator">
-				<d2l-navigation-iterator-item text=[[previousText]] type="previous" hidden=[[noPrevious]]></d2l-navigation-iterator-item>
+				<d2l-navigation-iterator-item text=[[previousText]] type="previous" hide-text=[[hideText]] hidden=[[noPrevious]]></d2l-navigation-iterator-item>
 				<slot></slot>
-				<d2l-navigation-iterator-item text=[[nextText]] type="next" hidden=[[noNext]]></d2l-navigation-iterator-item>
+				<d2l-navigation-iterator-item text=[[nextText]] type="next" hide-text=[[hideText]] hidden=[[noNext]]></d2l-navigation-iterator-item>
 			</div>
 		`;
 	}
@@ -47,6 +47,11 @@ class D2LNavigationIterator extends PolymerElement {
 			nextText: {
 				type: String,
 				value: '',
+				reflectToAttribute: true
+			},
+			hideText: {
+				type: Boolean,
+				value: false,
 				reflectToAttribute: true
 			},
 			noPrevious: {

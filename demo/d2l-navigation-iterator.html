@@ -16,6 +16,7 @@
 			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
 			import '@polymer/iron-demo-helpers/demo-snippet';
 			import 'd2l-typography/d2l-typography.js';
+			import '../d2l-navigation-separator.js';
 			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
 
 			const $_documentContainer = document.createElement('template');
@@ -48,12 +49,22 @@
 					</div>
 				</template>
 			</demo-snippet>
-			<h3>d2l-navigation-iterator count demo</h3>
+			<h3>d2l-navigation-iterator count (hide text) demo</h3>
 			<demo-snippet>
 				<template strip-whitespace>
 					<div class="iterator-container">
-						<d2l-navigation-iterator>
+						<d2l-navigation-iterator hide-text>
 							<span>User 1 of 17</span>
+						</d2l-navigation-iterator>
+					</div>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator separator (hide text) demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<div class="iterator-container">
+						<d2l-navigation-iterator hide-text>
+							<d2l-navigation-separator></d2l-navigation-separator>
 						</d2l-navigation-iterator>
 					</div>
 				</template>
