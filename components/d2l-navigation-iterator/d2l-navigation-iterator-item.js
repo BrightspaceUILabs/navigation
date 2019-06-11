@@ -95,7 +95,11 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 	_typeChanged(newValue, oldValue) {
 		const validTypes = ['previous', 'next'];
 		if (validTypes.indexOf(newValue) === -1) {
-			this.type = oldValue;
+			if (validTypes.indexOf(oldValue) === -1) {
+				this.type = 'previous';
+			} else {
+				this.type = oldValue;
+			}
 		}
 	}
 
