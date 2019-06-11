@@ -29,6 +29,12 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 				:host([type="next"]) d2l-navigation-button {
 					padding-right: 1.5rem;
 				}
+				:host([type="previous"]:dir(rtl)) d2l-navigation-button {
+					padding-right: 1.2rem;
+				}
+				:host([type="next"]:dir(rtl)) d2l-navigation-button {
+					padding-left: 1.5rem;
+				}
 				.d2l-navigation-iterator-item-items {
 					align-items: center;
 					display: flex;
@@ -42,6 +48,12 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 				}
 				:host([type="next"]) .d2l-navigation-iterator-item-text {
 					padding-right: 0.6rem;
+				}
+				:host([type="previous"]:dir(rtl)) .d2l-navigation-iterator-item-text {
+					padding-right: 0.6rem;
+				}
+				:host([type="next"]:dir(rtl)) .d2l-navigation-iterator-item-text {
+					padding-left: 0.6rem;
 				}
 			</style>
 			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]">
