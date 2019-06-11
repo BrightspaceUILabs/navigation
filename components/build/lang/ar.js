@@ -7,8 +7,8 @@ const LangArImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.ar = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'التالي',
+			'previous': 'السابق'
 		};
 	}
 };

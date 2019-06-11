@@ -7,8 +7,8 @@ const LangKoImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.ko = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': '다음',
+			'previous': '이전'
 		};
 	}
 };

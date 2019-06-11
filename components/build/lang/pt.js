@@ -7,8 +7,8 @@ const LangPtImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.pt = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'Próximo',
+			'previous': 'Anterior'
 		};
 	}
 };

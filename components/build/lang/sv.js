@@ -7,8 +7,8 @@ const LangSvImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.sv = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'Nästa',
+			'previous': 'Föregående'
 		};
 	}
 };
