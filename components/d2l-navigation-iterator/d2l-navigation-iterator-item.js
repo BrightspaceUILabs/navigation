@@ -1,10 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {NavigationLocalize} from '../NavigationLocalize.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-icons/d2l-icon.js';
 import 'd2l-icons/tier3-icons.js';
 import 'd2l-tooltip/d2l-tooltip.js';
-import 'd2l-typography/d2l-typography-shared-styles.js';
 import '../../d2l-navigation-button.js';
 
 /**
@@ -31,9 +29,11 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 				}
 				:host([type="previous"]:dir(rtl)) d2l-navigation-button {
 					padding-right: 1.2rem;
+					padding-left: 0;
 				}
 				:host([type="next"]:dir(rtl)) d2l-navigation-button {
 					padding-left: 1.5rem;
+					padding-right: 0;
 				}
 				.d2l-navigation-iterator-item-items {
 					align-items: center;
