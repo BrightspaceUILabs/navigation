@@ -51,9 +51,11 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 				}
 				:host([type="previous"]:dir(rtl)) .d2l-navigation-iterator-item-text {
 					padding-right: 0.6rem;
+					padding-left: 0;
 				}
 				:host([type="next"]:dir(rtl)) .d2l-navigation-iterator-item-text {
 					padding-left: 0.6rem;
+					padding-right: 0;
 				}
 			</style>
 			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]">
