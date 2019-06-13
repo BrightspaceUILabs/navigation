@@ -1,10 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier3-icons.js';
-import 'd2l-tooltip/d2l-tooltip.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
-import '../../d2l-navigation-link.js';
 import './d2l-navigation-iterator-item.js';
 
 /**
@@ -71,6 +66,7 @@ class D2LNavigationIterator extends PolymerElement {
 	static get is() { return 'd2l-navigation-iterator'; }
 
 	_dispatchButtonClicked(e) {
+		e.stopPropagation();
 		this.dispatchEvent(new CustomEvent('d2l-navigation-iterator-button-clicked', {
 			detail: {
 				type: e.currentTarget.type
