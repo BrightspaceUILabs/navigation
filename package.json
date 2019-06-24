@@ -39,16 +39,16 @@
   },
   "main": "index.js",
   "dependencies": {
-    "d2l-button": "BrightspaceUI/button#semver:^5",
-    "d2l-colors": "BrightspaceUI/colors#semver:^4",
+    "d2l-button": "BrightspaceUI/button#dbatiste/dark-mode-1",
+    "d2l-colors": "BrightspaceUI/colors#dbatiste/dark-mode-1",
     "fastdom": "^1.0.8",
-    "d2l-icons": "BrightspaceUI/icons#semver:^6",
-    "d2l-link": "BrightspaceUI/link#semver:^5",
+    "d2l-icons": "BrightspaceUI/icons#dbatiste/dark-mode-1",
+    "d2l-link": "BrightspaceUI/link#dbatiste/dark-mode-1",
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2",
     "d2l-offscreen": "BrightspaceUI/offscreen#semver:^4",
     "d2l-polymer-behaviors": "Brightspace/d2l-polymer-behaviors-ui#semver:^2",
     "resize-observer-polyfill": "^1.5.0",
-    "d2l-typography": "BrightspaceUI/typography#semver:^7",
+    "d2l-typography": "BrightspaceUI/typography#dbatiste/dark-mode-1",
     "@polymer/polymer": "^3.0.0"
   }
 }

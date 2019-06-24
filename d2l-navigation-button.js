@@ -67,6 +67,23 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 				@apply --d2l-navigation-highlight-border;
 			}
 
+			@media (prefers-color-scheme: dark) {
+				button {
+					color: var(--d2l-color-regolith);
+				}
+				:host button:hover,
+				:host button:focus,
+				:host button:hover ::slotted(*),
+				:host button:focus ::slotted(*) {
+					color: var(--d2l-color-celestine-plus-1);
+					--d2l-icon-fill-color: var(--d2l-color-celestine-plus-1);
+				}
+				:host button:hover .d2l-navigation-button-top-border,
+				:host button:focus .d2l-navigation-button-top-border {
+					background: var(--d2l-color-celestine-plus-1);
+				}
+			}
+
 			.d2l-offscreen-description {
 				@apply --d2l-offscreen;
 			}
@@ -86,7 +103,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 		</button>
 		<span id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</span>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
