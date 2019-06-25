@@ -67,21 +67,19 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 				@apply --d2l-navigation-highlight-border;
 			}
 
-			@media (prefers-color-scheme: dark) {
-				button {
-					color: var(--d2l-color-regolith);
-				}
-				:host button:hover,
-				:host button:focus,
-				:host button:hover ::slotted(*),
-				:host button:focus ::slotted(*) {
-					color: var(--d2l-color-celestine-plus-1);
-					--d2l-icon-fill-color: var(--d2l-color-celestine-plus-1);
-				}
-				:host button:hover .d2l-navigation-button-top-border,
-				:host button:focus .d2l-navigation-button-top-border {
-					background: var(--d2l-color-celestine-plus-1);
-				}
+			:host-context(.d2l-dark-mode) button {
+				color: var(--d2l-color-regolith);
+			}
+			:host-context(.d2l-dark-mode) button:hover,
+			:host-context(.d2l-dark-mode) button:focus,
+			:host-context(.d2l-dark-mode) button:hover ::slotted(*),
+			:host-context(.d2l-dark-mode) button:focus ::slotted(*) {
+				color: var(--d2l-color-celestine-plus-1);
+				--d2l-icon-fill-color: var(--d2l-color-celestine-plus-1);
+			}
+			:host-context(.d2l-dark-mode) button:hover .d2l-navigation-button-top-border,
+			:host-context(.d2l-dark-mode) button:focus .d2l-navigation-button-top-border {
+				background: var(--d2l-color-celestine-plus-1);
 			}
 
 			.d2l-offscreen-description {
