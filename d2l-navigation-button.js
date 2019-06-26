@@ -67,18 +67,20 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button">
 				@apply --d2l-navigation-highlight-border;
 			}
 
-			:host-context(.d2l-dark-mode) button {
+			:host(.d2l-dark-mode) button,
+			:host(.d2l-dark-mode) button ::slotted(*) {
 				color: var(--d2l-color-regolith);
+				--d2l-icon-fill-color: var(--d2l-color-regolith);
 			}
-			:host-context(.d2l-dark-mode) button:hover,
-			:host-context(.d2l-dark-mode) button:focus,
-			:host-context(.d2l-dark-mode) button:hover ::slotted(*),
-			:host-context(.d2l-dark-mode) button:focus ::slotted(*) {
+			:host(.d2l-dark-mode) button:hover,
+			:host(.d2l-dark-mode) button:focus,
+			:host(.d2l-dark-mode) button:hover ::slotted(*),
+			:host(.d2l-dark-mode) button:focus ::slotted(*) {
 				color: var(--d2l-color-celestine-plus-1);
 				--d2l-icon-fill-color: var(--d2l-color-celestine-plus-1);
 			}
-			:host-context(.d2l-dark-mode) button:hover .d2l-navigation-button-top-border,
-			:host-context(.d2l-dark-mode) button:focus .d2l-navigation-button-top-border {
+			:host(.d2l-dark-mode) button:hover .d2l-navigation-button-top-border,
+			:host(.d2l-dark-mode) button:focus .d2l-navigation-button-top-border {
 				background: var(--d2l-color-celestine-plus-1);
 			}
 
@@ -125,5 +127,8 @@ Polymer({
 	],
 	ready: function() {
 		this._ariaDescriptionId = D2L.Id.getUniqueId();
+		if (document.body.classList.contains('d2l-dark-mode')) {
+			this.classList.add('d2l-dark-mode');
+		}
 	}
 });

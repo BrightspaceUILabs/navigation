@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-band demo</title>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+		<script type="module" src="../../d2l-icons/d2l-icon.js"></script>
+		<script type="module" src="../../d2l-icons/tier3-icons.js"></script>
+		<script type="module" src="../d2l-navigation-button-notification-icon.js"></script>
+		<script type="module" src="../d2l-navigation-button-close.js"></script>
+		<script type="module" src="../d2l-navigation-link-back.js"></script>
+		<script type="module" src="../d2l-navigation-link-image.js"></script>
+		<script type="module" src="../d2l-navigation-band.js"></script>
+		<style>
+			.button-holder {
+				margin: 0px 5px;
+			}
+			.d2l-dark-mode {
+					background-color: #000000;
+			}
+		</style>
+	</head>
+	<body unresolved class="d2l-typography d2l-dark-mode">
+
+		<custom-style include="d2l-typography">
+			<style is="custom-style" include="d2l-typography">/* empty */</style>
+		</custom-style>
+
+		<div>
+			<h3>d2l-navigation-button</h3>
+
+			<style>
+				.button-holder {
+					height: 90px;
+				}
+
+				.button-holder :first-child {
+					margin-left: 0;
+				}
+
+				d2l-navigation-button,
+				d2l-navigation-button-notification-icon,
+				d2l-navigation-button-image,
+				d2l-navigation-button-close {
+					margin: 0px 5px;
+				}
+			</style>
+			<d2l-navigation-band></d2l-navigation-band>
+			<div class="button-holder">
+				<d2l-navigation-button><span><d2l-icon icon="d2l-tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
+				<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="This text will not be added"></d2l-navigation-button-notification-icon>
+				<d2l-navigation-button-notification-icon notification="" icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
+				<d2l-navigation-button-close></d2l-navigation-button-close>
+				<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled=""></d2l-navigation-button-notification-icon>
+				<d2l-navigation-button-close disabled=""></d2l-navigation-button-close>
+			</div>
+			<br>
+			<button class="notification-toggle">Toggle notification</button>
+			<button class="border-toggle">Toggle borders</button>
+			<button class="lang-cycle">Cycle language</button>
+			<button class="focus-button">Focus</button>
+
+			<h3>d2l-navigation-link</h3>
+			<style>
+				.button-holder {
+					height: 90px;
+				}
+				d2l-navigation-link-back,
+				d2l-navigation-link-image {
+					margin: 0px 5px;
+				}
+			</style>
+			<d2l-navigation-band></d2l-navigation-band>
+			<div class="button-holder">
+				<d2l-navigation-link-back text="BACK" href="https://www.example.org"></d2l-navigation-link-back>
+				<d2l-navigation-link-back href="https://www.example.org"></d2l-navigation-link-back>
+				<d2l-navigation-link-image src="./logo-image.png" href="https://www.example.org" text="alt text"></d2l-navigation-link-image>
+				<d2l-navigation-link-image src="./logo-image.png" text="alt text"></d2l-navigation-link-image>
+			</div>
+			<br>
+			<button class="border-toggle">Toggle borders</button>
+			<button class="lang-cycle">Cycle language</button>
+			<button class="focus-link">Focus</button>
+
+		</div>
+
+	</body>
+</html>
