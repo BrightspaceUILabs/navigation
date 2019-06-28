@@ -127,7 +127,7 @@ Polymer({
 	],
 	ready: function() {
 		this._ariaDescriptionId = D2L.Id.getUniqueId();
-		if (document.body.classList.contains('d2l-dark-mode')) {
+		if (window.document.documentElement.getAttribute('d2l-color-scheme') === 'dark') {
 			this.classList.add('d2l-dark-mode');
 		}
 	}
