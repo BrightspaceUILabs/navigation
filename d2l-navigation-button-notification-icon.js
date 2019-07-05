@@ -29,31 +29,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 				display: inline-block;
 				height: 100%;
 			}
-			:host([notification]) .d2l-navigation-button-notification-indicator {
-				display: inline-block;
-			}
 			.d2l-navigation-button-icon-container {
 				display: inline-block;
 				position: relative;
-			}
-			.d2l-navigation-button-notification-indicator {
-				display: none;
-				height: 100%;
-				position: absolute;
-				right: calc(-50% - 4px);
-				top: calc(-50% + 11px);
-				width: 100%;
-			}
-			:host(:dir(rtl)) .d2l-navigation-button-notification-indicator {
-				left: calc(-50% - 4px);
-				right: auto;
-			}
-			.d2l-navigation-button-notification-indicator-icon {
-				background: var(--d2l-color-primary-accent-indicator);
-				border: 2px solid white;
-				height: 10px;
-				width: 10px;
-				border-radius: 50%;
 			}
 		</style>
 		<d2l-navigation-button aria-expanded$="[[ariaExpanded]]" aria-haspopup$="[[ariaHaspopup]]" aria-label$="[[ariaLabel]]" aria-describedby-text="[[_getNotificationText(notification, notificationText)]]" class="d2l-focusable" disabled$="[[disabled]]" autofocus$="[[autofocus]]" form$="[[form]]" formaction$="[[formaction]]" formenctype$="[[formenctype]]" formmethod$="[[formmethod]]" formnovalidate$="[[formnovalidate]]" formtarget$="[[formtarget]]" name$="[[name]]" text="[[text]]" type$="[[type]]">
