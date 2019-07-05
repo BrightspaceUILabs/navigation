@@ -16,6 +16,7 @@ import 'd2l-colors/d2l-colors.js';
 import './d2l-navigation-button.js';
 import 'd2l-icons/d2l-icon.js';
 import 'd2l-icons/tier2-icons.js';
+import './d2l-navigation-notification.js'
 import 'd2l-button/d2l-button-behavior.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
@@ -58,9 +59,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 		<d2l-navigation-button aria-expanded$="[[ariaExpanded]]" aria-haspopup$="[[ariaHaspopup]]" aria-label$="[[ariaLabel]]" aria-describedby-text="[[_getNotificationText(notification, notificationText)]]" class="d2l-focusable" disabled$="[[disabled]]" autofocus$="[[autofocus]]" form$="[[form]]" formaction$="[[formaction]]" formenctype$="[[formenctype]]" formmethod$="[[formmethod]]" formnovalidate$="[[formnovalidate]]" formtarget$="[[formtarget]]" name$="[[name]]" text="[[text]]" type$="[[type]]">
 			<span class="d2l-navigation-button-icon-container">
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
-				<span class="d2l-navigation-button-notification-indicator">
-					<div class="d2l-navigation-button-notification-indicator-icon"></div>
-				</span>
+					<d2l-navigation-notification-icon notification="[[notification]]"></d2l-navigation-notification-icon>
 			</span>
 		</d2l-navigation-button>
 	</template>
