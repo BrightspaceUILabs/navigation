@@ -7,7 +7,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
  * @polymer
  */
 class NavigationNotificationIcon extends PolymerElement {
-    static get template() {
+	static get template() {
 		return html`
             <style is="custom-style" include="d2l-offscreen-shared-styles">
                 :host {
@@ -41,16 +41,16 @@ class NavigationNotificationIcon extends PolymerElement {
                 <div class="d2l-navigation-notification-indicator-icon"></div>
             </span>
 		`;
-    }
+	}
 
-    static get is() { return 'd2l-navigation-notification-icon'; }
+	static get is() { return 'd2l-navigation-notification-icon'; }
 
-    static get properties() {
+	static get properties() {
 		return {
-            notification: {
-                type: Boolean,
-                reflectToAttribute: true
-            }
+			notification: {
+				type: Boolean,
+				reflectToAttribute: true
+			}
 		};
 	}
 }
