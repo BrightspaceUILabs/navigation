@@ -73,7 +73,7 @@ suite('d2l-navigation-immersive', function() {
 	var nav;
 	setup(function(done) {
 		nav = fixture('empty');
-		 raf(done);
+		raf(done);
 	});
 	test('instantiating the element works', function() {
 		assert.equal(nav.tagName.toLowerCase(), 'd2l-navigation-immersive');
@@ -100,9 +100,9 @@ suite('d2l-navigation-immersive', function() {
 	});
 
 	test('hidden class applied when element has no middle slot content', function(done) {
-			var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
-			expect(hiddenMiddle).to.not.be.null;
-			done();
+		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
+		expect(hiddenMiddle).to.not.be.null;
+		done();
 	});
 
 	test('no right border when element has no right slot content', function() {
@@ -118,7 +118,7 @@ suite('d2l-navigation-immersive with back link', function() {
 		raf(done);
 	});
 	test('back link initializes correctly', function() {
-		flush(function () {
+		flush(function() {
 			assert.equal(dom(nav.root).backLinkHref, 'https://www.d2l.com');
 			assert.equal(dom(nav.root).backLinkText, 'Back to D2L');
 		});
@@ -128,7 +128,7 @@ suite('d2l-navigation-immersive with back link', function() {
 		var newText = 'Back to da NFL';
 		nav.setAttribute('back-link-href', newHref);
 		nav.setAttribute('back-link-text', newText);
-		flush(function () {
+		flush(function() {
 			assert.equal(dom(nav.root).backLinkHref, newHref);
 			assert.equal(dom(nav.root).backLinkText, newText);
 		});
