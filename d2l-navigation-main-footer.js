@@ -9,9 +9,7 @@ Polymer-based web component for the smaller, lower section of the navigational e
 @demo demo/navigation-main-footer.html
 */
 class D2LNavigationMainFooter extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation-main-footer';
-	}
+
 	static get template() {
 		const template = html`
 			${navigationSharedSytle}
@@ -32,4 +30,4 @@ class D2LNavigationMainFooter extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigationMainFooter.is, D2LNavigationMainFooter);
+customElements.define('d2l-navigation-main-footer', D2LNavigationMainFooter);

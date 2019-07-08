@@ -13,9 +13,7 @@ Polymer-based web component for buttons used in the navigational header.
 @demo demo/d2l-navigation-button.html d2l-navigation-button
 */
 class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Behavior, D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
-	static get is() {
-		return 'd2l-navigation-button';
-	}
+
 	static get properties() {
 		return {
 			text: {
@@ -106,4 +104,4 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 		this._ariaDescriptionId = D2L.Id.getUniqueId();
 	}
 }
-customElements.define(D2LNavigationButton.is, D2LNavigationButton);
+customElements.define('d2l-navigation-button', D2LNavigationButton);

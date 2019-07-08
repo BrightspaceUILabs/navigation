@@ -8,9 +8,6 @@ Polymer-based web component for the larger, upper section of the navigational el
 @demo demo/navigation-main-header.html
 */
 class D2LNavigationMainHeader extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation-main-header';
-	}
 
 	static get template() {
 		const template = html`
@@ -73,4 +70,4 @@ class D2LNavigationMainHeader extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigationMainHeader.is, D2LNavigationMainHeader);
+customElements.define('d2l-navigation-main-header', D2LNavigationMainHeader);

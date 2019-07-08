@@ -9,10 +9,6 @@ Polymer-based web component for a solid colour band that runs along the top of t
 */
 class D2LNavigationBand extends PolymerElement {
 
-	static get is() {
-		return 'd2l-navigation-band';
-	}
-
 	static get template() {
 		const template = html`
 
@@ -30,4 +26,4 @@ class D2LNavigationBand extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigationBand.is, D2LNavigationBand);
+customElements.define('d2l-navigation-band', D2LNavigationBand);

@@ -16,9 +16,7 @@ Polymer-based web component for the back button used in the navigational header.
 class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavior,
 	D2L.PolymerBehaviors.FocusableBehavior,
 	D2L.PolymerBehaviors.LocalizeBehavior], PolymerElement) {
-	static get is() {
-		return 'd2l-navigation-link-back';
-	}
+
 	static get properties() {
 		return  {
 			text: {
@@ -87,4 +85,4 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 		return text;
 	}
 }
-customElements.define(D2LNavigationLinkBack.is, D2LNavigationLinkBack);
+customElements.define('d2l-navigation-link-back', D2LNavigationLinkBack);

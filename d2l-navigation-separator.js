@@ -9,9 +9,7 @@ Polymer-based web component for a separator component to be used between buttons
 @demo demo/navigation-separator.html
 */
 class D2LNavigationSeparator extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation-separator';
-	}
+
 	static get template() {
 		const template = html`
 		<style>
@@ -29,4 +27,4 @@ class D2LNavigationSeparator extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigationSeparator.is, D2LNavigationSeparator);
+customElements.define('d2l-navigation-separator', D2LNavigationSeparator);

@@ -12,9 +12,7 @@ Polymer-based web component for buttons used in the navigational header.
 */
 class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavior,
 	D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
-	static get is() {
-		return 'd2l-navigation-link';
-	}
+
 	static get properties() {
 		return {
 			href: {
@@ -64,4 +62,5 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavi
 		return template;
 	}
 }
-customElements.define(D2LNavigationLink.is, D2LNavigationLink);
+
+customElements.define('d2l-navigation-link', D2LNavigationLink);

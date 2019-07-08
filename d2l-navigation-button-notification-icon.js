@@ -16,9 +16,7 @@ This button contains a user-supplied icon, as well as a notification marker.
 @demo demo/d2l-navigation-button.html d2l-navigation-button-notification-icon
 */
 class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBehaviors.Button.Behavior, D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
-	static get is() {
-		return 'd2l-navigation-button-notification-icon';
-	}
+
 	static get properties() {
 		return {
 			icon: {
@@ -87,4 +85,4 @@ class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBeh
 		return notification ? notificationText : '';
 	}
 }
-customElements.define(D2LNavigationButtonNotificationIcon.is, D2LNavigationButtonNotificationIcon);
+customElements.define('d2l-navigation-button-notification-icon', D2LNavigationButtonNotificationIcon);

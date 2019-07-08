@@ -15,9 +15,6 @@ Polymer-based web component for the immersive navigation component
 @demo demo/navigation-immersive.html
 */
 class D2LNavigationImmsersive extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation-immersive';
-	}
 
 	static get template() {
 		const template = html`
@@ -251,4 +248,4 @@ class D2LNavigationImmsersive extends PolymerElement {
 		}
 	}
 }
-customElements.define(D2LNavigationImmsersive.is, D2LNavigationImmsersive);
+customElements.define('d2l-navigation-immersive', D2LNavigationImmsersive);

@@ -12,9 +12,7 @@ Polymer-based web component for the all encompasing navigation wrapper component
 @demo demo/navigation.html
 */
 class D2LNavigation extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation';
-	}
+
 	static get template() {
 		const template = html`
 		${navigationSharedSytle}
@@ -40,4 +38,4 @@ class D2LNavigation extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigation.is, D2LNavigation);
+customElements.define('d2l-navigation', D2LNavigation);

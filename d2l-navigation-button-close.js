@@ -18,9 +18,7 @@ This button contains an X icon.
 class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Button.Behavior,
 	D2L.PolymerBehaviors.FocusableBehavior,
 	D2L.PolymerBehaviors.LocalizeBehavior], PolymerElement) {
-	static get is() {
-		return 'd2l-navigation-button-close';
-	}
+
 	static get properties() {
 		return {
 			resources: {
@@ -76,4 +74,4 @@ class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Butt
 	}
 }
 
-customElements.define(D2LNavigationButtonClose.is, D2LNavigationButtonClose);
+customElements.define('d2l-navigation-button-close', D2LNavigationButtonClose);

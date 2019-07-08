@@ -8,9 +8,7 @@ Polymer-based web component for the image link used in the navigational header.
 @demo demo/d2l-navigation-button.html d2l-navigation-link-image
 */
 class D2LNavigationLinkImage extends PolymerElement {
-	static get is() {
-		return 'd2l-navigation-link-image';
-	}
+
 	static get properties() {
 		return {
 			src: {
@@ -60,4 +58,4 @@ class D2LNavigationLinkImage extends PolymerElement {
 		return template;
 	}
 }
-customElements.define(D2LNavigationLinkImage.is, D2LNavigationLinkImage);
+customElements.define('d2l-navigation-link-image', D2LNavigationLinkImage);
