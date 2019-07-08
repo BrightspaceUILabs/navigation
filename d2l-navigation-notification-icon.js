@@ -36,8 +36,6 @@ class NavigationNotificationIcon extends PolymerElement {
 		`;
 	}
 
-	static get is() { return 'd2l-navigation-notification-icon'; }
-
 }
 
-window.customElements.define(NavigationNotificationIcon.is, NavigationNotificationIcon);
+window.customElements.define('d2l-navigation-notification-icon', NavigationNotificationIcon);
