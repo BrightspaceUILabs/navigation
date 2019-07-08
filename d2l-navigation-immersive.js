@@ -4,7 +4,7 @@ import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
-import { navigationSharedSytle } from './d2l-navigation-shared-styles.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
@@ -18,7 +18,7 @@ class D2LNavigationImmsersive extends PolymerElement {
 
 	static get template() {
 		const template = html`
-				${navigationSharedSytle}
+				${navigationSharedStyle}
 				<style>
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;

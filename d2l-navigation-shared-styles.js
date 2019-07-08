@@ -1,5 +1,5 @@
 import { html } from '@polymer/polymer/polymer-element.js';
-export const navigationSharedSytle = html`
+export const navigationSharedStyle = html`
 		<style>
 			:host {
 				--d2l-navigation-margin-regular: 30px;

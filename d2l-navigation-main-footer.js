@@ -1,5 +1,5 @@
 import 'd2l-colors/d2l-colors.js';
-import { navigationSharedSytle } from './d2l-navigation-shared-styles.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
@@ -12,7 +12,7 @@ class D2LNavigationMainFooter extends PolymerElement {
 
 	static get template() {
 		const template = html`
-			${navigationSharedSytle}
+			${navigationSharedStyle}
 			<style>
 				:host {
 					border-top: 1px solid rgba(124,134,149,0.18);

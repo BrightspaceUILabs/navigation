@@ -1,4 +1,4 @@
-import { navigationSharedSytle } from './d2l-navigation-shared-styles.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
@@ -11,7 +11,7 @@ class D2LNavigationMainHeader extends PolymerElement {
 
 	static get template() {
 		const template = html`
-			${navigationSharedSytle}
+			${navigationSharedStyle}
 			<style>
 				:host {
 					display: block;
