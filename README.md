@@ -72,6 +72,9 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
+***Relevant CSS class name:***
+* `--d2l-navigation-shadow-drop-border-display`: The default value is `block`, but this property can be used to hide the shadow by setting it to `none`.
+
 ### d2l-navigation-immersive
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
