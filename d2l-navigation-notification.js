@@ -9,27 +9,23 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 class NavigationNotificationIcon extends PolymerElement {
 	static get template() {
 		return html`
-            <style is="custom-style" include="d2l-offscreen-shared-styles">
+            <style is="custom-style">
                 :host {
                     display: inline-block;
-                    height: 100%;
-                }
-                :host([notification]) .d2l-navigation-notification-indicator {
-                    display: inline-block;
-                }
-                .d2l-navigation-notification-indicator {
-                    display: none;
                     height: 100%;
                     position: absolute;
                     right: calc(-50% - 4px);
                     top: calc(-50% + 11px);
                     width: 100%;
                 }
-                :host(:dir(rtl)) .d2l-navigation-notification-indicator {
+                :host([hidden]){
+                    display: none;
+                }
+                :host(:dir(rtl)) {
                     left: calc(-50% - 4px);
                     right: auto;
                 }
-                .d2l-navigation-notification-indicator-icon {
+                .d2l-navigation-notification-icon {
                     background: var(--d2l-color-primary-accent-indicator);
                     border: 2px solid white;
                     height: 10px;
@@ -37,22 +33,12 @@ class NavigationNotificationIcon extends PolymerElement {
                     border-radius: 50%;
                 }
             </style>
-            <span class="d2l-navigation-notification-indicator">
-                <div class="d2l-navigation-notification-indicator-icon"></div>
-            </span>
+            <div class="d2l-navigation-notification-icon"></div>
 		`;
 	}
 
 	static get is() { return 'd2l-navigation-notification-icon'; }
 
-	static get properties() {
-		return {
-			notification: {
-				type: Boolean,
-				reflectToAttribute: true
-			}
-		};
-	}
 }
 
 window.customElements.define(NavigationNotificationIcon.is, NavigationNotificationIcon);

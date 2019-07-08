@@ -37,7 +37,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 		<d2l-navigation-button aria-expanded$="[[ariaExpanded]]" aria-haspopup$="[[ariaHaspopup]]" aria-label$="[[ariaLabel]]" aria-describedby-text="[[_getNotificationText(notification, notificationText)]]" class="d2l-focusable" disabled$="[[disabled]]" autofocus$="[[autofocus]]" form$="[[form]]" formaction$="[[formaction]]" formenctype$="[[formenctype]]" formmethod$="[[formmethod]]" formnovalidate$="[[formnovalidate]]" formtarget$="[[formtarget]]" name$="[[name]]" text="[[text]]" type$="[[type]]">
 			<span class="d2l-navigation-button-icon-container">
 				<d2l-icon icon="[[icon]]" class="d2l-navigation-button-icon"></d2l-icon>
-					<d2l-navigation-notification-icon notification="[[notification]]"></d2l-navigation-notification-icon>
+					<d2l-navigation-notification-icon hidden$="[[!notification]]"></d2l-navigation-notification-icon>
 			</span>
 		</d2l-navigation-button>
 	</template>
@@ -53,6 +53,7 @@ Polymer({
 		},
 		notification: {
 			type: Boolean,
+			value: false,
 			reflectToAttribute: true
 		},
 		text: {
