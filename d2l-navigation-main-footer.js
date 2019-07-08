@@ -30,4 +30,4 @@ class D2LNavigationMainFooter extends PolymerElement {
 		`;
 	}
 }
-window.customElements.define(D2LNavigationMainFooter.is, D2LNavigationMainFooter);
+customElements.define(D2LNavigationMainFooter.is, D2LNavigationMainFooter);

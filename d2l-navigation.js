@@ -38,4 +38,4 @@ class D2LNavigation extends PolymerElement {
 		`;
 	}
 }
-window.customElements.define(D2LNavigation.is, D2LNavigation);
+customElements.define(D2LNavigation.is, D2LNavigation);

@@ -85,4 +85,4 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 		return text;
 	}
 }
-window.customElements.define(D2LNavigationLinkBack.is, D2LNavigationLinkBack);
+customElements.define(D2LNavigationLinkBack.is, D2LNavigationLinkBack);

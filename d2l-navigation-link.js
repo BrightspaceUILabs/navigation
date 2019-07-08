@@ -62,4 +62,4 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavi
 		`;
 	}
 }
-window.customElements.define(D2LNavigationLink.is, D2LNavigationLink);
+customElements.define(D2LNavigationLink.is, D2LNavigationLink);

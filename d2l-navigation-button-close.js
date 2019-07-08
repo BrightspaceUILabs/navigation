@@ -74,4 +74,4 @@ class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Butt
 	}
 }
 
-window.customElements.define(D2LNavigationButtonClose.is, D2LNavigationButtonClose);
+customElements.define(D2LNavigationButtonClose.is, D2LNavigationButtonClose);

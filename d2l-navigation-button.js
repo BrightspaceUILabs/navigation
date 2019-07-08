@@ -104,4 +104,4 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 		this._ariaDescriptionId = D2L.Id.getUniqueId();
 	}
 }
-window.customElements.define(D2LNavigationButton.is, D2LNavigationButton);
+customElements.define(D2LNavigationButton.is, D2LNavigationButton);

@@ -27,4 +27,4 @@ class D2LNavigationSeparator extends PolymerElement {
 		`;
 	}
 }
-window.customElements.define(D2LNavigationSeparator.is, D2LNavigationSeparator);
+customElements.define(D2LNavigationSeparator.is, D2LNavigationSeparator);

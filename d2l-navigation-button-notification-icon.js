@@ -85,4 +85,4 @@ class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBeh
 		return notification ? notificationText : '';
 	}
 }
-window.customElements.define(D2LNavigationButtonNotificationIcon.is, D2LNavigationButtonNotificationIcon);
+customElements.define(D2LNavigationButtonNotificationIcon.is, D2LNavigationButtonNotificationIcon);

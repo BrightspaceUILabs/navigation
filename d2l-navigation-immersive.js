@@ -249,4 +249,4 @@ class D2LNavigationImmsersive extends PolymerElement {
 		}
 	}
 }
-window.customElements.define(D2LNavigationImmsersive.is, D2LNavigationImmsersive);
+customElements.define(D2LNavigationImmsersive.is, D2LNavigationImmsersive);

@@ -71,4 +71,4 @@ class D2LNavigationMainHeader extends PolymerElement {
 		`;
 	}
 }
-window.customElements.define(D2LNavigationMainHeader.is, D2LNavigationMainHeader);
+customElements.define(D2LNavigationMainHeader.is, D2LNavigationMainHeader);

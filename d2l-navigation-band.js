@@ -28,4 +28,4 @@ class D2LNavigationBand extends PolymerElement {
 		`;
 	}
 }
-window.customElements.define(D2LNavigationBand.is, D2LNavigationBand);
+customElements.define(D2LNavigationBand.is, D2LNavigationBand);

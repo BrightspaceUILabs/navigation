@@ -58,4 +58,4 @@ class D2LNavigationLinkImage extends PolymerElement {
 		</d2l-navigation-link>`;
 	}
 }
-window.customElements.define(D2LNavigationLinkImage.is, D2LNavigationLinkImage);
+customElements.define(D2LNavigationLinkImage.is, D2LNavigationLinkImage);
