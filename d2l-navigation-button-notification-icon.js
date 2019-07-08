@@ -24,7 +24,7 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notification-icon">
 	<template strip-whitespace="">
-		<style is="custom-style" include="d2l-offscreen-shared-styles">
+		<style is="custom-style">
 			:host {
 				display: inline-block;
 				height: 100%;
