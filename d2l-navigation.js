@@ -16,7 +16,7 @@ class D2LNavigation extends PolymerElement {
 		return 'd2l-navigation';
 	}
 	static get template() {
-		return html`
+		const template = html`
 		${navigationSharedSytle}
 		<style>
 			:host {
@@ -36,6 +36,8 @@ class D2LNavigation extends PolymerElement {
 		<slot></slot>
 		<div class="d2l-navigation-shadow-drop-border"></div>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigation.is, D2LNavigation);

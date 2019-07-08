@@ -14,7 +14,7 @@ class D2LNavigationBand extends PolymerElement {
 	}
 
 	static get template() {
-		return html`
+		const template = html`
 
 		<style>
 			:host {
@@ -26,6 +26,8 @@ class D2LNavigationBand extends PolymerElement {
 		</style>
 
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationBand.is, D2LNavigationBand);

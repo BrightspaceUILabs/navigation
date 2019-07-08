@@ -50,7 +50,7 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 		};
 	}
 	static get template() {
-		return html`
+		const template = html`
 			<style>
 			:host {
 				display: inline-block;
@@ -76,6 +76,8 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 			<span class="d2l-navigation-link-back-text">[[_getDisplayText(text, localize)]]</span>
 		</d2l-navigation-link>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 
 	_getDisplayText(text, localize) {

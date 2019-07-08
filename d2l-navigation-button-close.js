@@ -59,7 +59,7 @@ class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Butt
 		};
 	}
 	static get template() {
-		return html`<style>
+		const template = html`<style>
 			:host {
 				display: inline-block;
 				height: 100%;
@@ -71,6 +71,8 @@ class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Butt
 		<d2l-navigation-button-notification-icon class="d2l-focusable" text="[[localize('close')]]" disabled$="[[disabled]]" icon="d2l-tier1:close-large-thick">
 
 	</d2l-navigation-button-notification-icon>`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 

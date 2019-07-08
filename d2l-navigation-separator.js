@@ -13,7 +13,7 @@ class D2LNavigationSeparator extends PolymerElement {
 		return 'd2l-navigation-separator';
 	}
 	static get template() {
-		return html`
+		const template = html`
 		<style>
 			:host {
 				display: inline-block;
@@ -25,6 +25,8 @@ class D2LNavigationSeparator extends PolymerElement {
 		</style>
 		<d2l-icon icon="d2l-tier2:divider-big"></d2l-icon>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationSeparator.is, D2LNavigationSeparator);

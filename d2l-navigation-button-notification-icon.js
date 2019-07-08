@@ -37,7 +37,7 @@ class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBeh
 		};
 	}
 	static get template() {
-		return html`
+		const template = html`
 		<style is="custom-style" include="d2l-offscreen-shared-styles">
 			:host {
 				display: inline-block;
@@ -79,6 +79,8 @@ class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBeh
 			</span>
 		</d2l-navigation-button>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 
 	_getNotificationText(notification, notificationText) {

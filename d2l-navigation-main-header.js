@@ -13,7 +13,7 @@ class D2LNavigationMainHeader extends PolymerElement {
 	}
 
 	static get template() {
-		return html`
+		const template = html`
 			${navigationSharedSytle}
 			<style>
 				:host {
@@ -69,6 +69,8 @@ class D2LNavigationMainHeader extends PolymerElement {
 				</div>
 			</div>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationMainHeader.is, D2LNavigationMainHeader);

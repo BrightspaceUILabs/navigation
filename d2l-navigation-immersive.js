@@ -20,7 +20,7 @@ class D2LNavigationImmsersive extends PolymerElement {
 	}
 
 	static get template() {
-		return html`
+		const template = html`
 				${navigationSharedSytle}
 				<style>
 			:host {
@@ -186,6 +186,8 @@ class D2LNavigationImmsersive extends PolymerElement {
 		</div>
 		<div class="d2l-navigation-immersive-spacing"></div>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 	ready() {
 		super.ready();

@@ -13,7 +13,7 @@ class D2LNavigationMainFooter extends PolymerElement {
 		return 'd2l-navigation-main-footer';
 	}
 	static get template() {
-		return html`
+		const template = html`
 			${navigationSharedSytle}
 			<style>
 				:host {
@@ -28,6 +28,8 @@ class D2LNavigationMainFooter extends PolymerElement {
 				</div>
 			</div>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationMainFooter.is, D2LNavigationMainFooter);

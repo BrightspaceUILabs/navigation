@@ -26,7 +26,7 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavi
 		};
 	}
 	static get template() {
-		return html`
+		const template = html`
 			${highlightStyles}
 			<style is="custom-style">
 				:host {
@@ -60,6 +60,8 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavi
 				<slot></slot>
 			</a>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationLink.is, D2LNavigationLink);

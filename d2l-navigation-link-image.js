@@ -30,7 +30,7 @@ class D2LNavigationLinkImage extends PolymerElement {
 		};
 	}
 	static get template() {
-		return html`
+		const template = html`
 			<style>
 			:host {
 				display: inline-block;
@@ -56,6 +56,8 @@ class D2LNavigationLinkImage extends PolymerElement {
 		<d2l-navigation-link href="[[href]]" text="[[text]]">
 			<span class="d2l-navigation-link-image-container"><img src="[[src]]" alt="[[text]]"></span>
 		</d2l-navigation-link>`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 }
 customElements.define(D2LNavigationLinkImage.is, D2LNavigationLinkImage);

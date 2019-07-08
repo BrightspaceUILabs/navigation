@@ -31,7 +31,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 		};
 	}
 	static get template() {
-		return html`
+		const template = html`
 				${highlightStyles}
 				<style is="custom-style">
 
@@ -98,6 +98,8 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 			</button>
 			<span id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</span>
 		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
 	}
 	ready() {
 		super.ready();
