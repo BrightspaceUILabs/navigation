@@ -1,24 +1,24 @@
+
+import '@polymer/polymer/polymer-legacy.js';
+
+import './d2l-navigation-band.js';
+import { navigationSharedSytle } from './d2l-navigation-shared-styles.js';
+
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
 `d2l-navigation`
 Polymer-based web component for the all encompasing navigation wrapper component
 
 @demo demo/navigation.html
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import './d2l-navigation-band.js';
-import './d2l-navigation-shared-styles.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<dom-module id="d2l-navigation">
-	<template strip-whitespace="">
-		<style include="d2l-navigation-shared-styles">
+class D2LNavigation extends PolymerElement {
+	static get is() {
+		return 'd2l-navigation';
+	}
+	static get template() {
+		return html`
+		${navigationSharedSytle}
+		<style>
 			:host {
 				display: block;
 				position: relative;
@@ -35,11 +35,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation">
 		<d2l-navigation-band></d2l-navigation-band>
 		<slot></slot>
 		<div class="d2l-navigation-shadow-drop-border"></div>
-	</template>
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer.content);
-Polymer({
-	is: 'd2l-navigation'
-});
+		`;
+	}
+}
+window.customElements.define(D2LNavigation.is, D2LNavigation);

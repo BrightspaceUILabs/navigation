@@ -1,3 +1,13 @@
+import 'd2l-colors/d2l-colors.js';
+import './d2l-navigation-button.js';
+import 'd2l-icons/d2l-icon.js';
+import 'd2l-icons/tier2-icons.js';
+import 'd2l-button/d2l-button-behavior.js';
+import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
+
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
+
 /**
 `d2l-navigation-button-notification-icon`
 Polymer-based web component for buttons used in the navigational header.
@@ -5,24 +15,29 @@ This button contains a user-supplied icon, as well as a notification marker.
 
 @demo demo/d2l-navigation-button.html d2l-navigation-button-notification-icon
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import 'd2l-colors/d2l-colors.js';
-import './d2l-navigation-button.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier2-icons.js';
-import 'd2l-button/d2l-button-behavior.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notification-icon">
-	<template strip-whitespace="">
+class D2LNavigationButtonNotificationIcon extends mixinBehaviors([D2L.PolymerBehaviors.Button.Behavior, D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
+	static get is() {
+		return 'd2l-navigation-button-notification-icon';
+	}
+	static get properties() {
+		return {
+			icon: {
+				type: String
+			},
+			notification: {
+				type: Boolean,
+				reflectToAttribute: true
+			},
+			text: {
+				type: String
+			},
+			notificationText: {
+				type: String
+			}
+		};
+	}
+	static get template() {
+		return html`
 		<style is="custom-style" include="d2l-offscreen-shared-styles">
 			:host {
 				display: inline-block;
@@ -63,33 +78,11 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-button-notificat
 				</span>
 			</span>
 		</d2l-navigation-button>
-	</template>
-	
-</dom-module>`;
+		`;
+	}
 
-document.head.appendChild($_documentContainer.content);
-Polymer({
-	is: 'd2l-navigation-button-notification-icon',
-	properties: {
-		icon: {
-			type: String
-		},
-		notification: {
-			type: Boolean,
-			reflectToAttribute: true
-		},
-		text: {
-			type: String
-		},
-		notificationText: {
-			type: String
-		}
-	},
-	behaviors: [
-		D2L.PolymerBehaviors.Button.Behavior,
-		D2L.PolymerBehaviors.FocusableBehavior
-	],
-	_getNotificationText: function(notification, notificationText) {
+	_getNotificationText(notification, notificationText) {
 		return notification ? notificationText : '';
 	}
-});
+}
+window.customElements.define(D2LNavigationButtonNotificationIcon.is, D2LNavigationButtonNotificationIcon);

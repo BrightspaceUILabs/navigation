@@ -57,10 +57,11 @@ import '../d2l-navigation-button-close.js';
 import '../d2l-navigation-link.js';
 import '../d2l-navigation-link-back.js';
 import '../d2l-navigation-link-image.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 var button;
 function testInstantiation(name) {
 	test('instantiating the element works', function() {
-		assert.equal(button.is, name);
+		assert.equal(button.tagName.toLowerCase(), name);
 	});
 }
 
@@ -206,7 +207,7 @@ suite('d2l-navigation-link-back', function() {
 		assert.equal(text, '');
 	});
 	test('should pass href down to the base link', function() {
-		var href = button.$$('d2l-navigation-link').href;
+		var href = dom(button.root).querySelector('d2l-navigation-link').href;
 		assert.equal(button.href, href);
 	});
 	test('should pass text down to the base link', function() {
@@ -245,15 +246,15 @@ suite('d2l-navigation-link-image', function() {
 		assert.equal(button.src, 'newSrc');
 	});
 	test('should pass href down to the base link', function() {
-		var href = button.$$('d2l-navigation-link').href;
+		var href = dom(button.root).querySelector('d2l-navigation-link').href;
 		assert.equal(button.href, href);
 	});
 	test('should pass text down to image alt text', function() {
-		var alt = button.$$('img').getAttribute('alt');
+		var alt = dom(button.root).querySelector('img').getAttribute('alt');
 		assert.equal(button.text, alt);
 	});
 	test('should pass text down to the base link', function() {
-		var text = button.$$('d2l-navigation-link').text;
+		var text = dom(button.root).querySelector('d2l-navigation-link').text;
 		assert.equal(button.text, text);
 	});
 });
