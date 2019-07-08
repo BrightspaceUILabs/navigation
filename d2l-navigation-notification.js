@@ -25,7 +25,7 @@ class NavigationNotificationIcon extends PolymerElement {
                     left: calc(-50% - 4px);
                     right: auto;
                 }
-                .d2l-navigation-notification-icon {
+                .d2l-navigation-notification-icon-indicator {
                     background: var(--d2l-color-primary-accent-indicator);
                     border: 2px solid white;
                     height: 10px;
@@ -33,7 +33,7 @@ class NavigationNotificationIcon extends PolymerElement {
                     border-radius: 50%;
                 }
             </style>
-            <div class="d2l-navigation-notification-icon"></div>
+            <div class="d2l-navigation-notification-icon-indicator"></div>
 		`;
 	}
 
