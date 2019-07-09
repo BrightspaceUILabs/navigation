@@ -31,7 +31,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 	static get template() {
 		const template = html`
 				${highlightStyles}
-				<style is="custom-style">
+				<style is="custom-style" include="d2l-offscreen-shared-styles">
 
 					:host {
 						display: inline-block;
