@@ -13,7 +13,7 @@ class NavigationNotificationIcon extends PolymerElement {
                     display: inline-block;
                     height: 100%;
                     position: absolute;
-                    right: calc(-50% - 4px);
+                    right: calc(-100% + 11px);
                     top: calc(-50% + 11px);
                     width: 100%;
                 }
