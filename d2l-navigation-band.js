@@ -16,9 +16,9 @@ class D2LNavigationBand extends PolymerElement {
 		${navigationSharedStyle}
 		<style>
 			:host {
-				background: var(--d2l-branding-primary-color, var(--d2l-color-celestine));
-				min-height: 4px;
+				background-color: var(--d2l-branding-primary-color, var(--d2l-color-celestine));
 				display: block;
+				min-height: 4px;
 			}
 		</style>
 		<div class="d2l-navigation-centerer">
