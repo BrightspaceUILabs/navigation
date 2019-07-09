@@ -31,7 +31,7 @@ class D2LNavigation extends PolymerElement {
 				width: 100%;
 			}
 		</style>
-		<d2l-navigation-band></d2l-navigation-band>
+		<d2l-navigation-band><slot name="navigation-band"></slot></d2l-navigation-band>
 		<slot></slot>
 		<div class="d2l-navigation-shadow-drop-border"></div>
 		`;
