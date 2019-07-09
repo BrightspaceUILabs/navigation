@@ -1,6 +1,8 @@
 import 'd2l-colors/d2l-colors.js';
+import './d2l-navigation-shared-styles';
 
 import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles';
 /**
 `d2l-navigation-band`
 Polymer-based web component for a solid colour band that runs along the top of the navigational header
@@ -11,16 +13,19 @@ class D2LNavigationBand extends PolymerElement {
 
 	static get template() {
 		const template = html`
-
+		${navigationSharedStyle}
 		<style>
 			:host {
-				border-top-color: var(--d2l-branding-primary-color, var(--d2l-color-celestine));
-				border-top-style: solid;
-				border-top-width: 4px;
+				background-color: var(--d2l-branding-primary-color, var(--d2l-color-celestine));
 				display: block;
+				min-height: 4px;
 			}
 		</style>
-
+		<div class="d2l-navigation-centerer">
+			<div class="d2l-navigation-gutters">
+				<slot></slot>
+			</div>
+		</div>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
