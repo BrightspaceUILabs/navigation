@@ -43,6 +43,19 @@ const NavigationLocalizeImpl = (superClass) => {
 		mixinLang = langMixin(mixinLang);
 	}
 	return class extends mixinLang {
+		static get properties() {
+			return {
+				locale: {
+					type: String,
+					value: function() {
+						return document.documentElement.lang
+							|| document.documentElement.getAttribute('data-lang-default')
+							|| 'en-us';
+					}
+				}
+			};
+		}
+
 		constructor() {
 			super();
 			this.resources = {
@@ -62,18 +75,6 @@ const NavigationLocalizeImpl = (superClass) => {
 				'tr': this.tr,
 				'zh': this.zh,
 				'zh-tw': this.zhtw
-			};
-		}
-		static get properties() {
-			return {
-				locale: {
-					type: String,
-					value: function() {
-						return document.documentElement.lang
-							|| document.documentElement.getAttribute('data-lang-default')
-							|| 'en-us';
-					}
-				}
 			};
 		}
 	};

@@ -10,6 +10,32 @@ import '../../d2l-navigation-button.js';
  * @polymer
  */
 class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
+	static get is() { return 'd2l-navigation-iterator-item'; }
+
+	static get properties() {
+		return {
+			text: {
+				type: String,
+				value: ''
+			},
+			type: {
+				type: String,
+				value: 'previous',
+				observer: '_typeChanged',
+				reflectToAttribute: true
+			},
+			hideText: {
+				type: Boolean,
+				value: false,
+				reflectToAttribute: true
+			},
+			_icon: {
+				type: String,
+				computed: '_computeIcon(type)'
+			}
+		};
+	}
+
 	static get template() {
 		return html`
 			<style>
@@ -67,32 +93,6 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 			<d2l-tooltip for="d2l-navigation-iterator-item">[[_computeText(text, type)]]</d2l-tooltip>
 		`;
 	}
-
-	static get properties() {
-		return {
-			text: {
-				type: String,
-				value: ''
-			},
-			type: {
-				type: String,
-				value: 'previous',
-				observer: '_typeChanged',
-				reflectToAttribute: true
-			},
-			hideText: {
-				type: Boolean,
-				value: false,
-				reflectToAttribute: true
-			},
-			_icon: {
-				type: String,
-				computed: '_computeIcon(type)'
-			}
-		};
-	}
-
-	static get is() { return 'd2l-navigation-iterator-item'; }
 
 	_typeChanged(newValue, oldValue) {
 		const validTypes = ['previous', 'next'];

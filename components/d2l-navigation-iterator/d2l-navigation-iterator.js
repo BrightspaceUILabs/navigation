@@ -7,38 +7,7 @@ import './d2l-navigation-iterator-item.js';
  * @polymer
  */
 class D2LNavigationIterator extends PolymerElement {
-	static get template() {
-		return html`
-			<style>
-				:host {
-					@apply --d2l-body-compact-text;
-					align-items: center;
-					display: flex;
-					justify-content: space-between;
-					height: 3.3rem;
-					max-width: 20rem;
-				}
-				@media (max-width: 30.75rem) {
-					.d2l-navigation-iterator {
-						height: 3rem;
-					}
-				}
-			</style>
-			<d2l-navigation-iterator-item 
-				text=[[previousText]] 
-				type="previous" 
-				hide-text=[[hideText]] 
-				hidden=[[noPrevious]]
-				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
-			<slot></slot>
-			<d2l-navigation-iterator-item 
-				text=[[nextText]] 
-				type="next" 
-				hide-text=[[hideText]] 
-				hidden=[[noNext]]
-				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
-		`;
-	}
+	static get is() { return 'd2l-navigation-iterator'; }
 
 	static get properties() {
 		return {
@@ -63,7 +32,38 @@ class D2LNavigationIterator extends PolymerElement {
 		};
 	}
 
-	static get is() { return 'd2l-navigation-iterator'; }
+	static get template() {
+		return html`
+			<style>
+				:host {
+					@apply --d2l-body-compact-text;
+					align-items: center;
+					display: flex;
+					justify-content: space-between;
+					height: 3.3rem;
+					max-width: 20rem;
+				}
+				@media (max-width: 30.75rem) {
+					.d2l-navigation-iterator {
+						height: 3rem;
+					}
+				}
+			</style>
+			<d2l-navigation-iterator-item
+				text=[[previousText]]
+				type="previous"
+				hide-text=[[hideText]]
+				hidden=[[noPrevious]]
+				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
+			<slot></slot>
+			<d2l-navigation-iterator-item
+				text=[[nextText]]
+				type="next"
+				hide-text=[[hideText]]
+				hidden=[[noNext]]
+				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
+		`;
+	}
 
 	_dispatchButtonClicked(e) {
 		e.stopPropagation();
