@@ -52,6 +52,8 @@
 		<script type="module">
 import '../d2l-navigation-immersive.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import { flush } from '@polymer/polymer/lib/utils/flush.js';
+
 var raf = function(cb) {
 	fastdom.measure(function() {
 		fastdom.mutate(function() {
@@ -74,7 +76,7 @@ suite('d2l-navigation-immersive', function() {
 		raf(done);
 	});
 	test('instantiating the element works', function() {
-		assert.equal(nav.is, 'd2l-navigation-immersive');
+		assert.equal(nav.tagName.toLowerCase(), 'd2l-navigation-immersive');
 
 		var margin = dom(nav.root).querySelector('.d2l-navigation-immersive-margin');
 		expect(margin).to.not.be.null;
@@ -97,9 +99,10 @@ suite('d2l-navigation-immersive', function() {
 		assert.equal(right.tagName, 'DIV');
 	});
 
-	test('hidden class applied when element has no middle slot content', function() {
+	test('hidden class applied when element has no middle slot content', function(done) {
 		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 		expect(hiddenMiddle).to.not.be.null;
+		done();
 	});
 
 	test('no right border when element has no right slot content', function() {
@@ -115,16 +118,21 @@ suite('d2l-navigation-immersive with back link', function() {
 		raf(done);
 	});
 	test('back link initializes correctly', function() {
-		assert.equal(nav.backLinkHref, 'https://www.d2l.com');
-		assert.equal(nav.backLinkText, 'Back to D2L');
+		flush(function() {
+			assert.equal(dom(nav.root).backLinkHref, 'https://www.d2l.com');
+			assert.equal(dom(nav.root).backLinkText, 'Back to D2L');
+		});
 	});
 	test('back link values updates correctly', function() {
 		var newHref = 'https://www.nfl.com';
 		var newText = 'Back to da NFL';
 		nav.setAttribute('back-link-href', newHref);
 		nav.setAttribute('back-link-text', newText);
-		assert.equal(nav.backLinkHref, newHref);
-		assert.equal(nav.backLinkText, newText);
+		flush(function() {
+			assert.equal(dom(nav.root).backLinkHref, newHref);
+			assert.equal(dom(nav.root).backLinkText, newText);
+		});
+
 	});
 });
 

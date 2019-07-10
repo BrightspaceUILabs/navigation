@@ -20,7 +20,7 @@ import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 suite('d2l-navigation-main-header', function() {
 	test('instantiating the element works', function() {
 		var header = fixture('basic');
-		assert.equal(header.is, 'd2l-navigation-main-header');
+		assert.equal(header.tagName.toLowerCase(), 'd2l-navigation-main-header');
 
 		var centerer = dom(header.root).querySelector('.d2l-navigation-centerer');
 		expect(centerer).to.not.be.null;

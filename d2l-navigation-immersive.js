@@ -1,30 +1,25 @@
-/**
-`d2l-navigation-immersive`
-Polymer-based web component for the immersive navigation component
-
-@demo demo/navigation-immersive.html
-*/
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
 import 'd2l-colors/d2l-colors.js';
 import 'fastdom/fastdom.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
-import './d2l-navigation-shared-styles.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
-const $_documentContainer = document.createElement('template');
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
-$_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
-	<template strip-whitespace="">
-		<style include="d2l-navigation-shared-styles">
+/**
+`d2l-navigation-immersive`
+Polymer-based web component for the immersive navigation component
+
+@demo demo/navigation-immersive.html
+*/
+class D2LNavigationImmsersive extends PolymerElement {
+
+	static get template() {
+		const template = html`
+				${navigationSharedStyle}
+				<style>
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;
 				--d2l-navigation-immersive-height-responsive: 2.8rem;
@@ -187,61 +182,48 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-navigation-immersive">
 			</d2l-navigation>
 		</div>
 		<div class="d2l-navigation-immersive-spacing"></div>
-	</template>
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer.content);
-Polymer({
-	is: 'd2l-navigation-immersive',
-
-	properties: {
-		backLinkHref: {
-			type: String,
-			reflectToAttribute: true
-		},
-		backLinkText: {
-			type: String,
-			reflectToAttribute: true
-		}
-	},
-
-	ready: function() {
+		`;
+		template.setAttribute('strip-whitespace', '');
+		return template;
+	}
+	ready() {
+		super.ready();
 		this._onMiddleResize = this._onMiddleResize.bind(this);
 		this._onRightResize = this._onRightResize.bind(this);
-	},
+	}
 
-	attached: function() {
-		var middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
+	connectedCallback() {
+		super.connectedCallback();
+
+		this.middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
 		this._middleObserver = new ResizeObserver(this._onMiddleResize);
-		this._middleObserver.observe(middle);
+		this._middleObserver.observe(this.middle);
 
-		var right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
+		this.right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
 		this._rightObserver = new ResizeObserver(this._onRightResize);
-		this._rightObserver.observe(right);
-	},
+		this._rightObserver.observe(this.right);
+	}
 
-	detached: function() {
-		var middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
+	disconnectedCallback() {
+		super.disconnectedCallback();
 		if (this._middleObserver) {
-			this._middleObserver.unobserve(middle);
+			this._middleObserver.unobserve(this.middle);
 		}
 
-		var right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
 		if (this._rightObserver) {
-			this._rightObserver.unobserve(right);
+			this._rightObserver.unobserve(this.right);
 		}
-	},
+	}
 
-	_onMiddleResize: function(entries) {
+	_onMiddleResize(entries) {
 		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
-	},
+	}
 
-	_onRightResize: function(entries) {
+	_onRightResize(entries) {
 		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
-	},
+	}
 
-	_onResize: function(entries, slotContainerQuerySelector, containerClass) {
+	_onResize(entries, slotContainerQuerySelector, containerClass) {
 		if (!entries || entries.length === 0) {
 			return;
 		}
@@ -265,4 +247,5 @@ Polymer({
 			}
 		}
 	}
-});
+}
+customElements.define('d2l-navigation-immersive', D2LNavigationImmsersive);
