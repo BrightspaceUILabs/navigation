@@ -7,8 +7,8 @@ const LangEsImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.es = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'Siguiente',
+			'previous': 'Anterior'
 		};
 	}
 };

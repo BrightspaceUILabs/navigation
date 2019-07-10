@@ -7,8 +7,8 @@ const LangZhtwImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.zhtw = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': '下一個',
+			'previous': '上一個'
 		};
 	}
 };

@@ -7,8 +7,8 @@ const LangTrImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.tr = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'Sonraki',
+			'previous': 'Önceki'
 		};
 	}
 };

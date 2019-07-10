@@ -1,10 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier3-icons.js';
-import 'd2l-tooltip/d2l-tooltip.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';
-import '../../d2l-navigation-link.js';
 import './d2l-navigation-iterator-item.js';
 
 /**
@@ -29,9 +24,19 @@ class D2LNavigationIterator extends PolymerElement {
 					}
 				}
 			</style>
-			<d2l-navigation-iterator-item text=[[previousText]] type="previous" hide-text=[[hideText]] hidden=[[noPrevious]]></d2l-navigation-iterator-item>
+			<d2l-navigation-iterator-item 
+				text=[[previousText]] 
+				type="previous" 
+				hide-text=[[hideText]] 
+				hidden=[[noPrevious]]
+				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
 			<slot></slot>
-			<d2l-navigation-iterator-item text=[[nextText]] type="next" hide-text=[[hideText]] hidden=[[noNext]]></d2l-navigation-iterator-item>
+			<d2l-navigation-iterator-item 
+				text=[[nextText]] 
+				type="next" 
+				hide-text=[[hideText]] 
+				hidden=[[noNext]]
+				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
 		`;
 	}
 
@@ -59,6 +64,17 @@ class D2LNavigationIterator extends PolymerElement {
 	}
 
 	static get is() { return 'd2l-navigation-iterator'; }
+
+	_dispatchButtonClicked(e) {
+		e.stopPropagation();
+		this.dispatchEvent(new CustomEvent('d2l-navigation-iterator-button-clicked', {
+			detail: {
+				type: e.currentTarget.type
+			},
+			bubbles: true,
+			composed: true
+		}));
+	}
 }
 
 window.customElements.define('d2l-navigation-iterator', D2LNavigationIterator);

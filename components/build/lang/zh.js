@@ -7,8 +7,8 @@ const LangZhImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.zh = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': '下一页',
+			'previous': '上一个'
 		};
 	}
 };

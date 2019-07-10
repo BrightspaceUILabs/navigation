@@ -7,8 +7,8 @@ const LangFrfrImpl = (superClass) => class extends superClass {
 	constructor() {
 		super();
 		this.frfr = {
-			'next': 'Next',
-			'previous': 'Previous'
+			'next': 'Suivant',
+			'previous': 'Précédent'
 		};
 	}
 };
