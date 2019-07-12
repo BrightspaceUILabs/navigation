@@ -72,6 +72,9 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 </d2l-navigation>
 ```
 
+***Relevant CSS class name:***
+* `--d2l-navigation-shadow-drop-border-display`: The default value is `block`, but this property can be used to hide the shadow by setting it to `none`.
+
 ### d2l-navigation-immersive
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
@@ -282,6 +285,55 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 ***Relevant CSS class name:***
 * `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
+
+---
+
+### d2l-navigation-iterator
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-iterator.html`:
+
+```html
+<head>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-iterator/d2l-navigation-iterator.html">
+</head>
+```
+
+Then add the `d2l-navigation-iterator`.
+
+![screenshot of default navigation iterator](/screenshots/d2l-navigation-iterator.png?raw=true)
+
+```html
+<d2l-navigation-iterator></d2l-navigation-iterator>
+```
+
+There is only one slot, and the default button text can be hidden with `hide-text`.
+
+![screenshot of navigation iterator with hidden iterator button text and custom content](/screenshots/d2l-navigation-iterator-hide-text-custom.png?raw=true)
+
+```html
+<d2l-navigation-iterator hide-text>
+	<span>User 1 of 17</span>
+</d2l-navigation-iterator>
+```
+
+The iterator button labels can be customized with `previous-text` and `next-text`.
+
+![screenshot of navigation iterator with hidden iterator button text and custom content](/screenshots/d2l-navigation-iterator-custom-buttons.png?raw=true)
+
+```html
+<d2l-navigation-iterator previous-text="Back" next-text="Forward"></d2l-navigation-iterator>
+```
+
+The iterator buttons can be hidden completely with `no-next` or `no-previous`.
+
+![screenshot of navigation iterator with no next button](/screenshots/d2l-navigation-iterator-no-next.png?raw=true)
+![screenshot of navigation iterator with no previous button](/screenshots/d2l-navigation-iterator-no-prev.png?raw=true)
+
+```html
+<d2l-navigation-iterator no-next></d2l-navigation-iterator>
+<d2l-navigation-iterator no-previous></d2l-navigation-iterator>
+```
 
 ## Developing, Testing and Contributing
 

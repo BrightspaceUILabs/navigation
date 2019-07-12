@@ -58,7 +58,16 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 					<d2l-navigation-band></d2l-navigation-band>
 				</template>
 			</demo-snippet>
-		</div>`;
+		</div>
+		<h3>d2l-navigation-band slotted content</h3>
+		<div class="vertical-section-container">
+			<demo-snippet>
+					<template strip-whitespace="">
+						<d2l-navigation-band><button>test content</button><button>navigation band height increased</button></d2l-navigation-band>
+					</template>
+			</demo-snippet>
+		</div>
+		`;
 
 document.body.appendChild($_documentContainer.content);
 </script>

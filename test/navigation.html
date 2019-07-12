@@ -20,7 +20,7 @@ import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 suite('d2l-navigation', function() {
 	test('instantiating the element works', function() {
 		var nav = fixture('basic');
-		assert.equal(nav.is, 'd2l-navigation');
+		assert.equal(nav.tagName.toLowerCase(), 'd2l-navigation');
 
 		var dropBorder = dom(nav.root).querySelector('.d2l-navigation-shadow-drop-border');
 		expect(dropBorder).to.not.be.null;
