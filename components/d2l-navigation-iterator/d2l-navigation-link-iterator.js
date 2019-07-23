@@ -52,6 +52,7 @@ class D2LNavigationLinkIterator extends PolymerElement {
 				no-next=[[noNext]]
 				on-d2l-navigation-iterator-button-clicked="_onNavigationIteratorButtonClicked"
 			>
+			<slot></slot>
 			</d2l-navigation-iterator>
 		`;
 	}
