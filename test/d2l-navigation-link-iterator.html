@@ -26,6 +26,8 @@
 
 		<script type="module">
 			import '../components/d2l-navigation-iterator/d2l-navigation-link-iterator.js';
+			import sinon from '../node_modules/sinon/pkg/sinon-esm.js';
+
 			let linkIterator, iterator;
 
 			suite('d2l-navigation-iterator', function() {
@@ -59,6 +61,32 @@
 					assert.equal(linkIterator.noNext, iterator.noNext);
 					linkIterator.noNext = !linkIterator.noNext;
 					assert.equal(linkIterator.noNext, iterator.noNext);
+				});
+				test('_onNavigationIteratorButtonClicked follows correct path when previous button clicked', function() {
+					const mockLinkIterator = sinon.mock(linkIterator);
+					mockLinkIterator.expects('_setWindowLocationHref').once().withArgs('https://www.previous.com');
+
+					const evt = {
+						detail: {
+							type: 'previous'
+						}
+					};
+					linkIterator._onNavigationIteratorButtonClicked(evt);
+
+					mockLinkIterator.verify();
+				});
+				test('_onNavigationIteratorButtonClicked follows correct path when next button clicked', function() {
+					const mockLinkIterator = sinon.mock(linkIterator);
+					mockLinkIterator.expects('_setWindowLocationHref').once().withArgs('https://www.next.com');
+
+					const evt = {
+						detail: {
+							type: 'next'
+						}
+					};
+					linkIterator._onNavigationIteratorButtonClicked(evt);
+
+					mockLinkIterator.verify();
 				});
 			});
 		</script>

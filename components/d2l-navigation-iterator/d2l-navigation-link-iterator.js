@@ -55,10 +55,14 @@ class D2LNavigationLinkIterator extends PolymerElement {
 
 	_onNavigationIteratorButtonClicked(evt) {
 		if (evt.detail.type === 'previous') {
-			window.location.href = this.previousHref;
+			this._setWindowLocationHref(this.previousHref);
 		} else {
-			window.location.href = this.nextHref;
+			this._setWindowLocationHref(this.nextHref);
 		}
+	}
+
+	_setWindowLocationHref(href) {
+		window.location.href = href;
 	}
 }
 
