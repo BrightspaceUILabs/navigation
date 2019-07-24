@@ -40,10 +40,6 @@ class D2LNavigationLinkIterator extends PolymerElement {
 
 	static get template() {
 		return html`
-			<style>
-				:host {
-				}
-			</style>
 			<d2l-navigation-iterator
 				previous-text=[[previousText]]
 				next-text=[[nextText]]
