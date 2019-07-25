@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-navigation-link-iterator test</title>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script src="../node_modules/sinon/pkg/sinon.js"></script>
+		<script type="module" src="../components/d2l-navigation-iterator/d2l-navigation-link-iterator.js"></script>
+	</head>
+	<body>
+		<test-fixture id="default">
+			<template strip-whitespace>
+				<d2l-navigation-link-iterator
+					previous-href="https://www.previous.com"
+					previous-text="prev"
+					next-href="https://www.next.com"
+					next-text="next"
+					hide-text
+					no-previous
+					no-next
+				>
+				</d2l-navigation-link-iterator>
+			</template>
+		</test-fixture>
+
+		<script type="module">
+			import '../components/d2l-navigation-iterator/d2l-navigation-link-iterator.js';
+			let linkIterator, iterator;
+
+			suite('d2l-navigation-iterator', function() {
+				setup(function() {
+					linkIterator = fixture('default');
+					iterator = linkIterator.shadowRoot.querySelector('d2l-navigation-iterator');
+				});
+				test('instantiating the element works', function() {
+					assert.equal(linkIterator.tagName.toLowerCase(), 'd2l-navigation-link-iterator');
+				});
+				test('link iterator contains a child iterator item', function() {
+					assert.isNotNull(iterator);
+				});
+				test('attributes are passed down to child iterator', function() {
+					assert.equal(linkIterator.previousText, iterator.previousText);
+					linkIterator.previousText = 'newP';
+					assert.equal(linkIterator.previousText, iterator.previousText);
+
+					assert.equal(linkIterator.nextText, iterator.nextText);
+					linkIterator.nextText = 'newN';
+					assert.equal(linkIterator.nextText, iterator.nextText);
+
+					assert.equal(linkIterator.hideText, iterator.hideText);
+					linkIterator.hideText = !linkIterator.hideText;
+					assert.equal(linkIterator.hideText, iterator.hideText);
+
+					assert.equal(linkIterator.noPrevious, iterator.noPrevious);
+					linkIterator.noPrevious = !linkIterator.noPrevious;
+					assert.equal(linkIterator.noPrevious, iterator.noPrevious);
+
+					assert.equal(linkIterator.noNext, iterator.noNext);
+					linkIterator.noNext = !linkIterator.noNext;
+					assert.equal(linkIterator.noNext, iterator.noNext);
+				});
+				test('_onNavigationIteratorButtonClicked follows correct path when previous button clicked', function() {
+					const mockLinkIterator = sinon.mock(linkIterator);
+					mockLinkIterator.expects('_setWindowLocationHref').once().withArgs('https://www.previous.com');
+
+					const evt = {
+						detail: {
+							type: 'previous'
+						}
+					};
+					linkIterator._onNavigationIteratorButtonClicked(evt);
+
+					mockLinkIterator.verify();
+				});
+				test('_onNavigationIteratorButtonClicked follows correct path when next button clicked', function() {
+					const mockLinkIterator = sinon.mock(linkIterator);
+					mockLinkIterator.expects('_setWindowLocationHref').once().withArgs('https://www.next.com');
+
+					const evt = {
+						detail: {
+							type: 'next'
+						}
+					};
+					linkIterator._onNavigationIteratorButtonClicked(evt);
+
+					mockLinkIterator.verify();
+				});
+			});
+		</script>
+	</body>
+</html>

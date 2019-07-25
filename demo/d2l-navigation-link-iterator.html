@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>d2l-navigation-link-iterator demo</title>
+		<script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+		<!-- For IE11 -->
+		<script src="../node_modules/lie/dist/lie.polyfill.min.js"></script>
+		<script type="module" src="../node_modules/whatwg-fetch/fetch.js"></script>
+		<script type="module" src="../node_modules/url-polyfill/url-polyfill.js"></script>
+
+		<script type="module">
+			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+			import '@polymer/iron-demo-helpers/demo-snippet';
+			import 'd2l-typography/d2l-typography.js';
+			import '../d2l-navigation-separator.js';
+			import '../components/d2l-navigation-iterator/d2l-navigation-link-iterator.js';
+
+			const $_documentContainer = document.createElement('template');
+			$_documentContainer.innerHTML = `
+				<custom-style>
+					<style is="custom-style" include="demo-pages-shared-styles"></style>
+				</custom-style>
+				<custom-style include="d2l-typography">
+					<style is="custom-style" include="d2l-typography"></style>
+				</custom-style>
+				<style>
+					html {
+						font-size: 20px;
+					}
+				</style>
+			`;
+			document.body.appendChild($_documentContainer.content);
+		</script>
+	</head>
+	<body class="d2l-typography">
+		<div class="vertical-section-container fixedSize">
+			<h3>d2l-navigation-item-iterator w/ hrefs only demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-link-iterator previous-href="https://www.d2l.com" next-href="https://www.nfl.com"></d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+            <h3>d2l-navigation-item-iterator w/ count (hide-text) demo</h3>
+            <demo-snippet>
+				<template strip-whitespace>
+                    <d2l-navigation-link-iterator previous-href="https://www.d2l.com" next-href="https://www.nfl.com" hide-text>
+                        <span>User 1 of 17</span>
+                    </d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+            <h3>d2l-navigation-item-iterator w/ separator (hide-text) demo</h3>
+            <demo-snippet>
+				<template strip-whitespace>
+                    <d2l-navigation-link-iterator previous-href="https://www.d2l.com" next-href="https://www.nfl.com" hide-text>
+                        <d2l-navigation-separator></d2l-navigation-separator>
+                    </d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+            <h3>d2l-navigation-item-iterator w/ custom labels demo</h3>
+            <demo-snippet>
+				<template strip-whitespace>
+                    <d2l-navigation-link-iterator 
+                        previous-href="https://www.d2l.com"
+                        next-href="https://www.nfl.com"
+                        previous-text="D2L"
+                        next-text="NFL"
+                    >
+                    </d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+            <h3>d2l-navigation-item-iterator (no-previous) demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+                    <d2l-navigation-link-iterator 
+                        no-previous
+                        next-href="https://www.nfl.com"
+                        next-text="NFL"
+                    >
+                    </d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+            <h3>d2l-navigation-item-iterator (no-next) demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+                    <d2l-navigation-link-iterator 
+                        previous-href="https://www.d2l.com"
+                        previous-text="D2L"
+                        no-next
+                    >
+                    </d2l-navigation-link-iterator>
+				</template>
+            </demo-snippet>
+		</div>
+	</body>
+</html>
