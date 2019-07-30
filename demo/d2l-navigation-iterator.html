@@ -19,10 +19,6 @@
 			import '../d2l-navigation-separator.js';
 			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
 
-			function demoAlert() {
-				window.alert('Josh');
-			}
-
 			const $_documentContainer = document.createElement('template');
 			$_documentContainer.innerHTML = `
 				<custom-style>
@@ -80,12 +76,6 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-iterator no-previous></d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator on click demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator previous-on-click=demoAlert></d2l-navigation-iterator>
 				</template>
 			</demo-snippet>
 		</div>
