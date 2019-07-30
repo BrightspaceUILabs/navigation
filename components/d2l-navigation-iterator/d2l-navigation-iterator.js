@@ -28,6 +28,12 @@ class D2LNavigationIterator extends PolymerElement {
 			noNext: {
 				type: Boolean,
 				value: false
+			},
+			previousOnClick: {
+				type: Object
+			},
+			nextOnClick: {
+				type: Object
 			}
 		};
 	}
@@ -67,6 +73,13 @@ class D2LNavigationIterator extends PolymerElement {
 
 	_dispatchButtonClicked(e) {
 		e.stopPropagation();
+
+		if (this.previousOnClick && e.currentTarget.type === 'previous') {
+			this.previousOnClick();
+		} else if (this.nextOnClick && e.currentTarget.type === 'next') {
+			this.nextOnClick();
+		}
+
 		this.dispatchEvent(new CustomEvent('d2l-navigation-iterator-button-clicked', {
 			detail: {
 				type: e.currentTarget.type

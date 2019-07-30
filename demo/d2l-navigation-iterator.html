@@ -12,12 +12,20 @@
 		<script type="module" src="../node_modules/whatwg-fetch/fetch.js"></script>
 		<script type="module" src="../node_modules/url-polyfill/url-polyfill.js"></script>
 
+		<script type="text/javascript">
+			
+		</script>
+
 		<script type="module">
 			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
 			import '@polymer/iron-demo-helpers/demo-snippet';
 			import 'd2l-typography/d2l-typography.js';
 			import '../d2l-navigation-separator.js';
 			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
+
+			function demoAlert() {
+				window.alert('Josh');
+			}
 
 			const $_documentContainer = document.createElement('template');
 			$_documentContainer.innerHTML = `
@@ -76,6 +84,12 @@
 			<demo-snippet>
 				<template strip-whitespace>
 					<d2l-navigation-iterator no-previous></d2l-navigation-iterator>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation-iterator on click demo</h3>
+			<demo-snippet>
+				<template strip-whitespace>
+					<d2l-navigation-iterator previous-on-click=demoAlert></d2l-navigation-iterator>
 				</template>
 			</demo-snippet>
 		</div>
