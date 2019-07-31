@@ -68,7 +68,7 @@ class D2LNavigationIterator extends PolymerElement {
 	_dispatchPreviousClicked(e) {
 		e.stopPropagation();
 
-		this.dispatchEvent(new CustomEvent('previous-clicked', {
+		this.dispatchEvent(new CustomEvent('previous-click', {
 			detail: {
 				type: e.currentTarget.type
 			}
@@ -78,7 +78,7 @@ class D2LNavigationIterator extends PolymerElement {
 	_dispatchNextClicked(e) {
 		e.stopPropagation();
 
-		this.dispatchEvent(new CustomEvent('next-clicked', {
+		this.dispatchEvent(new CustomEvent('next-click', {
 			detail: {
 				type: e.currentTarget.type
 			}
