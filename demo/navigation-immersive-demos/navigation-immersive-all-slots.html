@@ -9,6 +9,7 @@
 		<script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
 		<script type="module" src="../../../d2l-typography/d2l-typography.js"></script>
 		<script type="module" src="../../../d2l-typography/d2l-typography-shared-styles.js"></script>
+		<script type="module" src="../../components/d2l-navigation-iterator/d2l-navigation-iterator.js"></script>
 		<script type="module" src="../../d2l-navigation-button.js"></script>
 		<script type="module" src="../../d2l-navigation-button-close.js"></script>
 		<script type="module" src="../../d2l-navigation-immersive.js"></script>
@@ -66,6 +67,9 @@ $_documentContainer.innerHTML = `<style>
 				display: table-cell;
 				vertical-align: middle;
 			}
+			div[slot="right"] {
+				width: 15rem;
+			}
 		</style>`;
 
 document.body.appendChild($_documentContainer.content);
@@ -83,9 +87,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 							Economics 101
 						</div>
 						<div slot="right">
-							<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
-							<d2l-navigation-button-close></d2l-navigation-button-close>
-							<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
+							<d2l-navigation-iterator></d2l-navigation-iterator>
 						</div>
 					</d2l-navigation-immersive>
 					<div class="page-contents">
