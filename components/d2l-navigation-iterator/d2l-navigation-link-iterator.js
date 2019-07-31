@@ -45,8 +45,8 @@ class D2LNavigationLinkIterator extends PolymerElement {
 				hide-text=[[hideText]]
 				no-previous=[[noPrevious]]
 				no-next=[[noNext]]
-				on-d2l-navigation-iterator-previous-clicked="_onNavigationIteratorButtonClicked"
-				on-d2l-navigation-iterator-next-clicked="_onNavigationIteratorButtonClicked"
+				on-previous-clicked="_onNavigationIteratorButtonClicked"
+				on-next-clicked="_onNavigationIteratorButtonClicked"
 			>
 			<slot></slot>
 			</d2l-navigation-iterator>
@@ -54,9 +54,9 @@ class D2LNavigationLinkIterator extends PolymerElement {
 	}
 
 	_onNavigationIteratorButtonClicked(evt) {
-		if (evt.detail.type === 'previous') {
+		if (this.previousHref && evt.detail.type === 'previous') {
 			this._setWindowLocationHref(this.previousHref);
-		} else {
+		} else if (this.nextHref && evt.detail.type === 'next') {
 			this._setWindowLocationHref(this.nextHref);
 		}
 	}

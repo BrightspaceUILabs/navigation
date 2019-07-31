@@ -87,6 +87,21 @@
 
 					mockLinkIterator.verify();
 				});
+				test('_onNavigationIteratorButtonClicked does not redirect when button clicked, if href is not provided', function() {
+					const mockLinkIterator = sinon.mock(linkIterator);
+					mockLinkIterator.expects('_setWindowLocationHref').never();
+
+					const evt = {
+						detail: {
+							type: 'next'
+						}
+					};
+
+					linkIterator.nextHref = '';
+					linkIterator._onNavigationIteratorButtonClicked(evt);
+
+					mockLinkIterator.verify();
+				});
 			});
 		</script>
 	</body>
