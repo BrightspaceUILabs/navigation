@@ -54,25 +54,34 @@ class D2LNavigationIterator extends PolymerElement {
 				type="previous"
 				hide-text=[[hideText]]
 				hidden=[[noPrevious]]
-				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
+				on-click="_dispatchPreviousClicked"></d2l-navigation-iterator-item>
 			<slot></slot>
 			<d2l-navigation-iterator-item
 				text=[[nextText]]
 				type="next"
 				hide-text=[[hideText]]
 				hidden=[[noNext]]
-				on-click="_dispatchButtonClicked"></d2l-navigation-iterator-item>
+				on-click="_dispatchNextClicked"></d2l-navigation-iterator-item>
 		`;
 	}
 
-	_dispatchButtonClicked(e) {
+	_dispatchPreviousClicked(e) {
 		e.stopPropagation();
-		this.dispatchEvent(new CustomEvent('d2l-navigation-iterator-button-clicked', {
+
+		this.dispatchEvent(new CustomEvent('previous-click', {
 			detail: {
 				type: e.currentTarget.type
-			},
-			bubbles: true,
-			composed: true
+			}
+		}));
+	}
+
+	_dispatchNextClicked(e) {
+		e.stopPropagation();
+
+		this.dispatchEvent(new CustomEvent('next-click', {
+			detail: {
+				type: e.currentTarget.type
+			}
 		}));
 	}
 }
