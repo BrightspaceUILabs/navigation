@@ -47,13 +47,13 @@ suite('d2l-navigation-iterator', function() {
 		assert.equal(iter.hideText, prev.hideText);
 		assert.equal(iter.hideText, next.hideText);
 
-		assert.equal(iter.noPrevious, prev.hidden);
-		iter.noPrevious = !iter.noPrevious;
-		assert.equal(iter.noPrevious, prev.hidden);
+		assert.equal(iter.previousDisabled, prev.disabled);
+		iter.previousDisabled = !iter.previousDisabled;
+		assert.equal(iter.previousDisabled, prev.disabled);
 
-		assert.equal(iter.noNext, next.hidden);
-		iter.noNext = !iter.noNext;
-		assert.equal(iter.noNext, next.hidden);
+		assert.equal(iter.nextDisabled, next.disabled);
+		iter.nextDisabled = !iter.nextDisabled;
+		assert.equal(iter.nextDisabled, next.disabled);
 	});
 });
 </script>
