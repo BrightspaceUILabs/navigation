@@ -66,6 +66,10 @@ class D2LNavigationIterator extends PolymerElement {
 	}
 
 	_dispatchPreviousClicked(e) {
+		if (this.previousDisabled) {
+			return;
+		}
+
 		e.stopPropagation();
 
 		this.dispatchEvent(new CustomEvent('previous-click', {
@@ -76,6 +80,10 @@ class D2LNavigationIterator extends PolymerElement {
 	}
 
 	_dispatchNextClicked(e) {
+		if (this.nextDisabled) {
+			return;
+		}
+
 		e.stopPropagation();
 
 		this.dispatchEvent(new CustomEvent('next-click', {

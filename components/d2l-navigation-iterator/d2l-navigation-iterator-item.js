@@ -16,7 +16,8 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 		return {
 			disabled: {
 				type: Boolean,
-				value: false
+				value: false,
+				reflectToAttribute: true
 			},
 			hideText: {
 				type: Boolean,
@@ -53,6 +54,9 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 					cursor: auto;
 					opacity: .5;
 					text-decoration: none;
+				}
+				:host([disabled]) d2l-tooltip {
+					display: none;
 				}
 				:host([type="previous"]) d2l-navigation-button {
 					padding-left: 1.2rem;
@@ -91,15 +95,13 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 					padding-right: 0;
 				}
 			</style>
-			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]" disabled="[[disabled]]">
+			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]" disabled$="[[disabled]]">
 				<div class="d2l-navigation-iterator-item-items">
 					<d2l-icon icon$="[[_icon]]"></d2l-icon>
 					<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_computeText(text, type)]]</span>
 				</div>
 			</d2l-navigation-button>
-			<template is="dom-if" if="[[!disabled]]">
-				<d2l-tooltip for="d2l-navigation-iterator-item">[[_computeText(text, type)]]</d2l-tooltip>
-			</template>
+			<d2l-tooltip for="d2l-navigation-iterator-item">[[_computeText(text, type)]]</d2l-tooltip>
 		`;
 	}
 
