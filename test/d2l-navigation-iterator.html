@@ -14,7 +14,7 @@
 				<d2l-navigation-iterator previous-text="prev" next-text="next" hide-text></d2l-navigation-iterator>
 			</template>
 		</test-fixture>
-		<test-fixture id="previousDisabled">
+		<test-fixture id="buttonsDisabled">
 			<template strip-whitespace>
 				<d2l-navigation-iterator previous-disabled next-disabled></d2l-navigation-iterator>
 			</template>
@@ -61,7 +61,7 @@
 					iter.nextDisabled = !iter.nextDisabled;
 					assert.equal(iter.nextDisabled, next.disabled);
 				});
-				test('onClick event does not fire when button is disabled', function() {
+				test('onClick events do not fire when buttons are disabled', function() {
 					iter = fixture('previousDisabled');
 					next = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="next"]');
 					prev = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="previous"]');
