@@ -95,7 +95,7 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 					padding-right: 0;
 				}
 			</style>
-			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]" disabled$="[[disabled]]">
+			<d2l-navigation-button id="d2l-navigation-iterator-item" class="d2l-navigation-iterator-item-button" text="[[_computeText(text, type)]]" disabled="[[disabled]]">
 				<div class="d2l-navigation-iterator-item-items">
 					<d2l-icon icon$="[[_icon]]"></d2l-icon>
 					<span class="d2l-navigation-iterator-item-text" hidden="[[hideText]]">[[_computeText(text, type)]]</span>

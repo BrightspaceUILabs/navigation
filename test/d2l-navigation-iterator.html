@@ -62,7 +62,7 @@
 					assert.equal(iter.nextDisabled, next.disabled);
 				});
 				test('onClick events do not fire when buttons are disabled', function() {
-					iter = fixture('previousDisabled');
+					iter = fixture('buttonsDisabled');
 					next = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="next"]');
 					prev = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="previous"]');
 
