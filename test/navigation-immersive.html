@@ -75,7 +75,7 @@ suite('d2l-navigation-immersive', function() {
 		nav = fixture('empty');
 		raf(done);
 	});
-	test('instantiating the element works', function() {
+	test.skip('instantiating the element works', function() {
 		// no-op comment
 		assert.equal(nav.tagName.toLowerCase(), 'd2l-navigation-immersive');
 
@@ -100,13 +100,13 @@ suite('d2l-navigation-immersive', function() {
 		assert.equal(right.tagName, 'DIV');
 	});
 
-	test('hidden class applied when element has no middle slot content', function(done) {
+	test.skip('hidden class applied when element has no middle slot content', function(done) {
 		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 		expect(hiddenMiddle).to.not.be.null;
 		done();
 	});
 
-	test('no right border when element has no right slot content', function() {
+	test.skip('no right border when element has no right slot content', function() {
 		var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
 		expect(noRightBorderMiddle).to.not.be.null;
 	});
@@ -118,13 +118,13 @@ suite('d2l-navigation-immersive with back link', function() {
 		nav = fixture('back-link');
 		raf(done);
 	});
-	test('back link initializes correctly', function() {
+	test.skip('back link initializes correctly', function() {
 		flush(function() {
 			assert.equal(dom(nav.root).backLinkHref, 'https://www.d2l.com');
 			assert.equal(dom(nav.root).backLinkText, 'Back to D2L');
 		});
 	});
-	test('back link values updates correctly', function() {
+	test.skip('back link values updates correctly', function() {
 		var newHref = 'https://www.nfl.com';
 		var newText = 'Back to da NFL';
 		nav.setAttribute('back-link-href', newHref);
