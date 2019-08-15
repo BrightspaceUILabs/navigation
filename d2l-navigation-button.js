@@ -55,7 +55,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 					}
 
 					/*
-						::slotted styles for IE11
+						::slotted styles for Edge/IE11
 					*/
 					:host button:hover ::slotted(*) *,
 					:host button:focus ::slotted(*) * {
@@ -89,6 +89,22 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 						@apply --d2l-navigation-highlight-disabled;
 					}
 
+					:host([disabled]:hover) button,
+					:host([disabled]:hover) button ::slotted(*),
+					:host([disabled]:hover) button .d2l-navigation-button-top-border,
+					:host([disabled]:focus) button,
+					:host([disabled]:focus) button ::slotted(*),
+					:host([disabled]:focus) button .d2l-navigation-button-top-border {
+						@apply --d2l-navigation-highlight-hover-focus-disabled;
+					}
+
+					/*
+						::slotted styles for Edge/IE11
+					*/
+					:host([disabled]:hover) button ::slotted(*) *,
+					:host([disabled]:focus) button ::slotted(*) * {
+						@apply --d2l-navigation-highlight-hover-focus-disabled;
+					}
 				</style>
 			<button aria-describedby$="[[_ariaDescriptionId]]" aria-expanded$="[[ariaExpanded]]" aria-haspopup$="[[ariaHaspopup]]" aria-label$="[[text]]" class="d2l-focusable" disabled$="[[disabled]]" autofocus$="[[autofocus]]" form$="[[form]]" formaction$="[[formaction]]" formenctype$="[[formenctype]]" formmethod$="[[formmethod]]" formnovalidate$="[[formnovalidate]]" formtarget$="[[formtarget]]" name$="[[name]]" title$="[[text]]" type$="[[type]]">
 			<span class="d2l-navigation-button-top-border"></span>
