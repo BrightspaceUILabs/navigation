@@ -99,13 +99,13 @@ suite('d2l-navigation-immersive', function() {
 		assert.equal(right.tagName, 'DIV');
 	});
 
-	test.skip('hidden class applied when element has no middle slot content', function(done) {
+	test('hidden class applied when element has no middle slot content', function(done) {
 		var hiddenMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-hidden');
 		expect(hiddenMiddle).to.not.be.null;
 		done();
 	});
 
-	test.skip('no right border when element has no right slot content', function() {
+	test('no right border when element has no right slot content', function() {
 		var noRightBorderMiddle = dom(nav.root).querySelector('.d2l-navigation-immersive-middle-no-right-border');
 		expect(noRightBorderMiddle).to.not.be.null;
 	});
@@ -123,7 +123,7 @@ suite('d2l-navigation-immersive with back link', function() {
 			assert.equal(dom(nav.root).backLinkText, 'Back to D2L');
 		});
 	});
-	test.skip('back link values updates correctly', function() {
+	test('back link values updates correctly', function() {
 		var newHref = 'https://www.nfl.com';
 		var newText = 'Back to da NFL';
 		nav.setAttribute('back-link-href', newHref);
