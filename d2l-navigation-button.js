@@ -55,7 +55,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 					}
 
 					/*
-						::slotted styles for IE11
+						::slotted styles for Edge/IE11
 					*/
 					:host button:hover ::slotted(*) *,
 					:host button:focus ::slotted(*) * {
@@ -95,6 +95,14 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 					:host([disabled]:focus) button,
 					:host([disabled]:focus) button ::slotted(*),
 					:host([disabled]:focus) button .d2l-navigation-button-top-border {
+						@apply --d2l-navigation-highlight-hover-focus-disabled;
+					}
+
+					/*
+						::slotted styles for Edge/IE11
+					*/
+					:host([disabled]:hover) button ::slotted(*) *,
+					:host([disabled]:focus) button ::slotted(*) * {
 						@apply --d2l-navigation-highlight-hover-focus-disabled;
 					}
 				</style>
