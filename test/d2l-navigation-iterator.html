@@ -11,51 +11,72 @@
 	<body>
 		<test-fixture id="default">
 			<template strip-whitespace>
-				<d2l-navigation-iterator previous-text="prev" next-text="next" hide-text no-previous no-next></d2l-navigation-iterator>
+				<d2l-navigation-iterator previous-text="prev" next-text="next" hide-text></d2l-navigation-iterator>
+			</template>
+		</test-fixture>
+		<test-fixture id="buttonsDisabled">
+			<template strip-whitespace>
+				<d2l-navigation-iterator previous-disabled next-disabled></d2l-navigation-iterator>
 			</template>
 		</test-fixture>
 
 		<script type="module">
-import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
-let iter, next, prev;
+			import '@polymer/iron-test-helpers/mock-interactions.js';
+			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
+			let iter, next, prev;
 
-suite('d2l-navigation-iterator', function() {
-	setup(function() {
-		iter = fixture('default');
-		next = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="next"]');
-		prev = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="previous"]');
-	});
-	test('instantiating the element works', function() {
-		assert.equal(iter.tagName.toLowerCase(), 'd2l-navigation-iterator');
-	});
-	test('iterator contains a next and a previous item', function() {
-		assert.isNotNull(next);
-		assert.isNotNull(prev);
-	});
-	test('attributes are passed down to items', function() {
-		assert.equal(iter.previousText, prev.text);
-		iter.previousText = 'newP';
-		assert.equal(iter.previousText, prev.text);
+			suite('d2l-navigation-iterator', function() {
+				setup(function() {
+					iter = fixture('default');
+					next = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="next"]');
+					prev = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="previous"]');
+				});
+				test('instantiating the element works', function() {
+					assert.equal(iter.tagName.toLowerCase(), 'd2l-navigation-iterator');
+				});
+				test('iterator contains a next and a previous item', function() {
+					assert.isNotNull(next);
+					assert.isNotNull(prev);
+				});
+				test('attributes are passed down to items', function() {
+					assert.equal(iter.previousText, prev.text);
+					iter.previousText = 'newP';
+					assert.equal(iter.previousText, prev.text);
 
-		assert.equal(iter.nextText, next.text);
-		iter.nextText = 'newN';
-		assert.equal(iter.nextText, next.text);
+					assert.equal(iter.nextText, next.text);
+					iter.nextText = 'newN';
+					assert.equal(iter.nextText, next.text);
 
-		assert.equal(iter.hideText, prev.hideText);
-		assert.equal(iter.hideText, next.hideText);
-		iter.hideText = !iter.hideText;
-		assert.equal(iter.hideText, prev.hideText);
-		assert.equal(iter.hideText, next.hideText);
+					assert.equal(iter.hideText, prev.hideText);
+					assert.equal(iter.hideText, next.hideText);
+					iter.hideText = !iter.hideText;
+					assert.equal(iter.hideText, prev.hideText);
+					assert.equal(iter.hideText, next.hideText);
 
-		assert.equal(iter.noPrevious, prev.hidden);
-		iter.noPrevious = !iter.noPrevious;
-		assert.equal(iter.noPrevious, prev.hidden);
+					assert.equal(iter.previousDisabled, prev.disabled);
+					iter.previousDisabled = !iter.previousDisabled;
+					assert.equal(iter.previousDisabled, prev.disabled);
 
-		assert.equal(iter.noNext, next.hidden);
-		iter.noNext = !iter.noNext;
-		assert.equal(iter.noNext, next.hidden);
-	});
-});
-</script>
+					assert.equal(iter.nextDisabled, next.disabled);
+					iter.nextDisabled = !iter.nextDisabled;
+					assert.equal(iter.nextDisabled, next.disabled);
+				});
+				test('onClick events do not fire when buttons are disabled', function() {
+					iter = fixture('buttonsDisabled');
+					next = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="next"]');
+					prev = iter.shadowRoot.querySelector('d2l-navigation-iterator-item[type="previous"]');
+
+					iter.addEventListener('next-click', function() {
+						assert.fail();
+					});
+					iter.addEventListener('previous-click', function() {
+						assert.fail();
+					});
+
+					MockInteractions.click(next);
+					MockInteractions.click(prev);
+				});
+			});
+		</script>
 	</body>
 </html>

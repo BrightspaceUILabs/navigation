@@ -53,13 +53,13 @@
 					linkIterator.hideText = !linkIterator.hideText;
 					assert.equal(linkIterator.hideText, iterator.hideText);
 
-					assert.equal(linkIterator.noPrevious, iterator.noPrevious);
-					linkIterator.noPrevious = !linkIterator.noPrevious;
-					assert.equal(linkIterator.noPrevious, iterator.noPrevious);
+					assert.equal(linkIterator.previousDisabled, iterator.previousDisabled);
+					linkIterator.previousDisabled = !linkIterator.previousDisabled;
+					assert.equal(linkIterator.previousDisabled, iterator.previousDisabled);
 
-					assert.equal(linkIterator.noNext, iterator.noNext);
-					linkIterator.noNext = !linkIterator.noNext;
-					assert.equal(linkIterator.noNext, iterator.noNext);
+					assert.equal(linkIterator.nextDisabled, iterator.nextDisabled);
+					linkIterator.nextDisabled = !linkIterator.nextDisabled;
+					assert.equal(linkIterator.nextDisabled, iterator.nextDisabled);
 				});
 				test('_onNavigationIteratorButtonClicked follows correct path when previous button clicked', function() {
 					const mockLinkIterator = sinon.mock(linkIterator);

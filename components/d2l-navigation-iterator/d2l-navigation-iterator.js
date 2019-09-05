@@ -21,11 +21,11 @@ class D2LNavigationIterator extends PolymerElement {
 				type: Boolean,
 				value: false
 			},
-			noPrevious: {
+			previousDisabled: {
 				type: Boolean,
 				value: false
 			},
-			noNext: {
+			nextDisabled: {
 				type: Boolean,
 				value: false
 			}
@@ -53,19 +53,23 @@ class D2LNavigationIterator extends PolymerElement {
 				text=[[previousText]]
 				type="previous"
 				hide-text=[[hideText]]
-				hidden=[[noPrevious]]
+				disabled=[[previousDisabled]]
 				on-click="_dispatchPreviousClicked"></d2l-navigation-iterator-item>
 			<slot></slot>
 			<d2l-navigation-iterator-item
 				text=[[nextText]]
 				type="next"
 				hide-text=[[hideText]]
-				hidden=[[noNext]]
+				disabled=[[nextDisabled]]
 				on-click="_dispatchNextClicked"></d2l-navigation-iterator-item>
 		`;
 	}
 
 	_dispatchPreviousClicked(e) {
+		if (this.previousDisabled) {
+			return;
+		}
+
 		e.stopPropagation();
 
 		this.dispatchEvent(new CustomEvent('previous-click', {
@@ -76,6 +80,10 @@ class D2LNavigationIterator extends PolymerElement {
 	}
 
 	_dispatchNextClicked(e) {
+		if (this.nextDisabled) {
+			return;
+		}
+
 		e.stopPropagation();
 
 		this.dispatchEvent(new CustomEvent('next-click', {

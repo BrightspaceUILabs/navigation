@@ -39,8 +39,13 @@ export const highlightStyles = html`
 						background: var(--d2l-color-celestine);
 					}
 					--d2l-navigation-highlight-disabled: {
-						opacity: .5;
 						cursor: default;
+						opacity: .5;
+					}
+					--d2l-navigation-highlight-hover-focus-disabled: {
+						background: transparent;
+						color: var(--d2l-color-ferrite);
+						--d2l-icon-fill-color: var(--d2l-color-ferrite);
 					}
 				}
 			</style>

@@ -26,11 +26,11 @@ class D2LNavigationLinkIterator extends PolymerElement {
 				type: Boolean,
 				value: false
 			},
-			noPrevious: {
+			previousDisabled: {
 				type: Boolean,
 				value: false
 			},
-			noNext: {
+			nextDisabled: {
 				type: Boolean,
 				value: false
 			}
@@ -43,8 +43,8 @@ class D2LNavigationLinkIterator extends PolymerElement {
 				previous-text=[[previousText]]
 				next-text=[[nextText]]
 				hide-text=[[hideText]]
-				no-previous=[[noPrevious]]
-				no-next=[[noNext]]
+				previous-disabled=[[previousDisabled]]
+				next-disabled=[[nextDisabled]]
 				on-previous-click="_onNavigationIteratorButtonClicked"
 				on-next-click="_onNavigationIteratorButtonClicked"
 			>

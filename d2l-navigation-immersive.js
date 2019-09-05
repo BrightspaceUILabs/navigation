@@ -90,6 +90,7 @@ class D2LNavigationImmsersive extends PolymerElement {
 				margin: 0 24px;
 				padding: 0 24px;
 				width: 100%;
+				min-width: 0;
 			}
 
 			.d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
