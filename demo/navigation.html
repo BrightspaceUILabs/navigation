@@ -56,6 +56,13 @@ $_documentContainer.innerHTML = `<style>
 			.d2l-navigation-header-right {
 				background-color: lightblue;
 			}
+			div[slot="navigation-band"] {
+				line-height: 1.4rem;
+				white-space: nowrap;
+			}
+			button {
+				width: 200px;
+			}
 		</style>`;
 
 document.body.appendChild($_documentContainer.content);
@@ -97,7 +104,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 			<demo-snippet>
 				<template strip-whitespace="">
 					<d2l-navigation>
-						<div slot="navigation-band"><button>consortium 1</button><button>consortium 2</button></div>
+						<div slot="navigation-band"><button>consortium 1</button><button>consortium 2</button><button>consortium 3</button><button>consortium 4</button></div>
 						<d2l-navigation-main-header>
 							<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 
