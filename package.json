@@ -12,7 +12,9 @@
     "lint:wc": "polymer lint -i \"./*\" \"test\" \"demo\"",
     "test:polymer:local": "polymer test --skip-plugin sauce",
     "test:polymer:sauce": "polymer test --skip-plugin local",
-    "test": "npm run lint && npm run test:polymer:local"
+    "test": "npm run lint && npm run test:polymer:local",
+    "test:diff": "mocha ./test/**/*.visual-diff.js -t 10000",
+    "test:diff:golden": "mocha ./test/**/*.visual-diff.js -t 10000 --golden"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
@@ -51,17 +53,19 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@brightspace-ui/visual-diff": "^0.1.0",
+    "@polymer/polymer": "^3.0.0",
     "d2l-button": "BrightspaceUI/button#semver:^5",
     "d2l-colors": "BrightspaceUI/colors#semver:^4",
-    "fastdom": "^1.0.8",
     "d2l-icons": "BrightspaceUI/icons#semver:^6",
     "d2l-link": "BrightspaceUI/link#semver:^5",
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2",
     "d2l-offscreen": "BrightspaceUI/offscreen#semver:^4",
     "d2l-polymer-behaviors": "Brightspace/d2l-polymer-behaviors-ui#semver:^2",
-    "resize-observer-polyfill": "^1.5.0",
     "d2l-tooltip": "BrightspaceUI/tooltip#semver:^3",
     "d2l-typography": "BrightspaceUI/typography#semver:^7",
-    "@polymer/polymer": "^3.0.0"
+    "fastdom": "^1.0.8",
+    "puppeteer": "^1.20.0",
+    "resize-observer-polyfill": "^1.5.0"
   }
 }
