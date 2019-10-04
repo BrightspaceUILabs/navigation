@@ -42,6 +42,7 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<style>
 			html {
+				--d2l-navigation-band-slot-height: 26px;
 				font-size: 18px;
 			}
 			d2l-navigation-main-header {
@@ -57,10 +58,10 @@ $_documentContainer.innerHTML = `<style>
 				background-color: lightblue;
 			}
 			div[slot="navigation-band"] {
-				line-height: 1.4rem;
 				white-space: nowrap;
 			}
 			button {
+				height: 26px;
 				width: 200px;
 			}
 		</style>`;
@@ -72,7 +73,7 @@ document.body.appendChild($_documentContainer.content);
 		<script type="module">
 const $_documentContainer = document.createElement('template');
 
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered" style="max-width: 1200px;">
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered" style="max-width: 1500px;">
 			<h3>d2l-navigation - Header and Footer</h3>
 			<demo-snippet>
 				<template strip-whitespace="">
@@ -104,7 +105,36 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 			<demo-snippet>
 				<template strip-whitespace="">
 					<d2l-navigation>
-						<div slot="navigation-band"><button>consortium 1</button><button>consortium 2</button><button>consortium 3</button><button>consortium 4</button></div>
+						<div slot="navigation-band">
+							<button>consortium 1</button>
+							<button>consortium 2</button>
+							<button>consortium 3</button>
+							<button>consortium 4</button>
+						</div>
+						<d2l-navigation-main-header>
+							<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
+
+							<div slot="right" class="d2l-navigation-header-right">This should be on the right.  It doesn't shrink.</div>
+						</d2l-navigation-main-header>
+					</d2l-navigation>
+				</template>
+			</demo-snippet>
+			<h3>d2l-navigation - navigation band content slotted - scrollbar</h3>
+			<demo-snippet>
+				<template strip-whitespace="">
+					<d2l-navigation>
+						<div slot="navigation-band">
+							<button>consortium 1</button>
+							<button>consortium 2</button>
+							<button>consortium 3</button>
+							<button>consortium 4</button>
+							<button>consortium 5</button>
+							<button>consortium 6</button>
+							<button>consortium 7</button>
+							<button>consortium 8</button>
+							<button>consortium 9</button>
+							<button>consortium 10</button>
+						</div>
 						<d2l-navigation-main-header>
 							<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
 

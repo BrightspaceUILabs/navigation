@@ -63,7 +63,7 @@
 					teardown(function() {
 						Object.defineProperty(window.navigator, 'userAgent', {value: originalUserAgent, configurable: true});
 					});
-					test('custom scrollbars are ' + (result ? 'on ' : 'off ') + 'for user agent of "' + userAgent + '"', function() {
+					test(`custom scrollbars are ${result ? 'on' : 'off'} for user agent of "${userAgent}"`, function() {
 						Object.defineProperty(window.navigator, 'userAgent', {value: userAgent, configurable: true});
 						var element = fixture('basic');
 						assert.equal(element.customScroll, result);
