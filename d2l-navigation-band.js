@@ -86,6 +86,7 @@ class D2LNavigationBand extends PolymerElement {
 			}
 			.d2l-navigation-gutters {
 				display: inline-block;
+				position: unset;
 				vertical-align: top;
 			}
 		</style>
