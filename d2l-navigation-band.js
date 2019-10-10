@@ -68,6 +68,7 @@ class D2LNavigationBand extends PolymerElement {
 				position: absolute;
 				height: 100%;
 				max-height: var(--d2l-navigation-band-slot-height, 1.5rem);
+				pointer-events: none;
 				top: 0;
 				z-index: 2;
 			}
