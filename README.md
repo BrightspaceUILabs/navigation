@@ -174,8 +174,11 @@ Then add the `d2l-navigation-band`.
 <d2l-navigation-band></d2l-navigation-band>
 ```
 
+The `d2l-navigation-band` also includes a `slot` with a custom scrollbar and fading effects, but this has only been designed for the `d2l-organization-consortium-tabs` and should not be used for anything else right now.
+
 ***Relevant CSS class name:***
 * `--d2l-branding-primary-color`: Used to customize the colour of the top navigation band.
+* `--d2l-navigation-band-slot-height`: When using the slot, this is needed to setup the proper scrollbar and fading effects.
 
 ---
 

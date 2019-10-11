@@ -15,13 +15,61 @@
 			</template>
 		</test-fixture>
 		<script type="module">
-import '../d2l-navigation-band.js';
-suite('d2l-navigation-band', function() {
-	test('instantiating the element works', function() {
-		var element = fixture('basic');
-		assert.equal(element.tagName.toLowerCase(), 'd2l-navigation-band');
-	});
-});
-</script>
+			import '../d2l-navigation-band.js';
+			let originalUserAgent;
+
+			suite('d2l-navigation-band', function() {
+				test('instantiating the element works', function() {
+					var element = fixture('basic');
+					assert.equal(element.tagName.toLowerCase(), 'd2l-navigation-band');
+				});
+			});
+			suite('d2l-navigation-band custom css scrollbar', function() {
+				[{
+					userAgent: '',
+					result: false
+				},
+				{
+					userAgent: 'test',
+					result: false
+				},
+				{
+					userAgent: 'Mac OS X',
+					result: false
+				},
+				{
+					userAgent: 'Mac OS X Mobile',
+					result: false
+				},
+				{
+					userAgent: 'Windows',
+					result: true
+				},
+				{
+					userAgent: 'Windows Mobile',
+					result: false
+				},
+				{
+					userAgent: 'Mobile',
+					result: false
+				},
+				{
+					userAgent: 'Windows Mac OS X',
+					result: true
+				}].forEach(function({ userAgent, result }) {
+					setup(function() {
+						originalUserAgent = navigator.userAgent;
+					});
+					teardown(function() {
+						Object.defineProperty(window.navigator, 'userAgent', {value: originalUserAgent, configurable: true});
+					});
+					test(`custom scrollbars are ${result ? 'on' : 'off'} for user agent of "${userAgent}"`, function() {
+						Object.defineProperty(window.navigator, 'userAgent', {value: userAgent, configurable: true});
+						var element = fixture('basic');
+						assert.equal(element.customScroll, result);
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

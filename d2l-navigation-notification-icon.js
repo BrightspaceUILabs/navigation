@@ -31,6 +31,9 @@ class NavigationNotificationIcon extends PolymerElement {
                     width: 10px;
                     border-radius: 50%;
                 }
+                :host([thin-border]) .d2l-navigation-notification-icon-indicator {
+                    border-width: 1px;
+                }
             </style>
             <div class="d2l-navigation-notification-icon-indicator"></div>
 		`;
