@@ -14,12 +14,13 @@
     "test:polymer:sauce": "polymer test --skip-plugin local",
     "test": "npm run lint && npm run test:polymer:local",
     "test:diff": "mocha ./test/**/*.visual-diff.js -t 10000",
-    "test:diff:golden": "mocha ./test/**/*.visual-diff.js -t 10000 --golden"
+    "test:diff:golden": "mocha ./test/**/*.visual-diff.js -t 10000 --golden",
+    "test:diff:golden:commit": "commit-goldens"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/visual-diff": "^0.1.0",
+    "@brightspace-ui/visual-diff": "^1.0.1",
     "@polymer/iron-component-page": "^4.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",
