@@ -36,6 +36,7 @@ class D2LNavigationBand extends PolymerElement {
 			.d2l-navigation-scroll {
 				overflow-x: auto;
 				overflow-y: hidden;
+				scroll-behavior: smooth;
 			}
 
 			.d2l-navigation-scroll[custom-scroll] {
@@ -101,6 +102,24 @@ class D2LNavigationBand extends PolymerElement {
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this.addEventListener('d2l-navigation-band-slot-scroll-request', this._handleScrollRequest);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.removeEventListener('d2l-navigation-band-slot-scroll-request', this._handleScrollRequest);
+	}
+
+	_handleScrollRequest(e) {
+		e.stopPropagation();
+		const scroll = this.shadowRoot.querySelector('.d2l-navigation-scroll');
+		requestAnimationFrame(function() {
+			scroll.scrollLeft = e.detail.pointToCenter - (scroll.offsetWidth / 2);
+		});
 	}
 }
 customElements.define('d2l-navigation-band', D2LNavigationBand);
