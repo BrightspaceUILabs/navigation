@@ -16,8 +16,8 @@ export const navigationSharedStyle = html`
 				position: relative;
 			}
 
-			.d2l-navigation-scroll[custom-scroll]:before,
-			.d2l-navigation-scroll[custom-scroll]:after {
+			.d2l-navigation-scroll:before,
+			.d2l-navigation-scroll:after {
 				width: 2.439%;
 			}
 
@@ -27,8 +27,8 @@ export const navigationSharedStyle = html`
 					padding-right: 15px;
 				}
 
-				.d2l-navigation-scroll[custom-scroll]:before,
-				.d2l-navigation-scroll[custom-scroll]:after {
+				.d2l-navigation-scroll:before,
+				.d2l-navigation-scroll:after {
 					width: 15px;
 				}
 			}
@@ -39,8 +39,8 @@ export const navigationSharedStyle = html`
 					padding-right: 30px;
 				}
 
-				.d2l-navigation-scroll[custom-scroll]:before,
-				.d2l-navigation-scroll[custom-scroll]:after {
+				.d2l-navigation-scroll:before,
+				.d2l-navigation-scroll:after {
 					width: 30px;
 				}
 			}

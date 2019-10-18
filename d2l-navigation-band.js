@@ -63,8 +63,8 @@ class D2LNavigationBand extends PolymerElement {
 				border-top: 1px solid var(--d2l-color-sylvite);
 			}
 			/* Faded edges styles */
-			.d2l-navigation-scroll[custom-scroll]:before,
-			.d2l-navigation-scroll[custom-scroll]:after {
+			.d2l-navigation-scroll:before,
+			.d2l-navigation-scroll:after {
 				content: '';
 				position: absolute;
 				height: 100%;
@@ -73,11 +73,11 @@ class D2LNavigationBand extends PolymerElement {
 				top: 0;
 				z-index: 2;
 			}
-			.d2l-navigation-scroll[custom-scroll]:before {
+			.d2l-navigation-scroll:before {
 				left: 0;
 				background: linear-gradient(to right, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
 			}
-			.d2l-navigation-scroll[custom-scroll]:after {
+			.d2l-navigation-scroll:after {
 				right: 0;
 				background: linear-gradient(to left, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
 			}
