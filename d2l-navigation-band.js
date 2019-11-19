@@ -122,8 +122,8 @@ class D2LNavigationBand extends PolymerElement {
 
 		var scrollAmount = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
 
-		if (dir === 'rtl') {
-			// Chrome
+		if (dir && dir.toLowerCase() === 'rtl') {
+			// Chrome and Safari
 			//scrollAmount = scroll.scrollWidth + e.detail.pointToCenter - 1.5 * scroll.offsetWidth;
 
 			//Firefox
@@ -132,7 +132,7 @@ class D2LNavigationBand extends PolymerElement {
 			//Edge
 			//scrollAmount = 0.5 * scroll.offsetWidth - e.detail.pointToCenter;
 		}
-		requestAnimationFrame(function() {
+		requestAnimationFrame(() => {
 			scroll.scrollLeft = scrollAmount;
 		});
 	}

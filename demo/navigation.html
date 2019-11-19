@@ -148,10 +148,10 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 document.body.appendChild($_documentContainer.content);
 </script>
 <script type="module">
-	requestAnimationFrame(function() {
+	requestAnimationFrame(() => {
 		const scrollTestButtons = document.querySelectorAll('.scrollable');
-		scrollTestButtons.forEach(function(button) {
-			button.addEventListener('click', function() {
+		scrollTestButtons.forEach((button) => {
+			button.addEventListener('click', () => {
 				button.dispatchEvent(
 					new CustomEvent(
 						'd2l-navigation-band-slot-scroll-request',
