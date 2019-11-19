@@ -31,6 +31,7 @@ class D2LNavigationBand extends PolymerElement {
 				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-celestine)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
 				display: block;
 				min-height: 4px;
+				position: relative;
 			}
 
 			.d2l-navigation-scroll {
@@ -116,9 +117,23 @@ class D2LNavigationBand extends PolymerElement {
 
 	_handleScrollRequest(e) {
 		e.stopPropagation();
+		const dir = document.getElementsByTagName('html')[0].getAttribute('dir');
 		const scroll = this.shadowRoot.querySelector('.d2l-navigation-scroll');
+
+		var scrollAmount = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
+
+		if (dir === 'rtl') {
+			// Chrome
+			//scrollAmount = scroll.scrollWidth + e.detail.pointToCenter - 1.5 * scroll.offsetWidth;
+
+			//Firefox
+			//scrollAmount = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
+
+			//Edge
+			//scrollAmount = 0.5 * scroll.offsetWidth - e.detail.pointToCenter;
+		}
 		requestAnimationFrame(function() {
-			scroll.scrollLeft = e.detail.pointToCenter - (scroll.offsetWidth / 2);
+			scroll.scrollLeft = scrollAmount;
 		});
 	}
 }
