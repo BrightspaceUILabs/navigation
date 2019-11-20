@@ -31,7 +31,6 @@ class D2LNavigationBand extends PolymerElement {
 				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-celestine)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
 				display: block;
 				min-height: 4px;
-				position: relative;
 			}
 
 			.d2l-navigation-scroll {
