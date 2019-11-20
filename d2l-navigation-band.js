@@ -117,23 +117,14 @@ class D2LNavigationBand extends PolymerElement {
 
 	_handleScrollRequest(e) {
 		e.stopPropagation();
-		const dir = document.getElementsByTagName('html')[0].getAttribute('dir');
-		const scroll = this.shadowRoot.querySelector('.d2l-navigation-scroll');
-
-		var scrollAmount = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
-
-		if (dir && dir.toLowerCase() === 'rtl') {
-			// Chrome and Safari
-			//scrollAmount = scroll.scrollWidth + e.detail.pointToCenter - 1.5 * scroll.offsetWidth;
-
-			//Firefox
-			//scrollAmount = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
-
-			//Edge
-			//scrollAmount = 0.5 * scroll.offsetWidth - e.detail.pointToCenter;
+		const dir = document.documentElement.getAttribute('dir') || 'ltr';
+		if (dir.toLowerCase() === 'rtl') {
+			return; // We turn off this feature in RTL due to browser inconsistencies
 		}
+
+		const scroll = this.shadowRoot.querySelector('.d2l-navigation-scroll');
 		requestAnimationFrame(() => {
-			scroll.scrollLeft = scrollAmount;
+			scroll.scrollLeft = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
 		});
 	}
 }
