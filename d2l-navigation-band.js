@@ -31,11 +31,13 @@ class D2LNavigationBand extends PolymerElement {
 				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-celestine)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
 				display: block;
 				min-height: 4px;
+				position: relative; /* Needed for Firefox */
 			}
 
 			.d2l-navigation-scroll {
 				overflow-x: auto;
 				overflow-y: hidden;
+				scroll-behavior: smooth;
 			}
 
 			.d2l-navigation-scroll[custom-scroll] {
@@ -101,6 +103,29 @@ class D2LNavigationBand extends PolymerElement {
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this.addEventListener('d2l-navigation-band-slot-scroll-request', this._handleScrollRequest);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.removeEventListener('d2l-navigation-band-slot-scroll-request', this._handleScrollRequest);
+	}
+
+	_handleScrollRequest(e) {
+		e.stopPropagation();
+		const dir = document.documentElement.getAttribute('dir') || 'ltr';
+		if (dir.toLowerCase() === 'rtl') {
+			return; // We turn off this feature in RTL due to browser inconsistencies
+		}
+
+		const scroll = this.shadowRoot.querySelector('.d2l-navigation-scroll');
+		requestAnimationFrame(() => {
+			scroll.scrollLeft = e.detail.pointToCenter - 0.5 * scroll.offsetWidth;
+		});
 	}
 }
 customElements.define('d2l-navigation-band', D2LNavigationBand);
