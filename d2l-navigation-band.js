@@ -94,7 +94,7 @@ class D2LNavigationBand extends PolymerElement {
 			}
 		</style>
 		<div class="d2l-navigation-centerer">
-			<div class="d2l-navigation-scroll" custom-scroll$=[[customScroll]]>
+			<div class="d2l-navigation-scroll" custom-scroll$=[[customScroll]] tabindex="-1">
 				<div class="d2l-navigation-gutters">
 					<slot></slot>
 				</div>
