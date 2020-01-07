@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-		<title>d2l-navigation-separator test</title>
+		<title>d2l-navigation-button test</title>
 		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 		<script src="../../wct-browser-legacy/browser.js"></script>
 		<script type="module" src="../d2l-navigation-button.js"></script>
@@ -47,6 +47,11 @@
 		<test-fixture id="imageLink">
 			<template strip-whitespace>
 				<d2l-navigation-link-image href="https://www.example.org" src="testSrc" text="image alt text"></d2l-navigation-link-image>
+			</template>
+		</test-fixture>
+		<test-fixture id="imageLinkUndefinedText">
+			<template strip-whitespace>
+				<d2l-navigation-link-image href="https://www.example.org" src="testSrc"></d2l-navigation-link-image>
 			</template>
 		</test-fixture>
 
@@ -256,6 +261,18 @@ suite('d2l-navigation-link-image', function() {
 	test('should pass text down to the base link', function() {
 		var text = dom(button.root).querySelector('d2l-navigation-link').text;
 		assert.equal(button.text, text);
+	});
+});
+
+suite('d2l-navigation-link-image undefined text', function() {
+	setup(function() {
+		button = fixture('imageLinkUndefinedText');
+	});
+	testInstantiation('d2l-navigation-link-image');
+	test('should have empty alt when text attribute is missing or an empty string', function() {
+		var img = dom(button.root).querySelector('img');
+		assert.equal(img.hasAttribute('alt'), true);
+		assert.equal(img.getAttribute('alt'), '');
 	});
 });
 </script>
