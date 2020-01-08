@@ -62,7 +62,6 @@ import '../d2l-navigation-button-close.js';
 import '../d2l-navigation-link.js';
 import '../d2l-navigation-link-back.js';
 import '../d2l-navigation-link-image.js';
-import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 let button;
 function testInstantiation(name) {
 	test('instantiating the element works', () => {
@@ -265,7 +264,7 @@ suite('d2l-navigation-link-image', () => {
 });
 
 suite('d2l-navigation-link-image undefined text', () => {
-	setup( () => {
+	setup(() => {
 		button = fixture('imageLinkUndefinedText');
 	});
 	testInstantiation('d2l-navigation-link-image');
