@@ -23,7 +23,8 @@ class D2LNavigationLinkImage extends PolymerElement {
 				value: false
 			},
 			text: {
-				type: String
+				type: String,
+				value: ''
 			}
 		};
 	}
@@ -52,7 +53,7 @@ class D2LNavigationLinkImage extends PolymerElement {
 			}
 		</style>
 		<d2l-navigation-link href="[[href]]" text="[[text]]">
-			<span class="d2l-navigation-link-image-container"><img src="[[src]]" alt="[[text]]"></span>
+			<span class="d2l-navigation-link-image-container"><img src="[[src]]" alt$="[[text]]"></span>
 		</d2l-navigation-link>`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
