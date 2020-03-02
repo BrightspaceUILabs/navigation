@@ -20,7 +20,7 @@ class D2LNavigationMainFooter extends PolymerElement {
 					display: block;
 				}
 			</style>
-			<div class="d2l-navigation-centerer d2l-visible-on-ancestor-target">
+			<div class="d2l-navigation-centerer">
 				<div class="d2l-navigation-gutters">
 					<slot name="main"></slot>
 				</div>
