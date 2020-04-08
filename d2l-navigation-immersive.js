@@ -16,6 +16,15 @@ Polymer-based web component for the immersive navigation component
 */
 class D2LNavigationImmsersive extends PolymerElement {
 
+	static get properties() {
+		return {
+			widthType: {
+				type: String,
+				observer: '_widthTypeChanged'
+			}
+		};
+	}
+
 	static get template() {
 		const template = html`
 				${navigationSharedStyle}
@@ -245,6 +254,19 @@ class D2LNavigationImmsersive extends PolymerElement {
 				fastdom.mutate(function() {
 					container.classList.remove(containerClass);
 				});
+			}
+		}
+	}
+
+	_widthTypeChanged(widthType) {
+		if (widthType) {
+			const elem = dom(this.root).querySelector('.d2l-navigation-immersive-container');
+			switch (this.widthType) {
+				case 'normal':
+					elem.style.maxWidth = '1230px';
+					break;
+				case 'fullscreen':
+					elem.style.maxWidth = '100%';
 			}
 		}
 	}
