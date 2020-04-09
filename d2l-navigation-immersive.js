@@ -20,7 +20,7 @@ class D2LNavigationImmsersive extends PolymerElement {
 		return {
 			widthType: {
 				type: String,
-				observer: '_widthTypeChanged'
+				reflectToAttribute: true
 			}
 		};
 	}
@@ -55,9 +55,13 @@ class D2LNavigationImmsersive extends PolymerElement {
 				height: var(--d2l-navigation-immersive-height-main);
 				justify-content: space-between;
 				margin: 0 -7px;
-				max-width: var(--d2l-navigation-immersive-content-max-width, 100%);
+				max-width: 100%;
 				overflow: hidden;
 				width: 100%;
+			}
+
+			:host([width-type="normal"]) .d2l-navigation-immersive-container {
+				max-width: 1230px;
 			}
 
 			.d2l-navigation-immersive-left ::slotted(*),
@@ -254,19 +258,6 @@ class D2LNavigationImmsersive extends PolymerElement {
 				fastdom.mutate(function() {
 					container.classList.remove(containerClass);
 				});
-			}
-		}
-	}
-
-	_widthTypeChanged(widthType) {
-		if (widthType) {
-			const elem = dom(this.root).querySelector('.d2l-navigation-immersive-container');
-			switch (this.widthType) {
-				case 'normal':
-					elem.style.maxWidth = '1230px';
-					break;
-				case 'fullscreen':
-					elem.style.maxWidth = '100%';
 			}
 		}
 	}
