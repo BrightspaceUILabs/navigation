@@ -91,7 +91,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 Then add the `d2l-navigation-immersive`, providing values for the `backLinkHref` & `backLinkText`. Additionally, you may override any of the 3 slots (`left`, `middle`, `right`).
 Please note that overridding the `left` slot will prevent the Back link from displaying. This should only be done in very specialized cases.
 
-`d2l-navigation-immersive` can optionally have its max-width constrained to `1230px` by including the attribute `width-type="normal"`
+Optionally, the max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`.
 
 <!---
 ```
