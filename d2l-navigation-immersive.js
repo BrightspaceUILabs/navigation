@@ -16,6 +16,15 @@ Polymer-based web component for the immersive navigation component
 */
 class D2LNavigationImmsersive extends PolymerElement {
 
+	static get properties() {
+		return {
+			widthType: {
+				type: String,
+				reflectToAttribute: true
+			}
+		};
+	}
+
 	static get template() {
 		const template = html`
 				${navigationSharedStyle}
@@ -46,9 +55,13 @@ class D2LNavigationImmsersive extends PolymerElement {
 				height: var(--d2l-navigation-immersive-height-main);
 				justify-content: space-between;
 				margin: 0 -7px;
-				max-width: var(--d2l-navigation-immersive-content-max-width, 100%);
+				max-width: 100%;
 				overflow: hidden;
 				width: 100%;
+			}
+
+			:host([width-type="normal"]) .d2l-navigation-immersive-container {
+				max-width: 1230px;
 			}
 
 			.d2l-navigation-immersive-left ::slotted(*),

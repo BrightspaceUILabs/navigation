@@ -25,9 +25,6 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
-				html {
-					--d2l-navigation-immersive-content-max-width: 900px;
-				}
 				body {
 					background-color: pink;
 					padding: 0;
@@ -81,7 +78,7 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<div class="vertical-section-container centered" style="max-width: 900px;">
 			<demo-snippet>
 				<template strip-whitespace="">
-					<d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
+					<d2l-navigation-immersive width-type="normal" back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 						<div id="middle" class="d2l-typography d2l-body-standard" slot="middle">
 							Economics 101
 						</div>
