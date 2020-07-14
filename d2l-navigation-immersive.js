@@ -18,6 +18,14 @@ class D2LNavigationImmsersive extends PolymerElement {
 
 	static get properties() {
 		return {
+			backLinkHref: {
+				type: String,
+				reflectToAttribute: true
+			},
+			backLinkText: {
+				type: String,
+				reflectToAttribute: true
+			},
 			widthType: {
 				type: String,
 				reflectToAttribute: true
