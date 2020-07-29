@@ -26,10 +26,6 @@ suite('d2l-navigation-main-footer', function() {
 		expect(centerer).to.not.be.null;
 		assert.equal(centerer.tagName, 'DIV');
 
-		var ancestor = dom(footer.root).querySelector('.d2l-visible-on-ancestor-target');
-		expect(ancestor).to.not.be.null;
-		assert.equal(ancestor.tagName, 'DIV');
-
 		var gutters = dom(footer.root).querySelector('.d2l-navigation-gutters');
 		expect(gutters).to.not.be.null;
 		assert.equal(gutters.tagName, 'DIV');
