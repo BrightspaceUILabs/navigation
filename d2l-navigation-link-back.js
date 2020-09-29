@@ -53,6 +53,7 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 			:host {
 				display: inline-block;
 				height: 100%;
+				white-space: nowrap;
 			}
 			d2l-icon {
 				color: inherit;
