@@ -20,7 +20,7 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/visual-diff": "^1.0.1",
+    "@brightspace-ui/visual-diff": "^1",
     "@polymer/iron-component-page": "^4.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",
@@ -39,7 +39,7 @@
     "lie": "^3.3.0",
     "merge-stream": "^1.0.1",
     "polymer-cli": "^1.9.6",
-    "puppeteer": "^1.20.0",
+    "puppeteer": "^5",
     "require-dir": "^1.2.0",
     "sauce-connect-launcher": "^1.2.4",
     "sinon": "^7.3.2",
