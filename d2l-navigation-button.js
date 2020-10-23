@@ -20,6 +20,11 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 				type: String,
 				reflectToAttribute: true
 			},
+			hideHighlight: {
+				type: Boolean,
+				value: false,
+				reflectToAttribute: true
+			},
 			ariaDescribedbyText: {
 				type: String
 			},
@@ -107,13 +112,16 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 					}
 				</style>
 			<button aria-describedby$="[[_ariaDescriptionId]]" aria-expanded$="[[ariaExpanded]]" aria-haspopup$="[[ariaHaspopup]]" aria-label$="[[text]]" class="d2l-focusable" disabled$="[[disabled]]" autofocus$="[[autofocus]]" form$="[[form]]" formaction$="[[formaction]]" formenctype$="[[formenctype]]" formmethod$="[[formmethod]]" formnovalidate$="[[formnovalidate]]" formtarget$="[[formtarget]]" name$="[[name]]" title$="[[text]]" type$="[[type]]">
-			<span class="d2l-navigation-button-top-border"></span>
+			<span class$="[[_getTopBorderClass()]]"></span>
 			<slot></slot>
 			</button>
 			<span id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</span>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
+	}
+	_getTopBorderClass() {
+		return this.hideHighlight ? '' : 'd2l-navigation-button-top-border';
 	}
 	ready() {
 		super.ready();
