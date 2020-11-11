@@ -3,7 +3,7 @@
 'use strict';
 
 const puppeteer = require('puppeteer');
-const VisualDiff = require('@brightspace-ui/visual-diff');
+const VisualDiff = require('./visual-diff');
 
 describe('d2l-navigation-band', function() {
 	const visualDiff = new VisualDiff('d2l-navigation-band', __dirname);
