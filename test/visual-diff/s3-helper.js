@@ -62,6 +62,7 @@ class S3Helper {
 
 			s3.upload(params, function(err, data) {
 				if (err) {
+					process.stdout.write(`\n${chalk.red('Get here')}`);
 					process.stdout.write(`\n${chalk.red(err)}`);
 					reject(err);
 				}
