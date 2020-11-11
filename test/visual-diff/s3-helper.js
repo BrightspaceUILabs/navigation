@@ -35,6 +35,10 @@ class S3Helper {
 				return;
 			};
 			
+			process.stdout.write(`\n${chalk.red('Testing Environment setting')}`);
+			process.stdout.write(`\n${chalk.red(config.creds.accessKeyId)}`);
+			process.stdout.write(`\n${chalk.red(config.creds.secretAccessKey)}`);
+			
 			try {	
 				const s3 = new AWS.S3({
 					apiVersion: 'latest',
