@@ -75,11 +75,15 @@ class VisualDiff {
 			if (_isGoldenUpdate) {
 				await this._deleteGoldenOrphans();
 			} else {
-				await this._generateHtml(reportName, this._results);
-				if (_isCI) {
-					process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
-				} else {
-					process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
+				try {
+					await this._generateHtml(reportName, this._results);
+					if (_isCI) {
+						process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
+					} else {
+						process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
+					}
+				} catch (error) {
+					process.stdout.write(`\n${chalk.red(error)}`);
 				}
 			}
 		});
