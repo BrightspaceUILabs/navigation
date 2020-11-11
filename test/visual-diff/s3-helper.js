@@ -35,6 +35,8 @@ class S3Helper {
 				return;
 			};
 			
+			process.stdout.write(`\n${chalk.red('Testing stuff out')}`);
+			
 			try {	
 				const s3 = new AWS.S3({
 					apiVersion: 'latest',
