@@ -1,0 +1,37 @@
+# This workflow runs when a pull request is opened or updated.
+# Runs linting and the full test suite
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build:
+    # self-hosted doesn't work for public repos (security), so need to use ubuntu
+    runs-on: ubuntu-latest
+    
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Repository
+        uses: Brightspace/third-party-actions@actions/checkout
+
+      - name: Use Node.js
+        uses: Brightspace/third-party-actions@actions/setup-node
+        with:
+          node-version: '12.x'
+          
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Run Visual Diff
+        uses: svanherk/test-action/visual-diff@main
+        with:
+          VISUAL_DIFF_S3_ID: 'something'
+          VISUAL_DIFF_S3_SECRET: 'something else'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Done
+        run: echo Done
