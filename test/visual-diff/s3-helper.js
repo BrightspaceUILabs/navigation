@@ -35,8 +35,6 @@ class S3Helper {
 				return;
 			};
 			
-			process.stdout.write(`\n${chalk.red('Testing stuff out')}`);
-			
 			try {	
 				const s3 = new AWS.S3({
 					apiVersion: 'latest',
@@ -44,39 +42,38 @@ class S3Helper {
 					secretAccessKey: config.creds.secretAccessKey,
 					region: config.region
 				});
+			} catch (err) {
+				process.stdout.write(`\n${chalk.red(err)}`);
+				reject(err);
+			}
+				
+			const params = {
+				ACL: 'public-read',
+				Body: '',
+				Bucket: config.target,
+				ContentDisposition: 'inline',
+				ContentType: getContentType(filePath),
+				Key: ''
+			};
 
-				const params = {
-					ACL: 'public-read',
-					Body: '',
-					Bucket: config.target,
-					ContentDisposition: 'inline',
-					ContentType: getContentType(filePath),
-					Key: ''
-				};
+			const fileStream = fs.createReadStream(filePath);
 
-				const fileStream = fs.createReadStream(filePath);
+			fileStream.on('error', function(err) {
+				process.stdout.write(`\n${chalk.red(err)}`);
+				reject(err);
+			});
+			params.Body = fileStream;
+			params.Key = path.basename(filePath);
 
-				fileStream.on('error', function(err) {
+			s3.upload(params, function(err, data) {
+				if (err) {
 					process.stdout.write(`\n${chalk.red(err)}`);
 					reject(err);
-				});
-				params.Body = fileStream;
-				params.Key = path.basename(filePath);
-
-				s3.upload(params, function(err, data) {
-					if (err) {
-						process.stdout.write(`\n${chalk.red(err)}`);
-						reject(err);
-					}
-					if (data) {
-						resolve(data);
-					}
-				});
-			} catch(e) {
-				process.stdout.write(`\n${chalk.red(e)}`);
-				reject(e);
-			}
-
+				}
+				if (data) {
+					resolve(data);
+				}
+			});
 		});
 		return promise;
 	}
