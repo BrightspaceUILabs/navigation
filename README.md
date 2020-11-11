@@ -7,7 +7,7 @@ A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components
 
 ![screenshot of sample usage](/screenshots/navigation.png?raw=true)
 
-## Installation
+## Installation 
 
 `d2l-navigation` can be installed from [Bower][bower-url]:
 ```shell
