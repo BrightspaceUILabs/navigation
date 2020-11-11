@@ -35,21 +35,12 @@ class S3Helper {
 				return;
 			};
 			
-			process.stdout.write(`\n${chalk.red('Testing Environment setting')}`);
-			process.stdout.write(`\n${chalk.red(config.creds.accessKeyId)}`);
-			process.stdout.write(`\n${chalk.red(config.creds.secretAccessKey)}`);
-			
-			try {	
-				const s3 = new AWS.S3({
-					apiVersion: 'latest',
-					accessKeyId: config.creds.accessKeyId,
-					secretAccessKey: config.creds.secretAccessKey,
-					region: config.region
-				});
-			} catch (err) {
-				process.stdout.write(`\n${chalk.red(err)}`);
-				reject(err);
-			}
+			const s3 = new AWS.S3({
+				apiVersion: 'latest',
+				accessKeyId: config.creds.accessKeyId,
+				secretAccessKey: config.creds.secretAccessKey,
+				region: config.region
+			});
 				
 			const params = {
 				ACL: 'public-read',
