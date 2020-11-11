@@ -34,41 +34,46 @@ class S3Helper {
 				if (filePath.endsWith('.png')) return 'image/png';
 				return;
 			};
+			
+			try {	
+				const s3 = new AWS.S3({
+					apiVersion: 'latest',
+					accessKeyId: config.creds.accessKeyId,
+					secretAccessKey: config.creds.secretAccessKey,
+					region: config.region
+				});
 
-			const s3 = new AWS.S3({
-				apiVersion: 'latest',
-				accessKeyId: config.creds.accessKeyId,
-				secretAccessKey: config.creds.secretAccessKey,
-				region: config.region
-			});
+				const params = {
+					ACL: 'public-read',
+					Body: '',
+					Bucket: config.target,
+					ContentDisposition: 'inline',
+					ContentType: getContentType(filePath),
+					Key: ''
+				};
 
-			const params = {
-				ACL: 'public-read',
-				Body: '',
-				Bucket: config.target,
-				ContentDisposition: 'inline',
-				ContentType: getContentType(filePath),
-				Key: ''
-			};
+				const fileStream = fs.createReadStream(filePath);
 
-			const fileStream = fs.createReadStream(filePath);
-
-			fileStream.on('error', function(err) {
-				process.stdout.write(`\n${chalk.red(err)}`);
-				reject(err);
-			});
-			params.Body = fileStream;
-			params.Key = path.basename(filePath);
-
-			s3.upload(params, function(err, data) {
-				if (err) {
+				fileStream.on('error', function(err) {
 					process.stdout.write(`\n${chalk.red(err)}`);
 					reject(err);
-				}
-				if (data) {
-					resolve(data);
-				}
-			});
+				});
+				params.Body = fileStream;
+				params.Key = path.basename(filePath);
+
+				s3.upload(params, function(err, data) {
+					if (err) {
+						process.stdout.write(`\n${chalk.red(err)}`);
+						reject(err);
+					}
+					if (data) {
+						resolve(data);
+					}
+				});
+			} catch(e) {
+				process.stdout.write(`\n${chalk.red(e)}`);
+				reject(e);
+			}
 
 		});
 		return promise;
