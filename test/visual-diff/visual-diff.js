@@ -83,8 +83,7 @@ class VisualDiff {
 						process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
 					}
 				} catch (error) {
-					process.stdout.write(`\n${chalk.red('Could not generate report.')}`);
-					process.stdout.write(`\n${chalk.red(error)}`);
+					process.stdout.write(`\n${chalk.red(`Could not generate report: ${error}`)}`);
 				}
 			}
 		});
