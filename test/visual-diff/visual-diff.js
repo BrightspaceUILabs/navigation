@@ -28,7 +28,7 @@ after(async() => {
 	}
 	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} golden(s) updated.\n`));
 	if (_goldenErrorCount > 0) {
-		process.stdout.write(chalk.red(`\n  ${chalk.red(_goldenErrorCount)} golden updates failed.\n`));
+		process.stdout.write(chalk.red(`  ${chalk.red(_goldenErrorCount)} golden updates failed.\n`));
 	}
 });
 
@@ -131,7 +131,7 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (!result) {
+			if (result) {
 				this._updateError = false;
 				_goldenUpdateCount++;
 			} else {
