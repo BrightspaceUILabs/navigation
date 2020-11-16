@@ -56,13 +56,13 @@ class VisualDiff {
 				goldenTarget = goldenTarget.replace('/home/travis/build/', '');
 			}
 
-			process.stdout.write(`\n${chalk.hex('#DCDCAA')('    Golden:')} ${goldenTarget}\n\n`);
+			process.stdout.write(`\n${chalk.yellow('    Golden:')} ${goldenTarget}\n\n`);
 
 		});
 
 		afterEach(() => {
 			if (this._updateError) {
-				process.stdout.write(chalk.gray('      [Note: golden update failed]'));
+				process.stdout.write(chalk.bold.red('      [Note: golden update failed]'));
 			}
 		});
 
