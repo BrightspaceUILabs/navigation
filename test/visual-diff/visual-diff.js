@@ -11,6 +11,7 @@ const _serverOptions = esDevServer.createConfig({ babel: true, nodeResolve: true
 let _baseUrl;
 let _server;
 let _goldenUpdateCount = 0;
+let _goldenErrorCount = 0;
 
 before(async() => {
 	const { server } = await esDevServer.startServer(_serverOptions);
@@ -25,7 +26,10 @@ after(async() => {
 		await _server.close();
 		process.stdout.write('Stopped server.\n');
 	}
-	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} goldens updated.\n`));
+	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} golden(s) updated.\n`));
+	if (_goldenErrorCount > 0) {
+		process.stdout.write(chalk.red(`\n  ${chalk.red(_goldenErrorCount)} golden updates failed.\n`));
+	}
 });
 
 class VisualDiff {
@@ -127,9 +131,13 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (result) this._updateError = true;
-			else this._updateError = false;
-			_goldenUpdateCount++;
+			if (!result) {
+				this._updateError = false;
+				_goldenUpdateCount++;
+			} else {
+				this._updateError = true;
+				_goldenErrorCount++;
+			}
 		} else {
 			this._updateError = false;
 		}
