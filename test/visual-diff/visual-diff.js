@@ -59,6 +59,10 @@ class VisualDiff {
 
 		});
 
+		afterEach(() => {
+			process.stdout.write('Testing lololol');
+		});
+
 		after(async() => {
 			const reportName = this._fs.getReportFileName();
 
@@ -89,8 +93,6 @@ class VisualDiff {
 		await page.screenshot(info);
 
 		await this._compare(name);
-
-		process.stdout.write(chalk.gray('If we fail a test, do we still get here?'));
 
 		/*if (_isGoldenUpdate) return this._updateGolden(name);
 		else await this._compare(name);*/
