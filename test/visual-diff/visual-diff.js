@@ -43,7 +43,7 @@ class VisualDiff {
 		this._dpr = options && options.dpr ? options.dpr : 2;
 		this._tolerance = options && options.tolerance ? options.tolerance : 0;
 
-		let currentTarget, goldenTarget;
+		let currentTarget, goldenTarget, updateError = false;
 
 		before(async() => {
 			currentTarget = this._fs.getCurrentTarget();
@@ -60,7 +60,9 @@ class VisualDiff {
 		});
 
 		afterEach(() => {
-			process.stdout.write('Testing lololol');
+			if (updateError) {
+				process.stdout.write(chalk.gray('      [Note: golden update failed]'));
+			}
 		});
 
 		after(async() => {
@@ -124,8 +126,11 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (!result) process.stdout.write(chalk.gray('      [Note: golden update failed]'));
+			if (result) updateError = true;
+			else updateError = false;
 			_goldenUpdateCount++;
+		} else {
+			updateError = false;
 		}
 
 		this._results.push({
