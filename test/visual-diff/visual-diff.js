@@ -42,8 +42,9 @@ class VisualDiff {
 		this._fs = new FileHelper(name, `${dir ? dir : process.cwd()}/screenshots`, options ? options.upload : null, _isCI);
 		this._dpr = options && options.dpr ? options.dpr : 2;
 		this._tolerance = options && options.tolerance ? options.tolerance : 0;
+		this._updateError = false;
 
-		let currentTarget, goldenTarget, updateError = false;
+		let currentTarget, goldenTarget;
 
 		before(async() => {
 			currentTarget = this._fs.getCurrentTarget();
@@ -60,7 +61,7 @@ class VisualDiff {
 		});
 
 		afterEach(() => {
-			if (updateError) {
+			if (this._updateError) {
 				process.stdout.write(chalk.gray('      [Note: golden update failed]'));
 			}
 		});
@@ -126,11 +127,11 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (result) updateError = true;
-			else updateError = false;
+			if (result) this._updateError = true;
+			else this._updateError = false;
 			_goldenUpdateCount++;
 		} else {
-			updateError = false;
+			this._updateError = false;
 		}
 
 		this._results.push({
