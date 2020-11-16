@@ -11,6 +11,7 @@ const _serverOptions = esDevServer.createConfig({ babel: true, nodeResolve: true
 let _baseUrl;
 let _server;
 let _goldenUpdateCount = 0;
+let _goldenErrorCount = 0;
 
 before(async() => {
 	const { server } = await esDevServer.startServer(_serverOptions);
@@ -25,7 +26,10 @@ after(async() => {
 		await _server.close();
 		process.stdout.write('Stopped server.\n');
 	}
-	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} goldens updated.\n`));
+	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} golden(s) updated.\n`));
+	if (_goldenErrorCount > 0) {
+		process.stdout.write(chalk.red(`  ${chalk.red(_goldenErrorCount)} golden updates failed.\n`));
+	}
 });
 
 class VisualDiff {
@@ -42,6 +46,7 @@ class VisualDiff {
 		this._fs = new FileHelper(name, `${dir ? dir : process.cwd()}/screenshots`, options ? options.upload : null, _isCI);
 		this._dpr = options && options.dpr ? options.dpr : 2;
 		this._tolerance = options && options.tolerance ? options.tolerance : 0;
+		this._updateError = false;
 
 		let currentTarget, goldenTarget;
 
@@ -55,8 +60,14 @@ class VisualDiff {
 				goldenTarget = goldenTarget.replace('/home/travis/build/', '');
 			}
 
-			process.stdout.write(`\n${chalk.hex('#DCDCAA')('    Golden:')} ${goldenTarget}\n\n`);
+			process.stdout.write(`\n${chalk.yellow('    Golden:')} ${goldenTarget}\n\n`);
 
+		});
+
+		afterEach(() => {
+			if (this._updateError) {
+				process.stdout.write(chalk.bold.red(`      [Attention: ${chalk.yellow('Golden')} update failed!]`));
+			}
 		});
 
 		after(async() => {
@@ -67,9 +78,9 @@ class VisualDiff {
 			try {
 				await this._generateHtml(reportName, this._results);
 				if (_isCI) {
-					process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
+					process.stdout.write(`\n${chalk.blue('Results:')} ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
 				} else {
-					process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
+					process.stdout.write(`\n${chalk.blue('Results:')} ${_baseUrl}${currentTarget}/${reportName}\n`);
 				}
 			} catch (error) {
 				process.stdout.write(`\n${chalk.red(`Could not generate report: ${error}`)}`);
@@ -120,9 +131,15 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (result) process.stdout.write(chalk.gray('golden updated'));
-			else process.stdout.write(chalk.gray('golden update failed'));
-			_goldenUpdateCount++;
+			if (result) {
+				this._updateError = false;
+				_goldenUpdateCount++;
+			} else {
+				this._updateError = true;
+				_goldenErrorCount++;
+			}
+		} else {
+			this._updateError = false;
 		}
 
 		this._results.push({
@@ -140,8 +157,7 @@ class VisualDiff {
 	}
 
 	async _deleteGoldenOrphans() {
-
-		process.stdout.write('\n      Removed orphaned goldens.\n');
+		let orphansExist = false;
 
 		const currentFiles = this._fs.getCurrentFiles();
 		const goldenFiles = await this._fs.getGoldenFiles();
@@ -149,13 +165,18 @@ class VisualDiff {
 		for (let i = 0; i < goldenFiles.length; i++) {
 			const fileName = goldenFiles[i];
 			if (!currentFiles.includes(fileName)) {
+				if (!orphansExist) {
+					process.stdout.write('\n      Removed orphaned goldens.\n');
+					orphansExist = true;
+				}
 				await this._fs.removeGoldenFile(fileName);
 				process.stdout.write(`      ${chalk.gray(fileName)}\n`);
 			}
 		}
 
-		process.stdout.write('\n');
-
+		if (orphansExist) {
+			process.stdout.write('\n');
+		}
 	}
 
 	async _generateHtml(fileName, results) {
@@ -245,7 +266,7 @@ class VisualDiff {
 		await this._fs.writeFile(fileName, html);
 	}
 
-	async _updateGolden(name) {
+	/*async _updateGolden(name) {
 
 		const currentImage = await this._fs.getCurrentImage(name);
 		const goldenImage = await this._fs.getGoldenImage(name);
@@ -273,7 +294,7 @@ class VisualDiff {
 			process.stdout.write(chalk.gray('golden already up to date'));
 		}
 
-	}
+	}*/
 
 }
 
