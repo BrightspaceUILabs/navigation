@@ -90,6 +90,8 @@ class VisualDiff {
 
 		await this._compare(name);
 
+		process.stdout.write(chalk.gray('If we fail a test, do we still get here?'));
+
 		/*if (_isGoldenUpdate) return this._updateGolden(name);
 		else await this._compare(name);*/
 	}
@@ -120,8 +122,7 @@ class VisualDiff {
 
 		if (updateGolden) {
 			const result = await this._fs.updateGolden(name);
-			if (result) process.stdout.write(chalk.gray('golden updated'));
-			else process.stdout.write(chalk.gray('golden update failed'));
+			if (!result) process.stdout.write(chalk.gray('      [Note: golden update failed]'));
 			_goldenUpdateCount++;
 		}
 
@@ -140,8 +141,7 @@ class VisualDiff {
 	}
 
 	async _deleteGoldenOrphans() {
-
-		process.stdout.write('\n      Removed orphaned goldens.\n');
+		let orphansExist = false;
 
 		const currentFiles = this._fs.getCurrentFiles();
 		const goldenFiles = await this._fs.getGoldenFiles();
@@ -149,13 +149,18 @@ class VisualDiff {
 		for (let i = 0; i < goldenFiles.length; i++) {
 			const fileName = goldenFiles[i];
 			if (!currentFiles.includes(fileName)) {
+				if (!orphansExist) {
+					process.stdout.write('\n      Removed orphaned goldens.\n');
+					orphansExist = true;
+				}
 				await this._fs.removeGoldenFile(fileName);
 				process.stdout.write(`      ${chalk.gray(fileName)}\n`);
 			}
 		}
 
-		process.stdout.write('\n');
-
+		if (orphansExist) {
+			process.stdout.write('\n');
+		}
 	}
 
 	async _generateHtml(fileName, results) {
@@ -245,7 +250,7 @@ class VisualDiff {
 		await this._fs.writeFile(fileName, html);
 	}
 
-	async _updateGolden(name) {
+	/*async _updateGolden(name) {
 
 		const currentImage = await this._fs.getCurrentImage(name);
 		const goldenImage = await this._fs.getGoldenImage(name);
@@ -273,7 +278,7 @@ class VisualDiff {
 			process.stdout.write(chalk.gray('golden already up to date'));
 		}
 
-	}
+	}*/
 
 }
 
