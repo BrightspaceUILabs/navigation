@@ -5,7 +5,6 @@ const pixelmatch = require('pixelmatch');
 const PNG = require('pngjs').PNG;
 const FileHelper = require('./file-helper.js');
 
-const _isGoldenUpdate = process.argv.includes('--golden') ? process.argv.includes('--golden') : false;
 const _isCI = process.env['CI'] ? true : false;
 const _serverOptions = esDevServer.createConfig({ babel: true, nodeResolve: true, dedupe: true });
 
@@ -26,9 +25,7 @@ after(async() => {
 		await _server.close();
 		process.stdout.write('Stopped server.\n');
 	}
-	if (_isGoldenUpdate) {
-		process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} goldens updated.\n`));
-	}
+	process.stdout.write(chalk.green(`\n  ${chalk.green(_goldenUpdateCount)} goldens updated.\n`));
 });
 
 class VisualDiff {
@@ -60,32 +57,24 @@ class VisualDiff {
 
 			process.stdout.write(`\n${chalk.hex('#DCDCAA')('    Golden:')} ${goldenTarget}\n\n`);
 
-			if (!_isGoldenUpdate && !_isCI) {
-				// fail fast if no goldens
-				const goldenFiles = await this._fs.getGoldenFiles();
-				if (goldenFiles.length === 0) {
-					process.stdout.write(`\n${chalk.hex('#DCDCAA')('No goldens!  Did you forget to generate them?')}\n${goldenTarget}\n\n`);
-					process.exit(1);
-				}
-			}
 		});
 
 		after(async() => {
 			const reportName = this._fs.getReportFileName();
-			if (_isGoldenUpdate) {
-				await this._deleteGoldenOrphans();
-			} else {
-				try {
-					await this._generateHtml(reportName, this._results);
-					if (_isCI) {
-						process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
-					} else {
-						process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
-					}
-				} catch (error) {
-					process.stdout.write(`\n${chalk.red(`Could not generate report: ${error}`)}`);
+
+			await this._deleteGoldenOrphans();
+
+			try {
+				await this._generateHtml(reportName, this._results);
+				if (_isCI) {
+					process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
+				} else {
+					process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
 				}
+			} catch (error) {
+				process.stdout.write(`\n${chalk.red(`Could not generate report: ${error}`)}`);
 			}
+
 		});
 
 	}
@@ -99,8 +88,10 @@ class VisualDiff {
 
 		await page.screenshot(info);
 
-		if (_isGoldenUpdate) return this._updateGolden(name);
-		else await this._compare(name);
+		await this._compare(name);
+
+		/*if (_isGoldenUpdate) return this._updateGolden(name);
+		else await this._compare(name);*/
 	}
 
 	async _compare(name) {
@@ -111,7 +102,7 @@ class VisualDiff {
 		const currentImageBase64 = await this._fs.getCurrentImageBase64(name);
 		const goldenImageBase64 = await this._fs.getGoldenImageBase64(name);
 
-		let pixelsDiff, diffImageBase64;
+		let pixelsDiff, diffImageBase64, updateGolden = false;
 
 		if (goldenImage && currentImage.width === goldenImage.width && currentImage.height === goldenImage.height) {
 			const diff = new PNG({ width: currentImage.width, height: currentImage.height });
@@ -119,9 +110,19 @@ class VisualDiff {
 				currentImage.data, goldenImage.data, diff.data, currentImage.width, currentImage.height, { threshold: this._tolerance }
 			);
 			if (pixelsDiff !== 0) {
+				updateGolden = true;
 				await this._fs.writeCurrentStream(`${name}-diff`, diff.pack());
 				diffImageBase64 = await this._fs.getDiffImageBase64(`${name}-diff`);
 			}
+		} else {
+			updateGolden = true;
+		}
+
+		if (updateGolden) {
+			const result = await this._fs.updateGolden(name);
+			if (result) process.stdout.write(chalk.gray('golden updated'));
+			else process.stdout.write(chalk.gray('golden update failed'));
+			_goldenUpdateCount++;
 		}
 
 		this._results.push({
