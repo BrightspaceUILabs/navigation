@@ -62,7 +62,7 @@ class VisualDiff {
 
 		afterEach(() => {
 			if (this._updateError) {
-				process.stdout.write(chalk.bold.red('      [Note: golden update failed]'));
+				process.stdout.write(chalk.bold.red(`      [Attention: ${chalk.yellow('Golden')} update failed!]`));
 			}
 		});
 
@@ -74,9 +74,9 @@ class VisualDiff {
 			try {
 				await this._generateHtml(reportName, this._results);
 				if (_isCI) {
-					process.stdout.write(`\nResults: ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
+					process.stdout.write(`\n${chalk.blue('Results:')} ${this._fs.getCurrentBaseUrl()}${reportName}\n`);
 				} else {
-					process.stdout.write(`\nResults: ${_baseUrl}${currentTarget}/${reportName}\n`);
+					process.stdout.write(`\n${chalk.blue('Results:')} ${_baseUrl}${currentTarget}/${reportName}\n`);
 				}
 			} catch (error) {
 				process.stdout.write(`\n${chalk.red(`Could not generate report: ${error}`)}`);
