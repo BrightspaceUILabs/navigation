@@ -26,8 +26,8 @@ jobs:
       - name: Run Visual Diff
         uses: svanherk/test-action/visual-diff@main
         with:
-          VISUAL_DIFF_S3_ID: 'something'
-          VISUAL_DIFF_S3_SECRET: 'something else'
+          VISUAL_DIFF_S3_ID: 'not yet'
+          VISUAL_DIFF_S3_SECRET: ${{ secrets.TEST_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Done
