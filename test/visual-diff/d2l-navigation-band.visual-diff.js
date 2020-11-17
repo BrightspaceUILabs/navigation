@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 const VisualDiff = require('./visual-diff');
 
 describe('d2l-navigation-band', function() {
-	const visualDiff = new VisualDiff('d2l-navigation-band', __dirname);
+	const visualDiff = new VisualDiff('d2l-navigation-band-sv-testing', __dirname);
 
 	let browser, page;
 
