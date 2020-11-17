@@ -75,6 +75,8 @@ class VisualDiff {
 
 			await this._deleteGoldenOrphans();
 
+			process.stdout.write('\n');
+
 			try {
 				await this._generateHtml(reportName, this._results);
 				if (_isCI) {
@@ -159,9 +161,6 @@ class VisualDiff {
 		const currentFiles = this._fs.getCurrentFiles();
 		const goldenFiles = await this._fs.getGoldenFiles();
 
-		process.stdout.write(currentFiles.toString());
-		process.stdout.write(goldenFiles.toString());
-
 		for (let i = 0; i < goldenFiles.length; i++) {
 			const fileName = goldenFiles[i];
 			if (!currentFiles.includes(fileName)) {
@@ -174,9 +173,6 @@ class VisualDiff {
 			}
 		}
 
-		if (orphansExist) {
-			process.stdout.write('\n');
-		}
 	}
 
 	async _generateHtml(fileName, results) {
