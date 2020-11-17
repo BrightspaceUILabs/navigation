@@ -227,7 +227,7 @@ class VisualDiff {
 					<div>By ${actor}</div>
 				</div>`;
 		};
-		process.stdout.write(createMetaHtml());
+
 		const diffHtml = results.map((result) => {
 
 			return `
