@@ -72,7 +72,6 @@ class VisualDiff {
 
 		after(async() => {
 			const reportName = this._fs.getReportFileName();
-			process.stdout.write(`\n${chalk.red(reportName)}`);
 
 			await this._deleteGoldenOrphans();
 
@@ -101,9 +100,6 @@ class VisualDiff {
 		await page.screenshot(info);
 
 		await this._compare(name);
-
-		/*if (_isGoldenUpdate) return this._updateGolden(name);
-		else await this._compare(name);*/
 	}
 
 	async _compare(name) {
@@ -215,19 +211,23 @@ class VisualDiff {
 		};
 		const createMetaHtml = () => {
 			if (!_isCI) return '';
+			const runUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
+			const workflow = process.env['GITHUB_WORKFLOW'];
+			const runNum = process.env['GITHUB_RUN_NUMBER'];
+			const pr = /refs\/pull\/(\d+)\/merge/g.exec(process.env['GITHUB_REF']);
+			const prNum = pr && pr[1] ? pr[1] : null; 
+			const prUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/pull/${prNum}`;
 			const branch = process.env['GITHUB_REF'];
 			const sha = process.env['GITHUB_SHA'];
-			const message = github.context.job;
-			const url = `${'GITHUB_SERVER_URL'}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
-			const build = process.env['GITHUB_RUN_NUMBER'];
+			const actor = process.env['GITHUB_ACTOR'];
 			return `
 				<div class="meta">
-					<div><a href="${url}">Build #${build}</a></div>
-					<div>${branch} (${sha})</div>
-					<div>${message}</div>
+					<div><a href="${runUrl}">${workflow} Run #${runNum}</a></div>
+					${ prNum ? `<div><a href="${prUrl}">PR: #${prNum}</a></div>` : `<div>Commit to ${branch}: ${sha}</div>`}
+					<div>By ${actor}</div>
 				</div>`;
 		};
-		process.stdout.write(createMetaHtml());
+
 		const diffHtml = results.map((result) => {
 
 			return `
@@ -267,36 +267,6 @@ class VisualDiff {
 
 		await this._fs.writeFile(fileName, html);
 	}
-
-	/*async _updateGolden(name) {
-
-		const currentImage = await this._fs.getCurrentImage(name);
-		const goldenImage = await this._fs.getGoldenImage(name);
-
-		let updateGolden = false;
-		if (!goldenImage) {
-			updateGolden = true;
-		} else if (currentImage.width !== goldenImage.width || currentImage.height !== goldenImage.height) {
-			updateGolden = true;
-		} else {
-			const diff = new PNG({ width: currentImage.width, height: currentImage.height });
-			const pixelsDiff = pixelmatch(
-				currentImage.data, goldenImage.data, diff.data, currentImage.width, currentImage.height, { threshold: this._tolerance }
-			);
-			if (pixelsDiff !== 0) updateGolden = true;
-		}
-
-		process.stdout.write('      ');
-		if (updateGolden) {
-			const result = await this._fs.updateGolden(name);
-			if (result) process.stdout.write(chalk.gray('golden updated'));
-			else process.stdout.write(chalk.gray('golden update failed'));
-			_goldenUpdateCount++;
-		} else {
-			process.stdout.write(chalk.gray('golden already up to date'));
-		}
-
-	}*/
 
 }
 
