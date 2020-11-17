@@ -72,7 +72,6 @@ class VisualDiff {
 
 		after(async() => {
 			const reportName = this._fs.getReportFileName();
-			process.stdout.write(`\n${chalk.red(reportName)}`);
 
 			await this._deleteGoldenOrphans();
 
@@ -101,9 +100,6 @@ class VisualDiff {
 		await page.screenshot(info);
 
 		await this._compare(name);
-
-		/*if (_isGoldenUpdate) return this._updateGolden(name);
-		else await this._compare(name);*/
 	}
 
 	async _compare(name) {
@@ -217,7 +213,7 @@ class VisualDiff {
 			if (!_isCI) return '';
 			const branch = process.env['GITHUB_REF'];
 			const sha = process.env['GITHUB_SHA'];
-			const message = github.context.job;
+			const message = 'hmm';
 			const url = `${'GITHUB_SERVER_URL'}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
 			const build = process.env['GITHUB_RUN_NUMBER'];
 			return `
@@ -267,36 +263,6 @@ class VisualDiff {
 
 		await this._fs.writeFile(fileName, html);
 	}
-
-	/*async _updateGolden(name) {
-
-		const currentImage = await this._fs.getCurrentImage(name);
-		const goldenImage = await this._fs.getGoldenImage(name);
-
-		let updateGolden = false;
-		if (!goldenImage) {
-			updateGolden = true;
-		} else if (currentImage.width !== goldenImage.width || currentImage.height !== goldenImage.height) {
-			updateGolden = true;
-		} else {
-			const diff = new PNG({ width: currentImage.width, height: currentImage.height });
-			const pixelsDiff = pixelmatch(
-				currentImage.data, goldenImage.data, diff.data, currentImage.width, currentImage.height, { threshold: this._tolerance }
-			);
-			if (pixelsDiff !== 0) updateGolden = true;
-		}
-
-		process.stdout.write('      ');
-		if (updateGolden) {
-			const result = await this._fs.updateGolden(name);
-			if (result) process.stdout.write(chalk.gray('golden updated'));
-			else process.stdout.write(chalk.gray('golden update failed'));
-			_goldenUpdateCount++;
-		} else {
-			process.stdout.write(chalk.gray('golden already up to date'));
-		}
-
-	}*/
 
 }
 
