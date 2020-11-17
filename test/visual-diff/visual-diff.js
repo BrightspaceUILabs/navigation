@@ -211,18 +211,19 @@ class VisualDiff {
 		};
 		const createMetaHtml = () => {
 			if (!_isCI) return '';
+			const runUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
+			const workflow = process.env['GITHUB_WORKFLOW'];
+			const runNum = process.env['GITHUB_RUN_NUMBER'];
+			const pr = /refs\/pull\/(\d+)\/merge/g.exec(process.env['GITHUB_REF']);
+			const prUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/pull/${pr}`;;
 			const branch = process.env['GITHUB_REF'];
 			const sha = process.env['GITHUB_SHA'];
-			const message = process.env['GITHUB_ACTION'];
-			const url = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
-			const workflow = process.env['GITHUB_WORKFLOW'];
-			const run = process.env['GITHUB_RUN_NUMBER'];
 			const actor = process.env['GITHUB_ACTOR'];
 			return `
 				<div class="meta">
-					<div><a href="${url}">${workflow} Run #${run}</a></div>
-					<div>${branch} (${sha})</div>
-					<div>${message} ${actor}</div>
+					<div><a href="${runUrl}">${workflow} Run #${runNum}</a></div>
+					${ pr ? `<div><a href="${prUrl}">PR: #${pr}</a></div>` : `<div>Commit to ${branch}: ${sha}</div>`}
+					<div>By ${actor}</div>
 				</div>`;
 		};
 		process.stdout.write(createMetaHtml());
