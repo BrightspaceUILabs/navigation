@@ -215,14 +215,15 @@ class VisualDiff {
 			const workflow = process.env['GITHUB_WORKFLOW'];
 			const runNum = process.env['GITHUB_RUN_NUMBER'];
 			const pr = /refs\/pull\/(\d+)\/merge/g.exec(process.env['GITHUB_REF']);
-			const prUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/pull/${pr}`;;
+			const prNum = pr && pr[1] ? pr[1] : null; 
+			const prUrl = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/pull/${prNum}`;
 			const branch = process.env['GITHUB_REF'];
 			const sha = process.env['GITHUB_SHA'];
 			const actor = process.env['GITHUB_ACTOR'];
 			return `
 				<div class="meta">
 					<div><a href="${runUrl}">${workflow} Run #${runNum}</a></div>
-					${ pr ? `<div><a href="${prUrl}">PR: #${pr}</a></div>` : `<div>Commit to ${branch}: ${sha}</div>`}
+					${ prNum ? `<div><a href="${prUrl}">PR: #${prNum}</a></div>` : `<div>Commit to ${branch}: ${sha}</div>`}
 					<div>By ${actor}</div>
 				</div>`;
 		};
