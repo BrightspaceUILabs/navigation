@@ -18,7 +18,7 @@ class S3Helper {
 
 	constructor(name, config, isCI) {
 		if (config) _s3Config = Object.assign(_s3Config, config);
-		if (isCI) this.currentConfig = Object.assign({}, _s3Config, { target: `${_s3Config.target}/${process.env['TRAVIS_REPO_SLUG']}/${name}` });
+		if (isCI) this.currentConfig = Object.assign({}, _s3Config, { target: `${_s3Config.target}/${process.env['GITHUB_REPOSITORY']}/${name}` });
 	}
 
 	getCurrentObjectUrl(name) {
@@ -34,6 +34,8 @@ class S3Helper {
 				if (filePath.endsWith('.png')) return 'image/png';
 				return;
 			};
+
+			process.stdout.write(`\n${chalk.red(config.target)}`);
 			
 			const s3 = new AWS.S3({
 				apiVersion: 'latest',

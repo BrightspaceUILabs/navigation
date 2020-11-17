@@ -57,7 +57,7 @@ class VisualDiff {
 				currentTarget = currentTarget.replace(process.cwd(), '');
 				goldenTarget = goldenTarget.replace(process.cwd(), '');
 			} else {
-				goldenTarget = goldenTarget.replace('/home/travis/build/', '');
+				goldenTarget = goldenTarget.replace('/home/runner/work/', '');
 			}
 
 			process.stdout.write(`\n${chalk.yellow('    Golden:')} ${goldenTarget}\n\n`);
@@ -72,6 +72,7 @@ class VisualDiff {
 
 		after(async() => {
 			const reportName = this._fs.getReportFileName();
+			process.stdout.write(`\n${chalk.red(reportName)}`);
 
 			await this._deleteGoldenOrphans();
 
@@ -214,11 +215,11 @@ class VisualDiff {
 		};
 		const createMetaHtml = () => {
 			if (!_isCI) return '';
-			const branch = process.env['TRAVIS_BRANCH'];
-			const sha = process.env['TRAVIS_COMMIT'];
-			const message = process.env['TRAVIS_COMMIT_MESSAGE'];
-			const url = process.env['TRAVIS_BUILD_WEB_URL'];
-			const build = process.env['TRAVIS_BUILD_NUMBER'];
+			const branch = process.env['GITHUB_REF'];
+			const sha = process.env['GITHUB_SHA'];
+			const message = github.context.job;
+			const url = `${'GITHUB_SERVER_URL'}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
+			const build = process.env['GITHUB_RUN_NUMBER'];
 			return `
 				<div class="meta">
 					<div><a href="${url}">Build #${build}</a></div>
@@ -226,6 +227,7 @@ class VisualDiff {
 					<div>${message}</div>
 				</div>`;
 		};
+		process.stdout.write(createMetaHtml());
 		const diffHtml = results.map((result) => {
 
 			return `
