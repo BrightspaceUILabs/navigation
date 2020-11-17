@@ -75,8 +75,6 @@ class VisualDiff {
 
 			await this._deleteGoldenOrphans();
 
-			process.stdout.write('\n');
-
 			try {
 				await this._generateHtml(reportName, this._results);
 				if (_isCI) {
@@ -173,6 +171,9 @@ class VisualDiff {
 			}
 		}
 
+		if (orphansExist) {
+			process.stdout.write('\n');
+		}
 	}
 
 	async _generateHtml(fileName, results) {
