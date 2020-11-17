@@ -34,8 +34,6 @@ class S3Helper {
 				if (filePath.endsWith('.png')) return 'image/png';
 				return;
 			};
-
-			process.stdout.write(`\n${chalk.red(config.target)}`);
 			
 			const s3 = new AWS.S3({
 				apiVersion: 'latest',

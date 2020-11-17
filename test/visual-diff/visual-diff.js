@@ -213,14 +213,16 @@ class VisualDiff {
 			if (!_isCI) return '';
 			const branch = process.env['GITHUB_REF'];
 			const sha = process.env['GITHUB_SHA'];
-			const message = 'hmm';
-			const url = `${'GITHUB_SERVER_URL'}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
-			const build = process.env['GITHUB_RUN_NUMBER'];
+			const message = process.env['GITHUB_ACTION'];
+			const url = `${process.env['GITHUB_SERVER_URL']}/${process.env['GITHUB_REPOSITORY']}/actions/runs/${process.env['GITHUB_RUN_ID']}`;
+			const workflow = process.env['GITHUB_WORKFLOW'];
+			const run = process.env['GITHUB_RUN_NUMBER'];
+			const actor = process.env['GITHUB_ACTOR'];
 			return `
 				<div class="meta">
-					<div><a href="${url}">Build #${build}</a></div>
+					<div><a href="${url}">${workflow} Run #${run}</a></div>
 					<div>${branch} (${sha})</div>
-					<div>${message}</div>
+					<div>${message} ${actor}</div>
 				</div>`;
 		};
 		process.stdout.write(createMetaHtml());
