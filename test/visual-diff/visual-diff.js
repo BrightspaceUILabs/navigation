@@ -159,9 +159,6 @@ class VisualDiff {
 		const currentFiles = this._fs.getCurrentFiles();
 		const goldenFiles = await this._fs.getGoldenFiles();
 
-		process.stdout.write(currentFiles);
-		process.stdout.write(goldenFiles);
-
 		for (let i = 0; i < goldenFiles.length; i++) {
 			const fileName = goldenFiles[i];
 			if (!currentFiles.includes(fileName)) {
