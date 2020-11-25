@@ -25,7 +25,7 @@ jobs:
 
       - name: Test AWS Stuff
         run: |
-          node ${{ github.action_path }}/test-aws.js
+          node $GITHUB_WORKSPACE/.github/workflows/test-aws.js
         env:
           VISUAL_DIFF_S3_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           VISUAL_DIFF_S3_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
