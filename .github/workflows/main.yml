@@ -1,0 +1,34 @@
+  
+# This workflow tests AWS stuff, and will be deleted after
+name: Testing
+on:
+  workflow_dispatch: #manual trigger
+
+jobs:
+  build:
+    # self-hosted doesn't work for public repos (security), so need to use ubuntu
+    runs-on: ubuntu-latest
+    
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Repository
+        uses: Brightspace/third-party-actions@actions/checkout
+
+      - name: Use Node.js
+        uses: Brightspace/third-party-actions@actions/setup-node
+        with:
+          node-version: '12.x'
+          
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Test AWS Stuff
+        run: |
+          node ${{ github.action_path }}/test-aws.js
+        env:
+          VISUAL_DIFF_S3_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          VISUAL_DIFF_S3_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Done
+        run: git diff
