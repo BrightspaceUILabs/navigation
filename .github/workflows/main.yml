@@ -27,8 +27,6 @@ jobs:
         run: |
           node $GITHUB_WORKSPACE/.github/workflows/test-aws.js
         env:
-          VISUAL_DIFF_S3_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          VISUAL_DIFF_S3_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Done
-        run: git diff
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
