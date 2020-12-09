@@ -12,15 +12,11 @@
     "lint:wc": "polymer lint -i \"./*\" \"test\" \"demo\"",
     "test:polymer:local": "polymer test --skip-plugin sauce",
     "test:polymer:sauce": "polymer test --skip-plugin local",
-    "test": "npm run lint && npm run test:polymer:local",
-    "test:diff": "mocha ./test/**/*.visual-diff.js -t 40000",
-    "test:diff:golden": "mocha ./test/**/*.visual-diff.js -t 40000 --golden",
-    "test:diff:golden:commit": "commit-goldens"
+    "test": "npm run lint && npm run test:polymer:local"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/visual-diff": "^1",
     "@polymer/iron-component-page": "^4.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",
@@ -31,7 +27,6 @@
     "eslint-config-brightspace": "^0.6.4",
     "eslint-plugin-html": "^4.0.5",
     "eslint-plugin-sort-class-members": "^1.5.0",
-    "frau-ci": "^1.33.2",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-ejs": "^3.1.3",
@@ -39,7 +34,6 @@
     "lie": "^3.3.0",
     "merge-stream": "^1.0.1",
     "polymer-cli": "^1.9.6",
-    "puppeteer": "^5",
     "require-dir": "^1.2.0",
     "sauce-connect-launcher": "^1.2.4",
     "sinon": "^7.3.2",
@@ -48,12 +42,6 @@
     "whatwg-fetch": "^3.0.0"
   },
   "version": "4.4.5",
-  "resolutions": {
-    "inherits": "2.0.3",
-    "samsam": "1.1.3",
-    "supports-color": "3.1.2",
-    "type-detect": "1.0.0"
-  },
   "main": "index.js",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
