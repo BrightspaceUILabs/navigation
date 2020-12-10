@@ -10,45 +10,25 @@ A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components
 
 ### d2l-navigation
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import the following:
 
-* `d2l-navigation.html`
-* `d2l-navigation-main-header.html`
-* `d2l-navigation-main-footer.html`
+* `d2l-navigation.js`
+* `d2l-navigation-main-header.js`
+* `d2l-navigation-main-footer.js`
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation.html">
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-header.html">
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-footer.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation.js';
+    import 'd2l-navigation/d2l-navigation-main-header.js';
+    import 'd2l-navigation/d2l-navigation-main-footer.js';
+  </script>
 </head>
 ```
 
 Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-header` & `d2l-navigation-main-footer` (along with their respective slot contents).
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-colors/d2l-colors.html">
-    <link rel="import" href="d2l-navigation.html">
-    <custom-style include="d2l-typography">
-      <style is="custom-style" include="d2l-typography"></style>
-    </custom-style>
-    <style>
-      html {
-        font-size: 20px;
-        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <d2l-navigation>
 	<d2l-navigation-main-header>
@@ -67,14 +47,14 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 
 ### d2l-navigation-immersive
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import the following:
-
-* `d2l-navigation-immersive.html`
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-immersive.js`:
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-immersive.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation-immersive.js';
+  </script>
 </head>
 ```
 
@@ -83,28 +63,6 @@ Please note that overridding the `left` slot will prevent the Back link from dis
 
 Optionally, the max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`.
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-colors/d2l-colors.html">
-    <link rel="import" href="d2l-navigation-immersive.html">
-    <custom-style include="d2l-typography">
-      <style is="custom-style" include="d2l-typography"></style>
-    </custom-style>
-    <style>
-      html {
-        font-size: 20px;
-        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 	<div class="d2l-typography d2l-body-standard" slot="middle">
@@ -125,12 +83,14 @@ Optionally, the max-width can be configured to match the max-width used by the L
 
 ### d2l-navigation-band
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-band.html`:
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-band.js`:
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-band.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation-band.js';
+  </script>
 </head>
 ```
 
@@ -138,28 +98,6 @@ Then add the `d2l-navigation-band`.
 
 ![screenshot of navigation band](/screenshots/navigation-band.png?raw=true)
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-colors/d2l-colors.html">
-	<link rel="import" href="d2l-navigation-band.html">
-    <custom-style include="d2l-typography">
-      <style is="custom-style" include="d2l-typography"></style>
-    </custom-style>
-    <style>
-      html {
-        font-size: 20px;
-        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <d2l-navigation-band></d2l-navigation-band>
 ```
@@ -174,12 +112,14 @@ The `d2l-navigation-band` also includes a `slot` with a custom scrollbar and fad
 
 ### d2l-navigation-main-header
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-header.html`:
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-main-header.js`:
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-header.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation-main-header.js';
+  </script>
 </head>
 ```
 
@@ -187,28 +127,6 @@ Then add the `d2l-navigation-main-header`, and provide elements for the `left` a
 
 ![screenshot of navigation main header](/screenshots/navigation-main-header.png?raw=true)
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-colors/d2l-colors.html">
-	<link rel="import" href="d2l-navigation-main-header.html">
-    <custom-style include="d2l-typography">
-      <style is="custom-style" include="d2l-typography"></style>
-    </custom-style>
-    <style>
-      html {
-        font-size: 20px;
-        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <d2l-navigation-main-header>
 	<div slot="left"></div>
@@ -225,12 +143,14 @@ Then add the `d2l-navigation-main-header`, and provide elements for the `left` a
 
 ### d2l-navigation-main-footer
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-main-footer.html`:
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-main-footer.js`:
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-main-footer.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation-main-footer.js';
+  </script>
 </head>
 ```
 
@@ -238,28 +158,6 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 ![screenshot of navigation main footer](/screenshots/navigation-main-footer.png?raw=true)
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-colors/d2l-colors.html">
-	<link rel="import" href="d2l-navigation-main-footer.html">
-    <custom-style include="d2l-typography">
-      <style is="custom-style" include="d2l-typography"></style>
-    </custom-style>
-    <style>
-      html {
-        font-size: 20px;
-        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <d2l-navigation-main-footer>
 	<div slot="main"></div>
@@ -283,12 +181,14 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 ### d2l-navigation-iterator
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyfill (for browsers who don't natively support web components), then import `d2l-navigation-iterator.html`:
+Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-iterator.js`:
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-navigation/d2l-navigation-iterator/d2l-navigation-iterator.html">
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import 'd2l-navigation/d2l-navigation-iterator.js';
+  </script>
 </head>
 ```
 
