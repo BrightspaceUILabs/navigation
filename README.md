@@ -1,6 +1,6 @@
 # navigation
 
-A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components for top level navigation use on D2L pages.
+A series of [Polymer](https://polymer-library.polymer-project.org/3.0/docs/devguide/feature-overview)-based web components for top level navigation use on D2L pages.
 
 ![screenshot of sample usage](/screenshots/navigation.png?raw=true)
 
@@ -10,26 +10,15 @@ A series of [Polymer](https://www.polymer-project.org/1.0/)-based web components
 
 ### d2l-navigation
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import the following:
-
-* `d2l-navigation.js`
-* `d2l-navigation-main-header.js`
-* `d2l-navigation-main-footer.js`
+Add the `d2l-navigation` component, and provide sub elements `d2l-navigation-main-header` & `d2l-navigation-main-footer` (along with their respective slot contents).
 
 ```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation.js';
-    import 'd2l-navigation/d2l-navigation-main-header.js';
-    import 'd2l-navigation/d2l-navigation-main-footer.js';
-  </script>
-</head>
-```
+<script type="module">
+  import 'd2l-navigation/d2l-navigation.js';
+  import 'd2l-navigation/d2l-navigation-main-header.js';
+  import 'd2l-navigation/d2l-navigation-main-footer.js';
+</script>
 
-Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-header` & `d2l-navigation-main-footer` (along with their respective slot contents).
-
-```html
 <d2l-navigation>
 	<d2l-navigation-main-header>
 		<div slot="left" class="d2l-navigation-header-left">This should be on the left.  As the width changes it shrinks as needed.</div>
@@ -47,23 +36,14 @@ Then add the `d2l-navigation`, and provide sub elements `d2l-navigation-main-hea
 
 ### d2l-navigation-immersive
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-immersive.js`:
-
-```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation-immersive.js';
-  </script>
-</head>
-```
-
-Then add the `d2l-navigation-immersive`, providing values for the `backLinkHref` & `backLinkText`. Additionally, you may override any of the 3 slots (`left`, `middle`, `right`).
+Add the `d2l-navigation-immersive` component, providing values for the `backLinkHref` & `backLinkText`. Additionally, you may override any of the 3 slots (`left`, `middle`, `right`).
 Please note that overridding the `left` slot will prevent the Back link from displaying. This should only be done in very specialized cases.
 
-Optionally, the max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`.
-
 ```html
+<script type="module">
+  import 'd2l-navigation/d2l-navigation-immersive.js';
+</script>
+
 <d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
 	<div class="d2l-typography d2l-body-standard" slot="middle">
 		<p>Economics 101</p>
@@ -76,6 +56,8 @@ Optionally, the max-width can be configured to match the max-width used by the L
 </d2l-navigation-immersive>
 ```
 
+Optionally, the max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`.
+
 ## Secondary Components
 
 > These are the components that make up the Primary Components. There might be an edge case or two where it makes sense to use one of these in isolation,
@@ -83,22 +65,13 @@ Optionally, the max-width can be configured to match the max-width used by the L
 
 ### d2l-navigation-band
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-band.js`:
-
-```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation-band.js';
-  </script>
-</head>
-```
-
-Then add the `d2l-navigation-band`.
-
 ![screenshot of navigation band](/screenshots/navigation-band.png?raw=true)
 
 ```html
+<script type="module">
+  import 'd2l-navigation/d2l-navigation-band.js';
+</script>
+
 <d2l-navigation-band></d2l-navigation-band>
 ```
 
@@ -112,22 +85,15 @@ The `d2l-navigation-band` also includes a `slot` with a custom scrollbar and fad
 
 ### d2l-navigation-main-header
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-main-header.js`:
-
-```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation-main-header.js';
-  </script>
-</head>
-```
-
-Then add the `d2l-navigation-main-header`, and provide elements for the `left` and `right` slots.
+Add the `d2l-navigation-main-header` component, and provide elements for the `left` and `right` slots.
 
 ![screenshot of navigation main header](/screenshots/navigation-main-header.png?raw=true)
 
 ```html
+<script type="module">
+  import 'd2l-navigation/d2l-navigation-main-header.js';
+</script>
+
 <d2l-navigation-main-header>
 	<div slot="left"></div>
 	<div slot="right"></div>
@@ -143,22 +109,15 @@ Then add the `d2l-navigation-main-header`, and provide elements for the `left` a
 
 ### d2l-navigation-main-footer
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-main-footer.js`:
-
-```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation-main-footer.js';
-  </script>
-</head>
-```
-
-Then add the `d2l-navigation-main-footer`, and provide elements for the `main` slot.
+Add the `d2l-navigation-main-footer` component, and provide elements for the `main` slot.
 
 ![screenshot of navigation main footer](/screenshots/navigation-main-footer.png?raw=true)
 
 ```html
+<script type="module">
+  import 'd2l-navigation/d2l-navigation-main-footer.js';
+</script>
+
 <d2l-navigation-main-footer>
 	<div slot="main"></div>
 </d2l-navigation-main-footer>
@@ -181,22 +140,13 @@ Then add the `d2l-navigation-main-footer`, and provide elements for the `main` s
 
 ### d2l-navigation-iterator
 
-Include the [webcomponents.js polyfill loader](http://webcomponents.org/polyfills/) (for browsers who don't natively support web components), then import `d2l-navigation-iterator.js`:
-
-```html
-<head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import 'd2l-navigation/d2l-navigation-iterator.js';
-  </script>
-</head>
-```
-
-Then add the `d2l-navigation-iterator`.
-
 ![screenshot of default navigation iterator](/screenshots/d2l-navigation-iterator.png?raw=true)
 
 ```html
+<script type="module">
+  import 'd2l-navigation/d2l-navigation-iterator.js';
+</script>
+
 <d2l-navigation-iterator></d2l-navigation-iterator>
 ```
 
