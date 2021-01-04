@@ -7,7 +7,7 @@ import './d2l-navigation-link-back.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
+import { DirMixin } from '@polymer/polymer/lib/mixins/dir-mixin.js';
 
 /**
 `d2l-navigation-immersive`
@@ -15,7 +15,7 @@ Polymer-based web component for the immersive navigation component
 
 @demo demo/navigation-immersive.html
 */
-class D2LNavigationImmsersive extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
+class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 
 	static get properties() {
 		return {
