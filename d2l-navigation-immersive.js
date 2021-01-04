@@ -7,6 +7,7 @@ import './d2l-navigation-link-back.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 
 /**
 `d2l-navigation-immersive`
@@ -14,7 +15,7 @@ Polymer-based web component for the immersive navigation component
 
 @demo demo/navigation-immersive.html
 */
-class D2LNavigationImmsersive extends PolymerElement {
+class D2LNavigationImmsersive extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
 
 	static get properties() {
 		return {
@@ -116,6 +117,11 @@ class D2LNavigationImmsersive extends PolymerElement {
 
 			.d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
 				border-right: none;
+			}
+
+			:host(:dir(rtl)) .d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
+				border-left: none;
+				border-right: 1px solid var(--d2l-color-gypsum);
 			}
 
 			div.d2l-navigation-immersive-middle-observer,
