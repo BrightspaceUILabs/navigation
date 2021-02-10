@@ -1,0 +1,25 @@
+name: Testing - Will Be Removed
+
+on: 
+  workflow_dispatch: # manual trigger
+
+jobs:
+  build:
+    # self-hosted doesn't work for public repos (security), so need to use ubuntu
+    runs-on: ubuntu-latest
+    
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repository
+        uses: Brightspace/third-party-actions@actions/checkout
+
+      - name: Use Node.js
+        uses: Brightspace/third-party-actions@actions/setup-node
+        
+      - name: AWS Caller
+        run: aws sts get-caller-identity
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.TEST_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.TEST_SECRET }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
