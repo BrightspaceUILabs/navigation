@@ -28,7 +28,7 @@ class D2LNavigationBand extends PolymerElement {
 		${navigationSharedStyle}
 		<style>
 			:host {
-				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-celestine)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
+				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-cinnabar)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
 				display: block;
 				min-height: 4px;
 				position: relative; /* Needed for Firefox */
