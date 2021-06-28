@@ -41,6 +41,7 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;
 				--d2l-navigation-immersive-height-responsive: 2.8rem;
+				z-index: 0;
 			}
 			.d2l-navigiation-immersive-fixed {
 				background-color: white;
