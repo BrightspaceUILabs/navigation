@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   release:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -25,4 +25,5 @@ jobs:
       - name: Semantic Release
         uses: BrightspaceUI/actions/semantic-release@master
         with:
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.D2L_GITHUB_TOKEN }}
