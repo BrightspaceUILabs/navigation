@@ -48,7 +48,7 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 				position: fixed;
 				right: 0;
 				top: 0;
-				z-index: 2; /* higher than skeletons which could scroll behind immersive nav */
+				z-index: 1002; /* higher than skeletons which could scroll behind immersive nav */
 			}
 			d2l-navigation {
 				border-bottom: 1px solid var(--d2l-color-mica);
