@@ -1,12 +1,11 @@
 /* eslint-disable no-invalid-this */
-/* eslint-env node, es6 */
 'use strict';
 
-const puppeteer = require('puppeteer');
-const VisualDiff = require('@brightspace-ui/visual-diff');
+import puppeteer from 'puppeteer';
+import { VisualDiff } from '@brightspace-ui/visual-diff';
 
 describe('d2l-navigation-band', function() {
-	const visualDiff = new VisualDiff('d2l-navigation-band', __dirname);
+	const visualDiff = new VisualDiff('d2l-navigation-band', import.meta.url);
 
 	let browser, page;
 

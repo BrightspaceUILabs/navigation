@@ -13,9 +13,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Visual Diff Tests
-        uses: BrightspaceUI/actions/visual-diff@master
+        uses: BrightspaceUI/actions/visual-diff@main
         with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_PATH: "./{,!(node_modules)/**}/*.visual-diff.mjs"
