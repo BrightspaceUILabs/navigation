@@ -37,7 +37,7 @@
     "sinon": "^7.3.2",
     "wct-browser-legacy": "^1.0.1"
   },
-  "version": "4.5.2",
+  "version": "4.6.0",
   "main": "index.js",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
