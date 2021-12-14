@@ -7,8 +7,7 @@
 		<script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
 		<script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
-		<script type="module" src="../../d2l-icons/d2l-icon.js"></script>
-		<script type="module" src="../../d2l-icons/tier3-icons.js"></script>
+		<script type="module" src="/node_modules/@brightspace-ui/core/components/icons/icon.js"></script>
 		<script type="module" src="../d2l-navigation-button-notification-icon.js"></script>
 		<script type="module" src="../d2l-navigation-button-close.js"></script>
 		<script type="module" src="../d2l-navigation-link-back.js"></script>
@@ -78,11 +77,11 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 					</style>
 					<d2l-navigation-band></d2l-navigation-band>
 					<div class="button-holder">
-						<d2l-navigation-button><span><d2l-icon icon="d2l-tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
-						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="Notification off" notification-text="This text will not be added"></d2l-navigation-button-notification-icon>
-						<d2l-navigation-button-notification-icon notification="" icon="d2l-tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button><span><d2l-icon icon="tier3:classes"></d2l-icon><span>TEST</span></span></d2l-navigation-button>
+						<d2l-navigation-button-notification-icon icon="tier3:classes" text="Notification off" notification-text="This text will not be added"></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon notification="" icon="tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
 						<d2l-navigation-button-close></d2l-navigation-button-close>
-						<d2l-navigation-button-notification-icon icon="d2l-tier3:classes" text="text" disabled=""></d2l-navigation-button-notification-icon>
+						<d2l-navigation-button-notification-icon icon="tier3:classes" text="text" disabled=""></d2l-navigation-button-notification-icon>
 						<d2l-navigation-button-close disabled=""></d2l-navigation-button-close>
 					</div>
 					<br>
@@ -125,8 +124,7 @@ document.body.appendChild($_documentContainer.content);
 import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
 import '@polymer/iron-demo-helpers/demo-snippet.js';
 import 'd2l-typography/d2l-typography.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier3-icons.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import '../d2l-navigation-button-notification-icon.js';
 import '../d2l-navigation-button-close.js';
 import '../d2l-navigation-link-back.js';

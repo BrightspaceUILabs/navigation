@@ -40,17 +40,15 @@
   "version": "4.6.0",
   "main": "index.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
+    "@brightspace-ui/core": "^1",
+    "@polymer/polymer": "^3",
     "d2l-button": "BrightspaceUI/button#semver:^5",
-    "d2l-colors": "BrightspaceUI/colors#semver:^4",
-    "d2l-icons": "BrightspaceUI/icons#semver:^6",
     "d2l-link": "BrightspaceUI/link#semver:^5",
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2",
     "d2l-offscreen": "BrightspaceUI/offscreen#semver:^4",
     "d2l-polymer-behaviors": "Brightspace/d2l-polymer-behaviors-ui#semver:^2",
-    "d2l-tooltip": "BrightspaceUI/tooltip#semver:^3",
     "d2l-typography": "BrightspaceUI/typography#semver:^7",
-    "fastdom": "^1.0.8",
-    "resize-observer-polyfill": "^1.5.0"
+    "fastdom": "^1",
+    "resize-observer-polyfill": "^1"
   }
 }

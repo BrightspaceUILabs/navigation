@@ -1,6 +1,5 @@
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier2-icons.js';
-
+import '@brightspace-ui/core/components/colors/colors.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
 `d2l-navigation-separator`
@@ -21,7 +20,7 @@ class D2LNavigationSeparator extends PolymerElement {
 				color: var(--d2l-color-mica);
 			}
 		</style>
-		<d2l-icon icon="d2l-tier2:divider-big"></d2l-icon>
+		<d2l-icon icon="tier2:divider-big"></d2l-icon>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;

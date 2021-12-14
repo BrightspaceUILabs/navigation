@@ -1,4 +1,4 @@
-import 'd2l-colors/d2l-colors.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import 'fastdom/fastdom.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 import 'd2l-typography/d2l-typography-shared-styles.js';

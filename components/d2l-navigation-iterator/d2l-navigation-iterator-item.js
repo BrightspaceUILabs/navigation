@@ -1,8 +1,8 @@
+import '@brightspace-ui/core/components/colors/colors.js';
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {NavigationLocalize} from '../NavigationLocalize.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier3-icons.js';
-import 'd2l-tooltip/d2l-tooltip.js';
+import '@brightspace-ui/core/components/icons/icon.js';
+import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import '../../d2l-navigation-button.js';
 
 /**
@@ -124,7 +124,7 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 	}
 
 	_computeIcon(type) {
-		return (type === 'previous') ? 'd2l-tier3:chevron-left-circle' : 'd2l-tier3:chevron-right-circle';
+		return (type === 'previous') ? 'tier3:chevron-left-circle' : 'tier3:chevron-right-circle';
 	}
 }
 

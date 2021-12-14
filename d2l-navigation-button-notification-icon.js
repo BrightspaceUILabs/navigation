@@ -1,7 +1,6 @@
-import 'd2l-colors/d2l-colors.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import './d2l-navigation-button.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier2-icons.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import 'd2l-button/d2l-button-behavior.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import './d2l-navigation-notification-icon.js';
