@@ -1,4 +1,3 @@
-import 'd2l-colors/d2l-colors.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';

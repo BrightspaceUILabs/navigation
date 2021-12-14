@@ -1,7 +1,5 @@
 
 import './d2l-navigation-button-notification-icon.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier1-icons.js';
 import 'd2l-button/d2l-button-behavior.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-localize-behavior/d2l-localize-behavior.js';
@@ -66,7 +64,7 @@ class D2LNavigationButtonClose extends mixinBehaviors([D2L.PolymerBehaviors.Butt
 				height: 100%;
 			}
 		</style>
-		<d2l-navigation-button-notification-icon class="d2l-focusable" text="[[localize('close')]]" disabled$="[[disabled]]" icon="d2l-tier1:close-large-thick">
+		<d2l-navigation-button-notification-icon class="d2l-focusable" text="[[localize('close')]]" disabled$="[[disabled]]" icon="tier1:close-large-thick">
 
 	</d2l-navigation-button-notification-icon>`;
 		template.setAttribute('strip-whitespace', '');

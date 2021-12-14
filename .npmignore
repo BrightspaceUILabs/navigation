@@ -1,0 +1,12 @@
+.github/
+demo/
+screenshots/
+templates/
+test/
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitattributes
+gulpfile.js
+polymer.json
+wct.conf.json

@@ -1,7 +1,5 @@
-import 'd2l-colors/d2l-colors.js';
 import './d2l-navigation-link.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier1-icons.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-localize-behavior/d2l-localize-behavior.js';
 
@@ -71,7 +69,7 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Be
 			}
 		</style>
 		<d2l-navigation-link href="[[href]]" class="d2l-focusable" text="[[_getDisplayText(text, localize)]]">
-			<d2l-icon icon="d2l-tier1:chevron-left"></d2l-icon>
+			<d2l-icon icon="tier1:chevron-left"></d2l-icon>
 			<span class="d2l-navigation-link-back-text">[[_getDisplayText(text, localize)]]</span>
 		</d2l-navigation-link>
 		`;

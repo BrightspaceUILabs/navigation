@@ -1,4 +1,4 @@
-import 'd2l-colors/d2l-colors.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import { html } from '@polymer/polymer/polymer-element.js';
 export const highlightStyles = html`
 				<style>

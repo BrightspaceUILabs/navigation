@@ -1,4 +1,4 @@
-import 'd2l-colors/d2l-colors.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import './d2l-navigation-shared-styles';
 
 import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
