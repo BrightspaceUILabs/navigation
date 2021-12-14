@@ -1,10 +1,7 @@
 {
-  "description": "Parent repo for all navigation based web components",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BrightspaceUI/navigation.git"
-  },
   "name": "d2l-navigation",
+  "version": "4.7.1",
+  "repository": "https://github.com/BrightspaceUI/navigation.git",
   "scripts": {
     "build": "gulp build",
     "lint": "npm run lint:wc && npm run lint:js",
@@ -14,6 +11,26 @@
     "test:polymer:sauce": "polymer test --skip-plugin local",
     "test": "npm run lint && npm run test:polymer:local"
   },
+  "files": [
+    "/components",
+    "!/components/lang",
+    "d2l-navigation-band.js",
+    "d2l-navigation-button-close.js",
+    "d2l-navigation-button-notification-icon.js",
+    "d2l-navigation-button.js",
+    "d2l-navigation-highlight-styles.js",
+    "d2l-navigation-immersive.js",
+    "d2l-navigation-link-back.js",
+    "d2l-navigation-link-image.js",
+    "d2l-navigation-link.js",
+    "d2l-navigation-main-footer.js",
+    "d2l-navigation-main-header.js",
+    "d2l-navigation-notification-icon.js",
+    "d2l-navigation-separator.js",
+    "d2l-navigation-shared-styles.js",
+    "d2l-navigation.js",
+    "navigation.serge.json"
+  ],
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
@@ -37,8 +54,6 @@
     "sinon": "^7.3.2",
     "wct-browser-legacy": "^1.0.1"
   },
-  "version": "4.7.1",
-  "main": "index.js",
   "dependencies": {
     "@brightspace-ui/core": "^1",
     "@polymer/polymer": "^3",
