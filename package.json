@@ -42,12 +42,12 @@
   "dependencies": {
     "@brightspace-ui/core": "^1",
     "@polymer/polymer": "^3",
-    "d2l-button": "BrightspaceUI/button#semver:^5",
-    "d2l-link": "BrightspaceUI/link#semver:^5",
-    "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2",
-    "d2l-offscreen": "BrightspaceUI/offscreen#semver:^4",
-    "d2l-polymer-behaviors": "Brightspace/d2l-polymer-behaviors-ui#semver:^2",
-    "d2l-typography": "BrightspaceUI/typography#semver:^7",
+    "d2l-button": "github:BrightspaceUI/button#semver:^5",
+    "d2l-link": "github:BrightspaceUI/link#semver:^5",
+    "d2l-localize-behavior": "github:BrightspaceUI/localize-behavior#semver:^2",
+    "d2l-offscreen": "github:BrightspaceUI/offscreen#semver:^4",
+    "d2l-polymer-behaviors": "github:Brightspace/d2l-polymer-behaviors-ui#semver:^2",
+    "d2l-typography": "github:BrightspaceUI/typography#semver:^7",
     "fastdom": "^1",
     "resize-observer-polyfill": "^1"
   }
