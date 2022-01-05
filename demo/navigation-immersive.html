@@ -1,83 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<link rel="stylesheet" href="/node_modules/@brightspace-ui/core/components/demo/styles.css" type="text/css">
+		<script type="module">
+			import '@brightspace-ui/core/components/demo/demo-page.js';
+			import '../d2l-navigation-band.js';
+		</script>
 		<title>d2l-navigation-immersive demo</title>
-		<script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-		<script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
-		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
-		<script type="module" src="../../d2l-typography/d2l-typography-shared-styles.js"></script>
-		<script type="module" src="../d2l-navigation-button.js"></script>
-		<script type="module" src="../d2l-navigation-button-close.js"></script>
-		<script type="module" src="../d2l-navigation-immersive.js"></script>
-		<!-- FIXME(polymer-modulizer):
-		These imperative modules that innerHTML your HTML are
-		a hacky way to be sure that any mixins in included style
-		modules are ready before any elements that reference them are
-		instantiated, otherwise the CSS @apply mixin polyfill won't be
-		able to expand the underlying CSS custom properties.
-		See: https://github.com/Polymer/polymer-modulizer/issues/154
-		-->
-	<script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
-			<style is="custom-style" include="demo-pages-shared-styles"></style>
-		</custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
-		<script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style include="d2l-typography">
-			<style is="custom-style" include="d2l-typography"></style>
-		</custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
-		<script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<style>
-			html {
-				font-size: 20px;
-			}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<style>
 			iframe {
 				width: 100%;
 				height: 400px;
 			}
-		</style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+		</style>
 	</head>
-	<body unresolved class="d2l-typography">
-		<script type="module">
-const $_documentContainer = document.createElement('template');
+	<body>
+		<d2l-demo-page page-title="d2l-navigation-immersive">
+			<h2>Fullscreen width</h2>
+			<iframe src="./navigation-immersive-fullscreen.html"></iframe>
 
-$_documentContainer.innerHTML = `<div>
-			<h3>d2l-navigation-immersive</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-all-slots.html"></iframe>
-
-			<h3>d2l-navigation-immersive (consumer hides the right slot at 900px and the middle slot at 700px)</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-responsive-slot-hiding.html"></iframe>
-
-			<h3>d2l-navigation-immersive (no middle slot)</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-no-middle-slot.html"></iframe>
-
-			<h3>d2l-navigation-immersive (no right slot)</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-no-right-slot.html"></iframe>
-
-			<h3>d2l-navigation-immersive (no middle slot, no right slot)</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-no-slots.html"></iframe>
-
-			<h3> d2l-navigation-immersive width-type set to normal instead of fullscreen</h3>
-			<iframe src="./navigation-immersive-demos/navigation-immersive-all-slots-width-type-normal.html"></iframe>
-		</div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+			<h2>Normal width</h2>
+			<iframe src="./navigation-immersive-normal.html"></iframe>
+		</d2l-demo-page>
 	</body>
 </html>

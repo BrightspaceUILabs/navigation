@@ -7,6 +7,7 @@
     "lint": "npm run lint:wc && npm run lint:js",
     "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
     "lint:wc": "polymer lint -i \"./*\" \"test/*.html\" \"demo\"",
+    "start": "web-dev-server --node-resolve --watch --open --app-index demo/index.html",
     "test:polymer:local": "polymer test --skip-plugin sauce",
     "test:polymer:sauce": "polymer test --skip-plugin local",
     "test": "npm run lint && npm run test:polymer:local"
@@ -37,6 +38,7 @@
     "@polymer/iron-component-page": "^4.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",
+    "@web/dev-server": "^0.1",
     "babel-eslint": "^10.0.1",
     "chromedriver": "^2.40.0",
     "eslint": "^4.19.1",
