@@ -63,24 +63,32 @@ describe('d2l-navigation-immersive', function() {
 
 	});
 
-	['right', 'middle'].forEach((slot) => {
-		it(`new-slot-${slot}`, async function() {
+	describe('new-slots', () => {
+
+		before(async() => {
 			await page.setViewport({
 				height: 200,
 				width: 1000,
 				deviceScaleFactor: 2
 			});
-			await initTest(page, `no-${slot}-slot`);
-			await page.evaluate((slot) => {
-				const newContent = document.createElement('div');
-				newContent.setAttribute('slot', slot);
-				newContent.innerHTML = 'New Content';
-				document.querySelector('d2l-navigation-immersive').appendChild(newContent);
-			}, slot);
-			await page.waitForTimeout(100);
-			await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
-			await reset(page);
 		});
+
+		afterEach(async() => reset(page));
+
+		['right', 'middle'].forEach((slot) => {
+			it(`${slot}`, async function() {
+				await initTest(page, `no-${slot}-slot`);
+				await page.evaluate((slot) => {
+					const newContent = document.createElement('div');
+					newContent.setAttribute('slot', slot);
+					newContent.innerHTML = 'New Content';
+					document.querySelector('d2l-navigation-immersive').appendChild(newContent);
+				}, slot);
+				await page.waitForTimeout(100);
+				await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
+			});
+		});
+
 	});
 
 });
