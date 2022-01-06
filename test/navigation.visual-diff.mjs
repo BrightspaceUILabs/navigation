@@ -11,7 +11,7 @@ describe('d2l-navigation', function() {
 		browser = await puppeteer.launch();
 		page = await visualDiff.createPage(browser);
 		await page.goto(
-			`${visualDiff.getBaseUrl()}/test/d2l-navigation.visual-diff.html`,
+			`${visualDiff.getBaseUrl()}/test/navigation.visual-diff.html`,
 			{waitUntil: ['networkidle0', 'load']}
 		);
 		await page.bringToFront();

@@ -12,7 +12,7 @@ describe('d2l-navigation-button', function() {
 		browser = await puppeteer.launch();
 		page = await visualDiff.createPage(browser);
 		await page.goto(
-			`${visualDiff.getBaseUrl()}/test/d2l-navigation-button.visual-diff.html`,
+			`${visualDiff.getBaseUrl()}/test/button.visual-diff.html`,
 			{waitUntil: ['networkidle0', 'load']}
 		);
 		await page.bringToFront();
