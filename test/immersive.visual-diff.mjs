@@ -1,4 +1,5 @@
 /* eslint-disable no-invalid-this */
+/* global forceFocusVisible */
 import puppeteer from 'puppeteer';
 import { VisualDiff } from '@brightspace-ui/visual-diff';
 
@@ -59,6 +60,26 @@ describe('d2l-navigation-immersive', function() {
 				});
 			});
 
+		});
+
+	});
+
+	describe('focus', () => {
+
+		before(async() => {
+			await page.setViewport({
+				height: 200,
+				width: 1000,
+				deviceScaleFactor: 2
+			});
+		});
+
+		afterEach(async() => reset(page));
+
+		it('back-button', async function() {
+			await initTest(page, 'normal');
+			await page.$eval('d2l-navigation-immersive', (elem) => forceFocusVisible(elem))
+			await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
 		});
 
 	});

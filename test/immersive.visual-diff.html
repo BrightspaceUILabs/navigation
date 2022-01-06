@@ -9,11 +9,13 @@
 			import '@brightspace-ui/core/components/icons/icon.js';
 			import '@brightspace-ui/core/components/typography/typography.js';
 			import '../../d2l-navigation-immersive.js';
+			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
+			window.forceFocusVisible = forceFocusVisible;
 		</script>
 	</head>
 	<body class="d2l-typography">
 		<template id="normal">
-			<d2l-navigation-immersive width-type="normal"></d2l-navigation-immersive>
+			<d2l-navigation-immersive width-type="normal" back-link-href="https://www.d2l.com"></d2l-navigation-immersive>
 		</template>
 		<template id="fullscreen">
 			<d2l-navigation-immersive width-type="fullscreen"></d2l-navigation-immersive>
