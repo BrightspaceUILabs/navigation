@@ -25,17 +25,21 @@
 		<div class="visual-diff">
 			<d2l-navigation-button-close id="button-close"></d2l-navigation-button-close>
 		</div>
-		<div class="visual-diff" id="button-notification-icon-off">
-			<d2l-navigation-button-notification-icon icon="tier3:notification-bell" text="Notification off"></d2l-navigation-button-notification-icon>
-		</div>
-		<div class="visual-diff" id="button-notification-icon-on">
-			<d2l-navigation-button-notification-icon notification icon="tier3:notification-bell" text="Notification on" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
+		<div class="visual-diff">
+			<d2l-navigation-button-notification-icon id="button-notification-icon-off" icon="tier3:notification-bell" text="Notification off"></d2l-navigation-button-notification-icon>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-link id="link" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link>
+			<d2l-navigation-button-notification-icon id="button-notification-icon-on" notification icon="tier3:notification-bell" text="Notification on" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-link-back id="link-back" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link-back>
+			<div style="max-width: 100px;">
+				<d2l-navigation-link id="link" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link>
+			</div>
+		</div>
+		<div class="visual-diff">
+			<div style="max-width: 100px;">
+				<d2l-navigation-link-back id="link-back" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link-back>
+			</div>
 		</div>
 		<div class="visual-diff">
 			<d2l-navigation-link-image id="link-image" src="../demo/logo-image.png" href="https:/www.d2l.com" text="D2L"></d2l-navigation-link-image>
