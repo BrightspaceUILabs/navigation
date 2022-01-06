@@ -1,77 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
-		<title>d2l-navigation-iterator demo</title>
-
+		<link rel="stylesheet" href="/node_modules/@brightspace-ui/core/components/demo/styles.css" type="text/css">
 		<script type="module">
-			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
-			import '@polymer/iron-demo-helpers/demo-snippet';
-			import 'd2l-typography/d2l-typography.js';
+			import '@brightspace-ui/core/components/demo/demo-page.js';
 			import '../d2l-navigation-separator.js';
 			import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
-
-			const $_documentContainer = document.createElement('template');
-			$_documentContainer.innerHTML = `
-				<custom-style>
-					<style is="custom-style" include="demo-pages-shared-styles"></style>
-				</custom-style>
-				<custom-style include="d2l-typography">
-					<style is="custom-style" include="d2l-typography"></style>
-				</custom-style>
-				<style>
-					html {
-						font-size: 20px;
-					}
-				</style>
-			`;
-			document.body.appendChild($_documentContainer.content);
 		</script>
+		<title>d2l-navigation-iterator demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
 	</head>
-	<body class="d2l-typography">
-		<div class="vertical-section-container fixedSize">
-			<h3>d2l-navigation-iterator empty demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator></d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator count (hide text) demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator hide-text>
-						<span>User 1 of 17</span>
-					</d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator separator (hide text) demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator hide-text>
-						<d2l-navigation-separator></d2l-navigation-separator>
-					</d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator custom labels demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator previous-text="Back" next-text="Forward"></d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator next disabled demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator next-disabled></d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-			<h3>d2l-navigation-iterator previous disabled demo</h3>
-			<demo-snippet>
-				<template strip-whitespace>
-					<d2l-navigation-iterator previous-disabled></d2l-navigation-iterator>
-				</template>
-			</demo-snippet>
-		</div>
+	<body>
+		<d2l-demo-page page-title="d2l-navigation-iterator">
+			<h2>Empty</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator></d2l-navigation-iterator>
+			</d2l-demo-snippet>
+
+			<h2>Count (hide text)</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator hide-text>
+					<span>User 1 of 17</span>
+				</d2l-navigation-iterator>
+			</d2l-demo-snippet>
+
+			<h2>Separator (hide text)</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator hide-text>
+					<d2l-navigation-separator></d2l-navigation-separator>
+				</d2l-navigation-iterator>
+			</d2l-demo-snippet>
+
+			<h2>Custom Labels</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator previous-text="Back" next-text="Forward"></d2l-navigation-iterator>
+			</d2l-demo-snippet>
+
+			<h2>Next Disabled</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator next-disabled></d2l-navigation-iterator>
+			</d2l-demo-snippet>
+
+			<h2>Previous Disabled</h2>
+			<d2l-demo-snippet>
+				<d2l-navigation-iterator previous-disabled></d2l-navigation-iterator>
+			</d2l-demo-snippet>
+		</d2l-demo-page>
 	</body>
 </html>
