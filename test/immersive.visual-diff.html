@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./styles.css" type="text/css">
+		<title>d2l-navigation-immersive visual-diff test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script type="module">
+			import '@brightspace-ui/core/components/icons/icon.js';
+			import '@brightspace-ui/core/components/typography/typography.js';
+			import '../../d2l-navigation-immersive.js';
+			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
+			window.forceFocusVisible = forceFocusVisible;
+		</script>
+	</head>
+	<body class="d2l-typography">
+		<template id="normal">
+			<d2l-navigation-immersive width-type="normal" back-link-href="https://www.d2l.com"></d2l-navigation-immersive>
+		</template>
+		<template id="fullscreen">
+			<d2l-navigation-immersive width-type="fullscreen"></d2l-navigation-immersive>
+		</template>
+		<template id="both-slots">
+			<d2l-navigation-immersive>
+				<div slot="middle">Middle</div>
+				<div slot="right">Right</div>
+			</d2l-navigation-immersive>
+		</template>
+		<template id="no-right-slot">
+			<d2l-navigation-immersive>
+				<div slot="middle">Middle</div>
+			</d2l-navigation-immersive>
+		</template>
+		<template id="no-middle-slot">
+			<d2l-navigation-immersive>
+				<div slot="right">Right</div>
+			</d2l-navigation-immersive>
+		</template>
+		<div style="background-color: pink">Main Page Content</div>
+	</body>
+</html>
