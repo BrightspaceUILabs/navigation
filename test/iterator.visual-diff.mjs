@@ -28,10 +28,10 @@ describe('d2l-navigation-iterator', function() {
 
 		[
 			{ category: 'previous', tests: ['normal', 'hover', 'focus'] },
-			{ category: 'next', tests: ['normal', 'hover', 'focus'] },
+			{ category: 'next', tests: ['normal'] },
 			{ category: 'hide-text', tests: ['normal', 'hover', 'focus'] },
 			{ category: 'disabled', tests: ['normal', 'hover', 'focus'] },
-			{ category: 'custom-text', tests: ['normal', 'hover', 'focus'] }
+			{ category: 'custom-text', tests: ['normal'] }
 		].forEach((entry) => {
 			describe(entry.category, () => {
 				entry.tests.forEach((name) => {
@@ -53,7 +53,9 @@ describe('d2l-navigation-iterator', function() {
 						}
 
 						const rect = await visualDiff.getRect(page, selector);
-						await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
+						// without captureBeyondViewport: false, screenshotAndCompare() triggers a resize event
+						// which hides the tooltips
+						await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { captureBeyondViewport: false, clip: rect });
 					});
 				});
 			});
