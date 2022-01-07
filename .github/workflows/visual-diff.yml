@@ -20,3 +20,4 @@ jobs:
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEST_PATH: "./{,!(node_modules)/**}/*.visual-diff.mjs"
+

@@ -18,7 +18,7 @@ async function reset(page) {
 	});
 }
 
-describe('d2l-navigation-immersive', function() {
+describe('d2l-navigation-immersive', () => {
 	const visualDiff = new VisualDiff('d2l-navigation-immersive', import.meta.url);
 
 	let browser, page;
@@ -28,7 +28,7 @@ describe('d2l-navigation-immersive', function() {
 		page = await visualDiff.createPage(browser);
 		await page.goto(
 			`${visualDiff.getBaseUrl()}/test/immersive.visual-diff.html`,
-			{waitUntil: ['networkidle0', 'load']}
+			{ waitUntil: ['networkidle0', 'load'] }
 		);
 		await page.bringToFront();
 	});
@@ -78,7 +78,7 @@ describe('d2l-navigation-immersive', function() {
 
 		it('back-button', async function() {
 			await initTest(page, 'normal');
-			await page.$eval('d2l-navigation-immersive', (elem) => forceFocusVisible(elem))
+			await page.$eval('d2l-navigation-immersive', (elem) => forceFocusVisible(elem));
 			await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
 		});
 

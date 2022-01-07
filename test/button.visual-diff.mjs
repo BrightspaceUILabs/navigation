@@ -3,7 +3,7 @@
 import puppeteer from 'puppeteer';
 import { VisualDiff } from '@brightspace-ui/visual-diff';
 
-describe('d2l-navigation-button', function() {
+describe('d2l-navigation-button', () => {
 	const visualDiff = new VisualDiff('d2l-navigation-button', import.meta.url);
 
 	let browser, page;
@@ -13,7 +13,7 @@ describe('d2l-navigation-button', function() {
 		page = await visualDiff.createPage(browser);
 		await page.goto(
 			`${visualDiff.getBaseUrl()}/test/button.visual-diff.html`,
-			{waitUntil: ['networkidle0', 'load']}
+			{ waitUntil: ['networkidle0', 'load'] }
 		);
 		await page.bringToFront();
 	});
@@ -26,6 +26,7 @@ describe('d2l-navigation-button', function() {
 
 	[
 		{ category: 'button', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'button-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'button-close', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'button-notification-icon-off', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'button-notification-icon-on', tests: ['normal', 'hover', 'focus'] },
