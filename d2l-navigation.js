@@ -15,9 +15,9 @@ class Navigation extends LitElement {
 				position: relative;
 			}
 			.d2l-navigation-shadow-drop-border {
-				display: var(--d2l-navigation-shadow-drop-border-display, block);
-				background-color: rgba(0,0,0,0.02);
+				background-color: rgba(0, 0, 0, 0.02);
 				bottom: -4px;
+				display: var(--d2l-navigation-shadow-drop-border-display, block);
 				height: 4px;
 				pointer-events: none;
 				position: absolute;
