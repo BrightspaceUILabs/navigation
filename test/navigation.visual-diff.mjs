@@ -2,7 +2,7 @@
 import puppeteer from 'puppeteer';
 import { VisualDiff } from '@brightspace-ui/visual-diff';
 
-describe('d2l-navigation', function() {
+describe('d2l-navigation', () => {
 	const visualDiff = new VisualDiff('d2l-navigation', import.meta.url);
 
 	let browser, page;
@@ -12,7 +12,7 @@ describe('d2l-navigation', function() {
 		page = await visualDiff.createPage(browser);
 		await page.goto(
 			`${visualDiff.getBaseUrl()}/test/navigation.visual-diff.html`,
-			{waitUntil: ['networkidle0', 'load']}
+			{ waitUntil: ['networkidle0', 'load'] }
 		);
 		await page.bringToFront();
 	});
