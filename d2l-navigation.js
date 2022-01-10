@@ -1,22 +1,15 @@
-
-import '@polymer/polymer/polymer-legacy.js';
-
 import './d2l-navigation-band.js';
-import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
+import { css, html, LitElement } from 'lit-element';
 
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
-`d2l-navigation`
-Polymer-based web component for the all encompasing navigation wrapper component
+ * Primary navigation wrapper component.
+ * @slot - Default content placed inside of the component
+ * @slot navigation-band - Content placed inside band
+ */
+class Navigation extends LitElement {
 
-@demo demo/navigation.html
-*/
-class D2LNavigation extends PolymerElement {
-
-	static get template() {
-		const template = html`
-		${navigationSharedStyle}
-		<style>
+	static get styles() {
+		return css`
 			:host {
 				display: block;
 				position: relative;
@@ -30,13 +23,17 @@ class D2LNavigation extends PolymerElement {
 				position: absolute;
 				width: 100%;
 			}
-		</style>
-		<d2l-navigation-band><slot name="navigation-band"></slot></d2l-navigation-band>
-		<slot></slot>
-		<div class="d2l-navigation-shadow-drop-border"></div>
 		`;
-		template.setAttribute('strip-whitespace', '');
-		return template;
 	}
+
+	render() {
+		return html`
+			<d2l-navigation-band><slot name="navigation-band"></slot></d2l-navigation-band>
+			<slot></slot>
+			<div class="d2l-navigation-shadow-drop-border"></div>
+		`;
+	}
+
 }
-customElements.define('d2l-navigation', D2LNavigation);
+
+customElements.define('d2l-navigation', Navigation);
