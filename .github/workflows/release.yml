@@ -20,8 +20,6 @@ jobs:
           node-version-file: .nvmrc
       - name: Install dependencies
         run: npm install
-      - name: Unit Tests (Headless)
-        run: npm run test:polymer:local
       - name: Semantic Release
         uses: BrightspaceUI/actions/semantic-release@main
         with:
