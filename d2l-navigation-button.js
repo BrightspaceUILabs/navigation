@@ -2,7 +2,7 @@ import 'd2l-button/d2l-button-behavior.js';
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
 import 'd2l-polymer-behaviors/d2l-id.js';
 import { highlightStyles } from './d2l-navigation-highlight-styles.js';
-import 'd2l-offscreen/d2l-offscreen-shared-styles.js';
+import '@brightspace-ui/core/components/offscreen/offscreen.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
@@ -36,7 +36,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 	static get template() {
 		const template = html`
 				${highlightStyles}
-				<style is="custom-style" include="d2l-offscreen-shared-styles">
+				<style is="custom-style">
 
 					:host {
 						display: inline-block;
@@ -82,14 +82,6 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 						@apply --d2l-navigation-highlight-border;
 					}
 
-					.d2l-offscreen-description {
-						@apply --d2l-offscreen;
-					}
-
-					:host(:dir(rtl)) .d2l-offscreen-description {
-						@apply --d2l-offscreen-rtl;
-					}
-
 					:host([disabled]) button {
 						@apply --d2l-navigation-highlight-disabled;
 					}
@@ -115,7 +107,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 			<span class$="[[_getTopBorderClass()]]"></span>
 			<slot></slot>
 			</button>
-			<span id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</span>
+			<d2l-offscreen id="[[_ariaDescriptionId]]">[[ariaDescribedbyText]]</d2l-offscreen>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
