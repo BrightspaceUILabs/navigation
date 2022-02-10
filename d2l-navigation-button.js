@@ -107,7 +107,7 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 			<span class$="[[_getTopBorderClass()]]"></span>
 			<slot></slot>
 			</button>
-			<d2l-offscreen id="[[_ariaDescriptionId]]" class="d2l-offscreen-description">[[ariaDescribedbyText]]</d2l-offscreen>
+			<d2l-offscreen id="[[_ariaDescriptionId]]">[[ariaDescribedbyText]]</d2l-offscreen>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
