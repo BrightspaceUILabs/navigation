@@ -56,7 +56,7 @@
     "stylelint": "^14"
   },
   "dependencies": {
-    "@brightspace-ui/core": "^2",
+    "@brightspace-ui/core": "https://github.com/BrightspaceUI/core#vmisechko/lit-2",
     "@polymer/polymer": "^3",
     "d2l-button": "github:BrightspaceUI/button#semver:^5",
     "d2l-link": "github:BrightspaceUI/link#semver:^5",
