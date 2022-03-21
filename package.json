@@ -1,6 +1,6 @@
 {
   "name": "d2l-navigation",
-  "version": "4.9.0",
+  "version": "5.0.0",
   "repository": "https://github.com/BrightspaceUI/navigation.git",
   "scripts": {
     "build": "gulp build",
