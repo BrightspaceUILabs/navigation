@@ -1,3 +1,10 @@
+## Installation
+
+```shell
+npm install BrightspaceUI/navigation
+```
+
+
 # navigation
 
 A series of [Polymer](https://polymer-library.polymer-project.org/3.0/docs/devguide/feature-overview)-based web components for top level navigation use on D2L pages.
