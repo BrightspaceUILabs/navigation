@@ -1,5 +1,18 @@
 # navigation
 
+> Note: this is a ["labs" component](https://daylight.d2l.dev/developing/getting-started/component-tiers/). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
+>
+> - [ ] [Design organization buy-in](https://daylight.d2l.dev/developing/creating-component/before-building/#working-with-design)
+> - [ ] [Architectural sign-off](https://daylight.d2l.dev/developing/creating-component/before-building/#web-component-architecture)
+> - [x] [Continuous integration](https://daylight.d2l.dev/developing/testing/tools/#continuous-integration)
+> - [x] [Cross-browser testing](https://daylight.d2l.dev/developing/testing/cross-browser/)
+> - [x] [Unit tests](https://daylight.d2l.dev/developing/testing/tools/) (if applicable)
+> - [x] [Accessibility tests](https://daylight.d2l.dev/developing/testing/accessibility/)
+> - [x] [Visual diff tests](https://daylight.d2l.dev/developing/testing/visual-difference/)
+> - [ ] Localization with Serge (if applicable)
+> - [x] Demo page
+> - [x] README documentation
+
 A series of [Polymer](https://polymer-library.polymer-project.org/3.0/docs/devguide/feature-overview)-based web components for top level navigation use on D2L pages.
 
 ![screenshot of sample usage](/screenshots/navigation.png?raw=true)
