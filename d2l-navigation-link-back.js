@@ -11,8 +11,7 @@ Polymer-based web component for the back button used in the navigational header.
 
 @demo demo/d2l-navigation-button.html d2l-navigation-link-back
 */
-class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavior,
-	D2L.PolymerBehaviors.FocusableBehavior,
+class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBehavior,
 	D2L.PolymerBehaviors.LocalizeBehavior], PolymerElement) {
 
 	static get properties() {

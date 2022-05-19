@@ -1,5 +1,4 @@
 import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
-import 'd2l-link/d2l-link-behavior.js';
 import { highlightStyles } from './d2l-navigation-highlight-styles.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
@@ -10,8 +9,7 @@ Polymer-based web component for buttons used in the navigational header.
 
 @demo demo/d2l-navigation-button.html d2l-navigation-link
 */
-class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.Link.Behavior,
-	D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
+class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBehavior], PolymerElement) {
 
 	static get properties() {
 		return {
