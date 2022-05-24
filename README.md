@@ -27,9 +27,9 @@ Add the `d2l-navigation` component, and provide sub elements `d2l-navigation-mai
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation.js';
-  import 'd2l-navigation/d2l-navigation-main-header.js';
-  import 'd2l-navigation/d2l-navigation-main-footer.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-main-header.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-main-footer.js';
 </script>
 
 <d2l-navigation>
@@ -54,7 +54,7 @@ Please note that overridding the `left` slot will prevent the Back link from dis
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation-immersive.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-immersive.js';
 </script>
 
 <d2l-navigation-immersive back-link-href="https://www.d2l.com" back-link-text="Back to D2L">
@@ -82,7 +82,7 @@ Optionally, the max-width can be configured to match the max-width used by the L
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation-band.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-band.js';
 </script>
 
 <d2l-navigation-band></d2l-navigation-band>
@@ -104,7 +104,7 @@ Add the `d2l-navigation-main-header` component, and provide elements for the `le
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation-main-header.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-main-header.js';
 </script>
 
 <d2l-navigation-main-header>
@@ -128,7 +128,7 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation-main-footer.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-main-footer.js';
 </script>
 
 <d2l-navigation-main-footer>
@@ -157,7 +157,7 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 
 ```html
 <script type="module">
-  import 'd2l-navigation/d2l-navigation-iterator.js';
+  import '@brightspace-ui-labs/navigation/d2l-navigation-iterator.js';
 </script>
 
 <d2l-navigation-iterator></d2l-navigation-iterator>
@@ -278,6 +278,7 @@ When a release is triggered, it will:
 * Update the version in `package.json`
 * Tag the commit
 * Create a GitHub release (including release notes)
+* Deploy a new package to NPM
 
 ### Releasing from Maintenance Branches
 
