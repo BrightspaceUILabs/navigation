@@ -1,5 +1,5 @@
 {
-  "name": "d2l-navigation",
+  "name": "@brightspace-ui-labs/navigation",
   "version": "5.0.1",
   "repository": "https://github.com/BrightspaceUILabs/navigation.git",
   "scripts": {
@@ -33,6 +33,9 @@
     "d2l-navigation.js",
     "navigation.serge.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
