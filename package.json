@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui-labs/navigation",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "repository": "https://github.com/BrightspaceUILabs/navigation.git",
   "scripts": {
     "build": "gulp build",
