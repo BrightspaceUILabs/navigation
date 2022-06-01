@@ -14,6 +14,7 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 	static get properties() {
 		return {
 			href: {
+				reflectToAttribute: true,
 				type: String
 			},
 			text: {
