@@ -1,7 +1,7 @@
 import '@brightspace-ui/core/components/colors/colors.js';
 import './d2l-navigation-shared-styles';
 
-import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles';
 /**
 `d2l-navigation-band`

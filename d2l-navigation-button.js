@@ -112,12 +112,15 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 		template.setAttribute('strip-whitespace', '');
 		return template;
 	}
-	_getTopBorderClass() {
-		return this.hideHighlight ? '' : 'd2l-navigation-button-top-border';
-	}
+
 	ready() {
 		super.ready();
 		this._ariaDescriptionId = D2L.Id.getUniqueId();
 	}
+
+	_getTopBorderClass() {
+		return this.hideHighlight ? '' : 'd2l-navigation-button-top-border';
+	}
+
 }
 customElements.define('d2l-navigation-button', D2LNavigationButton);

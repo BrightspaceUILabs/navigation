@@ -1,4 +1,4 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
 import './d2l-navigation-iterator-item.js';
 
@@ -65,6 +65,20 @@ class D2LNavigationIterator extends PolymerElement {
 		`;
 	}
 
+	_dispatchNextClicked(e) {
+		if (this.nextDisabled) {
+			return;
+		}
+
+		e.stopPropagation();
+
+		this.dispatchEvent(new CustomEvent('next-click', {
+			detail: {
+				type: e.currentTarget.type
+			}
+		}));
+	}
+
 	_dispatchPreviousClicked(e) {
 		if (this.previousDisabled) {
 			return;
@@ -79,19 +93,6 @@ class D2LNavigationIterator extends PolymerElement {
 		}));
 	}
 
-	_dispatchNextClicked(e) {
-		if (this.nextDisabled) {
-			return;
-		}
-
-		e.stopPropagation();
-
-		this.dispatchEvent(new CustomEvent('next-click', {
-			detail: {
-				type: e.currentTarget.type
-			}
-		}));
-	}
 }
 
 window.customElements.define('d2l-navigation-iterator', D2LNavigationIterator);

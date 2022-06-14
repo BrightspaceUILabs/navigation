@@ -214,11 +214,6 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 		template.setAttribute('strip-whitespace', '');
 		return template;
 	}
-	ready() {
-		super.ready();
-		this._onMiddleResize = this._onMiddleResize.bind(this);
-		this._onRightResize = this._onRightResize.bind(this);
-	}
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -243,12 +238,14 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 		}
 	}
 
-	_onMiddleResize(entries) {
-		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
+	ready() {
+		super.ready();
+		this._onMiddleResize = this._onMiddleResize.bind(this);
+		this._onRightResize = this._onRightResize.bind(this);
 	}
 
-	_onRightResize(entries) {
-		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
+	_onMiddleResize(entries) {
+		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
 	}
 
 	_onResize(entries, slotContainerQuerySelector, containerClass) {
@@ -275,5 +272,10 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 			}
 		}
 	}
+
+	_onRightResize(entries) {
+		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
+	}
+
 }
 customElements.define('d2l-navigation-immersive', D2LNavigationImmsersive);
