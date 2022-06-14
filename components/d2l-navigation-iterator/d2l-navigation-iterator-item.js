@@ -1,6 +1,6 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {NavigationLocalize} from '../NavigationLocalize.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { NavigationLocalize } from '../NavigationLocalize.js';
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import '../../d2l-navigation-button.js';
@@ -105,6 +105,17 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 		`;
 	}
 
+	_computeIcon(type) {
+		return (type === 'previous') ? 'tier3:chevron-left-circle' : 'tier3:chevron-right-circle';
+	}
+
+	_computeText(text, type) {
+		if (text.length > 0) {
+			return text;
+		}
+		return (type === 'previous') ? this.localize('previous') : this.localize('next');
+	}
+
 	_typeChanged(newValue, oldValue) {
 		const validTypes = ['previous', 'next'];
 		if (validTypes.indexOf(newValue) === -1) {
@@ -116,16 +127,6 @@ class D2LNavigationIteratorItem extends NavigationLocalize(PolymerElement) {
 		}
 	}
 
-	_computeText(text, type) {
-		if (text.length > 0) {
-			return text;
-		}
-		return (type === 'previous') ? this.localize('previous') : this.localize('next');
-	}
-
-	_computeIcon(type) {
-		return (type === 'previous') ? 'tier3:chevron-left-circle' : 'tier3:chevron-right-circle';
-	}
 }
 
 window.customElements.define('d2l-navigation-iterator-item', D2LNavigationIteratorItem);
