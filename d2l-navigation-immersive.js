@@ -1,7 +1,7 @@
 import '@brightspace-ui/core/components/colors/colors.js';
 import 'fastdom/fastdom.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
-import 'd2l-typography/d2l-typography-shared-styles.js';
+import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';

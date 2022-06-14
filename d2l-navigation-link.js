@@ -1,4 +1,4 @@
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
+import '@brightspace-ui/polymer-behaviors/d2l-focusable-behavior.js';
 import { highlightStyles } from './d2l-navigation-highlight-styles.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';

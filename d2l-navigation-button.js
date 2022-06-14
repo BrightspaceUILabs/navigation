@@ -1,6 +1,6 @@
-import 'd2l-button/d2l-button-behavior.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
-import 'd2l-polymer-behaviors/d2l-id.js';
+import '@brightspace-ui/button/d2l-button-behavior.js';
+import '@brightspace-ui/polymer-behaviors/d2l-focusable-behavior.js';
+import '@brightspace-ui/polymer-behaviors/d2l-id.js';
 import { highlightStyles } from './d2l-navigation-highlight-styles.js';
 import '@brightspace-ui/core/components/offscreen/offscreen.js';
 

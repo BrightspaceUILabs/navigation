@@ -1,6 +1,6 @@
 import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
 import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
-import 'd2l-localize-behavior/d2l-localize-behavior.js';
+import '@brightspace-ui/localize-behavior/d2l-localize-behavior.js';
 import {LangAr} from './build/lang/ar.js';
 import {LangDadk} from './build/lang/da-dk.js';
 import {LangDe} from './build/lang/de.js';

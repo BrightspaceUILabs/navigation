@@ -1,8 +1,8 @@
 import '@brightspace-ui/core/components/colors/colors.js';
 import './d2l-navigation-button.js';
 import '@brightspace-ui/core/components/icons/icon.js';
-import 'd2l-button/d2l-button-behavior.js';
-import 'd2l-polymer-behaviors/d2l-focusable-behavior.js';
+import '@brightspace-ui/button/d2l-button-behavior.js';
+import '@brightspace-ui/polymer-behaviors/d2l-focusable-behavior.js';
 import './d2l-navigation-notification-icon.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';

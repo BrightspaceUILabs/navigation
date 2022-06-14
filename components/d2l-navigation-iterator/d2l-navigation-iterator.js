@@ -1,5 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import 'd2l-typography/d2l-typography-shared-styles.js';
+import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
 import './d2l-navigation-iterator-item.js';
 
 /**

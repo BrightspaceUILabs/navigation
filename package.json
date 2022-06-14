@@ -59,12 +59,12 @@
     "stylelint": "^14"
   },
   "dependencies": {
+    "@brightspace-ui/button": "^6",
     "@brightspace-ui/core": "^2",
+    "@brightspace-ui/localize-behavior": "^2",
+    "@brightspace-ui/polymer-behaviors": "^3",
+    "@brightspace-ui/typography": "^8",
     "@polymer/polymer": "^3",
-    "d2l-button": "github:BrightspaceUI/button#semver:^6",
-    "d2l-localize-behavior": "github:BrightspaceUI/localize-behavior#semver:^2",
-    "d2l-polymer-behaviors": "github:Brightspace/d2l-polymer-behaviors-ui#semver:^3",
-    "d2l-typography": "github:BrightspaceUI/typography#semver:^8",
     "fastdom": "^1",
     "lit-element": "^3",
     "resize-observer-polyfill": "^1"
