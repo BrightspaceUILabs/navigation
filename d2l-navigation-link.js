@@ -56,14 +56,14 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 					height: 100%;
 				}
 			</style>
-			<div style="height: 100%;" class="d2l-focusable">
+			<span style="height: 100%;" class="d2l-focusable">
 				<a href$="[[href]]" title$="[[text]]" class="d2l-navigation-link">
 					<template is="dom-if" if="[[href]]">
 						<span class="d2l-navigation-link-top-border"></span>
 					</template>
 					<slot></slot>
 				</a>
-			</div>
+			</span>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
