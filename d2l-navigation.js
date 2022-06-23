@@ -1,5 +1,5 @@
 import './d2l-navigation-band.js';
-import { css, html, LitElement } from 'lit-element';
+import { css, html, LitElement } from 'lit';
 
 /**
  * Primary navigation wrapper component.

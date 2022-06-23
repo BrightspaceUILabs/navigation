@@ -67,7 +67,7 @@
     "@brightspace-ui/typography": "^8",
     "@polymer/polymer": "^3",
     "fastdom": "^1",
-    "lit-element": "^3",
+    "lit": "^2",
     "resize-observer-polyfill": "^1"
   }
 }
