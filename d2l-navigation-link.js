@@ -27,7 +27,7 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 			${highlightStyles}
 			<style is="custom-style">
 				:host {
-					display: flex;
+					display: inline-block;
 					height: 100%;
 				}
 				a {
@@ -50,12 +50,14 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 					@apply --d2l-navigation-highlight-border;
 				}
 			</style>
-			<a class="d2l-focusable" href$="[[href]]" title$="[[text]]">
-				<template is="dom-if" if="[[href]]">
-					<span class="d2l-navigation-link-top-border"></span>
-				</template>
-				<slot></slot>
-			</a>
+			<div style="height: 100%;" class="d2l-focusable">
+				<a href$="[[href]]" title$="[[text]]" style="display: flex; justify-content: space-around; height: 100%;">
+					<template is="dom-if" if="[[href]]">
+						<span class="d2l-navigation-link-top-border"></span>
+					</template>
+					<slot></slot>
+				</a>
+			</div>
 		`;
 		template.setAttribute('strip-whitespace', '');
 		return template;
