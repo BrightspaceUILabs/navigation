@@ -23,10 +23,6 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Focusab
 			href: {
 				type: String
 			},
-			icon: {
-				type: String,
-				value: 'tier1:chevron-left'
-			},
 			resources: {
 				value: function() {
 					return {
@@ -74,7 +70,7 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Focusab
 			}
 		</style>
 		<d2l-navigation-link href="[[href]]" class="d2l-focusable" text="[[_getDisplayText(text, localize)]]">
-			<d2l-icon icon="[[icon]]"></d2l-icon>
+			<d2l-icon icon="tier1:chevron-left"></d2l-icon>
 			<span class="d2l-navigation-link-back-text">[[_getDisplayText(text, localize)]]</span>
 		</d2l-navigation-link>
 		`;
