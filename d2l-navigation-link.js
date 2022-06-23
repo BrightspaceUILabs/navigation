@@ -50,9 +50,14 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 				.d2l-navigation-link-top-border {
 					@apply --d2l-navigation-highlight-border;
 				}
+				.d2l-navigation-link {
+					display: flex;
+					justify-content: space-around;
+					height: 100%;
+				}
 			</style>
 			<div style="height: 100%;" class="d2l-focusable">
-				<a href$="[[href]]" title$="[[text]]" style="display: flex; justify-content: space-around; height: 100%;">
+				<a href$="[[href]]" title$="[[text]]" class="d2l-navigation-link">
 					<template is="dom-if" if="[[href]]">
 						<span class="d2l-navigation-link-top-border"></span>
 					</template>
