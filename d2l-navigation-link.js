@@ -29,6 +29,7 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 				:host {
 					display: inline-block;
 					height: 100%;
+					vertical-align: top;
 				}
 				a {
 					@apply --d2l-navigation-highlight-base;
