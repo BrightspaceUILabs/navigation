@@ -1,6 +1,6 @@
 import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
-import { css, html, LitElement } from 'lit-element';
+import { css, html, LitElement } from 'lit';
 
 /**
  * Separator component to be used between buttons in a navigational element.
