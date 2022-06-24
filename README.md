@@ -236,11 +236,11 @@ Then run the tests:
 
 ```shell
 # run visual-diff tests
-npx mocha './test/**/*.visual-diff.js' -t 10000
+npx mocha './test/**/*.visual-diff.mjs' -t 10000
 # subset of visual-diff tests:
-npx mocha './test/**/*.visual-diff.js' -t 10000 -g some-pattern
+npx mocha './test/**/*.visual-diff.mjs' -t 10000 -g some-pattern
 # update visual-diff goldens
-npx mocha './test/**/*.visual-diff.js' -t 10000 --golden
+npx mocha './test/**/*.visual-diff.mjs' -t 10000 --golden
 ```
 
 ### Running the demos

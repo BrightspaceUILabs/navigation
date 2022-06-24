@@ -62,10 +62,6 @@ class D2LNavigationLinkBack extends mixinBehaviors([D2L.PolymerBehaviors.Focusab
 				padding-left: 0;
 				padding-right: var(--d2l-navigation-link-back-left-padding, 5px);
 			}
-			span, d2l-icon {
-				vertical-align: middle;
-				height: 100%;
-			}
 		</style>
 		<d2l-navigation-link href="[[href]]" class="d2l-focusable" text="[[_getDisplayText(text, localize)]]">
 			<d2l-icon icon="tier1:chevron-left"></d2l-icon>

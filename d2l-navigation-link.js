@@ -27,20 +27,24 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 			${highlightStyles}
 			<style is="custom-style">
 				:host {
-					display: flex;
+					display: inline-block;
 					height: 100%;
 				}
 				a {
-					@apply --d2l-navigation-highlight-base;
-					font-family: inherit;
-					outline: none; /* Needed for Edge, outline setting from css mixin is not being applied in Polymer 2 & 3 */
-				}
-				:host(:not([href])) a {
-					cursor: default;
+					align-items: center;
+					color: var(--d2l-color-ferrite);
+					display: inline-flex;
+					height: 100%;
+					min-height: 40px;
+					position: relative;
+					text-decoration: none;
+					vertical-align: middle;
 				}
 				a:hover,
 				a:focus {
-					@apply --d2l-navigation-highlight-base-hover-focus;
+					color: var(--d2l-color-celestine);
+					--d2l-icon-fill-color: var(--d2l-color-celestine);
+					outline: none;
 				}
 				a:hover .d2l-navigation-link-top-border,
 				a:focus .d2l-navigation-link-top-border {
@@ -49,11 +53,12 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 				.d2l-navigation-link-top-border {
 					@apply --d2l-navigation-highlight-border;
 				}
+				:host(:not([href])) .d2l-navigation-link-top-border {
+					display: none;
+				}
 			</style>
-			<a class="d2l-focusable" href$="[[href]]" title$="[[text]]">
-				<template is="dom-if" if="[[href]]">
-					<span class="d2l-navigation-link-top-border"></span>
-				</template>
+			<a href$="[[href]]" title$="[[text]]">
+				<span class="d2l-navigation-link-top-border"></span>
 				<slot></slot>
 			</a>
 		`;
