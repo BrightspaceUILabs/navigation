@@ -3,8 +3,8 @@
 import puppeteer from 'puppeteer';
 import { VisualDiff } from '@brightspace-ui/visual-diff';
 
-describe('d2l-navigation-button', () => {
-	const visualDiff = new VisualDiff('d2l-navigation-button', import.meta.url);
+describe('d2l-navigation-link', () => {
+	const visualDiff = new VisualDiff('d2l-navigation-link', import.meta.url);
 
 	let browser, page;
 
@@ -12,7 +12,7 @@ describe('d2l-navigation-button', () => {
 		browser = await puppeteer.launch();
 		page = await visualDiff.createPage(browser);
 		await page.goto(
-			`${visualDiff.getBaseUrl()}/test/button.visual-diff.html`,
+			`${visualDiff.getBaseUrl()}/test/link.visual-diff.html`,
 			{ waitUntil: ['networkidle0', 'load'] }
 		);
 		await page.bringToFront();
@@ -25,11 +25,11 @@ describe('d2l-navigation-button', () => {
 	after(async() => await browser.close());
 
 	[
-		{ category: 'default', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'disabled', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'close', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'notification-icon-off', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'notification-icon-on', tests: ['normal', 'hover', 'focus'] }
+		{ category: 'base', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'back', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'image', tests: ['normal', 'hover', 'focus'] }
 	].forEach((entry) => {
 		describe(entry.category, () => {
 			entry.tests.forEach((name) => {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./styles.css" type="text/css">
+		<title>d2l-navigation-button visual-diff test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script type="module">
+			import '@brightspace-ui/core/components/icons/icon.js';
+			import '@brightspace-ui/core/components/typography/typography.js';
+			import '../../d2l-navigation-link.js';
+			import '../../d2l-navigation-link-back.js';
+			import '../../d2l-navigation-link-icon.js';
+			import '../../d2l-navigation-link-image.js';
+			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
+			window.forceFocusVisible = forceFocusVisible;
+		</script>
+	</head>
+	<body class="d2l-typography">
+		<div class="visual-diff">
+			<div style="display: inline-block;" id="base">
+				<d2l-navigation-link href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link>
+			</div>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-link-icon id="icon-text" href="https://www.example.org" icon="tier3:gear" text="Settings"></d2l-navigation-link-icon>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-link-icon id="icon-text-hidden" href="https://www.example.org" icon="tier3:gear" text="Settings" text-hidden></d2l-navigation-link-icon>
+		</div>
+		<div class="visual-diff">
+			<div style="max-width: 100px;">
+				<d2l-navigation-link-back id="back" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link-back>
+			</div>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-link-image id="image" src="../demo/logo-image.png" href="https:/www.d2l.com" text="D2L"></d2l-navigation-link-image>
+		</div>
+	</body>
+</html>
