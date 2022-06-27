@@ -22,8 +22,8 @@ export const highlightBorderStyles = css`
 export const highlightLinkStyles = css`
 	a {
 		align-items: center;
-		display: inline-flex;
 		color: var(--d2l-color-ferrite);
+		display: inline-flex;
 		gap: 6px;
 		height: 100%;
 		min-height: 40px;
@@ -33,8 +33,8 @@ export const highlightLinkStyles = css`
 	}
 	a:hover,
 	a:focus {
-		color: var(--d2l-color-celestine);
 		--d2l-icon-fill-color: var(--d2l-color-celestine);
+		color: var(--d2l-color-celestine);
 		outline: none;
 	}
 `;
