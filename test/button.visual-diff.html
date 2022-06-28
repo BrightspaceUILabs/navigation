@@ -11,41 +11,25 @@
 			import '../../d2l-navigation-button.js';
 			import '../../d2l-navigation-button-close.js';
 			import '../../d2l-navigation-button-notification-icon.js';
-			import '../../d2l-navigation-link.js';
-			import '../../d2l-navigation-link-back.js';
-			import '../../d2l-navigation-link-image.js';
 			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
 			window.forceFocusVisible = forceFocusVisible;
 		</script>
 	</head>
 	<body class="d2l-typography">
 		<div class="visual-diff">
-			<d2l-navigation-button id="button" text="Classes"><d2l-icon icon="tier3:classes"></d2l-icon></d2l-navigation-button>
+			<d2l-navigation-button id="default" text="Classes"><d2l-icon icon="tier3:classes"></d2l-icon></d2l-navigation-button>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-button id="button-disabled" text="Classes" disabled><d2l-icon icon="tier3:classes"></d2l-icon></d2l-navigation-button>
+			<d2l-navigation-button id="disabled" text="Classes" disabled><d2l-icon icon="tier3:classes"></d2l-icon></d2l-navigation-button>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-button-close id="button-close"></d2l-navigation-button-close>
+			<d2l-navigation-button-close id="close"></d2l-navigation-button-close>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-button-notification-icon id="button-notification-icon-off" icon="tier3:notification-bell" text="Notification off"></d2l-navigation-button-notification-icon>
+			<d2l-navigation-button-notification-icon id="notification-icon-off" icon="tier3:notification-bell" text="Notification off"></d2l-navigation-button-notification-icon>
 		</div>
 		<div class="visual-diff">
-			<d2l-navigation-button-notification-icon id="button-notification-icon-on" notification icon="tier3:notification-bell" text="Notification on" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
-		</div>
-		<div class="visual-diff">
-			<div style="display: inline-block;" id="link">
-				<d2l-navigation-link href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div style="max-width: 100px;">
-				<d2l-navigation-link-back id="link-back" href="https://www.d2l.com" text="D2L">D2L</d2l-navigation-link-back>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<d2l-navigation-link-image id="link-image" src="../demo/logo-image.png" href="https:/www.d2l.com" text="D2L"></d2l-navigation-link-image>
+			<d2l-navigation-button-notification-icon id="notification-icon-on" notification icon="tier3:notification-bell" text="Notification on" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
 		</div>
 	</body>
 </html>

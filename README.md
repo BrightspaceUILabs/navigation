@@ -13,7 +13,7 @@
 > - [x] Demo page
 > - [x] README documentation
 
-A series of [Polymer](https://polymer-library.polymer-project.org/3.0/docs/devguide/feature-overview)-based web components for top level navigation use on D2L pages.
+A series of web components for top level navigation use in D2L applications.
 
 ![screenshot of sample usage](/screenshots/navigation.png?raw=true)
 
@@ -148,6 +148,23 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 
 ***Relevant CSS class name:***
 * `--d2l-navigation-primary-color`: Used to customize the hover colour of the highlight links and buttons
+
+---
+
+### d2l-navigation-link-icon
+
+Similar to `<d2l-navigation-button-icon>`, a link that comes with an icon and optional text.
+
+![screenshot of navigation link icon](/screenshots/navigation-link-button-icon.png?raw=true)
+
+### Properties
+
+| Property | Type | Description |
+|--|--|--|
+| `href` | String, required | URL or URL fragment of the link |
+| `text` | String, required | Text for the button |
+| `icon` | String | Preset icon key (e.g. `tier1:gear`) |
+| `text-hidden` | Boolean | Visually hides the text |
 
 ---
 

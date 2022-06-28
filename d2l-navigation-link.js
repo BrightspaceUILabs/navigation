@@ -57,7 +57,7 @@ class D2LNavigationLink extends mixinBehaviors([D2L.PolymerBehaviors.FocusableBe
 					display: none;
 				}
 			</style>
-			<a href$="[[href]]" title$="[[text]]">
+			<a class="d2l-focusable" href$="[[href]]" title$="[[text]]">
 				<span class="d2l-navigation-link-top-border"></span>
 				<slot></slot>
 			</a>
