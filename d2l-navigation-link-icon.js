@@ -69,7 +69,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 		`;
 	}
 
-	async updated(changedProperties) {
+	updated(changedProperties) {
 
 		super.updated(changedProperties);
 
