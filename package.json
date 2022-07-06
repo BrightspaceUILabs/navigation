@@ -23,6 +23,7 @@
     "d2l-navigation-highlight-styles.js",
     "d2l-navigation-immersive.js",
     "d2l-navigation-link-back.js",
+    "d2l-navigation-link-icon.js",
     "d2l-navigation-link-image.js",
     "d2l-navigation-link.js",
     "d2l-navigation-main-footer.js",
