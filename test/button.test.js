@@ -25,7 +25,7 @@ describe('Buttons', () => {
 
 			it('focused', async() => {
 				const el = await fixture(html`<d2l-navigation-button text="test"></d2l-navigation-button>`);
-				setTimeout(() => el.focus());
+				setTimeout(() => el.shadowRoot.querySelector('button').focus());
 				await oneEvent(el, 'focus');
 				await expect(el).to.be.accessible();
 			});
