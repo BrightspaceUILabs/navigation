@@ -1,7 +1,7 @@
 /* eslint-disable no-invalid-this */
 /* global forceFocusVisible */
-import puppeteer from 'puppeteer';
 import { oneEvent, VisualDiff } from '@brightspace-ui/visual-diff';
+import puppeteer from 'puppeteer';
 
 describe('d2l-navigation-iterator', () => {
 	const visualDiff = new VisualDiff('d2l-navigation-iterator', import.meta.url);
