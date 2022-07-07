@@ -16,6 +16,11 @@ class D2LNavigationButton extends mixinBehaviors([D2L.PolymerBehaviors.Button.Be
 
 	static get properties() {
 		return {
+			disabled: {
+				type: Boolean,
+				refelctToAttribute: true,
+				value: false
+			},
 			text: {
 				type: String,
 				reflectToAttribute: true
