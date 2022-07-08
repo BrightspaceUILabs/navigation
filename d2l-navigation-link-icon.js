@@ -59,10 +59,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		const ariaLabel = this.textHidden ? this.text : undefined;
-		const id = this.textHidden ? this._linkId : undefined;
-		const text = !this.textHidden ? this.text : nothing;
-		const tooltip = this.textHidden ? html`<d2l-tooltip for="${this._linkId}" for-type="label">${this.text}</d2l-tooltip>` : nothing;
+		const { ariaLabel, id, text, tooltip } = this._getRenderSettings();
 		return html`
 			<a id="${ifDefined(id)}" href="${ifDefined(this.href)}" aria-label="${ifDefined(ariaLabel)}">
 				<span class="d2l-navigation-highlight-border"></span>
@@ -79,6 +76,23 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 
 		if (changedProperties.has('href')) this._validateHref();
 
+	}
+
+	_getRenderSettings() {
+		if (this.textHidden) {
+			return {
+				ariaLabel: this.text,
+				id: this._linkId,
+				text: nothing,
+				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label">${this.text}</d2l-tooltip>`
+			};
+		}
+		return {
+			ariaLabel: undefined,
+			id: undefined,
+			text: this.text,
+			tooltip: nothing
+		};
 	}
 
 	_validateHref() {

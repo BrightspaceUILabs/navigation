@@ -92,11 +92,8 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		const ariaLabel = this.textHidden ? this.text : undefined;
+		const { ariaLabel, id, text, tooltip } = this._getRenderSettings();
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
-		const id = this.textHidden ? this._buttonId : undefined;
-		const text = !this.textHidden ? this.text : nothing;
-		const tooltip = this.textHidden ? html`<d2l-tooltip for="${this._buttonId}" for-type="label">${this.text}</d2l-tooltip>` : nothing;
 		return html`
 			<button id="${ifDefined(id)}" ?disabled="${this.disabled}" aria-label="${ifDefined(ariaLabel)}">
 				${highlightBorder}
@@ -105,6 +102,23 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 			</button>
 			${tooltip}
 		`;
+	}
+
+	_getRenderSettings() {
+		if (this.textHidden) {
+			return {
+				ariaLabel: this.text,
+				id: this._buttonId,
+				text: nothing,
+				tooltip: html`<d2l-tooltip for="${this._buttonId}" for-type="label">${this.text}</d2l-tooltip>`
+			};
+		}
+		return {
+			ariaLabel: undefined,
+			id: undefined,
+			text: this.text,
+			tooltip: nothing
+		};
 	}
 
 }
