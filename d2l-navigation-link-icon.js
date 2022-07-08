@@ -1,7 +1,8 @@
 import '@brightspace-ui/core/components/icons/icon.js';
-import { html, LitElement } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+import '@brightspace-ui/core/components/tooltip/tooltip.js';
+import { html, LitElement, nothing } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
+import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
 import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
@@ -43,6 +44,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	constructor() {
 		super();
 		this.textHidden = false;
+		this._linkId = getUniqueId();
 		this._missingHrefErrorHasBeenThrown = false;
 		this._validatingHrefTimeout = null;
 	}
@@ -57,15 +59,17 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		const textClasses = {
-			'd2l-offscreen': this.textHidden
-		};
+		const ariaLabel = this.textHidden ? this.text : undefined;
+		const id = this.textHidden ? this._linkId : undefined;
+		const text = !this.textHidden ? this.text : nothing;
+		const tooltip = this.textHidden ? html`<d2l-tooltip for="${this._linkId}" for-type="label">${this.text}</d2l-tooltip>` : nothing;
 		return html`
-			<a href="${ifDefined(this.href)}" title="${ifDefined(this.textHidden ? this.text : undefined)}">
+			<a id="${ifDefined(id)}" href="${ifDefined(this.href)}" aria-label="${ifDefined(ariaLabel)}">
 				<span class="d2l-navigation-highlight-border"></span>
 				<d2l-icon icon="${this.icon}"></d2l-icon>
-				<span class="${classMap(textClasses)}">${this.text}</span>
+				${text}
 			</a>
+			${tooltip}
 		`;
 	}
 

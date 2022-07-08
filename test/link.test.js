@@ -3,6 +3,7 @@ import '../d2l-navigation-link-back.js';
 import '../d2l-navigation-link-icon.js';
 import '../d2l-navigation-link-image.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { getComposedActiveElement } from '@brightspace-ui/core/helpers/focus.js';
 import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('Links', () => {
@@ -59,10 +60,16 @@ describe('Links', () => {
 				await expect(el).to.be.accessible();
 			});
 
+			it('text hidden', async() => {
+				const el = await fixture(html`<d2l-navigation-link-icon href="https:/www.d2l.com" icon="tier3:gear" text="D2L" text-hidden></d2l-navigation-link-icon>`);
+				await expect(el).to.be.accessible();
+			});
+
 			it('focused', async() => {
 				const el = await fixture(html`<d2l-navigation-link-icon href="https:/www.d2l.com" icon="tier3:gear" text="D2L"></d2l-navigation-link-icon>`);
-				setTimeout(() => el.focus());
-				await oneEvent(el, 'focus');
+				el.focus();
+				const activeElem = getComposedActiveElement();
+				expect(activeElem).to.equal(el.shadowRoot.querySelector('a'));
 				await expect(el).to.be.accessible();
 			});
 
