@@ -28,18 +28,24 @@ describe('d2l-navigation-link', () => {
 		{ category: 'base', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'back', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'icon-text-hidden', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'image', tests: ['normal', 'hover', 'focus'] }
 	].forEach((entry) => {
 		describe(entry.category, () => {
 			entry.tests.forEach((name) => {
 				it(name, async function() {
 					const selector = `#${entry.category}`;
+					const rectSelector = entry.rectSelector ? `#${entry.rectSelector}` : selector;
 
-					if (name === 'hover') await page.hover(selector);
+					if (name === 'hover') {
+						await page.hover(selector);
+						if (entry.category === 'icon-text-hidden') {
+							await new Promise(resolve => setTimeout(resolve, 350));
+						}
+					}
 					else if (name === 'focus') await page.$eval(selector, (elem) => forceFocusVisible(elem));
 
-					const rect = await visualDiff.getRect(page, selector);
+					const rect = await visualDiff.getRect(page, rectSelector);
 					await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
 				});
 			});

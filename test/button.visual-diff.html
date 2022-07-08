@@ -10,6 +10,7 @@
 			import '@brightspace-ui/core/components/typography/typography.js';
 			import '../../d2l-navigation-button.js';
 			import '../../d2l-navigation-button-close.js';
+			import '../../d2l-navigation-button-icon.js';
 			import '../../d2l-navigation-button-notification-icon.js';
 			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
 			window.forceFocusVisible = forceFocusVisible;
@@ -24,6 +25,18 @@
 		</div>
 		<div class="visual-diff">
 			<d2l-navigation-button-close id="close"></d2l-navigation-button-close>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-button-icon id="icon-text" icon="tier3:classes" text="Classes"></d2l-navigation-button-icon>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-button-icon id="icon-text-disabled" icon="tier3:classes" text="Classes" disabled></d2l-navigation-button-icon>
+		</div>
+		<div class="visual-diff" id="icon-text-hidden-container" style="display: inline-block; padding: 0 30px 60px 30px;">
+			<d2l-navigation-button-icon id="icon-text-hidden" icon="tier3:classes" text="Classes" text-hidden></d2l-navigation-button-icon>
+		</div>
+		<div class="visual-diff">
+			<d2l-navigation-button-icon id="icon-text-hidden-disabled" icon="tier3:classes" text="Classes" text-hidden disabled></d2l-navigation-button-icon>
 		</div>
 		<div class="visual-diff">
 			<d2l-navigation-button-notification-icon id="notification-icon-off" icon="tier3:notification-bell" text="Notification off"></d2l-navigation-button-notification-icon>

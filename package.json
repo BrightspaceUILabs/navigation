@@ -18,6 +18,7 @@
     "/lang",
     "d2l-navigation-band.js",
     "d2l-navigation-button-close.js",
+    "d2l-navigation-button-icon.js",
     "d2l-navigation-button-notification-icon.js",
     "d2l-navigation-button.js",
     "d2l-navigation-highlight-styles.js",

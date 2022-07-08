@@ -1,7 +1,8 @@
 import '@brightspace-ui/core/components/icons/icon.js';
-import { html, LitElement } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+import '@brightspace-ui/core/components/tooltip/tooltip.js';
+import { html, LitElement, nothing } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
+import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
 import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
@@ -24,7 +25,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 			 */
 			icon: { type: String },
 			/**
-			 * REQUIRED: Accessible text for the button
+			 * REQUIRED: Text for the link
 			 * @type {string}
 			 */
 			text: { type: String },
@@ -43,6 +44,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	constructor() {
 		super();
 		this.textHidden = false;
+		this._linkId = getUniqueId();
 		this._missingHrefErrorHasBeenThrown = false;
 		this._validatingHrefTimeout = null;
 	}
@@ -57,15 +59,14 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		const textClasses = {
-			'd2l-offscreen': this.textHidden
-		};
+		const { ariaLabel, id, text, tooltip } = this._getRenderSettings();
 		return html`
-			<a href="${ifDefined(this.href)}" title="${ifDefined(this.textHidden ? this.text : undefined)}">
+			<a id="${ifDefined(id)}" href="${ifDefined(this.href)}" aria-label="${ifDefined(ariaLabel)}">
 				<span class="d2l-navigation-highlight-border"></span>
 				<d2l-icon icon="${this.icon}"></d2l-icon>
-				<span class="${classMap(textClasses)}">${this.text}</span>
+				${text}
 			</a>
+			${tooltip}
 		`;
 	}
 
@@ -75,6 +76,23 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 
 		if (changedProperties.has('href')) this._validateHref();
 
+	}
+
+	_getRenderSettings() {
+		if (this.textHidden) {
+			return {
+				ariaLabel: this.text,
+				id: this._linkId,
+				text: nothing,
+				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label">${this.text}</d2l-tooltip>`
+			};
+		}
+		return {
+			ariaLabel: undefined,
+			id: undefined,
+			text: this.text,
+			tooltip: nothing
+		};
 	}
 
 	_validateHref() {
