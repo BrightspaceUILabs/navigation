@@ -151,6 +151,21 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 
 ---
 
+### d2l-navigation-button-icon
+
+`<d2l-navigation-button-icon>` provides a button with an icon and optional text.
+
+### Properties
+
+| Property | Type | Description |
+|--|--|--|
+| `disabled` | Boolean | Disables the button |
+| `text` | String, required | Text for the button |
+| `icon` | String | Preset icon key (e.g. `tier1:gear`) |
+| `text-hidden` | Boolean | Visually hides the text |
+
+---
+
 ### d2l-navigation-link-icon
 
 Similar to `<d2l-navigation-button-icon>`, a link that comes with an icon and optional text.
@@ -253,11 +268,11 @@ Then run the tests:
 
 ```shell
 # run visual-diff tests
-npx mocha './test/**/*.visual-diff.mjs' -t 10000
+npx mocha './test/**/*.visual-diff.js' -t 10000
 # subset of visual-diff tests:
-npx mocha './test/**/*.visual-diff.mjs' -t 10000 -g some-pattern
+npx mocha './test/**/*.visual-diff.js' -t 10000 -g some-pattern
 # update visual-diff goldens
-npx mocha './test/**/*.visual-diff.mjs' -t 10000 --golden
+npx mocha './test/**/*.visual-diff.js' -t 10000 --golden
 ```
 
 ### Running the demos

@@ -28,6 +28,10 @@ describe('d2l-navigation-button', () => {
 		{ category: 'default', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'close', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-disabled', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'notification-icon-off', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'notification-icon-on', tests: ['normal', 'hover', 'focus'] }
 	].forEach((entry) => {
@@ -35,11 +39,17 @@ describe('d2l-navigation-button', () => {
 			entry.tests.forEach((name) => {
 				it(name, async function() {
 					const selector = `#${entry.category}`;
+					const rectSelector = entry.rectSelector ? `#${entry.rectSelector}` : selector;
 
-					if (name === 'hover') await page.hover(selector);
+					if (name === 'hover') {
+						await page.hover(selector);
+						if (entry.category === 'icon-text-hidden') {
+							await new Promise(resolve => setTimeout(resolve, 350));
+						}
+					}
 					else if (name === 'focus') await page.$eval(selector, (elem) => forceFocusVisible(elem));
 
-					const rect = await visualDiff.getRect(page, selector);
+					const rect = await visualDiff.getRect(page, rectSelector);
 					await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
 				});
 			});

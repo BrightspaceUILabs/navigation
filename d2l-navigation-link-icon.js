@@ -24,7 +24,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 			 */
 			icon: { type: String },
 			/**
-			 * REQUIRED: Accessible text for the button
+			 * REQUIRED: Text for the link
 			 * @type {string}
 			 */
 			text: { type: String },

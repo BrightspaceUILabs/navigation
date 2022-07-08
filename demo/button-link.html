@@ -7,6 +7,7 @@
 			import '@brightspace-ui/core/components/icons/icon.js';
 			import '../d2l-navigation-button.js';
 			import '../d2l-navigation-button-close.js';
+			import '../d2l-navigation-button-icon.js';
 			import '../d2l-navigation-button-notification-icon.js';
 			import '../d2l-navigation-link.js';
 			import '../d2l-navigation-link-back.js';
@@ -44,9 +45,11 @@
 				</div>
 			</d2l-demo-snippet>
 
-			<h2>d2l-navigation-link-icon</h2>
+			<h2>d2l-navigation-button-icon / d2l-navigation-link-icon</h2>
 			<d2l-demo-snippet>
 				<div class="wrapper">
+					<d2l-navigation-button-icon icon="tier3:gear" text="Settings"></d2l-navigation-button-icon>
+					<d2l-navigation-button-icon icon="tier3:gear" text="Settings (hidden)" text-hidden></d2l-navigation-button-icon>
 					<d2l-navigation-link-icon href="https://www.example.org" icon="tier3:gear" text="Settings"></d2l-navigation-link-icon>
 					<d2l-navigation-link-icon href="https://www.example.org" icon="tier3:gear" text="Settings (hidden)" text-hidden></d2l-navigation-link-icon>
 				</div>
@@ -93,13 +96,14 @@
 						href="https://www.example.org"
 						src="./logo-image.png"
 						text="Link Image Text"></d2l-navigation-link-image>
+					<d2l-navigation-button-icon icon="tier3:gear" text="Settings"></d2l-navigation-button-icon>
 					<d2l-navigation-link-icon href="https://www.example.org" icon="tier3:gear" text="Settings"></d2l-navigation-link-icon>
 					<d2l-navigation-link href="https://www.example.org">
-						<d2l-icon icon="tier2:gear" style="margin-right: 10px;"></d2l-icon>
+						<d2l-icon icon="tier3:gear" style="margin-right: 10px;"></d2l-icon>
 						Settings
 					</d2l-navigation-link>
 					<d2l-navigation-button>
-						<d2l-icon icon="tier2:gear" style="margin-right: 10px;"></d2l-icon>
+						<d2l-icon icon="tier3:gear" style="margin-right: 10px;"></d2l-icon>
 						Settings
 					</d2l-navigation-button>
 					<d2l-navigation-button-notification-icon notification icon="tier3:notification-bell" text="Notification on" id="notified" notification-text="You have new notifications"></d2l-navigation-button-notification-icon>
