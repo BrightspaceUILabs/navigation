@@ -37,14 +37,6 @@ describe('Buttons', () => {
 			});
 		});
 
-		describe('events', () => {
-			it('should trigger click event', async() => {
-				const el = await fixture(html`<d2l-navigation-button text="test"></d2l-navigation-button>`);
-				setTimeout(() => el.shadowRoot.querySelector('button').click());
-				await oneEvent(el, 'click');
-			});
-		});
-
 	});
 
 	describe('d2l-navigation-button-close', () => {
@@ -59,6 +51,23 @@ describe('Buttons', () => {
 		describe('constructor', () => {
 			it('should construct', () => {
 				runConstructor('d2l-navigation-button-close');
+			});
+		});
+
+	});
+
+	describe('d2l-navigation-notification-icon', () => {
+
+		describe('accessibility', () => {
+			it('should pass all aXe tests', async() => {
+				const el = await fixture(html`<d2l-navigation-notification-icon icon="tier3:notification-bell" text="test"></d2l-navigation-notification-icon>`);
+				await expect(el).to.be.accessible();
+			});
+		});
+
+		describe('constructor', () => {
+			it('should construct', () => {
+				runConstructor('d2l-navigation-notification-icon');
 			});
 		});
 
@@ -99,20 +108,11 @@ describe('Buttons', () => {
 			});
 		});
 
-	});
-
-	describe('d2l-navigation-notification-icon', () => {
-
-		describe('accessibility', () => {
-			it('should pass all aXe tests', async() => {
-				const el = await fixture(html`<d2l-navigation-notification-icon icon="tier3:notification-bell" text="test"></d2l-navigation-notification-icon>`);
-				await expect(el).to.be.accessible();
-			});
-		});
-
-		describe('constructor', () => {
-			it('should construct', () => {
-				runConstructor('d2l-navigation-notification-icon');
+		describe('events', () => {
+			it('should trigger click event', async() => {
+				const el = await fixture(html`<d2l-navigation-button-icon icon="tier3:gear" text="test"></d2l-navigation-button-icon>`);
+				setTimeout(() => el.shadowRoot.querySelector('button').click());
+				await oneEvent(el, 'click');
 			});
 		});
 
