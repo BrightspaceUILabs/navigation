@@ -3,10 +3,7 @@ import '../d2l-navigation-link-back.js';
 import '../d2l-navigation-link-icon.js';
 import '../d2l-navigation-link-image.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
-<<<<<<< HEAD
 import { getComposedActiveElement } from '@brightspace-ui/core/helpers/focus.js';
-=======
->>>>>>> edbb243 (feat: adding d2l-navigation-button-icon component)
 import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('Links', () => {
