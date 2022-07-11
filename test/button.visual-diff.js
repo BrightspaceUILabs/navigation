@@ -27,7 +27,6 @@ describe('d2l-navigation-button', () => {
 	[
 		{ category: 'default', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'disabled', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'close', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },

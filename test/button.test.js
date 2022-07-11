@@ -1,5 +1,4 @@
 import '../d2l-navigation-button.js';
-import '../d2l-navigation-button-close.js';
 import '../d2l-navigation-button-icon.js';
 import '../d2l-navigation-button-notification-icon.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
@@ -34,23 +33,6 @@ describe('Buttons', () => {
 		describe('constructor', () => {
 			it('should construct', () => {
 				runConstructor('d2l-navigation-button');
-			});
-		});
-
-	});
-
-	describe('d2l-navigation-button-close', () => {
-
-		describe('accessibility', () => {
-			it('should pass all aXe tests', async() => {
-				const el = await fixture(html`<d2l-navigation-button-close></d2l-navigation-button-close>`);
-				await expect(el).to.be.accessible();
-			});
-		});
-
-		describe('constructor', () => {
-			it('should construct', () => {
-				runConstructor('d2l-navigation-button-close');
 			});
 		});
 

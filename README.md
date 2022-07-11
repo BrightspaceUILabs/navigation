@@ -63,7 +63,6 @@ Please note that overridding the `left` slot will prevent the Back link from dis
 	</div>
 	<div slot="right">
 		<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
-		<d2l-navigation-button-close></d2l-navigation-button-close>
 		<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
 	</div>
 </d2l-navigation-immersive>
