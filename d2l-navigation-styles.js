@@ -30,6 +30,7 @@ export const highlightLinkStyles = css`
 		position: relative;
 		text-decoration: none;
 		vertical-align: middle;
+		white-space: nowrap;
 	}
 	a:hover,
 	a:focus {

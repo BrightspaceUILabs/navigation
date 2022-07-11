@@ -133,10 +133,6 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 				visibility: hidden;
 			}
 
-			d2l-navigation-link-back {
-				--d2l-navigation-link-back-left-padding: 12px;
-			}
-
 			.d2l-navigation-immersive-spacing {
 				height: calc(var(--d2l-navigation-immersive-height-main) + 5px);
 				position: unset;
@@ -178,10 +174,6 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 				.d2l-navigation-immersive-middle {
 					margin: 0 18px;
 					padding: 0 18px;
-				}
-				d2l-navigation-link-back {
-					--d2l-navigation-link-back-left-padding: 6px;
-					margin: 0
 				}
 			}
 
