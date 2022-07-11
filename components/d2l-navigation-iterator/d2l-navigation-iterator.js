@@ -44,7 +44,8 @@ class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 			<div class="wrapper d2l-body-compact">
 				<d2l-navigation-button-icon
 					icon="tier3:chevron-left-circle"
-					icon-position="start" text="${previousText}"
+					icon-position="start"
+					text="${previousText}"
 					?text-hidden="${this.hideText}"
 					?disabled="${this.previousDisabled}"
 					@click="${this._dispatchPreviousClicked}"></d2l-navigation-button-icon>
