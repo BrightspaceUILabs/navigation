@@ -1,67 +1,63 @@
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
-import './d2l-navigation-iterator-item.js';
+import { css, html, LitElement } from 'lit';
+import { bodyCompactStyles } from '@brightspace-ui/core/components/typography/styles.js';
+import { LocalizeNavigationElement } from '../localize-navigation-element.js';
+import '../../d2l-navigation-button-icon.js';
 
-/**
- * @customElement
- * @polymer
- */
-class D2LNavigationIterator extends PolymerElement {
-	static get is() { return 'd2l-navigation-iterator'; }
+class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 
 	static get properties() {
 		return {
-			previousText: {
-				type: String
-			},
-			nextText: {
-				type: String
-			},
-			hideText: {
-				type: Boolean,
-				value: false
-			},
-			previousDisabled: {
-				type: Boolean,
-				value: false
-			},
-			nextDisabled: {
-				type: Boolean,
-				value: false
-			}
+			hideText: { attribute: 'hide-text', type: Boolean },
+			previousDisabled: { attribute: 'previous-disabled', type: Boolean },
+			previousText: { attribute: 'previous-text', type: String },
+			nextDisabled: { attribute: 'next-disabled', type: Boolean },
+			nextText: { attribute: 'next-text', type: String },
 		};
 	}
 
-	static get template() {
+	static get styles() {
+		return [bodyCompactStyles, css`
+			.wrapper {
+				align-items: center;
+				display: flex;
+				height: 3.3rem;
+				justify-content: space-between;
+				max-width: 20rem;
+				padding: 0 1.2rem;
+			}
+		`];
+	}
+
+	constructor() {
+		super();
+		this.hideText = false;
+		this.nextDisabled = false;
+		this.nextText = '';
+		this.previousDisabled = false;
+		this.previousText = '';
+	}
+
+	render() {
+		const previousText = this.previousText ? this.previousText : this.localize('previous');
+		const nextText = this.nextText ? this.nextText : this.localize('next');
 		return html`
-			<style>
-				:host {
-					@apply --d2l-body-compact-text;
-					align-items: center;
-					display: flex;
-					justify-content: space-between;
-					height: 3.3rem;
-					max-width: 20rem;
-				}
-				@media (max-width: 30.75rem) {
-					.d2l-navigation-iterator {
-						height: 3rem;
-					}
-				}
-			</style>
-			<d2l-navigation-iterator-item
-				text=[[previousText]]
-				type="previous"
-				hide-text=[[hideText]]
-				disabled=[[previousDisabled]]
-				on-click="_dispatchPreviousClicked"></d2l-navigation-iterator-item>
-			<slot></slot>
-			<d2l-navigation-iterator-item
-				text=[[nextText]]
-				type="next"
-				hide-text=[[hideText]]
-				disabled=[[nextDisabled]]
-				on-click="_dispatchNextClicked"></d2l-navigation-iterator-item>
+			<div class="wrapper d2l-body-compact">
+				<d2l-navigation-button-icon
+					icon="tier3:chevron-left-circle"
+					icon-position="start"
+					text="${previousText}"
+					?text-hidden="${this.hideText}"
+					?disabled="${this.previousDisabled}"
+					@click="${this._dispatchPreviousClicked}"></d2l-navigation-button-icon>
+				<slot></slot>
+				<d2l-navigation-button-icon
+					icon="tier3:chevron-right-circle"
+					icon-position="end"
+					text="${nextText}"
+					?text-hidden="${this.hideText}"
+					?disabled="${this.nextDisabled}"
+					@click="${this._dispatchNextClicked}"></d2l-navigation-button-icon>
+			</div>
 		`;
 	}
 
@@ -95,4 +91,4 @@ class D2LNavigationIterator extends PolymerElement {
 
 }
 
-window.customElements.define('d2l-navigation-iterator', D2LNavigationIterator);
+window.customElements.define('d2l-navigation-iterator', NavigationIterator);

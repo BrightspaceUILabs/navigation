@@ -25,6 +25,11 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 			 */
 			icon: { type: String },
 			/**
+			 * Position of the icon.
+			 * @type {'start'|'end'}
+			 */
+			iconPosition: { attribute: 'icon-position', type: String },
+			/**
 			 * REQUIRED: Text for the button
 			 * @type {string}
 			 */
@@ -52,8 +57,10 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				border: none;
 				color: var(--d2l-color-ferrite);
 				cursor: pointer;
+				display: inline-flex;
 				font-family: inherit;
 				font-size: inherit;
+				gap: 6px;
 				height: 100%;
 				margin: 0;
 				min-height: 40px;
@@ -61,6 +68,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				overflow: visible;
 				padding: 0;
 				position: relative;
+				vertical-align: middle;
 				white-space: nowrap;
 			}
 			/* Firefox includes a hidden border which messes up button dimensions */
@@ -83,6 +91,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 	constructor() {
 		super();
 		this.disabled = false;
+		this.iconPosition = 'start';
 		this.textHidden = false;
 		this._buttonId = getUniqueId();
 	}
@@ -94,11 +103,13 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 	render() {
 		const { ariaLabel, id, text, tooltip } = this._getRenderSettings();
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
+		const icon = html`<d2l-icon icon="${this.icon}"></d2l-icon>`;
 		return html`
 			<button id="${ifDefined(id)}" ?disabled="${this.disabled}" aria-label="${ifDefined(ariaLabel)}">
 				${highlightBorder}
-				<d2l-icon icon="${this.icon}"></d2l-icon>
+				${this.iconPosition === 'start' ? icon : nothing}
 				${text}
+				${this.iconPosition === 'end' ? icon : nothing}
 			</button>
 			${tooltip}
 		`;

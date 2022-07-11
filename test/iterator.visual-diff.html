@@ -6,12 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<script type="module">
-			import '@brightspace-ui/core/components/icons/icon.js';
 			import '@brightspace-ui/core/components/typography/typography.js';
 			import '../../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
-			import '../../components/d2l-navigation-iterator/d2l-navigation-iterator-item.js';
-			import { forceFocusVisible } from '@brightspace-ui/core/helpers/focus.js';
-			window.forceFocusVisible = forceFocusVisible;
 		</script>
 		<style>
 			.wrapper {
@@ -21,36 +17,6 @@
 		</style>
 	</head>
 	<body class="d2l-typography">
-		<div class="visual-diff">
-			<div class="wrapper" id="item-default">
-				<d2l-navigation-iterator-item></d2l-navigation-iterator-item>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div class="wrapper" id="item-previous">
-				<d2l-navigation-iterator-item type="previous"></d2l-navigation-iterator-item>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div class="wrapper" id="item-next">
-				<d2l-navigation-iterator-item type="next"></d2l-navigation-iterator-item>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div class="wrapper" id="item-hide-text">
-				<d2l-navigation-iterator-item hide-text></d2l-navigation-iterator-item>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div class="wrapper" id="item-disabled">
-				<d2l-navigation-iterator-item disabled></d2l-navigation-iterator-item>
-			</div>
-		</div>
-		<div class="visual-diff">
-			<div class="wrapper" id="item-custom-text">
-				<d2l-navigation-iterator-item text="Prev"></d2l-navigation-iterator-item>
-			</div>
-		</div>
 		<div class="visual-diff">
 			<div class="wrapper" id="iterator-default" style="min-width: 300px;">
 				<d2l-navigation-iterator></d2l-navigation-iterator>
