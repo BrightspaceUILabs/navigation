@@ -29,7 +29,8 @@ describe('d2l-navigation-link', () => {
 		{ category: 'back', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'image', tests: ['normal', 'hover', 'focus'] }
+		{ category: 'image', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'image-no-href', tests: ['normal', 'hover'] }
 	].forEach((entry) => {
 		describe(entry.category, () => {
 			entry.tests.forEach((name) => {

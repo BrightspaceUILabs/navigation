@@ -51,12 +51,15 @@ class NavigationLinkImage extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		return html`
-			<a href="${this.href}" title="${this.text}">
-				<span class="d2l-navigation-highlight-border"></span>
-				<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>
-			</a>
-		`;
+		if (this.href) {
+			return html`
+				<a href="${this.href}" title="${this.text}">
+					<span class="d2l-navigation-highlight-border"></span>
+					<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>
+				</a>
+			`;
+		}
+		return html`<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}" title="${this.text}"></span>`;
 	}
 }
 
