@@ -86,10 +86,17 @@ describe('Links', () => {
 	describe('d2l-navigation-link-image', () => {
 
 		describe('accessibility', () => {
-			it('should pass all aXe tests', async() => {
+
+			it('default', async() => {
 				const el = await fixture(html`<d2l-navigation-link-image src="../demo/logo-image.png" href="https:/www.d2l.com" text="D2L"></d2l-navigation-link-image>`);
 				await expect(el).to.be.accessible();
 			});
+
+			it('no href', async() => {
+				const el = await fixture(html`<d2l-navigation-link-image src="../demo/logo-image.png" text="D2L"></d2l-navigation-link-image>`);
+				await expect(el).to.be.accessible();
+			});
+
 		});
 
 		describe('constructor', () => {
