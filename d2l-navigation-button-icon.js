@@ -105,7 +105,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
 		const icon = html`<d2l-icon icon="${this.icon}"></d2l-icon>`;
 		return html`
-			<button id="${ifDefined(id)}" ?disabled="${this.disabled}" aria-label="${ifDefined(ariaLabel)}">
+			<button id="${ifDefined(id)}" ?disabled="${this.disabled}" aria-label="${ifDefined(ariaLabel)}" type="button">
 				${highlightBorder}
 				${this.iconPosition === 'start' ? icon : nothing}
 				${text}
