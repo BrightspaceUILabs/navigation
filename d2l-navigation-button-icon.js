@@ -121,7 +121,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._buttonId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip for="${this._buttonId}" for-type="label">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip for="${this._buttonId}" for-type="label" close-on-click>${this.text}</d2l-tooltip>`
 			};
 		}
 		return {
