@@ -5,7 +5,7 @@ import { css, html, LitElement, nothing } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { highlightBorderStyles } from './d2l-navigation-styles.js';
+import { highlightBorderStyles, highlightButtonStyles } from './d2l-navigation-styles.js';
 
 /**
  * Navigation button with an icon and text.
@@ -43,47 +43,13 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 	}
 
 	static get styles() {
-		return [highlightBorderStyles, css`
+		return [highlightBorderStyles, highlightButtonStyles, css`
 			:host {
 				display: inline-block;
 				height: 100%;
 			}
 			:host([hidden]) {
 				display: none;
-			}
-			button {
-				align-items: center;
-				background: transparent;
-				border: none;
-				color: var(--d2l-color-ferrite);
-				cursor: pointer;
-				display: inline-flex;
-				font-family: inherit;
-				font-size: inherit;
-				gap: 6px;
-				height: 100%;
-				margin: 0;
-				min-height: 40px;
-				outline: none;
-				overflow: visible;
-				padding: 0;
-				position: relative;
-				vertical-align: middle;
-				white-space: nowrap;
-			}
-			/* Firefox includes a hidden border which messes up button dimensions */
-			button::-moz-focus-inner {
-				border: 0;
-			}
-			button:not([disabled]):hover,
-			button:not([disabled]):focus {
-				--d2l-icon-fill-color: var(--d2l-color-celestine);
-				color: var(--d2l-color-celestine);
-				outline: none;
-			}
-			button[disabled] {
-				cursor: default;
-				opacity: 0.5;
 			}
 		`];
 	}
@@ -121,7 +87,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._buttonId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip for="${this._buttonId}" for-type="label" close-on-click>${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="bottom">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {
