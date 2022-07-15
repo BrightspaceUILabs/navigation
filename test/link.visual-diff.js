@@ -28,8 +28,8 @@ describe('d2l-navigation-link', () => {
 		{ category: 'base', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'back', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'image', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden', tooltip: true, rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'image', tooltip: true, rectSelector: 'image-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'image-no-href', tests: ['normal', 'hover'] }
 	].forEach((entry) => {
 		describe(entry.category, () => {
@@ -40,7 +40,7 @@ describe('d2l-navigation-link', () => {
 
 					if (name === 'hover') {
 						await page.hover(selector);
-						if (entry.category === 'icon-text-hidden') {
+						if (entry.tooltip) {
 							await new Promise(resolve => setTimeout(resolve, 350));
 						}
 					}
