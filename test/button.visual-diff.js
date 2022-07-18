@@ -30,10 +30,14 @@ describe('d2l-navigation-button', () => {
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-flip', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'icon-text-hidden', rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'icon-text-hidden', tooltip: true, rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'notification-icon-off', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'notification-icon-on', tests: ['normal', 'hover', 'focus'] }
+		{ category: 'notification-icon-on', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'dropdown-icon-off', tooltip: true,  rectSelector: 'dropdown-icon-off-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'dropdown-icon-on', tooltip: true,  rectSelector: 'dropdown-icon-on-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'dropdown-icon-disabled', tooltip: true,  rectSelector: 'dropdown-icon-disabled-container', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'dropdown-custom', tests: ['normal', 'hover', 'focus'] }
 	].forEach((entry) => {
 		describe(entry.category, () => {
 			entry.tests.forEach((name) => {
@@ -43,7 +47,7 @@ describe('d2l-navigation-button', () => {
 
 					if (name === 'hover') {
 						await page.hover(selector);
-						if (entry.category === 'icon-text-hidden') {
+						if (entry.tooltip) {
 							await new Promise(resolve => setTimeout(resolve, 350));
 						}
 					}
