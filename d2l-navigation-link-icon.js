@@ -84,7 +84,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._linkId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {
