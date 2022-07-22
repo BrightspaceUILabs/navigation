@@ -1,6 +1,6 @@
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
-import { html, LitElement, nothing } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -38,7 +38,15 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 	}
 
 	static get styles() {
-		return [highlightBorderStyles, highlightLinkStyles, offscreenStyles];
+		return [highlightBorderStyles, highlightLinkStyles, offscreenStyles, css`
+			:host {
+				display: inline-block;
+				height: 100%;
+			}
+			:host([hidden]) {
+				display: none;
+			}
+		`];
 	}
 
 	constructor() {
