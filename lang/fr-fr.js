@@ -1,7 +1,7 @@
 /* eslint quotes: 0 */
 
 export default {
-	"back": "Précédent",
+	"back": "Retour",
 	"next": "Suivant",
 	"previous": "Précédent"
 };
