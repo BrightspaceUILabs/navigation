@@ -24,7 +24,6 @@ class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 				height: 3.3rem;
 				justify-content: space-between;
 				max-width: 20rem;
-				padding: 0 1.2rem;
 			}
 			:host([hidden]) {
 				display: none;
