@@ -17,13 +17,16 @@ class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 
 	static get styles() {
 		return [bodyCompactStyles, css`
-			.wrapper {
+			:host {
 				align-items: center;
 				display: flex;
 				height: 3.3rem;
 				justify-content: space-between;
 				max-width: 20rem;
 				padding: 0 1.2rem;
+			}
+			:host([hidden]) {
+				display: none;
 			}
 		`];
 	}
@@ -41,23 +44,23 @@ class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 		const previousText = this.previousText ? this.previousText : this.localize('previous');
 		const nextText = this.nextText ? this.nextText : this.localize('next');
 		return html`
-			<div class="wrapper d2l-body-compact">
-				<d2l-navigation-button-icon
-					icon="tier3:chevron-left-circle"
-					icon-position="start"
-					text="${previousText}"
-					?text-hidden="${this.hideText}"
-					?disabled="${this.previousDisabled}"
-					@click="${this._dispatchPreviousClicked}"></d2l-navigation-button-icon>
-				<slot></slot>
-				<d2l-navigation-button-icon
-					icon="tier3:chevron-right-circle"
-					icon-position="end"
-					text="${nextText}"
-					?text-hidden="${this.hideText}"
-					?disabled="${this.nextDisabled}"
-					@click="${this._dispatchNextClicked}"></d2l-navigation-button-icon>
-			</div>
+			<d2l-navigation-button-icon
+				class="d2l-body-compact"
+				icon="tier3:chevron-left-circle"
+				icon-position="start"
+				text="${previousText}"
+				?text-hidden="${this.hideText}"
+				?disabled="${this.previousDisabled}"
+				@click="${this._dispatchPreviousClicked}"></d2l-navigation-button-icon>
+			<slot class="d2l-body-compact"></slot>
+			<d2l-navigation-button-icon
+				class="d2l-body-compact"
+				icon="tier3:chevron-right-circle"
+				icon-position="end"
+				text="${nextText}"
+				?text-hidden="${this.hideText}"
+				?disabled="${this.nextDisabled}"
+				@click="${this._dispatchNextClicked}"></d2l-navigation-button-icon>
 		`;
 	}
 
