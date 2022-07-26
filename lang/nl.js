@@ -2,6 +2,6 @@
 
 export default {
 	"back": "Terug",
-	"next": "Next",
-	"previous": "Previous"
+	"next": "Volgende",
+	"previous": "Vorige"
 };

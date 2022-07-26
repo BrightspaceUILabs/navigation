@@ -2,6 +2,6 @@
 
 export default {
 	"back": "返回",
-	"next": "下一页",
-	"previous": "上一个"
+	"next": "下一个",
+	"previous": "上一步"
 };

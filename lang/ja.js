@@ -2,6 +2,6 @@
 
 export default {
 	"back": "戻る",
-	"next": "Next",
-	"previous": "Previous"
+	"next": "次へ",
+	"previous": "前へ"
 };
