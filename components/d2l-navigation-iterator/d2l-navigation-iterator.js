@@ -20,10 +20,10 @@ class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
 			:host {
 				align-items: center;
 				display: flex;
+				gap: 1.2rem;
 				height: 3.3rem;
 				justify-content: space-between;
 				max-width: 20rem;
-				padding: 0 1.2rem;
 			}
 			:host([hidden]) {
 				display: none;
