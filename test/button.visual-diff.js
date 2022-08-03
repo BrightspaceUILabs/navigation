@@ -32,8 +32,6 @@ describe('d2l-navigation-button', () => {
 		{ category: 'icon-text-flip', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden', tooltip: true, rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden-disabled', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'notification-icon-off', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'notification-icon-on', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'dropdown-icon-off', tooltip: true,  rectSelector: 'dropdown-icon-off-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'dropdown-icon-on', tooltip: true,  rectSelector: 'dropdown-icon-on-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'dropdown-icon-disabled', tooltip: true,  rectSelector: 'dropdown-icon-disabled-container', tests: ['normal', 'hover', 'focus'] },
