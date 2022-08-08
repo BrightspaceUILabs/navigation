@@ -26,10 +26,6 @@ class NavigationBand extends LitElement {
 				overflow-y: hidden;
 				scroll-behavior: smooth;
 			}
-			.d2l-navigation-scroll:before,
-			.d2l-navigation-scroll:after {
-				width: 2.439%;
-			}
 
 			.d2l-navigation-scroll[data-custom-scroll] {
 				/* Firefox Styles */
@@ -38,34 +34,35 @@ class NavigationBand extends LitElement {
 			}
 			/* Webkit Styles */
 			.d2l-navigation-scroll[data-custom-scroll]::-webkit-scrollbar {
-				border-radius: 8px;
 				background-color: var(--d2l-color-sylvite);
+				border-radius: 8px;
 				height: 9px;
 			}
 			.d2l-navigation-scroll[data-custom-scroll]::-webkit-scrollbar-thumb {
 				background-color: var(--d2l-color-galena);
-				border-radius: 8px;
 				border-bottom: 1px solid var(--d2l-color-sylvite);
+				border-radius: 8px;
 				border-top: 1px solid var(--d2l-color-sylvite);
 			}
 			/* Faded edges styles */
-			.d2l-navigation-scroll:before,
-			.d2l-navigation-scroll:after {
+			.d2l-navigation-scroll::before,
+			.d2l-navigation-scroll::after {
 				content: '';
-				position: absolute;
 				height: 100%;
 				max-height: var(--d2l-navigation-band-slot-height, 1.5rem);
 				pointer-events: none;
+				position: absolute;
 				top: 0;
+				width: 2.439%;
 				z-index: 2;
 			}
-			.d2l-navigation-scroll:before {
-				left: 0;
+			.d2l-navigation-scroll::before {
 				background: linear-gradient(to right, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
+				left: 0;
 			}
-			.d2l-navigation-scroll:after {
-				right: 0;
+			.d2l-navigation-scroll::after {
 				background: linear-gradient(to left, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
+				right: 0;
 			}
 			/* Styles to ensure the right padding is respected when scrolling */
 			.d2l-navigation-centerer {
@@ -78,14 +75,14 @@ class NavigationBand extends LitElement {
 				vertical-align: top;
 			}
 			@media (max-width: 615px) {
-				.d2l-navigation-scroll:before,
-				.d2l-navigation-scroll:after {
+				.d2l-navigation-scroll::before,
+				.d2l-navigation-scroll::after {
 					width: 15px;
 				}
 			}
 			@media (min-width: 1230px) {
-				.d2l-navigation-scroll:before,
-				.d2l-navigation-scroll:after {
+				.d2l-navigation-scroll::before,
+				.d2l-navigation-scroll::after {
 					width: 30px;
 				}
 			}
