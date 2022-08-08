@@ -16,20 +16,10 @@ export const navigationSharedStyle = html`
 				position: relative;
 			}
 
-			.d2l-navigation-scroll:before,
-			.d2l-navigation-scroll:after {
-				width: 2.439%;
-			}
-
 			@media (max-width: 615px) {
 				.d2l-navigation-gutters {
 					padding-left: 15px;
 					padding-right: 15px;
-				}
-
-				.d2l-navigation-scroll:before,
-				.d2l-navigation-scroll:after {
-					width: 15px;
 				}
 			}
 
@@ -37,11 +27,6 @@ export const navigationSharedStyle = html`
 				.d2l-navigation-gutters {
 					padding-left: 30px;
 					padding-right: 30px;
-				}
-
-				.d2l-navigation-scroll:before,
-				.d2l-navigation-scroll:after {
-					width: 30px;
 				}
 			}
 		</style>
