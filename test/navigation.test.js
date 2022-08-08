@@ -58,10 +58,10 @@ describe('Navigation', () => {
 				{ userAgent: 'Mobile', result: false },
 				{ userAgent: 'Windows Mac OS X', result: true }
 			].forEach((input) => {
-				it(`should set custom-scroll to "${input.result}" for user-agent "${input.userAgent}"`, async() => {
+				it(`should set data-custom-scroll to "${input.result}" for user-agent "${input.userAgent}"`, async() => {
 					Object.defineProperty(window.navigator, 'userAgent', { value: input.userAgent, configurable: true });
 					const el = await fixture(html`<d2l-navigation-band></d2l-navigation-band>`);
-					expect(el.customScroll).to.equal(input.result);
+					expect(el._customScroll).to.equal(input.result);
 				});
 			});
 
