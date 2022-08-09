@@ -53,7 +53,7 @@ class NavigationBand extends LitElement {
 				pointer-events: none;
 				position: absolute;
 				top: 0;
-				width: 2.439%;
+				width: 2.439%; /* should match gutter width */
 				z-index: 2;
 			}
 			.d2l-navigation-scroll::before {
