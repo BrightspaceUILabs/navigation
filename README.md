@@ -62,8 +62,7 @@ Please note that overridding the `left` slot will prevent the Back link from dis
 		<p>Economics 101</p>
 	</div>
 	<div slot="right">
-		<d2l-navigation-button text="A button">One Button</d2l-navigation-button>
-		<d2l-navigation-button text="Another button">Two Button</d2l-navigation-button>
+		...
 	</div>
 </d2l-navigation-immersive>
 ```
@@ -141,7 +140,7 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 
 ---
 
-### d2l-navigation-button & d2l-navigation-link
+### d2l-navigation-link
 
 (Placeholder for now)
 

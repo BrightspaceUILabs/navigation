@@ -18,7 +18,6 @@
     "/lang",
     "d2l-navigation-band.js",
     "d2l-navigation-button-icon.js",
-    "d2l-navigation-button.js",
     "d2l-navigation-dropdown-button-custom.js",
     "d2l-navigation-dropdown-button-icon.js",
     "d2l-navigation-highlight-styles.js",
@@ -56,7 +55,6 @@
     "stylelint": "^14"
   },
   "dependencies": {
-    "@brightspace-ui/button": "^6",
     "@brightspace-ui/core": "^2",
     "@brightspace-ui/localize-behavior": "^2",
     "@brightspace-ui/polymer-behaviors": "^3",

@@ -1,5 +1,4 @@
 import '@brightspace-ui/core/components/dropdown/dropdown-content.js';
-import '../d2l-navigation-button.js';
 import '../d2l-navigation-button-icon.js';
 import '../d2l-navigation-dropdown-button-custom.js';
 import '../d2l-navigation-dropdown-button-icon.js';
@@ -9,37 +8,6 @@ import { getComposedActiveElement } from '@brightspace-ui/core/helpers/focus.js'
 import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('Buttons', () => {
-
-	describe('d2l-navigation-button', () => {
-
-		describe('accessibility', () => {
-
-			it('default', async() => {
-				const el = await fixture(html`<d2l-navigation-button text="test"></d2l-navigation-button>`);
-				await expect(el).to.be.accessible();
-			});
-
-			it('disabled', async() => {
-				const el = await fixture(html`<d2l-navigation-button text="test" disabled></d2l-navigation-button>`);
-				await expect(el).to.be.accessible();
-			});
-
-			it('focused', async() => {
-				const el = await fixture(html`<d2l-navigation-button text="test"></d2l-navigation-button>`);
-				setTimeout(() => el.shadowRoot.querySelector('button').focus());
-				await oneEvent(el, 'focus');
-				await expect(el).to.be.accessible();
-			});
-
-		});
-
-		describe('constructor', () => {
-			it('should construct', () => {
-				runConstructor('d2l-navigation-button');
-			});
-		});
-
-	});
 
 	describe('d2l-navigation-dropdown-button-icon', () => {
 
