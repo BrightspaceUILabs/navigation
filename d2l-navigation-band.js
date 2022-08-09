@@ -1,36 +1,24 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
+import { css, html, LitElement } from 'lit';
+import { centererStyles, guttersStyles } from './d2l-navigation-styles.js';
 
-/**
-`d2l-navigation-band`
-Polymer-based web component for a solid colour band that runs along the top of the navigational header
+function useCustomScroll() {
+	const userAgent = navigator.userAgent.toLowerCase();
+	return (userAgent.indexOf('win') > -1 && userAgent.indexOf('mobile') === -1);
+}
 
-@demo demo/navigation-band.html
-*/
-class D2LNavigationBand extends PolymerElement {
+class NavigationBand extends LitElement {
 
-	static get properties() {
-		return {
-			customScroll: {
-				type: Boolean,
-				readOnly: true,
-				value: function() {
-					const userAgent = navigator.userAgent.toLowerCase();
-					return (userAgent.indexOf('win') > -1 && userAgent.indexOf('mobile') === -1);
-				}
-			}
-		};
-	}
-	static get template() {
-		const template = html`
-		${navigationSharedStyle}
-		<style>
+	static get styles() {
+		return [centererStyles, guttersStyles, css`
 			:host {
 				background: linear-gradient(180deg, var(--d2l-branding-primary-color, var(--d2l-color-celestine)) var(--d2l-navigation-band-slot-height, 1.5rem), #ffffff 0%);
 				display: block;
 				min-height: 4px;
 				position: relative; /* Needed for Firefox */
+			}
+			:host([hidden]) {
+				display: none;
 			}
 
 			.d2l-navigation-scroll {
@@ -39,47 +27,42 @@ class D2LNavigationBand extends PolymerElement {
 				scroll-behavior: smooth;
 			}
 
-			.d2l-navigation-scroll[custom-scroll] {
+			.d2l-navigation-scroll[data-custom-scroll] {
 				/* Firefox Styles */
 				scrollbar-color: var(--d2l-color-galena) var(--d2l-color-sylvite);
 				scrollbar-width: thin;
-
-				/* IE Styles */
-				scrollbar-face-color: var(--d2l-color-galena);
-				scrollbar-arrow-color: var(--d2l-color-sylvite);
-				scrollbar-track-color: var(--d2l-color-sylvite);
-				scrollbar-shadow-color: var(--d2l-color-sylvite);
 			}
 			/* Webkit Styles */
-			.d2l-navigation-scroll[custom-scroll]::-webkit-scrollbar {
-				border-radius: 8px;
+			.d2l-navigation-scroll[data-custom-scroll]::-webkit-scrollbar {
 				background-color: var(--d2l-color-sylvite);
+				border-radius: 8px;
 				height: 9px;
 			}
-			.d2l-navigation-scroll[custom-scroll]::-webkit-scrollbar-thumb {
+			.d2l-navigation-scroll[data-custom-scroll]::-webkit-scrollbar-thumb {
 				background-color: var(--d2l-color-galena);
-				border-radius: 8px;
 				border-bottom: 1px solid var(--d2l-color-sylvite);
+				border-radius: 8px;
 				border-top: 1px solid var(--d2l-color-sylvite);
 			}
 			/* Faded edges styles */
-			.d2l-navigation-scroll:before,
-			.d2l-navigation-scroll:after {
+			.d2l-navigation-scroll::before,
+			.d2l-navigation-scroll::after {
 				content: '';
-				position: absolute;
 				height: 100%;
 				max-height: var(--d2l-navigation-band-slot-height, 1.5rem);
 				pointer-events: none;
+				position: absolute;
 				top: 0;
+				width: 2.439%; /* should match gutter width */
 				z-index: 2;
 			}
-			.d2l-navigation-scroll:before {
-				left: 0;
+			.d2l-navigation-scroll::before {
 				background: linear-gradient(to right, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
+				left: 0;
 			}
-			.d2l-navigation-scroll:after {
-				right: 0;
+			.d2l-navigation-scroll::after {
 				background: linear-gradient(to left, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
+				right: 0;
 			}
 			/* Styles to ensure the right padding is respected when scrolling */
 			.d2l-navigation-centerer {
@@ -91,17 +74,24 @@ class D2LNavigationBand extends PolymerElement {
 				position: unset;
 				vertical-align: top;
 			}
-		</style>
-		<div class="d2l-navigation-centerer">
-			<div class="d2l-navigation-scroll" custom-scroll$=[[customScroll]]>
-				<div class="d2l-navigation-gutters">
-					<slot></slot>
-				</div>
-			</div>
-		</div>
-		`;
-		template.setAttribute('strip-whitespace', '');
-		return template;
+			@media (max-width: 615px) {
+				.d2l-navigation-scroll::before,
+				.d2l-navigation-scroll::after {
+					width: 15px;
+				}
+			}
+			@media (min-width: 1230px) {
+				.d2l-navigation-scroll::before,
+				.d2l-navigation-scroll::after {
+					width: 30px;
+				}
+			}
+		`];
+	}
+
+	constructor() {
+		super();
+		this._customScroll = useCustomScroll();
 	}
 
 	connectedCallback() {
@@ -112,6 +102,18 @@ class D2LNavigationBand extends PolymerElement {
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		this.removeEventListener('d2l-navigation-band-slot-scroll-request', this._handleScrollRequest);
+	}
+
+	render() {
+		return html`
+			<div class="d2l-navigation-centerer">
+				<div class="d2l-navigation-scroll" ?data-custom-scroll="${this._customScroll}">
+					<div class="d2l-navigation-gutters">
+						<slot></slot>
+					</div>
+				</div>
+			</div>
+		`;
 	}
 
 	_handleScrollRequest(e) {
@@ -127,4 +129,5 @@ class D2LNavigationBand extends PolymerElement {
 		});
 	}
 }
-customElements.define('d2l-navigation-band', D2LNavigationBand);
+
+customElements.define('d2l-navigation-band', NavigationBand);
