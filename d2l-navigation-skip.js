@@ -8,7 +8,7 @@ class NavigationSkip extends LocalizeNavigationElement(RtlMixin(LitElement)) {
 	static get styles() {
 		return css`
 			a {
-				left: -1000px;
+				left: -10000px;
 				overflow: hidden;
 				position: absolute;
 				width: 1px;
