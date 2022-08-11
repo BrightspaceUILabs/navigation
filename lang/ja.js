@@ -3,5 +3,6 @@
 export default {
 	"back": "戻る",
 	"next": "次へ",
-	"previous": "前へ"
+	"previous": "前へ",
+	"skipNav": "メインコンテンツへスキップ"
 };

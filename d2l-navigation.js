@@ -1,5 +1,7 @@
 import './d2l-navigation-band.js';
-import { css, html, LitElement } from 'lit';
+import './d2l-navigation-skip.js';
+import { css, html, LitElement, nothing } from 'lit';
+import { getNextFocusable } from '@brightspace-ui/core/helpers/focus.js';
 
 /**
  * Primary navigation wrapper component.
@@ -7,6 +9,12 @@ import { css, html, LitElement } from 'lit';
  * @slot navigation-band - Content placed inside band
  */
 class Navigation extends LitElement {
+
+	static get properties() {
+		return {
+			hasSkipNav: { attribute: 'has-skip-nav', type: Boolean }
+		};
+	}
 
 	static get styles() {
 		return css`
@@ -26,12 +34,25 @@ class Navigation extends LitElement {
 		`;
 	}
 
+	constructor() {
+		super();
+		this.hasSkipNav = false;
+	}
+
 	render() {
+		const skipNav = this.hasSkipNav ? html`<d2l-navigation-skip @d2l-navigation-skip-fail="${this._handleSkipNavFail}"></d2l-navigation-skip>` : nothing;
 		return html`
-			<d2l-navigation-band><slot name="navigation-band"></slot></d2l-navigation-band>
+			${skipNav}<d2l-navigation-band><slot name="navigation-band"></slot></d2l-navigation-band>
 			<slot></slot>
 			<div class="d2l-navigation-shadow-drop-border"></div>
 		`;
+	}
+
+	_handleSkipNavFail() {
+		const nextFocusable = getNextFocusable(this.shadowRoot.querySelector('.d2l-navigation-shadow-drop-border'));
+		if (nextFocusable) {
+			nextFocusable.focus();
+		}
 	}
 
 }
