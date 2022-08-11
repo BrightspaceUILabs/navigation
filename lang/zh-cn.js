@@ -3,5 +3,6 @@
 export default {
 	"back": "返回",
 	"next": "下一个",
-	"previous": "上一步"
+	"previous": "上一步",
+	"skipNav": "跳到主目录"
 };

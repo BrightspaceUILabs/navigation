@@ -3,5 +3,6 @@
 export default {
 	"back": "Voltar",
 	"next": "Próximo",
-	"previous": "Anterior"
+	"previous": "Anterior",
+	"skipNav": "passar para conteúdo principal"
 };

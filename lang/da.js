@@ -3,5 +3,6 @@
 export default {
 	"back": "Tilbage",
 	"next": "Næste",
-	"previous": "Forrige"
+	"previous": "Forrige",
+	"skipNav": "spring videre til hovedindhold"
 };

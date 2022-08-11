@@ -3,5 +3,6 @@
 export default {
 	"back": "वापस जाएँ",
 	"next": "अगला",
-	"previous": "पिछला"
+	"previous": "पिछला",
+	"skipNav": "मुख्य सामग्री में जाएँ"
 };
