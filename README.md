@@ -160,6 +160,7 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 | `disabled` | Boolean | Disables the button |
 | `text` | String, required | Text for the button |
 | `icon` | String | Preset icon key (e.g. `tier1:gear`) |
+| `no-highlight-border` | Boolean | Visually hides the highlight border when hovered/focused |
 | `text-hidden` | Boolean | Visually hides the text |
 
 ---

@@ -3,5 +3,6 @@
 export default {
 	"back": "Geri",
 	"next": "Sonraki",
-	"previous": "Önceki"
+	"previous": "Önceki",
+	"skipNav": "ana içeriğe atla"
 };

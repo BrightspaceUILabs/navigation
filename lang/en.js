@@ -3,5 +3,6 @@
 export default {
 	"back": "Back",
 	"next": "Next",
-	"previous": "Previous"
+	"previous": "Previous",
+	"skipNav": "skip to main content"
 };

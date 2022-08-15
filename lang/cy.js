@@ -3,5 +3,6 @@
 export default {
 	"back": "Yn ôl",
 	"next": "Nesaf",
-	"previous": "Blaenorol"
+	"previous": "Blaenorol",
+	"skipNav": "neidio i’r prif gynnwys"
 };

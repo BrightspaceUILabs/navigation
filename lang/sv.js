@@ -3,5 +3,6 @@
 export default {
 	"back": "Tillbaka",
 	"next": "Nästa",
-	"previous": "Föregående"
+	"previous": "Föregående",
+	"skipNav": "fortsätt till huvudinnehåll"
 };

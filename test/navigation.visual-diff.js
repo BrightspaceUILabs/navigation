@@ -38,6 +38,19 @@ describe('d2l-navigation', () => {
 		});
 	});
 
+	it('skip-nav', async function() {
+		await page.$eval('#navigation-default', (elem) => {
+			const skipNav = elem.shadowRoot.querySelector('d2l-navigation-skip');
+			skipNav.shadowRoot.querySelector('a').focus();
+		});
+		// otherwise lang term is sometimes not loaded
+		await page.evaluate(() => {
+			return new Promise(resolve => requestAnimationFrame(resolve));
+		});
+		const rect = await visualDiff.getRect(page, '#navigation-default');
+		await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
+	});
+
 	[
 		800, 767, 615
 	].forEach((width) => {
