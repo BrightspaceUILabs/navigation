@@ -25,8 +25,6 @@ describe('d2l-navigation-button', () => {
 	after(async() => await browser.close());
 
 	[
-		{ category: 'default', tests: ['normal', 'hover', 'focus'] },
-		{ category: 'disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-disabled', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-no-highlight-border', tests: ['normal', 'hover', 'focus'] },
