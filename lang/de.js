@@ -4,5 +4,5 @@ export default {
 	"back": "Zurück",
 	"next": "Weiter",
 	"previous": "Zurück",
-	"skipNav": "Zum Hauptinhalt springen"
+	"skipNav": "zum Hauptinhalt springen"
 };
