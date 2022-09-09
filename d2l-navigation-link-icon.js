@@ -33,7 +33,12 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 			 * Visually hides the text but still accessible
 			 * @type {boolean}
 			 */
-			textHidden: { attribute: 'text-hidden', type: Boolean }
+			textHidden: { attribute: 'text-hidden', type: Boolean },
+			/**
+			 * Offset of the tooltip
+			 * @type {Number}
+			 */
+			tooltipOffset: { attribute: 'tooltip-offset', type: Number }
 		};
 	}
 
@@ -92,7 +97,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._linkId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {
