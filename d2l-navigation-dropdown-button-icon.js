@@ -15,7 +15,8 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 			icon: { type: String },
 			hasNotification: { attribute: 'has-notification', reflect: true, type: Boolean },
 			text: { type: String },
-			notificationText: { attribute: 'notification-text', type: String }
+			notificationText: { attribute: 'notification-text', type: String },
+			tooltipOffset: { attribute: 'tooltip-offset', type: Number }
 		};
 	}
 
@@ -50,7 +51,7 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 	render() {
 		const { ariaDescribedBy, ariaDescription, contents } = this._getRenderSettings();
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
-		const tooltip = !this.dropdownOpened ? html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="bottom">${this.text}</d2l-tooltip>` : nothing;
+		const tooltip = !this.dropdownOpened ? html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>` : nothing;
 		return html`
 			<button
 				aria-describedby="${ifDefined(ariaDescribedBy)}"
