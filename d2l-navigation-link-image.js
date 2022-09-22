@@ -1,5 +1,5 @@
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -62,7 +62,7 @@ class NavigationLinkImage extends FocusMixin(LitElement) {
 					<span class="d2l-navigation-highlight-border"></span>
 					<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>
 				</a>
-				<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>
+				${this.text ? html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>` : nothing}
 			`;
 		}
 		return html`<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>`;
