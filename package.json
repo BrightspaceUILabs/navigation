@@ -10,8 +10,8 @@
     "lint:style": "stylelint \"**/*.{js,html}\"",
     "start": "web-dev-server --node-resolve --watch --open --app-index demo/index.html",
     "test": "npm run lint && npm run test:headless",
-    "test:headless": "web-test-runner --files ./test/**/*.test.js --node-resolve",
-    "test:headless:watch": "web-test-runner  --files ./test/**/*.test.js --node-resolve --watch"
+    "test:headless": "web-test-runner --files \"./test/**/*.test.js\" --node-resolve",
+    "test:headless:watch": "web-test-runner  --files \"./test/**/*.test.js\" --node-resolve --watch"
   },
   "files": [
     "/components",
