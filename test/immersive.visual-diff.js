@@ -1,7 +1,5 @@
-/* eslint-disable no-invalid-this */
-/* global forceFocusVisible */
+import { focusWithKeyboard, VisualDiff } from '@brightspace-ui/visual-diff';
 import puppeteer from 'puppeteer';
-import { VisualDiff } from '@brightspace-ui/visual-diff';
 
 async function initTest(page, name) {
 	await page.$eval(`#${name}`, (template) => {
@@ -78,7 +76,7 @@ describe('d2l-navigation-immersive', () => {
 
 		it('back-button', async function() {
 			await initTest(page, 'normal');
-			await page.$eval('d2l-navigation-immersive', (elem) => forceFocusVisible(elem));
+			await focusWithKeyboard(page, 'd2l-navigation-immersive');
 			await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
 		});
 

@@ -1,6 +1,5 @@
-/* eslint-disable no-invalid-this */
+import { focusWithKeyboard, VisualDiff } from '@brightspace-ui/visual-diff';
 import puppeteer from 'puppeteer';
-import { VisualDiff } from '@brightspace-ui/visual-diff';
 
 describe('d2l-navigation', () => {
 	const visualDiff = new VisualDiff('d2l-navigation', import.meta.url);
@@ -39,10 +38,7 @@ describe('d2l-navigation', () => {
 	});
 
 	it('skip-nav', async function() {
-		await page.$eval('#navigation-default', (elem) => {
-			const skipNav = elem.shadowRoot.querySelector('d2l-navigation-skip');
-			skipNav.shadowRoot.querySelector('a').focus();
-		});
+		await focusWithKeyboard(page, ['#navigation-default', 'd2l-navigation-skip', 'a']);
 		// otherwise lang term is sometimes not loaded
 		await page.evaluate(() => {
 			return new Promise(resolve => requestAnimationFrame(resolve));

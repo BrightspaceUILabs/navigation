@@ -1,7 +1,5 @@
-/* eslint-disable no-invalid-this */
-/* global forceFocusVisible */
+import { focusWithKeyboard, VisualDiff } from '@brightspace-ui/visual-diff';
 import puppeteer from 'puppeteer';
-import { VisualDiff } from '@brightspace-ui/visual-diff';
 
 describe('d2l-navigation-link', () => {
 	const visualDiff = new VisualDiff('d2l-navigation-link', import.meta.url);
@@ -44,7 +42,7 @@ describe('d2l-navigation-link', () => {
 							await new Promise(resolve => setTimeout(resolve, 350));
 						}
 					}
-					else if (name === 'focus') await page.$eval(selector, (elem) => forceFocusVisible(elem));
+					else if (name === 'focus') await focusWithKeyboard(page, selector);
 
 					const rect = await visualDiff.getRect(page, rectSelector);
 					await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
