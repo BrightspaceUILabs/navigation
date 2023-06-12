@@ -23,7 +23,7 @@ describe('d2l-navigation-link', () => {
 	after(async() => await browser.close());
 
 	[
-		{ category: 'base', tests: ['normal', 'hover', 'focus'] },
+		{ category: 'base', rectSelector: 'base-container', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'back', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text', tests: ['normal', 'hover', 'focus'] },
 		{ category: 'icon-text-hidden', tooltip: true, rectSelector: 'icon-text-hidden-container', tests: ['normal', 'hover', 'focus'] },

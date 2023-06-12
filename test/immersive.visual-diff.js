@@ -76,7 +76,7 @@ describe('d2l-navigation-immersive', () => {
 
 		it('back-button', async function() {
 			await initTest(page, 'normal');
-			await focusWithKeyboard(page, 'd2l-navigation-immersive', 'd2l-navigation-link-back');
+			await focusWithKeyboard(page, ['d2l-navigation-immersive', 'd2l-navigation-link-back']);
 			await visualDiff.screenshotAndCompare(page, this.test.fullTitle());
 		});
 
