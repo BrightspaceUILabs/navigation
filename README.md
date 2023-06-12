@@ -168,7 +168,7 @@ Add the `d2l-navigation-main-footer` component, and provide elements for the `ma
 | `icon` | String | Preset icon key (e.g. `tier1:gear`) |
 | `no-highlight-border` | Boolean | Visually hides the highlight border when hovered/focused |
 | `text-hidden` | Boolean | Visually hides the text |
-| `tooltip-location` | String | Location of the tooltip ( top\|bottom\|left\|right ); default is bottom |
+| `tooltip-position` | String | Position of the tooltip ( top\|bottom\|left\|right ); default is bottom |
 
 ---
 
