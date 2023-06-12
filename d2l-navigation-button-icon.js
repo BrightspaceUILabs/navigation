@@ -45,15 +45,15 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 			 */
 			textHidden: { attribute: 'text-hidden', type: Boolean },
 			/**
-			 * Location of the tooltip
-			 * @type {'top'|'bottom'|'left'|'right'}
-			 */
-			tooltipLocation: { attribute: 'tooltip-location', type: String },
-			/**
 			 * Offset of the tooltip
 			 * @type {Number}
 			 */
-			tooltipOffset: { attribute: 'tooltip-offset', type: Number }
+			tooltipOffset: { attribute: 'tooltip-offset', type: Number },
+			/**
+			 * Position of the tooltip
+			 * @type {'top'|'bottom'|'left'|'right'}
+			 */
+			tooltipPosition: { attribute: 'tooltip-position', type: String }
 		};
 	}
 
@@ -76,7 +76,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 		this.noHighlightBorder = false;
 		this.textHidden = false;
 		this._buttonId = getUniqueId();
-		this.tooltipLocation = 'bottom';
+		this.tooltipPosition = 'bottom';
 	}
 
 	static get focusElementSelector() {
@@ -104,7 +104,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._buttonId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="${this.tooltipLocation}" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="${this.tooltipPosition}" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {
