@@ -20,8 +20,8 @@ describe('d2l-navigation', () => {
 			template: html`
 				<d2l-navigation>
 					<d2l-navigation-main-header>
-						<div slot="left" style="background-color: pink;">Header Left</div>
-						<div slot="right" style="background-color: lightblue;">Header Right</div>
+						<div slot="left" class="d2l-navigation-header-left" style="background-color: pink;">Header Left</div>
+						<div slot="right" class="d2l-navigation-header-right" style="background-color: lightblue;">Header Right</div>
 					</d2l-navigation-main-header>
 					<d2l-navigation-main-footer>
 						<div slot="main">Footer</div>
@@ -34,8 +34,8 @@ describe('d2l-navigation', () => {
 			template: html`
 				<d2l-navigation>
 					<d2l-navigation-main-header>
-						<div slot="left" style="background-color: pink;">Header Left</div>
-						<div slot="right" style="background-color: lightblue;">Header Right</div>
+						<div slot="left" class="d2l-navigation-header-left" style="background-color: pink;">Header Left</div>
+						<div slot="right" class="d2l-navigation-header-right" style="background-color: lightblue;">Header Right</div>
 					</d2l-navigation-main-header>
 				</d2l-navigation>
 			`
@@ -57,8 +57,8 @@ describe('d2l-navigation', () => {
 		it(`main-header-${width}`, async() => {
 			const elem = await fixture(html`
 				<d2l-navigation-main-header>
-					<div slot="left" style="background-color: pink;">Header Left. As the width changes, it shrinks as needed.</div>
-					<div slot="right" style="background-color: lightblue;">Header Right. It doesn't shrink.</div>
+					<div slot="left" class="d2l-navigation-header-left" style="background-color: pink;">Header Left. As the width changes, it shrinks as needed.</div>
+					<div slot="right" class="d2l-navigation-header-right" style="background-color: lightblue;">Header Right. It doesn't shrink.</div>
 				</d2l-navigation-main-header>
 			`, { viewport: { width } });
 			await expect(elem).to.be.golden();
