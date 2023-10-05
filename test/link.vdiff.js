@@ -36,23 +36,6 @@ describe('d2l-navigation-link', () => {
 					await expect(elem).to.be.golden();
 				});
 			}
-			/*entry.tests.forEach((name) => {
-				it(name, async function() {
-					const selector = `#${entry.category}`;
-					const rectSelector = entry.rectSelector ? `#${entry.rectSelector}` : selector;
-
-					if (name === 'hover') {
-						await page.hover(selector);
-						if (entry.tooltip) {
-							await new Promise(resolve => setTimeout(resolve, 350));
-						}
-					}
-					else if (name === 'focus') await focusWithKeyboard(page, selector);
-
-					const rect = await visualDiff.getRect(page, rectSelector);
-					await visualDiff.screenshotAndCompare(page, this.test.fullTitle(), { clip: rect });
-				});
-			});*/
 		});
 	});
 
