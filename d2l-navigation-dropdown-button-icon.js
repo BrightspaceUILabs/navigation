@@ -2,11 +2,11 @@ import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import './d2l-navigation-notification-icon.js';
 import { css, html, LitElement, nothing } from 'lit';
+import { highlightBorderStyles, highlightButtonStyles } from './d2l-navigation-styles.js';
 import { DropdownOpenerMixin } from '@brightspace-ui/core/components/dropdown/dropdown-opener-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
-import { highlightBorderStyles, highlightButtonStyles } from './d2l-navigation-styles.js';
 
 class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 
@@ -51,7 +51,7 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 	render() {
 		const { ariaDescribedBy, ariaDescription, contents } = this._getRenderSettings();
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
-		const tooltip = !this.dropdownOpened ? html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>` : nothing;
+		const tooltip = !this.dropdownOpened ? html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}" class="vdiff-target">${this.text}</d2l-tooltip>` : nothing;
 		return html`
 			<button
 				aria-describedby="${ifDefined(ariaDescribedBy)}"

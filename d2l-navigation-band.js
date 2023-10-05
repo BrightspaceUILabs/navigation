@@ -1,6 +1,6 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import { css, html, LitElement } from 'lit';
 import { centererStyles, guttersStyles } from './d2l-navigation-styles.js';
+import { css, html, LitElement } from 'lit';
 
 function useCustomScroll() {
 	const userAgent = navigator.userAgent.toLowerCase();

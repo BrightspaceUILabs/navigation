@@ -2,10 +2,10 @@ import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import { css, html, LitElement, nothing } from 'lit';
+import { highlightBorderStyles, highlightButtonStyles } from './d2l-navigation-styles.js';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { highlightBorderStyles, highlightButtonStyles } from './d2l-navigation-styles.js';
 
 /**
  * Navigation button with an icon and text.
@@ -104,7 +104,7 @@ class NavigationButtonIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._buttonId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="${this.tooltipPosition}" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip close-on-click for="${this._buttonId}" for-type="label" position="${this.tooltipPosition}" offset="${ifDefined(this.tooltipOffset)}" class="vdiff-target">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {

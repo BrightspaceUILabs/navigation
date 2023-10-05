@@ -1,13 +1,13 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import 'fastdom/fastdom.js';
-import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
+import 'fastdom/fastdom.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
-import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
-import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { DirMixin } from '@polymer/polymer/lib/mixins/dir-mixin.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
+import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 
 /**
 `d2l-navigation-immersive`
@@ -245,20 +245,20 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 			return;
 		}
 
-		var entry = entries[0];
-		var container = dom(this.root).querySelector(slotContainerQuerySelector);
+		const entry = entries[0];
+		const container = dom(this.root).querySelector(slotContainerQuerySelector);
 
 		if (entry.contentRect.height < 1) {
 			// nothing in slot
 			if (!container.classList.contains(containerClass)) {
-				fastdom.mutate(function() {
+				fastdom.mutate(() => {
 					container.classList.add(containerClass);
 				});
 			}
 		} else {
 			// stuff in slot
 			if (container.classList.contains(containerClass)) {
-				fastdom.mutate(function() {
+				fastdom.mutate(() => {
 					container.classList.remove(containerClass);
 				});
 			}

@@ -6,7 +6,7 @@ import { LocalizeNavigationElement } from './components/localize-navigation-elem
 class NavigationLinkBack extends LocalizeNavigationElement(FocusMixin(LitElement)) {
 
 	static get properties() {
-		return  {
+		return {
 			text: { type: String },
 			href: { type: String }
 		};
@@ -29,7 +29,7 @@ class NavigationLinkBack extends LocalizeNavigationElement(FocusMixin(LitElement
 	}
 
 	render() {
-		const href = this.href ?  this.href : 'javascript:void(0);'; // backwards-compatible for uses before missing "href" threw exception
+		const href = this.href ? this.href : 'javascript:void(0);'; // backwards-compatible for uses before missing "href" threw exception
 		const text = this.text ? this.text : this.localize('back');
 		return html`<d2l-navigation-link-icon href="${href}" icon="tier1:chevron-left" text="${text}"></d2l-navigation-link-icon>`;
 	}
