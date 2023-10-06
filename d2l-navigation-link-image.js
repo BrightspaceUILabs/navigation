@@ -56,7 +56,7 @@ class NavigationLinkImage extends FocusMixin(LitElement) {
 	}
 
 	render() {
-		const image = /*html`<img src="${this.src}" alt="${this.text}">`*/html`image here`;
+		const image = html`<img src="${this.src}" alt="${this.text}">`;
 		if (this.href) {
 			return html`
 				<a href="${this.href}" id="${this._linkId}">
