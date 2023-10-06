@@ -4,14 +4,13 @@
   "type": "module",
   "repository": "https://github.com/BrightspaceUILabs/navigation.git",
   "scripts": {
-    "lint": "npm run lint:eslint && npm run lint:lit && npm run lint:style",
+    "lint": "npm run lint:eslint && npm run lint:style",
     "lint:eslint": "eslint . --ext .js,.html",
-    "lint:lit": "lit-analyzer d2l-navigation.js d2l-navigation-button-icon.js d2l-navigation-dropdown-button-custom.js d2l-navigation-dropdown-button-icon.js d2l-navigation-link-back.js d2l-navigation-link-icon.js d2l-navigation-link-image.js d2l-navigation-notification-icon.js d2l-navigation-separator.js d2l-navigation-skip.js ./components/d2l-navigation-iterator/d2l-navigation-iterator.js --strict --rules.no-unknown-tag-name off",
     "lint:style": "stylelint \"**/*.{js,html}\"",
     "start": "web-dev-server --node-resolve --watch --open --app-index demo/index.html",
-    "test": "npm run lint && npm run test:headless",
-    "test:headless": "web-test-runner --files \"./test/**/*.test.js\" --node-resolve",
-    "test:headless:watch": "web-test-runner  --files \"./test/**/*.test.js\" --node-resolve --watch"
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "d2l-test-runner",
+    "test:vdiff": "d2l-test-runner vdiff"
   },
   "files": [
     "/components",
@@ -42,18 +41,12 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@brightspace-ui/stylelint-config": "^0.3",
-    "@open-wc/testing": "^3",
-    "@web/dev-server": "^0.1",
-    "@web/test-runner": "^0.13",
+    "@brightspace-ui/stylelint-config": "^0.8",
+    "@brightspace-ui/testing": "^1",
+    "@web/dev-server": "^0.3",
     "eslint": "^8",
-    "eslint-config-brightspace": "^0.17",
-    "eslint-plugin-html": "^6",
-    "eslint-plugin-import": "^2",
-    "eslint-plugin-lit": "^1",
-    "eslint-plugin-sort-class-members": "^1",
-    "lit-analyzer": "^1",
-    "stylelint": "^14"
+    "eslint-config-brightspace": "^0.25",
+    "stylelint": "^15"
   },
   "dependencies": {
     "@brightspace-ui/core": "^2",

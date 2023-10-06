@@ -1,6 +1,6 @@
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
 `d2l-navigation-main-header`
 Polymer-based web component for the larger, upper section of the navigational element

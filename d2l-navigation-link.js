@@ -1,7 +1,6 @@
 import '@brightspace-ui/polymer-behaviors/d2l-focusable-behavior.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { highlightStyles } from './d2l-navigation-highlight-styles.js';
-
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 /**
 `d2l-navigation-link`

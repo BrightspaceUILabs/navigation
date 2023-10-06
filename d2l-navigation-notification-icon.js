@@ -1,6 +1,6 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 import { css, html, LitElement } from 'lit';
+import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 
 class NavigationNotificationIcon extends RtlMixin(LitElement) {
 
