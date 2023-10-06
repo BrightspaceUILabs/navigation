@@ -1,7 +1,7 @@
 name: vdiff
 on: pull_request
 jobs:
-  build:
+  vdiff:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
