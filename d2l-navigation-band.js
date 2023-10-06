@@ -45,9 +45,8 @@ class NavigationBand extends LitElement {
 				border-top: 1px solid var(--d2l-color-sylvite);
 			}
 			/* Faded edges styles */
-			.d2l-navigation-scroll::before,
-			.d2l-navigation-scroll::after {
-				content: '';
+			.d2l-navigation-scroll-before,
+			.d2l-navigation-scroll-after {
 				height: 100%;
 				max-height: var(--d2l-navigation-band-slot-height, 1.5rem);
 				pointer-events: none;
@@ -56,11 +55,11 @@ class NavigationBand extends LitElement {
 				width: 2.439%; /* should match gutter width */
 				z-index: 2;
 			}
-			.d2l-navigation-scroll::before {
+			.d2l-navigation-scroll-before {
 				background: linear-gradient(to right, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
 				left: 0;
 			}
-			.d2l-navigation-scroll::after {
+			.d2l-navigation-scroll-after {
 				background: linear-gradient(to left, var(--d2l-branding-primary-color, var(--d2l-color-celestine)), transparent);
 				right: 0;
 			}
@@ -75,14 +74,14 @@ class NavigationBand extends LitElement {
 				vertical-align: top;
 			}
 			@media (max-width: 615px) {
-				.d2l-navigation-scroll::before,
-				.d2l-navigation-scroll::after {
+				.d2l-navigation-scroll-before,
+				.d2l-navigation-scroll-after {
 					width: 15px;
 				}
 			}
 			@media (min-width: 1230px) {
-				.d2l-navigation-scroll::before,
-				.d2l-navigation-scroll::after {
+				.d2l-navigation-scroll-before,
+				.d2l-navigation-scroll-after {
 					width: 30px;
 				}
 			}
@@ -108,6 +107,8 @@ class NavigationBand extends LitElement {
 		return html`
 			<div class="d2l-navigation-centerer">
 				<div class="d2l-navigation-scroll" ?data-custom-scroll="${this._customScroll}">
+					<div class="d2l-navigation-scroll-before"></div>
+					<div class="d2l-navigation-scroll-after"></div>
 					<div class="d2l-navigation-gutters">
 						<slot></slot>
 					</div>
