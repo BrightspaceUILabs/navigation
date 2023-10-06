@@ -70,14 +70,22 @@ describe('d2l-navigation-button', () => {
 			});
 
 			it('hover', async() => {
-				await hoverElem(elem);
-				if (tooltip) await oneEvent(elem, 'd2l-tooltip-show');
+				if (tooltip) {
+					hoverElem(elem);
+					await oneEvent(elem, 'd2l-tooltip-show');
+				} else {
+					await hoverElem(elem);
+				}
 				await expect(elem).to.be.golden();
 			});
 
 			it('focus', async() => {
-				await focusElem(elem);
-				if (tooltip) await oneEvent(elem, 'd2l-tooltip-show');
+				if (tooltip) {
+					focusElem(elem);
+					await oneEvent(elem, 'd2l-tooltip-show');
+				} else {
+					await focusElem(elem);
+				}
 				await expect(elem).to.be.golden();
 			});
 
