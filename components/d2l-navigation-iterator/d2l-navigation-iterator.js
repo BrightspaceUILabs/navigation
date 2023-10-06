@@ -1,9 +1,9 @@
+import '../../d2l-navigation-button-icon.js';
 import { css, html, LitElement } from 'lit';
 import { bodyCompactStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { LocalizeNavigationElement } from '../localize-navigation-element.js';
-import '../../d2l-navigation-button-icon.js';
 
-class NavigationIterator extends  LocalizeNavigationElement(LitElement) {
+class NavigationIterator extends LocalizeNavigationElement(LitElement) {
 
 	static get properties() {
 		return {

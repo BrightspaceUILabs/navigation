@@ -1,11 +1,11 @@
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import { css, html, LitElement, nothing } from 'lit';
+import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
-import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
 
 /**
  * Navigation link with an icon and text.
@@ -97,7 +97,7 @@ class NavigationLinkIcon extends FocusMixin(LitElement) {
 				ariaLabel: this.text,
 				id: this._linkId,
 				text: nothing,
-				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>`
+				tooltip: html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}" class="vdiff-target">${this.text}</d2l-tooltip>`
 			};
 		}
 		return {

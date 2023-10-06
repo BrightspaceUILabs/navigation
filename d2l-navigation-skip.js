@@ -1,7 +1,7 @@
 import { css, html, LitElement } from 'lit';
 import { LocalizeNavigationElement } from './components/localize-navigation-element.js';
-import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 import { querySelectorComposed } from '@brightspace-ui/core/helpers/dom.js';
+import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin.js';
 
 class NavigationSkip extends LocalizeNavigationElement(RtlMixin(LitElement)) {
 

@@ -1,9 +1,9 @@
 import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import { css, html, LitElement, nothing } from 'lit';
+import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { getUniqueId } from '@brightspace-ui/core/helpers/uniqueId.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { highlightBorderStyles, highlightLinkStyles } from './d2l-navigation-styles.js';
 
 class NavigationLinkImage extends FocusMixin(LitElement) {
 
@@ -56,16 +56,17 @@ class NavigationLinkImage extends FocusMixin(LitElement) {
 	}
 
 	render() {
+		const image = html`<img src="${this.src}" alt="${this.text}">`;
 		if (this.href) {
 			return html`
 				<a href="${this.href}" id="${this._linkId}">
 					<span class="d2l-navigation-highlight-border"></span>
-					<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>
+					<span class="d2l-navigation-link-image-container">${image}</span>
 				</a>
-				${this.text ? html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}">${this.text}</d2l-tooltip>` : nothing}
+				${this.text ? html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}" class="vdiff-target">${this.text}</d2l-tooltip>` : nothing}
 			`;
 		}
-		return html`<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>`;
+		return html`<span class="d2l-navigation-link-image-container">${image}</span>`;
 	}
 }
 
