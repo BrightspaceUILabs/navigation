@@ -56,16 +56,17 @@ class NavigationLinkImage extends FocusMixin(LitElement) {
 	}
 
 	render() {
+		const image = /*html`<img src="${this.src}" alt="${this.text}">`*/html`image here`;
 		if (this.href) {
 			return html`
 				<a href="${this.href}" id="${this._linkId}">
 					<span class="d2l-navigation-highlight-border"></span>
-					<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>
+					<span class="d2l-navigation-link-image-container">${image}</span>
 				</a>
 				${this.text ? html`<d2l-tooltip for="${this._linkId}" for-type="label" position="bottom" offset="${ifDefined(this.tooltipOffset)}" class="vdiff-target">${this.text}</d2l-tooltip>` : nothing}
 			`;
 		}
-		return html`<span class="d2l-navigation-link-image-container"><img src="${this.src}" alt="${this.text}"></span>`;
+		return html`<span class="d2l-navigation-link-image-container">${image}</span>`;
 	}
 }
 
