@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui-labs/navigation",
-  "version": "5.15.0",
+  "version": "5.15.1",
   "type": "module",
   "repository": "https://github.com/BrightspaceUILabs/navigation.git",
   "scripts": {
