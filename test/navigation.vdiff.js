@@ -49,7 +49,7 @@ describe('d2l-navigation', () => {
 
 	it('skip-nav', async() => {
 		const elem = await fixture(navigationDefaultFixture);
-		await focusElem(elem.shadowRoot.querySelector('d2l-navigation-skip').shadowRoot.querySelector('a'));
+		await focusElem(elem.shadowRoot.querySelector('d2l-navigation-skip-main'));
 		await expect(elem).to.be.golden();
 	});
 
