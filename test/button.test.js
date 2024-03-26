@@ -3,9 +3,8 @@ import '../d2l-navigation-button-icon.js';
 import '../d2l-navigation-dropdown-button-custom.js';
 import '../d2l-navigation-dropdown-button-icon.js';
 import '../d2l-navigation-notification-icon.js';
-import { expect, fixture, html, oneEvent } from '@brightspace-ui/testing';
+import { expect, fixture, html, oneEvent, runConstructor } from '@brightspace-ui/testing';
 import { getComposedActiveElement } from '@brightspace-ui/core/helpers/focus.js';
-import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('Buttons', () => {
 

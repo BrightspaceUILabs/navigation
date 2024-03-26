@@ -2,9 +2,8 @@ import '../d2l-navigation-link.js';
 import '../d2l-navigation-link-back.js';
 import '../d2l-navigation-link-icon.js';
 import '../d2l-navigation-link-image.js';
-import { expect, fixture, html, oneEvent } from '@brightspace-ui/testing';
+import { expect, fixture, html, oneEvent, runConstructor } from '@brightspace-ui/testing';
 import { getComposedActiveElement } from '@brightspace-ui/core/helpers/focus.js';
-import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
 
 describe('Links', () => {
 

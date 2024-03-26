@@ -1,6 +1,5 @@
 import '../components/d2l-navigation-iterator/d2l-navigation-iterator.js';
-import { expect, fixture, html, oneEvent } from '@brightspace-ui/testing';
-import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
+import { expect, fixture, html, oneEvent, runConstructor } from '@brightspace-ui/testing';
 
 describe('d2l-navigation-iterator', () => {
 
