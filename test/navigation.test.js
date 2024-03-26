@@ -3,8 +3,7 @@ import '../d2l-navigation-band.js';
 import '../d2l-navigation-main-header.js';
 import '../d2l-navigation-main-footer.js';
 import '../d2l-navigation-separator.js';
-import { expect, fixture, html } from '@brightspace-ui/testing';
-import { runConstructor } from '@brightspace-ui/core/tools/constructor-test-helper.js';
+import { expect, fixture, html, runConstructor } from '@brightspace-ui/testing';
 
 describe('Navigation', () => {
 
