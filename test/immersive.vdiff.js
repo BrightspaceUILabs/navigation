@@ -5,6 +5,7 @@ const pageContent = html`<div style="background-color: pink;">Main Page Content<
 const normalFixture = html`<d2l-navigation-immersive width-type="normal" back-link-href="https://www.d2l.com"></d2l-navigation-immersive>${pageContent}`;
 const noRightSlotFixture = html`<d2l-navigation-immersive><div slot="middle">Middle</div></d2l-navigation-immersive>${pageContent}`;
 const noMiddleSlotFixture = html`<d2l-navigation-immersive><div slot="right">Right</div></d2l-navigation-immersive>${pageContent}`;
+const allowOverflowFixture = html`<d2l-navigation-immersive allow-overflow><div slot="right" style="background-color: red; height: 200px;">Should overflow</div></d2l-navigation-immersive>${pageContent}`;
 
 describe('d2l-navigation-immersive', () => {
 
@@ -14,7 +15,8 @@ describe('d2l-navigation-immersive', () => {
 			{ name: 'fullscreen', template: html`<d2l-navigation-immersive width-type="fullscreen"></d2l-navigation-immersive>${pageContent}` },
 			{ name: 'both-slots', template: html`<d2l-navigation-immersive><div slot="middle">Middle</div><div slot="right">Right</div></d2l-navigation-immersive>${pageContent}` },
 			{ name: 'no-right-slot', template: noRightSlotFixture },
-			{ name: 'no-middle-slot', template: noMiddleSlotFixture }
+			{ name: 'no-middle-slot', template: noMiddleSlotFixture },
+			{ name: 'allow-overflow', template: allowOverflowFixture },
 		].forEach(({ name, template }) => {
 			describe(name, () => {
 				it(`${width}`, async() => {

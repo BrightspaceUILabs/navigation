@@ -19,6 +19,10 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 
 	static get properties() {
 		return {
+			allowOverflow: {
+				type: Boolean,
+				reflectToAttribute: true
+			},
 			backLinkHref: {
 				type: String,
 				reflectToAttribute: true
@@ -71,6 +75,10 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 
 			:host([width-type="normal"]) .d2l-navigation-immersive-container {
 				max-width: 1230px;
+			}
+
+			:host([allow-overflow]) .d2l-navigation-immersive-container {
+				overflow: visible;
 			}
 
 			.d2l-navigation-immersive-left ::slotted(*),
