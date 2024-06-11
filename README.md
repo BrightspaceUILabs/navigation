@@ -73,7 +73,10 @@ Please note that overridding the `left` slot will prevent the Back link from dis
 </d2l-navigation-immersive>
 ```
 
-Optionally, the max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`.
+Optionally:
+
+- The max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`
+- Overflow can be enabled to facilitate components like dropdowns by including the `allow-overflow` boolean attribute
 
 ## Secondary Components
 
