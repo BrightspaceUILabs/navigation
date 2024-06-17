@@ -1,47 +1,40 @@
 import '@brightspace-ui/core/components/colors/colors.js';
-import '@brightspace-ui/typography/d2l-typography-shared-styles.js';
-import 'fastdom/fastdom.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { DirMixin } from '@polymer/polymer/lib/mixins/dir-mixin.js';
-import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import { css, html, LitElement } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 
-/**
-`d2l-navigation-immersive`
-Polymer-based web component for the immersive navigation component
-
-@demo demo/navigation-immersive.html
-*/
-class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
+class NavigationImmersive extends LitElement {
 
 	static get properties() {
 		return {
 			allowOverflow: {
+				attribute: 'allow-overflow',
 				type: Boolean,
-				reflectToAttribute: true
+				reflect: true
 			},
 			backLinkHref: {
-				type: String,
-				reflectToAttribute: true
+				attribute: 'back-link-href',
+				type: String
 			},
 			backLinkText: {
-				type: String,
-				reflectToAttribute: true
+				attribute: 'back-link-text',
+				type: String
 			},
 			widthType: {
+				attribute: 'width-type',
 				type: String,
-				reflectToAttribute: true
-			}
+				reflect: true
+			},
+			_middleHidden: { state: true },
+			_middleNoRightBorder: { state: true }
 		};
 	}
 
-	static get template() {
-		const template = html`
-				${navigationSharedStyle}
-				<style>
+	static get styles() {
+		return [navigationSharedStyle, css`
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;
 				--d2l-navigation-immersive-height-responsive: 2.8rem;
@@ -114,8 +107,8 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 			}
 
 			.d2l-navigation-immersive-middle {
-				border-left: 1px solid var(--d2l-color-gypsum);
-				border-right: 1px solid var(--d2l-color-gypsum);
+				border-inline-start: 1px solid var(--d2l-color-gypsum);
+				border-inline-end: 1px solid var(--d2l-color-gypsum);
 				flex: 0 1 auto;
 				margin: 0 24px;
 				padding: 0 24px;
@@ -124,12 +117,7 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 			}
 
 			.d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
-				border-right: none;
-			}
-
-			:host(:dir(rtl)) .d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
-				border-left: none;
-				border-right: 1px solid var(--d2l-color-gypsum);
+				border-inline-end: none;
 			}
 
 			div.d2l-navigation-immersive-middle-observer,
@@ -184,98 +172,87 @@ class D2LNavigationImmsersive extends DirMixin(PolymerElement) {
 					padding: 0 18px;
 				}
 			}
+		`];
+	}
 
-		</style>
-		<div class="d2l-navigiation-immersive-fixed">
-			<d2l-navigation>
-				<div class="d2l-navigation-immersive-margin">
-					<div class="d2l-navigation-immersive-container">
-						<div class="d2l-navigation-immersive-left">
-							<slot name="left">
-								<d2l-navigation-link-back text="[[backLinkText]]" href="[[backLinkHref]]"></d2l-navigation-link-back>
-							</slot>
-						</div>
-						<div class="d2l-navigation-immersive-middle d2l-navigation-immersive-middle-no-right-border">
-							<div class="d2l-navigation-immersive-middle-observer">
-								<slot name="middle"></slot>
-							</div>
-						</div>
-						<div class="d2l-navigation-immersive-right">
-							<div class="d2l-navigation-immersive-right-observer">
-								<slot name="right"></slot>
-							</div>
-						</div>
-					</div>
-				</div>
-			</d2l-navigation>
-		</div>
-		<div class="d2l-navigation-immersive-spacing"></div>
-		`;
-		template.setAttribute('strip-whitespace', '');
-		return template;
+	constructor() {
+		super();
+		this._middleHidden = false;
+		this._middleNoRightBorder = true;
+		this._middleObserver = new ResizeObserver(this._onMiddleResize.bind(this));
+		this._rightObserver = new ResizeObserver(this._onRightResize.bind(this));
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
-
-		this.middle = dom(this.root).querySelector('.d2l-navigation-immersive-middle-observer');
-		this._middleObserver = new ResizeObserver(this._onMiddleResize);
-		this._middleObserver.observe(this.middle);
-
-		this.right = dom(this.root).querySelector('.d2l-navigation-immersive-right-observer');
-		this._rightObserver = new ResizeObserver(this._onRightResize);
-		this._rightObserver.observe(this.right);
+		this._startObserving();
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
-		if (this._middleObserver) {
-			this._middleObserver.unobserve(this.middle);
-		}
-
-		if (this._rightObserver) {
-			this._rightObserver.unobserve(this.right);
-		}
+		if (this._middleObserver) this._middleObserver.disconnect();
+		if (this._rightObserver) this._rightObserver.disconnect();
 	}
 
-	ready() {
-		super.ready();
-		this._onMiddleResize = this._onMiddleResize.bind(this);
-		this._onRightResize = this._onRightResize.bind(this);
+	firstUpdated(changedProperties) {
+		super.firstUpdated(changedProperties);
+		this._startObserving();
+	}
+
+	render() {
+		const middleContainerClasses = {
+			'd2l-navigation-immersive-middle': true,
+			'd2l-navigation-immersive-middle-hidden': this._middleHidden,
+			'd2l-navigation-immersive-middle-no-right-border': this._middleNoRightBorder
+		};
+		return html`
+			<div class="d2l-navigiation-immersive-fixed">
+				<d2l-navigation>
+					<div class="d2l-navigation-immersive-margin">
+						<div class="d2l-navigation-immersive-container">
+							<div class="d2l-navigation-immersive-left">
+								<slot name="left">
+									<d2l-navigation-link-back text="${this.backLinkText}" href="${this.backLinkHref}"></d2l-navigation-link-back>
+								</slot>
+							</div>
+							<div class="${classMap(middleContainerClasses)}">
+								<div class="d2l-navigation-immersive-middle-observer">
+									<slot name="middle"></slot>
+								</div>
+							</div>
+							<div class="d2l-navigation-immersive-right"><div class="d2l-navigation-immersive-right-observer"><slot name="right"></slot></div></div>
+						</div>
+					</div>
+				</d2l-navigation>
+			</div>
+			<div class="d2l-navigation-immersive-spacing"></div>
+		`;
 	}
 
 	_onMiddleResize(entries) {
-		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-hidden');
-	}
-
-	_onResize(entries, slotContainerQuerySelector, containerClass) {
 		if (!entries || entries.length === 0) {
 			return;
 		}
-
-		const entry = entries[0];
-		const container = dom(this.root).querySelector(slotContainerQuerySelector);
-
-		if (entry.contentRect.height < 1) {
-			// nothing in slot
-			if (!container.classList.contains(containerClass)) {
-				fastdom.mutate(() => {
-					container.classList.add(containerClass);
-				});
-			}
-		} else {
-			// stuff in slot
-			if (container.classList.contains(containerClass)) {
-				fastdom.mutate(() => {
-					container.classList.remove(containerClass);
-				});
-			}
-		}
+		this._middleHidden = (entries[0].contentRect.height < 1);
 	}
 
 	_onRightResize(entries) {
-		this._onResize(entries, '.d2l-navigation-immersive-middle', 'd2l-navigation-immersive-middle-no-right-border');
+		if (!entries || entries.length === 0) {
+			return;
+		}
+		this._middleNoRightBorder = (entries[0].contentRect.height < 1);
+	}
+
+	_startObserving() {
+		const middle = this.shadowRoot?.querySelector('.d2l-navigation-immersive-middle-observer');
+		if (middle) {
+			this._middleObserver.observe(middle);
+		}
+		const right = this.shadowRoot?.querySelector('.d2l-navigation-immersive-right-observer');
+		if (right) {
+			this._rightObserver.observe(right);
+		}
 	}
 
 }
-customElements.define('d2l-navigation-immersive', D2LNavigationImmsersive);
+customElements.define('d2l-navigation-immersive', NavigationImmersive);
