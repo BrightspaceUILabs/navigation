@@ -5,13 +5,12 @@ class NavigationMainFooter extends LitElement {
 
 	static get styles() {
 		return [navigationSharedStyle, css`
-				:host {
-					border-top: 1px solid rgba(124,134,149,0.18);
-					border-bottom: 1px solid rgba(124,134,149,0.18);
-					display: block;
-				}
-			`
-		];
+			:host {
+				border-bottom: 1px solid rgba(124, 134, 149, 0.18);
+				border-top: 1px solid rgba(124, 134, 149, 0.18);
+				display: block;
+			}
+		`];
 	}
 
 	render() {

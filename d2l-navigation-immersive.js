@@ -107,13 +107,13 @@ class NavigationImmersive extends LitElement {
 			}
 
 			.d2l-navigation-immersive-middle {
-				border-inline-start: 1px solid var(--d2l-color-gypsum);
 				border-inline-end: 1px solid var(--d2l-color-gypsum);
+				border-inline-start: 1px solid var(--d2l-color-gypsum);
 				flex: 0 1 auto;
 				margin: 0 24px;
+				min-width: 0;
 				padding: 0 24px;
 				width: 100%;
-				min-width: 0;
 			}
 
 			.d2l-navigation-immersive-middle.d2l-navigation-immersive-middle-no-right-border {
