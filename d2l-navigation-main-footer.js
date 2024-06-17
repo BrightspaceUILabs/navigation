@@ -1,32 +1,28 @@
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { css, html, LitElement } from 'lit';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 
-/**
-`d2l-navigation-main-footer`
-Polymer-based web component for the smaller, lower section of the navigational element
+class NavigationMainFooter extends LitElement {
 
-@demo demo/navigation-main-footer.html
-*/
-class D2LNavigationMainFooter extends PolymerElement {
-
-	static get template() {
-		const template = html`
-			${navigationSharedStyle}
-			<style>
+	static get styles() {
+		return [navigationSharedStyle, css`
 				:host {
 					border-top: 1px solid rgba(124,134,149,0.18);
 					border-bottom: 1px solid rgba(124,134,149,0.18);
 					display: block;
 				}
-			</style>
+			`
+		];
+	}
+
+	render() {
+		return html`
 			<div class="d2l-navigation-centerer">
 				<div class="d2l-navigation-gutters">
 					<slot name="main"></slot>
 				</div>
 			</div>
 		`;
-		template.setAttribute('strip-whitespace', '');
-		return template;
 	}
+
 }
-customElements.define('d2l-navigation-main-footer', D2LNavigationMainFooter);
+customElements.define('d2l-navigation-main-footer', NavigationMainFooter);
