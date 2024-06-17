@@ -2,6 +2,7 @@ import '@brightspace-ui/core/components/colors/colors.js';
 import './d2l-navigation.js';
 import './d2l-navigation-link-back.js';
 import { css, html, LitElement } from 'lit';
+import { bodyCompactStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
@@ -34,7 +35,7 @@ class NavigationImmersive extends LitElement {
 	}
 
 	static get styles() {
-		return [navigationSharedStyle, css`
+		return [bodyCompactStyles, navigationSharedStyle, css`
 			:host {
 				--d2l-navigation-immersive-height-main: 3.1rem;
 				--d2l-navigation-immersive-height-responsive: 2.8rem;
@@ -80,18 +81,7 @@ class NavigationImmersive extends LitElement {
 				height: var(--d2l-navigation-immersive-height-main);
 			}
 
-			/*
-				::slotted styles for Edge and IE11; styling all slotted children needs
-				to be applied explicitly.
-			*/
-			.d2l-navigation-immersive-left ::slotted(*) > *,
-			.d2l-navigation-immersive-middle ::slotted(*) > *,
-			.d2l-navigation-immersive-right ::slotted(*) > * {
-				height: var(--d2l-navigation-immersive-height-main);
-			}
-
 			.d2l-navigation-immersive-left {
-				@apply --d2l-body-compact-text;
 				color: var(--d2l-color-tungsten);
 				letter-spacing: 0.2px;
 				padding-left: 7px;
@@ -155,15 +145,6 @@ class NavigationImmersive extends LitElement {
 				.d2l-navigation-immersive-right ::slotted(*) {
 					height: var(--d2l-navigation-immersive-height-responsive);
 				}
-				/*
-					::slotted styles for Edge and IE11; styling all slotted children needs
-					to be applied explicitly.
-				*/
-				.d2l-navigation-immersive-left ::slotted(*) > *,
-				.d2l-navigation-immersive-middle ::slotted(*) > *,
-				.d2l-navigation-immersive-right ::slotted(*) > * {
-					height: var(--d2l-navigation-immersive-height-main);
-				}
 				.d2l-navigation-immersive-spacing {
 					height: calc(var(--d2l-navigation-immersive-height-responsive) + 5px);
 				}
@@ -210,7 +191,7 @@ class NavigationImmersive extends LitElement {
 				<d2l-navigation>
 					<div class="d2l-navigation-immersive-margin">
 						<div class="d2l-navigation-immersive-container">
-							<div class="d2l-navigation-immersive-left">
+							<div class="d2l-navigation-immersive-left d2l-body-compact">
 								<slot name="left">
 									<d2l-navigation-link-back text="${this.backLinkText}" href="${this.backLinkHref}"></d2l-navigation-link-back>
 								</slot>
