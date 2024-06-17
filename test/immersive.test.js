@@ -1,5 +1,5 @@
 import '../d2l-navigation-immersive.js';
-import { expect, fixture, html, runConstructor } from '@brightspace-ui/testing';
+import { clickElem, expect, fixture, html, oneEvent, runConstructor } from '@brightspace-ui/testing';
 
 describe('d2l-navigation-immersive', () => {
 
@@ -16,6 +16,20 @@ describe('d2l-navigation-immersive', () => {
 		it('should construct', () => {
 			runConstructor('d2l-navigation-immersive');
 		});
+	});
+
+	describe('events', () => {
+
+		it('should fire back-link-click event', async() => {
+			const el = await fixture(html`<d2l-navigation-immersive></d2l-navigation-immersive>`);
+			const backLink = el
+				.shadowRoot.querySelector('d2l-navigation-link-back')
+				.shadowRoot.querySelector('d2l-navigation-link-icon')
+				.shadowRoot.querySelector('a');
+			clickElem(backLink);
+			await oneEvent(el, 'd2l-navigation-immersive-back-click');
+		});
+
 	});
 
 });

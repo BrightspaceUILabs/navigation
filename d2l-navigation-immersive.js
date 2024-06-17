@@ -206,7 +206,7 @@ class NavigationImmersive extends LitElement {
 						<div class="d2l-navigation-immersive-container">
 							<div class="d2l-navigation-immersive-left d2l-body-compact">
 								<slot name="left">
-									<d2l-navigation-link-back text="${backLinkText}" href="${this.backLinkHref}"></d2l-navigation-link-back>
+									<d2l-navigation-link-back text="${backLinkText}" href="${this.backLinkHref}" @click="${this._handleBackClick}"></d2l-navigation-link-back>
 								</slot>
 							</div>
 							<div class="${classMap(middleContainerClasses)}">
@@ -221,6 +221,15 @@ class NavigationImmersive extends LitElement {
 			</div>
 			<div class="d2l-navigation-immersive-spacing"></div>
 		`;
+	}
+
+	_handleBackClick() {
+		this.dispatchEvent(
+			new CustomEvent(
+				'd2l-navigation-immersive-back-click',
+				{ bubbles: false, composed: false }
+			)
+		);
 	}
 
 	_handlePageResize(e) {
