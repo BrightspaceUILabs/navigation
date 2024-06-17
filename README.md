@@ -77,6 +77,7 @@ Optionally:
 
 - The max-width can be configured to match the max-width used by the LE by setting `widthType` to `normal`
 - Overflow can be enabled to facilitate components like dropdowns by including the `allow-overflow` boolean attribute
+- A shorter version of the back text can be provided by setting the `back-link-text-short` attribute
 
 ## Secondary Components
 
