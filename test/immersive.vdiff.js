@@ -6,6 +6,7 @@ const normalFixture = html`<d2l-navigation-immersive width-type="normal" back-li
 const noRightSlotFixture = html`<d2l-navigation-immersive><div slot="middle">Middle</div></d2l-navigation-immersive>${pageContent}`;
 const noMiddleSlotFixture = html`<d2l-navigation-immersive><div slot="right">Right</div></d2l-navigation-immersive>${pageContent}`;
 const allowOverflowFixture = html`<d2l-navigation-immersive allow-overflow><div slot="right" style="background-color: red; height: 200px;">Should overflow</div></d2l-navigation-immersive>${pageContent}`;
+const backLinkTextFixture = html`<d2l-navigation-immersive back-link-text="Long Text" back-link-text-short="Short Text"></d2l-navigation-immersive>`;
 
 describe('d2l-navigation-immersive', () => {
 
@@ -49,6 +50,24 @@ describe('d2l-navigation-immersive', () => {
 				await elem.updateComplete;
 				await expect(document).to.be.golden();
 			});
+		});
+	});
+
+	describe('back-text', () => {
+		it('short', async() => {
+			await fixture(backLinkTextFixture, { viewport: { height: 200, width: 500 } });
+			await expect(document).to.be.golden();
+		});
+		it('long', async() => {
+			await fixture(backLinkTextFixture, { viewport: { height: 200, width: 650 } });
+			await expect(document).to.be.golden();
+		});
+		it('short-not-set', async() => {
+			await fixture(
+				html`<d2l-navigation-immersive back-link-text="Long Text"></d2l-navigation-immersive>`,
+				{ viewport: { height: 200, width: 500 } }
+			);
+			await expect(document).to.be.golden();
 		});
 	});
 

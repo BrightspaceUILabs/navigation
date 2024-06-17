@@ -7,6 +7,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { navigationSharedStyle } from './d2l-navigation-shared-styles.js';
 import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 
+const mediaQueryList = window.matchMedia('(max-width: 615px)');
+
 class NavigationImmersive extends LitElement {
 
 	static get properties() {
@@ -24,13 +26,18 @@ class NavigationImmersive extends LitElement {
 				attribute: 'back-link-text',
 				type: String
 			},
+			backLinkTextShort: {
+				attribute: 'back-link-text-short',
+				type: String
+			},
 			widthType: {
 				attribute: 'width-type',
 				type: String,
 				reflect: true
 			},
 			_middleHidden: { state: true },
-			_middleNoRightBorder: { state: true }
+			_middleNoRightBorder: { state: true },
+			_smallWidth: { state: true }
 		};
 	}
 
@@ -158,26 +165,31 @@ class NavigationImmersive extends LitElement {
 
 	constructor() {
 		super();
+		this._handlePageResize = this._handlePageResize.bind(this);
 		this._middleHidden = false;
 		this._middleNoRightBorder = true;
 		this._middleObserver = new ResizeObserver(this._onMiddleResize.bind(this));
 		this._rightObserver = new ResizeObserver(this._onRightResize.bind(this));
+		this._smallWidth = false;
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
 		this._startObserving();
+		if (mediaQueryList.addEventListener) mediaQueryList.addEventListener('change', this._handlePageResize);
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		if (this._middleObserver) this._middleObserver.disconnect();
 		if (this._rightObserver) this._rightObserver.disconnect();
+		if (mediaQueryList.removeEventListener) mediaQueryList.removeEventListener('change', this._handlePageResize);
 	}
 
 	firstUpdated(changedProperties) {
 		super.firstUpdated(changedProperties);
 		this._startObserving();
+		this._smallWidth = mediaQueryList.matches;
 	}
 
 	render() {
@@ -186,6 +198,7 @@ class NavigationImmersive extends LitElement {
 			'd2l-navigation-immersive-middle-hidden': this._middleHidden,
 			'd2l-navigation-immersive-middle-no-right-border': this._middleNoRightBorder
 		};
+		const backLinkText = this._smallWidth ? (this.backLinkTextShort || this.backLinkText) : this.backLinkText;
 		return html`
 			<div class="d2l-navigiation-immersive-fixed">
 				<d2l-navigation>
@@ -193,7 +206,7 @@ class NavigationImmersive extends LitElement {
 						<div class="d2l-navigation-immersive-container">
 							<div class="d2l-navigation-immersive-left d2l-body-compact">
 								<slot name="left">
-									<d2l-navigation-link-back text="${this.backLinkText}" href="${this.backLinkHref}"></d2l-navigation-link-back>
+									<d2l-navigation-link-back text="${backLinkText}" href="${this.backLinkHref}"></d2l-navigation-link-back>
 								</slot>
 							</div>
 							<div class="${classMap(middleContainerClasses)}">
@@ -208,6 +221,10 @@ class NavigationImmersive extends LitElement {
 			</div>
 			<div class="d2l-navigation-immersive-spacing"></div>
 		`;
+	}
+
+	_handlePageResize(e) {
+		this._smallWidth = e.matches;
 	}
 
 	_onMiddleResize(entries) {
