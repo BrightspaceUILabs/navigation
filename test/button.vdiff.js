@@ -3,7 +3,7 @@ import '../../d2l-navigation-button-icon.js';
 import '../../d2l-navigation-dropdown-button-custom.js';
 import '../../d2l-navigation-dropdown-button-icon.js';
 import { expect, fixture, focusElem, hoverElem, html, oneEvent } from '@brightspace-ui/testing';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { nothing } from 'lit';
 
 const create = (opts = {}) => {
