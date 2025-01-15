@@ -17,10 +17,6 @@ class NavigationDropdownButtonCustom extends DropdownOpenerMixin(LitElement) {
 		`];
 	}
 
-	getOpenerElement() {
-		return this.shadowRoot && this.shadowRoot.querySelector('button');
-	}
-
 	render() {
 		return html`
 			<button type="button">
@@ -31,6 +27,9 @@ class NavigationDropdownButtonCustom extends DropdownOpenerMixin(LitElement) {
 		`;
 	}
 
+	getOpenerElement() {
+		return this.shadowRoot && this.shadowRoot.querySelector('button');
+	}
 }
 
 customElements.define('d2l-navigation-dropdown-button-custom', NavigationDropdownButtonCustom);

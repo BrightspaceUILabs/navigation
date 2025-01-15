@@ -44,10 +44,6 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 		this._describedById = getUniqueId();
 	}
 
-	getOpenerElement() {
-		return this.shadowRoot && this.shadowRoot.querySelector('button');
-	}
-
 	render() {
 		const { ariaDescribedBy, ariaDescription, contents } = this._getRenderSettings();
 		const highlightBorder = !this.disabled ? html`<span class="d2l-navigation-highlight-border"></span>` : nothing;
@@ -63,6 +59,10 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 			${tooltip}
 			<slot></slot>
 		`;
+	}
+
+	getOpenerElement() {
+		return this.shadowRoot && this.shadowRoot.querySelector('button');
 	}
 
 	_getRenderSettings() {
