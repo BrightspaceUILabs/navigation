@@ -1,3 +1,4 @@
+import '@brightspace-ui/core/components/colors/colors.js';
 import { css, html, LitElement } from 'lit';
 import { FocusMixin } from '@brightspace-ui/core/mixins/focus-mixin.js';
 import { highlightBorderStyles } from './d2l-navigation-styles.js';
@@ -45,12 +46,12 @@ class D2LNavigationLink extends FocusMixin(LitElement) {
 	}
 
 	static get focusElementSelector() {
-		return '.d2l-focusable';
+		return 'a';
 	}
 
 	render() {
 		return html`
-			<a class="d2l-focusable" href="${this.href}" title="${this.text}">
+			<a href="${this.href}" title="${this.text}">
 				<span class="d2l-navigation-highlight-border"></span>
 				<slot></slot>
 			</a>

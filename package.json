@@ -52,7 +52,6 @@
     "@brightspace-ui/core": "^3",
     "@brightspace-ui/localize-behavior": "^2",
     "@brightspace-ui/typography": "^9",
-    "fastdom": "^1",
     "lit": "^3",
     "resize-observer-polyfill": "^1"
   }
