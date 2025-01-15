@@ -62,7 +62,7 @@ class NavigationDropdownButtonIcon extends DropdownOpenerMixin(LitElement) {
 	}
 
 	getOpenerElement() {
-		return this.shadowRoot && this.shadowRoot.querySelector('button');
+		return this.shadowRoot?.querySelector('button');
 	}
 
 	_getRenderSettings() {
