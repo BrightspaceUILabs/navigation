@@ -19,7 +19,6 @@
     "d2l-navigation-button-icon.js",
     "d2l-navigation-dropdown-button-custom.js",
     "d2l-navigation-dropdown-button-icon.js",
-    "d2l-navigation-highlight-styles.js",
     "d2l-navigation-immersive.js",
     "d2l-navigation-link-back.js",
     "d2l-navigation-link-icon.js",
@@ -52,9 +51,7 @@
   "dependencies": {
     "@brightspace-ui/core": "^3",
     "@brightspace-ui/localize-behavior": "^2",
-    "@brightspace-ui/polymer-behaviors": "^4",
     "@brightspace-ui/typography": "^9",
-    "@polymer/polymer": "^3",
     "fastdom": "^1",
     "lit": "^3",
     "resize-observer-polyfill": "^1"
