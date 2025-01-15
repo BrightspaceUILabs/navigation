@@ -16,10 +16,6 @@ class D2LNavigationLink extends FocusMixin(LitElement) {
 		};
 	}
 
-	static get focusElementSelector() {
-		return '.d2l-focusable';
-	}
-
 	static get styles() {
 		return [highlightBorderStyles, css`
 			:host {
@@ -38,14 +34,18 @@ class D2LNavigationLink extends FocusMixin(LitElement) {
 			}
 			a:hover,
 			a:focus {
-				color: var(--d2l-color-celestine);
 				--d2l-icon-fill-color: var(--d2l-color-celestine);
+				color: var(--d2l-color-celestine);
 				outline: none;
 			}
 			:host(:not([href])) .d2l-navigation-highlight-border {
 				display: none;
 			}
 		`];
+	}
+
+	static get focusElementSelector() {
+		return '.d2l-focusable';
 	}
 
 	render() {
